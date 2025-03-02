@@ -68,7 +68,8 @@
     }
 
     #restart,
-    #show-records {
+    #show-records,
+    #homepage {
       font-size: 2.5vh;
       padding: 1vh 2vw;
       background-color: #4CAF50;
@@ -164,6 +165,7 @@
     <div>
       <button id="restart">Yeni Oyun</button>
       <button id="show-records">Rekorlar</button>
+      <button id="homepage">🏠Ana Sayfa</button>
     </div>
   </div>
   <div id="records">
@@ -208,6 +210,7 @@
     const keyboardElement = document.getElementById('keyboard');
     const scoreElement = document.getElementById('score');
     const showRecordsButton = document.getElementById('show-records');
+    const homepageButton = document.getElementById('homepage');
     const recordsElement = document.getElementById('records');
     const closeRecordsButton = document.getElementById('close-records');
     const recordsListElement = document.getElementById('records-list');
@@ -362,6 +365,9 @@
     });
 
     showRecordsButton.addEventListener('click', showRecords);
+    homepageButton.addEventListener('click', () => {
+      window.location.href = '/';
+    });
     closeRecordsButton.addEventListener('click', () => recordsElement.style.display = 'none');
 
     createKeyboard();
