@@ -6,31 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dorukdayım</title>
 
-    <!-- PWA-specific meta tags -->
-    <meta name="theme-color" content="#f0f0f0"> <!-- Color for the browser bar -->
+    <meta name="theme-color" content="#f0f0f0">
     <meta name="description" content="Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!">
-    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- For iOS support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <!-- Link to the manifest file -->
     <link rel="manifest" href="/manifest.json">
-    <!-- Fallback application icon -->
-    <link rel="icon" href="/icon-192x192.png" type="image/png">
-
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <link rel="icon" href="/icons/favicon.ico" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0 auto;
-            padding: 0;
+            padding: 0 10px;
             background: linear-gradient(to right, #f0f0f0, #e0e0e0);
             color: black;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
             max-width: 600px;
+            display: flex;
+            flex-direction: column;
         }
 
         h1 {
@@ -42,23 +39,24 @@
         }
 
         p {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1rem;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             padding: 10px;
+            border-radius: 10px;
         }
 
         .auth-buttons {
             position: absolute;
             top: 20px;
-            right: max(10px, 50% - 390px);
+            right: max(10px, 50% - 290px);
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            gap: 10px;
         }
 
         button {
             background: white;
-            padding: 10px 10px;
+            padding: 10px 5px;
             font-size: 1rem;
             font-weight: bold;
             border-radius: 5px;
@@ -86,30 +84,45 @@
             z-index: 1000;
             cursor: pointer;
         }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            padding: 10px;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 
 <body>
-    <div class="auth-buttons">
-        <button id="signInBtn">Giriş Yap</button>
-        <button id="signOutBtn" style="display: none;">Çıkış Yap</button>
-    </div>
-    <h1>DorukDayım</h1>
-    <p>Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!</p>
-    <div id="messagePopup" class="popup"></div>
+    <main>
+        <div class="auth-buttons">
+            <button id="installPWA" style="display: none;"> 🚀 Yükle</button>
+            <button id="signInBtn" style="display: none;">✅ Giriş</button>
+            <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
+        </div>
+        <h1>DorukDayım</h1>
+        <p>Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!</p>
+        <div id="messagePopup" class="popup"></div>
 
-    <button onclick="window.location.href='hangman.html'">😵🪜 ADAM ASMACA</button>
-    <button onclick="window.location.href='flagquiz.html'">🚩 BAYRAK TESTİ</button>
-    <button onclick="window.location.href='besharf.html'">🟩🟨 BEŞ HARF</button>
-    <button onclick="window.location.href='altiharf.html'">🟩🟨 ALTI HARF</button>
-    <button onclick="window.location.href='spellbee.html'">🐝 BALPETEĞİ</button>
-    <button onclick="window.location.href='birkelime.html'">🔤 BİR KELİME</button>
-    <button onclick="window.location.href='connections.html'">🔗 BAĞLANTI BUL</button>
-    <button onclick="window.location.href='strands.html'">🔍 KELİME BUL</button>
-    <button onclick="window.location.href='memory.html'">🎴 HAFIZA OYUNU</button>
-    <button onclick="window.location.href='matematusta.html'">🧮 MATEMATUSTA</button>
-    <button onclick="window.location.href='milyoner.html'">💰 MILYONER</button>
-    <button onclick="window.location.href='tictactoe.html'">❌⭕❌ TIC TAC TOE</button>
+        <button onclick="location.href='hangman.html'">😵🪜 ADAM ASMACA</button>
+        <button onclick="location.href='flagquiz.html'">🚩 BAYRAK TESTİ</button>
+        <button onclick="location.href='besharf.html'">🟩🟨 BEŞ HARF</button>
+        <button onclick="location.href='altiharf.html'">🟩🟨 ALTI HARF</button>
+        <button onclick="location.href='spellbee.html'">🐝 BALPETEĞİ</button>
+        <button onclick="location.href='birkelime.html'">🔤 BİR KELİME</button>
+        <button onclick="location.href='connections.html'">🔗 BAĞLANTI BUL</button>
+        <button onclick="location.href='strands.html'">🔍 KELİME BUL</button>
+        <button onclick="location.href='memory.html'">🎴 HAFIZA OYUNU</button>
+        <button onclick="location.href='matematusta.html'">🧮 MATEMATUSTA</button>
+        <button onclick="location.href='milyoner.html'">💰 MILYONER</button>
+        <button onclick="location.href='tictactoe.html'">❌⭕❌ TIC TAC TOE</button>
+    </main>
+    <footer>
+        <p>&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
+    </footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -121,8 +134,6 @@
             .then(response => response.json())
             .then(firebaseConfig => {
                 const app = initializeApp(firebaseConfig);
-                console.log("✅ Firebase başlatıldı!");
-
                 auth = getAuth(app);
                 provider = new GoogleAuthProvider();
 
@@ -134,17 +145,27 @@
                     if (user) {
                         signInBtn.style.display = "none";
                         signOutBtn.style.display = "block";
-                        showPopup(`Hoş geldin, ${user.displayName}!`);
+                        const lastSignInTime = localStorage.getItem('dorukdayimlastSignInTime');
+                        const currentTime = Date.now();
+                        const oneHourInMs = 60 * 60 * 1000;
+                        if (!lastSignInTime || (currentTime - parseInt(lastSignInTime) >= oneHourInMs)) {
+                            showPopup(`Hoş geldin, ${user.displayName}!`);
+                            localStorage.setItem('dorukdayimlastSignInTime', currentTime.toString());
+                        }
                     } else {
                         signInBtn.style.display = "block";
                         signOutBtn.style.display = "none";
                         messagePopup.style.display = "none";
+                        localStorage.removeItem('dorukdayimlastSignInTime');
                     }
                 });
 
                 window.signOut = function () {
                     signOut(auth)
-                        .then(() => showPopup("Çıkış yapıldı!"))
+                        .then(() => {
+                            showPopup("Çıkış yapıldı!");
+                            localStorage.removeItem('dorukdayimlastSignInTime');
+                        })
                         .catch(error => showPopup(error.message));
                 };
 
@@ -152,15 +173,15 @@
                     signInWithPopup(auth, provider)
                         .then((result) => {
                             const user = result.user;
+                            const currentTime = Date.now();
                             showPopup(`Hoş geldin, ${user.displayName}!`);
+                            localStorage.setItem('dorukdayimlastSignInTime', currentTime.toString());
                         })
                         .catch(error => showPopup(error.message));
                 };
 
                 signInBtn.addEventListener("click", window.signInWithGoogle);
                 signOutBtn.addEventListener("click", window.signOut);
-
-                signInBtn.style.display = "block";
             })
             .catch(error => console.error("❌ Config alınırken hata:", error));
 
@@ -188,6 +209,26 @@
                     });
             });
         }
+
+        let deferredPrompt;
+
+        window.addEventListener("beforeinstallprompt", (event) => {
+            event.preventDefault();
+            deferredPrompt = event;
+            document.getElementById("installPWA").style.display = "block";
+        });
+
+        document.getElementById("installPWA").addEventListener("click", async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+            }
+        });
+
+        window.addEventListener("appinstalled", () => {
+            document.getElementById("installPWA").style.display = "none";
+        });
     </script>
 </body>
 
