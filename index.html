@@ -18,51 +18,65 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            margin: 0 auto;
-            padding: 0 10px;
+            margin: 0px auto;
+            padding: 10px;
             background: linear-gradient(to right, #f0f0f0, #e0e0e0);
             color: black;
             justify-content: center;
-            min-height: 100vh;
             text-align: center;
             max-width: 600px;
             display: flex;
             flex-direction: column;
         }
 
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 5px;
+            gap: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        main {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            padding: 5px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
         h1 {
             font-size: 3rem;
-            margin-top: 10vh;
-            left: 50%;
             text-decoration: underline;
             text-decoration-color: darkred;
         }
 
         p {
             font-size: 1rem;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            padding: 10px;
-            border-radius: 10px;
         }
 
-        .auth-buttons {
-            position: absolute;
-            top: 20px;
-            right: max(10px, 50% - 290px);
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
+        content {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            padding: 5px;
+            border-radius: 10px;
+            margin-bottom: 10px;
         }
 
         button {
             background: white;
-            padding: 10px 5px;
+            padding: 5px 5px;
             font-size: 1rem;
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
             margin: 5px;
+            width: 25vw;
+            max-width: 100px;
         }
 
         button:hover {
@@ -90,36 +104,38 @@
         }
 
         footer {
-            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             font-size: 0.8rem;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <button id="installPWA" style="display: none;"> 🚀 Yükle</button>
+        <button id="signInBtn" style="display: none;">✅ Giriş</button>
+        <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
+    </header>
     <main>
-        <div class="auth-buttons">
-            <button id="installPWA" style="display: none;"> 🚀 Yükle</button>
-            <button id="signInBtn" style="display: none;">✅ Giriş</button>
-            <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
-        </div>
         <h1>DorukDayım</h1>
         <p>Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!</p>
         <div id="messagePopup" class="popup"></div>
-
+    </main>
+    <content>
         <button onclick="location.href='hangman.html'">😵🪜 ADAM ASMACA</button>
         <button onclick="location.href='flagquiz.html'">🚩 BAYRAK TESTİ</button>
-        <button onclick="location.href='besharf.html'">🟩🟨 BEŞ HARF</button>
-        <button onclick="location.href='altiharf.html'">🟩🟨 ALTI HARF</button>
-        <button onclick="location.href='spellbee.html'">🐝 BALPETEĞİ</button>
-        <button onclick="location.href='birkelime.html'">🔤 BİR KELİME</button>
+        <button onclick="location.href='besharf.html'">🟩🟨 <br>BEŞ <br>HARF</button>
+        <button onclick="location.href='altiharf.html'">🟩🟨 <br>ALTI <br>HARF</button>
+        <button onclick="location.href='spellbee.html'">🐝 <br>BAL PETEĞİ</button>
+        <button onclick="location.href='birkelime.html'">🔤 <br>BİR KELİME</button>
         <button onclick="location.href='connections.html'">🔗 BAĞLANTI BUL</button>
         <button onclick="location.href='strands.html'">🔍 KELİME BUL</button>
-        <button onclick="location.href='memory.html'">🎴 HAFIZA OYUNU</button>
-        <button onclick="location.href='matematusta.html'">🧮 MATEMATUSTA</button>
-        <button onclick="location.href='milyoner.html'">💰 MILYONER</button>
+        <button onclick="location.href='memory.html'">🎴 <br>HAFIZA OYUNU</button>
+        <button onclick="location.href='matematusta.html'">🧮 MATEMAT USTA</button>
+        <button onclick="location.href='milyoner.html'">💰 MILYONER OL</button>
         <button onclick="location.href='tictactoe.html'">❌⭕❌ TIC TAC TOE</button>
-    </main>
+    </content>
     <footer>
         <p>&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
     </footer>
@@ -130,16 +146,17 @@
 
         let auth, provider;
 
+        const signInBtn = document.getElementById("signInBtn");
+        const signOutBtn = document.getElementById("signOutBtn");
+        const messagePopup = document.getElementById("messagePopup");
+        const installBtn = document.getElementById("installPWA");
+
         fetch('/.netlify/functions/getFirebaseConfig')
             .then(response => response.json())
             .then(firebaseConfig => {
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 provider = new GoogleAuthProvider();
-
-                const signInBtn = document.getElementById("signInBtn");
-                const signOutBtn = document.getElementById("signOutBtn");
-                const messagePopup = document.getElementById("messagePopup");
 
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
@@ -166,7 +183,7 @@
                             showPopup("Çıkış yapıldı!");
                             localStorage.removeItem('dorukdayimlastSignInTime');
                         })
-                        .catch(error => showPopup(error.message));
+                        .catch(error => console.error(error.message));
                 };
 
                 window.signInWithGoogle = function () {
@@ -177,7 +194,7 @@
                             showPopup(`Hoş geldin, ${user.displayName}!`);
                             localStorage.setItem('dorukdayimlastSignInTime', currentTime.toString());
                         })
-                        .catch(error => showPopup(error.message));
+                        .catch(error => console.error(error.message));
                 };
 
                 signInBtn.addEventListener("click", window.signInWithGoogle);
@@ -185,16 +202,14 @@
             })
             .catch(error => console.error("❌ Config alınırken hata:", error));
 
+
+
         function showPopup(text) {
             messagePopup.innerText = text;
             messagePopup.style.display = "block";
             setTimeout(() => {
                 messagePopup.style.display = "none";
             }, 3000);
-            document.addEventListener("click", function closePopup() {
-                messagePopup.style.display = "none";
-                document.removeEventListener("click", closePopup);
-            });
         }
 
         // Register the service worker for PWA
@@ -215,19 +230,34 @@
         window.addEventListener("beforeinstallprompt", (event) => {
             event.preventDefault();
             deferredPrompt = event;
-            document.getElementById("installPWA").style.display = "block";
+            installBtn.style.display = "block";
         });
 
-        document.getElementById("installPWA").addEventListener("click", async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                deferredPrompt = null;
-            }
-        });
+        function isSafari() {
+            return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        }
+
+        if (isSafari()) {
+            installBtn.style.display = "block";
+            installBtn.addEventListener("click", () => {
+                showPopup("Yüklemek için: Paylaş > Ana Ekrana Ekle");
+            });
+        } else {
+            installBtn.addEventListener("click", async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                }
+            });
+        }
+
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            installBtn.style.display = "none";
+        }
 
         window.addEventListener("appinstalled", () => {
-            document.getElementById("installPWA").style.display = "none";
+            installBtn.style.display = "none";
         });
     </script>
 </body>
