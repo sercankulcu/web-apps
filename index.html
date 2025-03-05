@@ -19,7 +19,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0px auto;
-            padding: 10px;
+            padding: 5px;
             background: linear-gradient(to right, #f0f0f0, #e0e0e0);
             color: black;
             justify-content: center;
@@ -35,7 +35,6 @@
             justify-content: flex-end;
             align-items: center;
             padding: 5px;
-            gap: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             margin-top: 10px;
             margin-bottom: 10px;
@@ -76,7 +75,6 @@
             transition: 0.3s;
             margin: 5px;
             width: 25vw;
-            max-width: 100px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -87,7 +85,6 @@
 
         button span {
             font-size: 1.4rem;
-            margin-right: 5px;
         }
 
         .popup {
@@ -114,14 +111,103 @@
             font-size: 0.8rem;
             border-radius: 10px;
         }
+
+        .overlay {
+            background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+            height: 100%;
+            width: 100%;
+            max-width: 600px;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: max(0, 50% - 300px);
+            overflow: hidden;
+            transition: 0.5s;
+            display: none;
+        }
+
+        .menu-section {
+            text-align: left;
+            padding: 10px;
+        }
+
+        .menu-section h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .menu-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .overlay a {
+            text-align: center;
+        }
+
+        .overlay-content {
+            position: relative;
+            height: 100vh;
+            text-align: center;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .overlay a:hover,
+        .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        .overlay .closebtn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+
+        #overlayProfile {
+            display: none;
+        }
+
+        #profileDetails {
+            text-align: center;
+        }
+
+        #profileImage {
+            margin-bottom: 10px;
+        }
+
+        #highScores {
+            margin-top: 20px;
+        }
+
+        #highScoresList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #highScoresList li {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <button id="installPWA" style="display: none;"> 🚀 Yükle</button>
+        <button id="profileBtn" style="display: none;">👤 Profil</button>
+        <button id="shareBtn">🔗 Paylaş</button>
+        <button id="installPWA" style="display: none;">🚀 Yükle</button>
         <button id="signInBtn" style="display: none;">✅ Giriş</button>
         <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
+        <button id="menuBtn" style="width: auto;">☰</button>
+    </header>
     </header>
     <main>
         <h1>DorukDayım</h1>
@@ -140,11 +226,99 @@
         <button onclick="location.href='memory.html'"><span>🎴</span> <br>HAFIZA OYUNU</button>
         <button onclick="location.href='matematusta.html'"><span>🧮</span> MATEMAT USTA</button>
         <button onclick="location.href='milyoner.html'"><span>💰</span> MILYONER OL</button>
-        <button onclick="location.href='tictactoe.html'"><span>❌⭕❌</span> TIC TAC TOE</button>
+        <button onclick="location.href='tictactoe.html'">❌⭕❌ TIC TAC TOE</button>
     </content>
     <footer>
         <p>&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
     </footer>
+    <div id="overlayProfile" class="overlay">
+        <div class="overlay-content">
+            <span class="closebtn" id="closeProfileBtn">&times;</span>
+            <div id="profileDetails" class="menu-section">
+                <h2>Profilim</h2>
+                <img id="profileImage" src="" alt="Profil Resmi"
+                    style="width: 100px; height: 100px; border-radius: 50%;">
+                <p><strong>İsim:</strong> <span id="profileName"></span></p>
+                <p><strong>E-posta:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Son Giriş:</strong> <span id="lastSignIn"></span></p>
+                <div id="highScores">
+                    <h3>En Yüksek Skorlar</h3>
+                    <ul id="highScoresList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="overlayMenu" class="overlay">
+        <div class="overlay-content">
+            <span class="closebtn" id="closeMenuBtn">&times;</span>
+
+            <div class="menu-section" id="aboutUs">
+                <h2>Hakkımızda</h2>
+                <p>
+                    DorukDayım, baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunların bir araya geldiği bir
+                    platformdur. Amacımız, her yaştan kullanıcının keyifli vakit geçirirken aynı zamanda yeni bilgiler
+                    edinmesini sağlamaktır. Oyunlarımız, zeka gelişimine katkıda bulunmak, kelime dağarcığını
+                    zenginleştirmek ve genel kültür bilgisini artırmak için özenle hazırlanmıştır.<br>
+                    Bu platform, aile bağlarını güçlendirmek ve eğlenceli öğrenme deneyimleri sunmak amacıyla
+                    oluşturulmuştur. Kullanıcılarımızdan gelen geri bildirimlerle sürekli gelişmekte ve yeni oyunlar
+                    eklemekteyiz.
+                </p>
+            </div>
+
+            <div class="menu-section" id="businessPartners">
+                <h2>İş Ortaklarımız</h2>
+                <p>
+                    DorukDayım olarak, teknoloji sağlayıcıları, eğitim kurumları ve içerik üreticileriyle iş birliği
+                    yaparak kullanıcılarımıza en iyi deneyimi sunmayı hedefliyoruz. Şu anda platformumuz, netlify,
+                    google
+                    firebase, supabase ve github altyapısı ile hizmet vermektedir.
+                </p>
+            </div>
+
+            <div class="menu-section" id="privacyPolicy">
+                <h2>Gizlilik Politikası</h2>
+                <p>
+                    DorukDayım olarak, kullanıcılarımızın kişisel verilerinin korunmasına büyük önem veriyoruz. Hiçbir
+                    kişisel verinizi toplamıyoruz. Platforma giriş Google üzerinden yapılmaktadır. Sadece oynanan oyun
+                    sayısı ve
+                    kazanılan puanlar istatistik amacı ile toplanmakta ve hizmetlerimizi geliştirmek amacıyla
+                    kullanılmaktadır.
+                    Verileriniz hiçbir şekilde üçüncü taraflarla paylaşılmaz.
+                </p>
+            </div>
+
+            <div class="menu-section" id="healthSafetyEnvironmentPolicy">
+                <h2>İş Sağlığı ve Güvenliği Çevre Politikamız</h2>
+                <p>
+                    Çalışanlarımızın ve kullanıcılarımızın sağlığı bizim için önemlidir. İş sağlığı ve güvenliği
+                    politikamız kapsamında, çalışma ortamlarımızda gerekli tüm önlemleri alıyor ve çevreye duyarlı bir
+                    yaklaşım sergiliyoruz. Çevre politikamız gereği, dijital platformumuzda kağıt kullanımını minimuma
+                    indiriyor ve
+                    sürdürülebilirlik projelerine destek veriyoruz.
+                </p>
+            </div>
+
+            <div class="menu-section" id="career">
+                <h2>Kariyer</h2>
+                <p>
+                    DorukDayım ekibine katılmak ister misiniz? Kariyer fırsatlarımız ve açık pozisyonlar
+                    buradan bildirilecektir.
+                </p>
+            </div>
+
+            <div class="menu-section" id="contactUs">
+                <h2>İletişim</h2>
+                <p>
+                    Kullanıcı memnuniyeti bizim için önceliklidir. Platformumuzla ilgili herhangi bir sorunuz veya
+                    öneriniz olduğunda aşağıdaki iletişim kanallarını kullanarak bize ulaşabilirsiniz.<br>
+                    E-posta: sercankulcu@gmail.com<br>
+                    Twitter: @sercandev<br>
+                    Geri bildirimleriniz ve sorularınız için her zaman buradayız.
+                </p>
+            </div>
+        </div>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -156,6 +330,20 @@
         const signOutBtn = document.getElementById("signOutBtn");
         const messagePopup = document.getElementById("messagePopup");
         const installBtn = document.getElementById("installPWA");
+        const shareBtn = document.getElementById("shareBtn");
+
+        const profileBtn = document.getElementById("profileBtn");
+        const overlayProfile = document.getElementById("overlayProfile");
+        const closeProfileBtn = document.getElementById("closeProfileBtn");
+        const profileImage = document.getElementById("profileImage");
+        const profileName = document.getElementById("profileName");
+        const profileEmail = document.getElementById("profileEmail");
+        const lastSignIn = document.getElementById("lastSignIn");
+        const highScoresList = document.getElementById("highScoresList");
+
+        const menuBtn = document.getElementById("menuBtn");
+        const overlayMenu = document.getElementById("overlayMenu");
+        const closeMenuBtn = document.getElementById("closeMenuBtn");
 
         fetch('/.netlify/functions/getFirebaseConfig')
             .then(response => response.json())
@@ -168,6 +356,7 @@
                     if (user) {
                         signInBtn.style.display = "none";
                         signOutBtn.style.display = "block";
+                        profileBtn.style.display = "block";
                         const lastSignInTime = localStorage.getItem('dorukdayimlastSignInTime');
                         const currentTime = Date.now();
                         const oneHourInMs = 60 * 60 * 1000;
@@ -178,6 +367,7 @@
                     } else {
                         signInBtn.style.display = "block";
                         signOutBtn.style.display = "none";
+                        profileBtn.style.display = "none";
                         messagePopup.style.display = "none";
                         localStorage.removeItem('dorukdayimlastSignInTime');
                     }
@@ -265,6 +455,90 @@
         window.addEventListener("appinstalled", () => {
             installBtn.style.display = "none";
         });
+
+        menuBtn.addEventListener("click", () => {
+            overlayMenu.style.display = "block";
+        });
+
+        closeMenuBtn.addEventListener("click", () => {
+            overlayMenu.style.display = "none";
+        });
+
+        function showProfile(user) {
+            profileImage.src = user.photoURL || "default-profile-image.png"; // Varsayılan resim ekleyebilirsiniz
+            profileName.textContent = user.displayName;
+            profileEmail.textContent = user.email;
+            lastSignIn.textContent = new Date(user.metadata.lastSignInTime).toLocaleString();
+
+            // Oyun skorlarını Firebase'den veya local storage'dan alın ve gösterin
+            // Örnek olarak local storage'dan alınan skorlar gösteriliyor:
+            const scores = JSON.parse(localStorage.getItem("highScores")) || {};
+            highScoresList.innerHTML = ""; // Önce listeyi temizle
+            for (const game in scores) {
+                const score = scores[game];
+                const listItem = document.createElement("li");
+                listItem.textContent = `${game}: ${score}`;
+                highScoresList.appendChild(listItem);
+            }
+        }
+
+        profileBtn.addEventListener("click", () => {
+            if (auth.currentUser) {
+                showProfile(auth.currentUser);
+                overlayProfile.style.display = "block";
+            } else {
+                showPopup("Lütfen önce giriş yapın.");
+            }
+        });
+
+        closeProfileBtn.addEventListener("click", () => {
+            overlayProfile.style.display = "none";
+        });
+
+        shareBtn.addEventListener("click", () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'DorukDayım',
+                    text: 'Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!',
+                    url: window.location.href,
+                })
+                    .then(() => console.log('Başarıyla paylaşıldı'))
+                    .catch((error) => console.error('Paylaşım hatası', error));
+            } else {
+                showShareOptions();
+            }
+        });
+
+        function showShareOptions() {
+            const shareMessage = `DorukDayım: Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar! ${window.location.href}`;
+            const shareOptions = `
+                <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <p>Paylaş:</p>
+                    <button onclick="shareTo('whatsapp', '${shareMessage}')">WhatsApp</button>
+                    <button onclick="shareTo('twitter', '${shareMessage}')">Twitter</button>
+                    <button onclick="closeShareOptions()">Kapat</button>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', shareOptions);
+        }
+
+        function shareTo(platform, message) {
+            let url;
+            if (platform === 'whatsapp') {
+                url = `whatsapp://send?text=${encodeURIComponent(message)}`;
+            } else if (platform === 'twitter') {
+                url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
+            }
+            window.open(url, '_blank');
+            closeShareOptions();
+        }
+
+        function closeShareOptions() {
+            const shareOptionsDiv = document.querySelector('div[style*="position: fixed;"]');
+            if (shareOptionsDiv) {
+                shareOptionsDiv.remove();
+            }
+        }
     </script>
 </body>
 
