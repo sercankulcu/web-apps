@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dorukdayım</title>
+    <title>Dorukdayım - Eğlenceli Oyunlar</title>
 
     <meta name="theme-color" content="#f0f0f0">
     <meta name="description" content="Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!">
@@ -14,6 +14,34 @@
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icons/favicon.ico" type="image/png">
+
+    <meta property="og:title" content="DorukDayım - Eğlenceli Oyunlar">
+    <meta property="og:description"
+        content="Baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunlar. Zeka gelişimine katkıda bulunun.">
+    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-128x128.png" />
+    <meta property="og:url" content="https://dorukdayim.netlify.app">
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="128" />
+    <meta property="og:image:height" content="128" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:site_name" content="DorukDayım" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DorukDayım - Eğlenceli Oyunlar">
+    <meta name="twitter:description"
+        content="Baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunlar. Zeka gelişimine katkıda bulunun.">
+    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
+    <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
+
+    <meta http-equiv="Content-Language" content="tr">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords"
+        content="oyunlar, eğlenceli oyunlar, çocuk oyunları, zeka oyunları, baba oğul oyunları, türkçe oyunlar">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dorukdayim.netlify.app/">
+    <meta name="author" content="Sercan/Dorukdayım">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
     <style>
         body {
@@ -75,6 +103,7 @@
             transition: 0.3s;
             margin: 5px;
             width: 25vw;
+            max-width: 128px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -215,18 +244,18 @@
         <div id="messagePopup" class="popup"></div>
     </main>
     <content>
-        <button onclick="location.href='hangman.html'"><span>😵🪜</span> ADAM ASMACA</button>
-        <button onclick="location.href='flagquiz.html'"><span>🚩</span> BAYRAK TESTİ</button>
+        <button onclick="location.href='hangman.html'"><span>😵🪜</span> <br>ADAM <br>ASMACA</button>
+        <button onclick="location.href='flagquiz.html'"><span>🚩</span> <br>BAYRAK <br>TESTİ</button>
         <button onclick="location.href='besharf.html'"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
         <button onclick="location.href='altiharf.html'"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
-        <button onclick="location.href='spellbee.html'"><span>🐝</span> <br>BAL PETEĞİ</button>
-        <button onclick="location.href='birkelime.html'"><span>🔤</span> <br>BİR KELİME</button>
-        <button onclick="location.href='connections.html'"><span>🔗</span> BAĞLANTI BUL</button>
-        <button onclick="location.href='strands.html'"><span>🔍</span> KELİME BUL</button>
-        <button onclick="location.href='memory.html'"><span>🎴</span> <br>HAFIZA OYUNU</button>
-        <button onclick="location.href='matematusta.html'"><span>🧮</span> MATEMAT USTA</button>
-        <button onclick="location.href='milyoner.html'"><span>💰</span> MILYONER OL</button>
-        <button onclick="location.href='tictactoe.html'">❌⭕❌ TIC TAC TOE</button>
+        <button onclick="location.href='spellbee.html'"><span>🐝</span> <br>BAL <br>PETEĞİ</button>
+        <button onclick="location.href='birkelime.html'"><span>🔤</span> <br>BİR <br>KELİME</button>
+        <button onclick="location.href='connections.html'"><span>🔗</span> <br>BAĞLANTI <br>BUL</button>
+        <button onclick="location.href='strands.html'"><span>🔍</span> <br>KELİME <br>BUL</button>
+        <button onclick="location.href='memory.html'"><span>🎴</span> <br>HAFIZA <br>OYUNU</button>
+        <button onclick="location.href='matematusta.html'"><span>🧮</span> <br>MATEMAT <br>USTA</button>
+        <button onclick="location.href='milyoner.html'"><span>💰</span> <br>MILYONER <br>OL</button>
+        <button onclick="location.href='tictactoe.html'"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
     </content>
     <footer>
         <p>&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
@@ -470,14 +499,15 @@
             profileEmail.textContent = user.email;
             lastSignIn.textContent = new Date(user.metadata.lastSignInTime).toLocaleString();
 
-            // Oyun skorlarını Firebase'den veya local storage'dan alın ve gösterin
-            // Örnek olarak local storage'dan alınan skorlar gösteriliyor:
-            const scores = JSON.parse(localStorage.getItem("highScores")) || {};
-            highScoresList.innerHTML = ""; // Önce listeyi temizle
-            for (const game in scores) {
-                const score = scores[game];
-                const listItem = document.createElement("li");
-                listItem.textContent = `${game}: ${score}`;
+            const highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+            const highScoresList = document.getElementById('highScoresList'); // Skorları göstereceğiniz elemanın ID'si
+
+            highScoresList.innerHTML = ''; // Önce listeyi temizle
+
+            for (const gameName in highScores) {
+                const scoreData = highScores[gameName];
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<strong>${gameName}</strong>: ${scoreData.score} puan (${scoreData.date})`;
                 highScoresList.appendChild(listItem);
             }
         }
@@ -528,6 +558,8 @@
                 url = `whatsapp://send?text=${encodeURIComponent(message)}`;
             } else if (platform === 'twitter') {
                 url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
+            } else if (platform === 'facebook') {
+                url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}&quote=${encodeURIComponent(message)}`;
             }
             window.open(url, '_blank');
             closeShareOptions();

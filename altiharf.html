@@ -175,7 +175,7 @@
 
 <body>
     <div class="game-container">
-        <h1>6 Harf</h1>
+        <h1 id="title"><a href="/">Altı Harf</a></h1>
         <div class="grid" id="grid"></div>
         <div class="keyboard" id="keyboard"></div>
     </div>
@@ -190,6 +190,9 @@
         const WORD_LENGTH = 6;
         const MAX_GUESSES = 6;
         
+        let startTime;
+        let endTime;
+        let score = 0;
 
         let targetWord = words[Math.floor(Math.random() * words.length)];
         let currentGuess = [];
@@ -203,6 +206,7 @@
         ];
 
         function initGame() {
+            startTime = new Date();
             const grid = document.getElementById('grid');
             const keyboard = document.getElementById('keyboard');
 
@@ -332,7 +336,13 @@
             currentRow++;
 
             if (guess === targetWord) {
-                showResult('Tebrikler! Kazandınız!');
+                endTime = new Date();
+                const timeDiff = (endTime - startTime) / 1000;
+                let timeScore = Math.max(0, 60 - timeDiff);
+                let rowScore = 30 - currentRow * 5;
+                score = Math.round(timeScore) + rowScore;
+                showResult(`Tebrikler! Kazandınız! Skorunuz: ${score}`);
+                saveHighScore("Altı Harf", score);
             } else if (currentRow === MAX_GUESSES) {
                 showResult(`Oyun Bitti! Doğru Kelime: ${targetWord}`);
             }
@@ -354,6 +364,25 @@
             document.getElementById('grid').innerHTML = '';
             document.getElementById('keyboard').innerHTML = '';
             initGame();
+        }
+
+        function saveHighScore(gameName, score) {
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
+            const formattedDate = `${day}/${month}/${year}`;
+
+            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+            if (!highScores[gameName] || score > highScores[gameName].score) {
+                highScores[gameName] = {
+                    score: score,
+                    date: formattedDate,
+                };
+
+                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+            }
         }
 
         document.getElementById('restartButton').addEventListener('click', restartGame);

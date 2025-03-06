@@ -67,24 +67,6 @@
       min-height: 5vh;
     }
 
-    #restart,
-    #show-records,
-    #homepage {
-      font-size: 2.5vh;
-      padding: 1vh 2vw;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin-top: 2vh;
-      border-radius: 5px;
-    }
-
-    #restart:hover,
-    #show-records:hover {
-      background-color: #45a049;
-    }
-
     #keyboard {
       display: grid;
       grid-template-rows: repeat(3, auto);
@@ -117,38 +99,12 @@
       font-size: 3vh;
       font-weight: bold;
     }
-
-    #records {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      padding: 2vh;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      max-height: 80vh;
-      overflow-y: auto;
-      display: none;
-      width: 85vw;
-      height: 75vh;
-    }
-
-    #close-records {
-      position: absolute;
-      top: 1vh;
-      right: 1vw;
-      font-size: 3vh;
-      cursor: pointer;
-    }
   </style>
 </head>
 
 <body>
   <div class="game-container">
-    <h1 id="title">Adam Asmaca</h1>
+    <h1 id="title"><a href="/">Adam Asmaca</a></h1>
     <div class="flags">
       <img src="https://flagcdn.com/w80/tr.png" alt="Türkçe" class="flag selected" data-lang="tr">
       <img src="https://flagcdn.com/w80/gb.png" alt="English" class="flag" data-lang="en">
@@ -162,28 +118,18 @@
     <div id="word"></div>
     <div id="message"></div>
     <div id="keyboard"></div>
-    <div>
-      <button id="restart">Yeni Oyun</button>
-      <button id="show-records">Rekorlar</button>
-      <button id="homepage">🏠Ana Sayfa</button>
-    </div>
-  </div>
-  <div id="records">
-    <h2>Rekorlar</h2>
-    <div id="records-list"></div>
-    <span id="close-records">&times;</span>
   </div>
 
   <script type="module">
     import { words } from 'https://sercankulcu.github.io/game/hangman/hangmanwords.js';
 
     const messages = {
-      tr: { win: 'Tebrikler! Kazandınız!', lose: 'Kaybettiniz! Doğru kelime:', newGame: 'Yeni Oyun', records: 'Rekorlar', title: 'Adam Asmaca', score: 'Skor' },
-      en: { win: 'Congratulations! You won!', lose: 'You lost! The correct word was:', newGame: 'New Game', records: 'Records', title: 'Hangman', score: 'Score' },
-      de: { win: 'Herzlichen Glückwunsch! Sie haben gewonnen!', lose: 'Sie haben verloren! Das richtige Wort war:', newGame: 'Neues Spiel', records: 'Rekorde', title: 'Galgenmännchen', score: 'Punktestand' },
-      fr: { win: 'Félicitations ! Vous avez gagné!', lose: 'Vous avez perdu ! Le mot correct était:', newGame: 'Nouveau jeu', records: 'Meilleurs scores', title: 'Le jeu du pendu', score: 'Score' },
-      es: { win: '¡Felicidades! ¡Has ganado!', lose: '¡Has perdido! La palabra correcta era:', newGame: 'Nuevo juego', records: 'Récords', title: 'Ahorcado', score: 'Puntuación' },
-      ru: { win: 'Поздравляем! Вы выиграли!', lose: 'Вы проиграли! Правильное слово:', newGame: 'Новая игра', records: 'Рекорды', title: 'Виселица', score: 'Счёт' }
+      tr: { win: 'Tebrikler! Kazandınız!', lose: 'Kaybettiniz! Doğru kelime:', title: 'Adam Asmaca', score: 'Skor' },
+      en: { win: 'Congratulations! You won!', lose: 'You lost! The correct word was:', title: 'Hangman', score: 'Score' },
+      de: { win: 'Herzlichen Glückwunsch! Sie haben gewonnen!', lose: 'Sie haben verloren! Das richtige Wort war:', title: 'Galgenmännchen', score: 'Punktestand' },
+      fr: { win: 'Félicitations ! Vous avez gagné!', lose: 'Vous avez perdu ! Le mot correct était:', title: 'Le jeu du pendu', score: 'Score' },
+      es: { win: '¡Felicidades! ¡Has ganado!', lose: '¡Has perdido! La palabra correcta era:', title: 'Ahorcado', score: 'Puntuación' },
+      ru: { win: 'Поздравляем! Вы выиграли!', lose: 'Вы проиграли! Правильное слово:', title: 'Виселица', score: 'Счёт' }
     };
 
     const keyboards = {
@@ -204,16 +150,10 @@
     const titleElement = document.getElementById('title');
     const wordElement = document.getElementById('word');
     const messageElement = document.getElementById('message');
-    const restartButton = document.getElementById('restart');
     const hangmanImage = document.getElementById('hangman-image');
     const flags = document.querySelectorAll('.flag');
     const keyboardElement = document.getElementById('keyboard');
     const scoreElement = document.getElementById('score');
-    const showRecordsButton = document.getElementById('show-records');
-    const homepageButton = document.getElementById('homepage');
-    const recordsElement = document.getElementById('records');
-    const closeRecordsButton = document.getElementById('close-records');
-    const recordsListElement = document.getElementById('records-list');
 
     function chooseWord() {
       return words[currentLang][Math.floor(Math.random() * words[currentLang].length)];
@@ -235,7 +175,7 @@
     function checkWin() {
       if (word.split('').every(letter => guessedLetters.includes(letter))) {
         messageElement.textContent = messages[currentLang].win;
-        score++;
+        score += word.length;
         updateScore();
         disableKeyboard();
       }
@@ -301,40 +241,32 @@
     function disableKeyboard() {
       const keys = keyboardElement.querySelectorAll('.key');
       keys.forEach(key => key.disabled = true);
+      setTimeout(initGame, 3000);
     }
 
     function updateScore() {
       scoreElement.textContent = messages[currentLang].score + `: ${score}`;
-      saveRecord();
+      saveHighScore("Adam Asmaca", score);
     }
 
-    function saveRecord() {
-      const today = new Date().toISOString().split('T')[0];
-      let records = JSON.parse(localStorage.getItem('dorukdayimHangmanRecords')) || {};
+    function saveHighScore(gameName, score) {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
 
-      records[today] = Math.max(records[today] || 0, score);
+      let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
 
-      // Convert records object to an array, sort, and keep top 10
-      let sortedRecords = Object.entries(records)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 10);
+      if (!highScores[gameName] || score > highScores[gameName].score) {
+        highScores[gameName] = {
+          score: score,
+          date: formattedDate,
+        };
 
-      // Convert back to an object and save
-      localStorage.setItem('dorukdayimHangmanRecords', JSON.stringify(Object.fromEntries(sortedRecords)));
+        localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+      }
     }
-
-    function showRecords() {
-      const records = JSON.parse(localStorage.getItem('dorukdayimHangmanRecords')) || {};
-      recordsListElement.innerHTML = '';
-      Object.entries(records).sort((a, b) => b[1] - a[1]).forEach(([date, record]) => {
-        const recordElement = document.createElement('p');
-        recordElement.textContent = `${date}: ${record}`;
-        recordsListElement.appendChild(recordElement);
-      });
-      recordsElement.style.display = 'block';
-    }
-
-    restartButton.addEventListener('click', initGame);
 
     flags.forEach(flag => {
       flag.addEventListener('click', () => {
@@ -343,8 +275,6 @@
         flag.classList.add('selected');
         titleElement.textContent = messages[currentLang].title;
         scoreElement.textContent = messages[currentLang].score + `: ${score}`;;
-        restartButton.textContent = messages[currentLang].newGame;
-        showRecordsButton.textContent = messages[currentLang].records;
         createKeyboard();
         initGame();
       });
@@ -363,12 +293,6 @@
         makeGuess(letter);
       }
     });
-
-    showRecordsButton.addEventListener('click', showRecords);
-    homepageButton.addEventListener('click', () => {
-      location.href = 'index.html';
-    });
-    closeRecordsButton.addEventListener('click', () => recordsElement.style.display = 'none');
 
     createKeyboard();
     initGame();

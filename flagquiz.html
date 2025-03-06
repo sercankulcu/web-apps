@@ -58,8 +58,8 @@
 </head>
 
 <body>
-    <h1>Guess the Country!</h1>
-    <button id="homepage">🏠 Homepage</button>
+    <h1 id="title"><a href="/">Guess the Country</a></h1>
+    <p>Score: <span id="score">0</span></p>
     <div class="flag-container" id="flag"></div>
     <div class="options" id="options"></div>
     <script>
@@ -257,15 +257,18 @@
             { "name": "Zimbabve", "flag": "https://flagcdn.com/w320/zw.png", "enName": "Zimbabwe" }
         ];
 
+        let score = 0;
+        let scoreDisplay = document.getElementById("score");
+        let titleDisplay = document.getElementById("title");
+
         function shuffle(array) {
             return array.sort(() => Math.random() - 0.5);
         }
 
         const browserLang = navigator.language || navigator.userLanguage;
-        let title = document.querySelector("h1");
         if (browserLang.startsWith("tr")) {
-            title.textContent = "Ülkeyi Tahmin Et!";
-            document.getElementById("homepage").textContent = "🏠 Ana Sayfa"
+            titleDisplay.textContent = "Ülkeyi Tahmin Et";
+            scoreDisplay.textContent = "Skor";
         }
 
         function loadFlagQuiz() {
@@ -286,21 +289,40 @@
                 button.onclick = () => {
 
                     if (country.name === correctCountry.name) {
+                        score++;
+                        saveHighScore("Bayrak Testi", score);
                         setTimeout(() => {
                             loadFlagQuiz();
                         }, 200);
                     } else {
+                        score--;
                         button.disabled = true;
                     }
+                    scoreDisplay.textContent = score;
                 };
 
                 optionsContainer.appendChild(button);
             });
         }
 
-        document.getElementById("homepage").addEventListener('click', () => {
-            window.location.href = '/';
-        });
+        function saveHighScore(gameName, score) {
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
+            const formattedDate = `${day}/${month}/${year}`;
+
+            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+            if (!highScores[gameName] || score > highScores[gameName].score) {
+                highScores[gameName] = {
+                    score: score,
+                    date: formattedDate,
+                };
+
+                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+            }
+        }
 
         loadFlagQuiz();
     </script>

@@ -1,8 +1,5 @@
 const CACHE_NAME = 'dorukdayim-cache-v4';
 const urlsToCache = [
-    'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js',
-    'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js',
-    'https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap'
 ];
 
 // Install the service worker and cache assets
