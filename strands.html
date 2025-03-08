@@ -6,28 +6,17 @@
     <meta name="description"
         content="Gizli kelimeleri bulmaca oyunu - Türkçe kelime bulma oyunu ile eğlenin ve zihninizi geliştirin!">
     <meta name="keywords" content="kelime bulmaca, gizli kelimeler, Türkçe oyun, zihin oyunu, bulmaca oyunu">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gizli Kelimeleri Bul - Türkçe Kelime Bulmaca Oyunu</title>
     <meta name="robots" content="index, follow">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            max-width: 720px;
             margin: 0 auto;
-            background-color: #E6F0FA;
-        }
-
-        h1 {
             text-align: center;
-            padding: 2vh 0;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            font-size: max(3vh, 3vw);
-            background-color: #4682B4;
-            color: white;
-            border-radius: 20px;
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
         }
 
         .grid {
@@ -52,12 +41,10 @@
 
         .cell.selected {
             background-color: #FF9999;
-            /* Turuncu Şeftali */
         }
 
         .cell.found {
             background-color: #A2D2A2;
-            /* Nane Yeşili */
         }
 
         button {
@@ -101,7 +88,7 @@
 </head>
 
 <body>
-    <h1>Gizli Kelimeleri Bul</h1>
+    <h1 id="title">Gizli Kelimeleri Bul</h1>
     <div id="grid" class="grid"></div>
     <div id="winModal" class="modal" onclick="closeModal()">
         <div class="modal-content">
@@ -218,6 +205,15 @@
         let spangram;
         let gridLetters;
         let maxWordLength;
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         function selectRandomGameSet() {
             currentGameSet = gameSets[Math.floor(Math.random() * gameSets.length)];

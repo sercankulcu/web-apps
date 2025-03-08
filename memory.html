@@ -3,28 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Hafıza Oyunu</title>
     <meta name="robots" content="index, follow">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #f0f0f0;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
+            margin: 0 auto;
+            text-align: center;
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
         }
 
         .game-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 5px;
-            max-width: 540px;
-            width: 90%;
             padding: 5px;
+            justify-content: center;
         }
 
         .card {
@@ -67,7 +64,7 @@
 
         .stats {
             margin: 10px 10px;
-            font-size: 1rem;
+            font-size: 1.2rem;
             text-align: center;
         }
 
@@ -85,6 +82,7 @@
         button {
             background: #4CAF50;
             color: white;
+            font-size: 1.2rem;
         }
 
         .modal {
@@ -116,7 +114,7 @@
 </head>
 
 <body>
-    <h1>Hafıza Oyunu</h1>
+    <h1 id="title">Hafıza Oyunu</h1>
     <div class="stats">
         <div class="stats-box">
             Hamle: <span id="moves">0</span>
@@ -149,6 +147,15 @@
         let moves = 0;
         let time = 0;
         let timer;
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         function getRandomIconSet() {
             return iconSets[Math.floor(Math.random() * iconSets.length)];
@@ -210,7 +217,6 @@
             }
         }
 
-
         function startGame() {
             clearInterval(timer);
             moves = 0;
@@ -227,14 +233,33 @@
         }
 
         function showWinModal() {
-            document.getElementById("winMessage").innerText = `Tebrikler! Kazandınız!\nHamle: ${moves}\nSüre: ${time}s`;
+            document.getElementById("winMessage").innerText = `Tebrikler!\nKazandınız!\nHamle: ${moves}\nSüre: ${time}s`;
             document.getElementById("winModal").style.display = "flex";
+            saveHighScore("Hafıza Oyunu", 200 - moves * 2 - time);
+        }
+
+        function saveHighScore(gameName, score) {
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
+            const formattedDate = `${day}/${month}/${year}`;
+
+            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+            if (!highScores[gameName] || score > highScores[gameName].score) {
+                highScores[gameName] = {
+                    score: score,
+                    date: formattedDate,
+                };
+
+                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+            }
         }
 
         function closeModal() {
             document.getElementById("winModal").style.display = "none";
         }
-
 
         startGame();
     </script>

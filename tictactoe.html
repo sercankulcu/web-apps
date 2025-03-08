@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tic Tac Toe</title>
     <meta name="robots" content="index, follow">
     <style>
@@ -87,7 +87,9 @@
 </head>
 
 <body>
+    
     <div class="container">
+        <h1 id="title">Tik Tak Too</h1>
         <div class="status">Player X's Turn</div>
         <div class="board"></div>
         <button class="reset">Reset Game</button>
@@ -106,6 +108,15 @@
 
         let currentPlayer = 'X';
         let gameBoard = Array(9).fill(null);
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         function checkWinner(isFinalCheck = true) {
             const winPatterns = [

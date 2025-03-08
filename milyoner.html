@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kim Milyoner Olmak İster?</title>
     <meta name="robots" content="index, follow">
     <style>
@@ -125,6 +125,7 @@
 </head>
 
 <body>
+    <h1 id="title">Milyoner</h1>
     <div id="prizeDisplay"></div>
 
     <button id="soundToggle"></button>
@@ -146,10 +147,10 @@
     <div id="messageBox"></div>
 
     <audio id="correctSound">
-        <source src="correct-answer.mp3" type="audio/mpeg">
+        <source src="https://sercankulcu.github.io/game/correct-answer.mp3" type="audio/mpeg">
     </audio>
     <audio id="wrongSound">
-        <source src="wrong-answer.mp3" type="audio/mpeg">
+        <source src="https://sercankulcu.github.io/game/wrong-answer.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -826,6 +827,15 @@
 
         let currentQuestion = 0;
         let usedLifelines = [];
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         function initializeGame() {
             if (isSoundOn) {

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description"
         content="Bağlantılı Olanları Bul - Türkçe kelime gruplarını eşleştirme oyunu. Meyveler, renkler, hayvanlar ve daha fazlasıyla eğlenceli bir bulmaca oyunu oynayın!">
     <meta name="keywords" content="kelime oyunu, bulmaca, Türkçe oyun, eşleştirme oyunu, zeka oyunu, Connections oyunu">
@@ -16,17 +16,12 @@
     <meta property="og:type" content="game">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-
-        h1 {
+            margin: 0 auto;
             text-align: center;
-            padding: 20px;
-            margin: 0;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
         }
 
         .word-grid {
@@ -113,7 +108,7 @@
 </head>
 
 <body>
-    <h1>Bağlantılı Olanları Bul</h1>
+    <h1 id="title">Bağlantılı Olanları Bul</h1>
     <div class="word-grid" id="wordGrid"></div>
     <div id="message"></div>
     <button id="newGameBtn">Yeni Oyun</button>
@@ -157,6 +152,15 @@
         let foundGroups = 0;
         const maxMistakes = 4;
         let mistakes = 0;
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {

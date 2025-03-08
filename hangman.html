@@ -4,32 +4,21 @@
 <head>
   <title>Adam Asmaca - Play Hangman Game Online</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description"
     content="Play Hangman (Adam Asmaca) online in multiple languages including Turkish, English, German, French, and Spanish. Test your vocabulary and enjoy this classic word game!">
   <meta name="keywords" content="hangman, adam asmaca, word game, online game, multilingual game, vocabulary game">
   <meta name="robots" content="index, follow">
 
   <style>
-    body,
-    html {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
 
     .game-container {
-      display: flex;
-      flex-direction: column;
+      margin: 0 auto;
       text-align: center;
       padding: 1vh;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      position: relative;
-      width: 90%;
       max-width: 600px;
-      height: 90vh;
     }
 
     .flags {
@@ -64,7 +53,8 @@
     #message {
       font-size: 3vh;
       font-weight: bold;
-      min-height: 5vh;
+      min-height: 10vh;
+      white-space: pre-line;
     }
 
     #keyboard {
@@ -104,7 +94,7 @@
 
 <body>
   <div class="game-container">
-    <h1 id="title"><a href="/">Adam Asmaca</a></h1>
+    <h1 id="title">Adam Asmaca</h1>
     <div class="flags">
       <img src="https://flagcdn.com/w80/tr.png" alt="Türkçe" class="flag selected" data-lang="tr">
       <img src="https://flagcdn.com/w80/gb.png" alt="English" class="flag" data-lang="en">
@@ -124,7 +114,7 @@
     import { words } from 'https://sercankulcu.github.io/game/hangman/hangmanwords.js';
 
     const messages = {
-      tr: { win: 'Tebrikler! Kazandınız!', lose: 'Kaybettiniz! Doğru kelime:', title: 'Adam Asmaca', score: 'Skor' },
+      tr: { win: 'Tebrikler!\nKazandınız!', lose: 'Kaybettiniz!\nDoğru kelime:', title: 'Adam Asmaca', score: 'Skor' },
       en: { win: 'Congratulations! You won!', lose: 'You lost! The correct word was:', title: 'Hangman', score: 'Score' },
       de: { win: 'Herzlichen Glückwunsch! Sie haben gewonnen!', lose: 'Sie haben verloren! Das richtige Wort war:', title: 'Galgenmännchen', score: 'Punktestand' },
       fr: { win: 'Félicitations ! Vous avez gagné!', lose: 'Vous avez perdu ! Le mot correct était:', title: 'Le jeu du pendu', score: 'Score' },
@@ -147,13 +137,21 @@
     let remainingGuesses = 6;
     let score = 0;
 
-    const titleElement = document.getElementById('title');
     const wordElement = document.getElementById('word');
     const messageElement = document.getElementById('message');
     const hangmanImage = document.getElementById('hangman-image');
     const flags = document.querySelectorAll('.flag');
     const keyboardElement = document.getElementById('keyboard');
     const scoreElement = document.getElementById('score');
+
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
     function chooseWord() {
       return words[currentLang][Math.floor(Math.random() * words[currentLang].length)];

@@ -3,55 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Türkçe kelime bulmaca oyunu ile harflerden kelimeler türetin ve puan kazanın!">
     <meta name="keywords" content="kelime oyunu, Türkçe oyun, harf bulmaca, zeka oyunu">
     <title>Kelime Oyunu - Türkçe Harf Bulmaca</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <meta name="robots" content="index, follow">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background: linear-gradient(135deg, #e0eafc, #cfdef3);
-            padding: 10px;
-            min-height: 100vh;
-        }
-
         .container {
-            max-width: 400px;
             margin: 0 auto;
-            background-color: white;
-            padding: 20px 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
-
-        h1 {
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
         }
 
         .letters-container {
             display: flex;
-            flex-wrap: wrap;
             gap: 4px;
             justify-content: center;
             max-width: 100%;
-            margin: 10px 0px;
+            margin: 2vh 0px;
             padding: 20px 1px;
             border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .letter {
-            width: 45px;
-            height: 45px;
+            width: 12vw;
+            max-width: 45px;
+            height: 12vw;
+            max-height: 45px;
             background-color: #4CAF50;
             color: white;
             display: flex;
@@ -63,8 +45,8 @@
         }
 
         input {
-            width: 100%;
-            padding: 10px 10px;
+            margin: 2vh;
+            padding: 2vh;
             font-size: 1.2rem;
             border: 2px solid #ddd;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -73,17 +55,15 @@
         }
 
         button {
-            width: 100%;
-            padding: 15px;
+            width: 50%;
             background-color: #2196F3;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             font-size: 1.2rem;
-            margin: 10px 0;
+            margin: 2vh;
+            padding: 2vh;
             transition: transform 0.2s ease, background-color 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         button:hover {
@@ -93,10 +73,9 @@
         .score-timer-row {
             display: flex;
             justify-content: space-between;
-            margin: 10px 0;
             padding: 15px;
             border-radius: 5px;
-            font-size: 1.2rem;
+            font-size: 2rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -108,30 +87,12 @@
             text-align: center;
             font-size: 1.2rem;
         }
-
-        @media (max-width: 480px) {
-            .letter {
-                width: 36px;
-                height: 36px;
-                font-size: 20px;
-            }
-
-            input {
-                font-size: 18px;
-                padding: 10px;
-            }
-
-            button {
-                font-size: 20px;
-                padding: 10px;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Bir Kelime</h1>
+        <h1 id="title">Bir Kelime</h1>
         <div class="score-timer-row">
             <span id="score">Puan: 0</span>
             <span id="timer">Süre: 30</span>
@@ -151,6 +112,15 @@
         let timeLeft = 30;
         let isValidTDK = true;
         let foundWords = [];
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         //Vowels: 
         // Frequent: 'A', 'E', 'İ'; 
@@ -222,8 +192,6 @@
         function checkDictionary(word) {
 
             isValidTDK = false;
-            console.log(word);
-
             if (words.includes(word.turkishToLower()) && !foundWords.includes(word)) {
                 isValidTDK = true;
                 foundWords.push(word);
@@ -233,8 +201,6 @@
         function checkTDK(word) {
 
             isValidTDK = false;
-            console.log(word);
-
             fetch("https://sozluk.gov.tr/gts?ara=" + word)
                 .then((response) => response.json())
                 .then((json) => {
@@ -244,7 +210,7 @@
                         isValidTDK = false;
                     }
                 })
-                .catch((err) => console.log(err));
+                .catch(error => console.error(error.message));
         }
 
         String.prototype.turkishToUpper = function () {

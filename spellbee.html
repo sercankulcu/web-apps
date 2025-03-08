@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SpellBee Oyunu - Türkçe Kelime Bulmaca Oyunu</title>
     <meta name="description"
         content="SpellBee, Türkçe kelime bulmaca oyunu ile eğlenin ve zihninizi geliştirin! Hemen oynamaya başlayın.">
@@ -15,40 +15,24 @@
     <meta property="og:type" content="website">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100vw;
-            height: 80vh;
-            max-width: 600px;
             margin: 0 auto;
-        }
-
-        h1 {
-            position: absolute;
-            top: 5vh;
-            left: 50%;
-            margin: 0;
-            font-size: 5vh;
-            transform: translate(-50%, -50%);
-            box-shadow: 4px 4px 10px rgba(255, 255, 255, 0);
-            background-color: #ffdb4d;
-            color: #ff7b00;
-            width: 30vh;
             text-align: center;
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
         }
 
         .hive {
             position: relative;
-            width: min(80vw, 80vh);
-            height: min(80vw, 80vh);
+            width: min(80vw, 64vh);
+            height: min(80vw, 64vh);
+            margin: 0 auto;
         }
 
         .letter {
-            width: min(18vw, 18vh);
-            height: min(18vw, 18vh);
+            width: min(18vw, 14vh);
+            height: min(18vw, 14vh);
             background-color: #FFD700;
             display: flex;
             align-items: center;
@@ -67,7 +51,6 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Altıgen dizilim */
         .pos1 {
             top: 20%;
             left: 62%;
@@ -101,24 +84,14 @@
         }
 
         #word {
-            position: fixed;
-            bottom: 25vh;
             font-size: 4vh;
-            text-align: center;
-        }
-
-        .button-container {
-            position: fixed;
-            bottom: 10vh;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
+            margin: 2vh;
         }
 
         button {
-            padding: 1rem 1rem;
-            font-size: 3vh;
+            padding: 0.5rem 0.5rem;
+            margin: 5px;
+            font-size: 2.4vh;
             cursor: pointer;
             border: none;
             border-radius: 8px;
@@ -133,11 +106,17 @@
             background: linear-gradient(135deg, #ff9a00, #ffdb4d);
             transform: scale(1.05);
         }
+
+        #score {
+            font-size: 3vh;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Spell Bee</h1>
+    <h1 id="title">Bal Peteği</h1>
+    <div id="score">Skor: 0</div>
     <div class="hive"></div>
     <div id="word"></div>
     <div class="button-container">
@@ -152,15 +131,26 @@
         import { allwordsFiveLetters } from 'https://sercankulcu.github.io/game/words-five-letters.js';
         import { allwordsFourLetters } from 'https://sercankulcu.github.io/game/words-four-letters.js';
 
-        const allwords = [...allwordsFourLetters, ...allwordsFiveLetters, ...allwordsSixLetters, ...allwordsSevenLetters];
+        const allwords = allwordsFourLetters.concat(allwordsFiveLetters, allwordsSixLetters, allwordsSevenLetters);
         let selectedWord = '';
         let letters = '';
         let centerLetter = '';
         let currentWord = '';
+        let score = 0;
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+
+        const scoreElement = document.getElementById('score');
 
         function initialize() {
             selectedWord = words[Math.floor(Math.random() * words.length)]; // Rastgele kelime seç
-            console.log(selectedWord);
             letters = selectedWord.split(""); // Harfleri diziye çevir (tekrarları kaldırmadan)
             letters = shuffleArray(letters); // Harfleri rastgele sırala
             centerLetter = letters[Math.floor(Math.random() * letters.length)]; // Rastgele merkez harfi seç
@@ -216,10 +206,14 @@
             } else if (!currentWord.includes(centerLetter)) {
                 message.textContent = '⚠️ Kelime merkez harfi içermelidir.';
             } else if (currentWord === selectedWord) {
-                message.textContent = `🎉 Kazandınız! "${currentWord}" doğru kelime!`;
+                message.textContent = `🎉 Kazandınız!\n "${currentWord}" doğru kelime!`;
+                score += currentWord.length;
+                updateScore();
                 setTimeout(startNewGame, 2000);
             } else if (allwords.includes(currentWord)) {
-                message.textContent = `👏 Tebrikler! "${currentWord}" geçerli bir kelime.`;
+                message.textContent = `👏 Tebrikler!\n "${currentWord}" geçerli bir kelime.`;
+                score += currentWord.length;
+                updateScore();
                 setTimeout(startNewGame, 2000);
             } else {
                 message.textContent = `😔 Maalesef "${currentWord}" geçerli bir kelime değil!`;
@@ -230,6 +224,30 @@
                 letter.style.pointerEvents = "auto";
                 letter.style.opacity = "1";
             });
+        }
+
+        function updateScore() {
+            scoreElement.textContent = `Skor: ${score}`;
+            saveHighScore("Bal Peteği", score);
+        }
+
+        function saveHighScore(gameName, score) {
+            const today = new Date();
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const year = today.getFullYear();
+            const formattedDate = `${day}/${month}/${year}`;
+
+            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+            if (!highScores[gameName] || score > highScores[gameName].score) {
+                highScores[gameName] = {
+                    score: score,
+                    date: formattedDate,
+                };
+
+                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+            }
         }
 
         function shuffleLetters() {
@@ -264,6 +282,7 @@
 
         initialize();
         createHive();
+        updateScore();
     </script>
 </body>
 

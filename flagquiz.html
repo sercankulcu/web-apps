@@ -3,25 +3,32 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Flag Quiz Game</title>
     <meta name="robots" content="index, follow">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0 auto;
             text-align: center;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
         }
 
         .flag-container {
             margin: 20px auto;
             width: 250px;
-            height: 150px;
+            height: auto;
             border: 2px solid #333;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         button {
@@ -58,7 +65,7 @@
 </head>
 
 <body>
-    <h1 id="title"><a href="/">Guess the Country</a></h1>
+    <h1 id="title">Guess the Country</a></h1>
     <p>Score: <span id="score">0</span></p>
     <div class="flag-container" id="flag"></div>
     <div class="options" id="options"></div>
@@ -259,7 +266,14 @@
 
         let score = 0;
         let scoreDisplay = document.getElementById("score");
-        let titleDisplay = document.getElementById("title");
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         function shuffle(array) {
             return array.sort(() => Math.random() - 0.5);
@@ -267,14 +281,24 @@
 
         const browserLang = navigator.language || navigator.userLanguage;
         if (browserLang.startsWith("tr")) {
-            titleDisplay.textContent = "Ülkeyi Tahmin Et";
+            titleElement.textContent = "Ülkeyi Tahmin Et";
             scoreDisplay.textContent = "Skor";
         }
 
         function loadFlagQuiz() {
 
             let correctCountry = countries[Math.floor(Math.random() * countries.length)];
-            document.getElementById("flag").style.backgroundImage = `url(${correctCountry.flag})`;
+            //document.getElementById("flag").style.backgroundImage = `url(${correctCountry.flag})`;
+
+            let flagContainer = document.getElementById("flag");
+
+            const img = new Image();
+            img.src = correctCountry.flag;
+            img.onload = function () {
+                const aspectRatio = img.width / img.height;
+                flagContainer.style.aspectRatio = aspectRatio;
+                flagContainer.style.backgroundImage = `url(${correctCountry.flag})`;
+            };
 
             let incorrectCountries = shuffle(countries.filter(c => c.name !== correctCountry.name)).slice(0, 3);
             let options = shuffle([correctCountry, ...incorrectCountries]);

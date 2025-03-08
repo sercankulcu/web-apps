@@ -3,45 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>6 Harf - Türkçe Kelime Oyunu</title>
     <meta name="description"
         content="6 Harf ile Türkçe kelime tahmin oyununu oynayın. 6 harfli kelimeleri tahmin etmek için 6 hakkınız var!">
     <meta name="keywords" content="6 harf, kelime oyunu, türkçe kelime oyunu, wordle türkçe, bulmaca">
     <meta name="robots" content="index, follow">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f0f0f0;
-            justify-content: center;
-            margin: 0;
-        }
-
         .game-container {
+            margin: 0 auto;
             text-align: center;
-            margin-top: 1rem;
-            max-width: 360px;
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 480px;
         }
 
         .grid {
             display: grid;
-            grid-template-rows: repeat(6, 1fr);
+            grid-template-rows: repeat(6, auto);
             gap: 5px;
             margin-bottom: 2rem;
         }
 
         .row {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(6, auto);
             gap: 5px;
+            justify-content: center;
         }
 
         .tile {
-            width: 45px;
-            height: 45px;
+            width: 12vw;
+            max-width: 50px;
+            height: 12vw;
+            max-height: 50px;
             border: 2px solid #d3d6da;
             font-size: 1.5rem;
             font-weight: bold;
@@ -65,14 +61,14 @@
         }
 
         .key {
-            background-color: #d3d6da;
+            font-size: 2.5vh;
+            padding: 1vh 1vw;
+            background-color: #ddd;
             border: none;
-            border-radius: 4px;
-            padding: 10px;
-            font-size: 1rem;
-            flex: 1;
-            max-width: 40px;
             cursor: pointer;
+            min-width: 4vh;
+            max-width: 6vh;
+            border-radius: 5px;
         }
 
         .key:active {
@@ -87,7 +83,7 @@
 
         .submitButton {
             flex: 1.5;
-            max-width: 90px;
+            max-width: 110px;
             background-color: lightgreen;
         }
 
@@ -117,7 +113,6 @@
 
         #gameResult {
             display: none;
-            /* Başlangıçta gizli */
             position: fixed;
             top: 50%;
             left: 50%;
@@ -139,43 +134,12 @@
             cursor: pointer;
             font-size: 1rem;
         }
-
-
-        @media (max-width: 480px) {
-            .tile {
-                width: 36px;
-                height: 36px;
-                font-size: 1.2rem;
-                padding: 2px;
-            }
-
-            .key {
-                padding: 5px;
-                font-size: 1.2rem;
-                width: 30px;
-            }
-
-            .questionButton {
-                max-width: 40px;
-                background-color: lightblue;
-            }
-
-            .submitButton {
-                max-width: 100px;
-                background-color: lightgreen;
-            }
-
-            .deleteButton {
-                max-width: 50px;
-                background-color: lightsalmon;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="game-container">
-        <h1 id="title"><a href="/">Altı Harf</a></h1>
+        <h1 id="title">Altı Harf</h1>
         <div class="grid" id="grid"></div>
         <div class="keyboard" id="keyboard"></div>
     </div>
@@ -189,7 +153,7 @@
 
         const WORD_LENGTH = 6;
         const MAX_GUESSES = 6;
-        
+
         let startTime;
         let endTime;
         let score = 0;
@@ -197,6 +161,15 @@
         let targetWord = words[Math.floor(Math.random() * words.length)];
         let currentGuess = [];
         let currentRow = 0;
+
+        const titleElement = document.getElementById('title');
+        titleElement.addEventListener('click', function () {
+            if (window.parent !== window) {
+                window.parent.showMainContent();
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
 
         const keyboardLetters = [
             ['E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'Ğ', 'Ü'],

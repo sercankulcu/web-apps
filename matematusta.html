@@ -3,51 +3,32 @@
 
 <head>
   <title>MatematUsta - İlkokul Matematik Alıştırması | Eğlenceli ve Öğretici</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="robots" content="index, follow">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-    body,
-    html {
-      font-family: 'Roboto', sans-serif;
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      /* Yatay ortalama */
-      align-items: center;
-      /* Dikey ortalama */
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
     }
 
     #app {
       display: flex;
       flex-direction: column;
-      text-align: center;
-      background-color: white;
       padding: 2vh 2vw;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
-      max-width: 600px;
-      /* Mobil ve masaüstü görünüm için sınır */
-      width: 90%;
-      /* Daha küçük ekranlarda esneklik */
-      height: auto;
-      /* İçeriğe göre yükseklik */
     }
-
 
     #score-timer-container {
       display: flex;
       justify-content: space-between;
-      width: 100%;
-      /* Tüm genişliği kapsar */
       margin-bottom: 2vh;
-      /* Alt boşluk */
     }
 
     .digital-display {
@@ -59,7 +40,6 @@
       min-width: 100px;
       font-size: 1.5em;
       text-align: center;
-      /* Metni ortaya hizalar */
     }
 
     #score-display {
@@ -102,56 +82,59 @@
 
     button {
       background-color: #d3d3d3;
-      /* Açık gri */
       border: none;
       color: black;
-      /* Yazılar siyah */
       padding: 1.5vh 3vw;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
       font-size: 2em;
       margin: 4px 2px;
-      cursor: pointer;
       border-radius: 5px;
       transition: background-color 0.4s;
+      width: 15vw;
+      max-width: 90px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     button:hover {
       background-color: #bdbdbd;
-      /* Daha koyu açık gri */
     }
 
-    /* Gönder tuşu */
     #submit-button {
       background-color: #66bb66;
-      /* Daha koyu açık yeşil */
       color: white;
+      width: 35vw;
+      max-width: 120px;
     }
 
     #submit-button:hover {
       background-color: #228b22;
-      /* Daha koyu yeşil */
     }
 
-    /* Sil tuşu */
     #backspace-button {
       background-color: orange;
-      /* Sil tuşu turuncu */
       color: white;
+      width: 20vw;
+      max-width: 100px;
     }
 
     #backspace-button:hover {
       background-color: #ff9800;
-      /* Daha koyu turuncu */
     }
 
     #modal {
       display: none;
       position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 100%;
       max-width: 600px;
       background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .modal-content {
@@ -165,23 +148,16 @@
       text-align: center;
     }
 
-    #finalScore {
-      font-size: 2em;
-      color: #4CAF50;
-      margin-bottom: 20px;
-    }
-
     table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+      margin: 0 auto;
     }
 
     th,
     td {
       border: 1px solid #ddd;
-      padding: 12px;
-      text-align: left;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.3em;
     }
 
     th {
@@ -197,7 +173,7 @@
 
 <body>
   <div id="app">
-    <h1>MatematUsta</h1>
+    <h1 id="title">MatematUsta</h1>
 
     <div id="score-timer-container">
       <div id="score-display" class="digital-display">0000</div>
@@ -237,8 +213,8 @@
 
   <div id="modal">
     <div class="modal-content">
-      <h2>Oyun Bitti!</h2>
-      <p id="finalScore"></p>
+      <h1>Oyun Bitti!</h1>
+      <h1 id="finalScore"></h1>
       <table id="scoreTable">
         <tr>
           <th>Sıra</th>
@@ -246,7 +222,7 @@
           <th>Süre</th>
         </tr>
       </table>
-      <button id="submit-button" onclick="startNewGame()">Yeni Oyun</button>
+      <button id="submit-button" onclick="startGame()">Yeni</button>
     </div>
   </div>
 
@@ -254,6 +230,15 @@
     let currentQuestion, correctAnswer, score = 0, timer = 300, firstAppend = 1;
     let timerInterval;
     const operations = ['+', '-', '*', '/'];
+
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
     function getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -298,6 +283,7 @@
     function startGame() {
       score = 0;
       timer = 300;
+      firstAppend = 1;
       updateDigitalDisplay('score-display', score);
       updateTimer();
       timerInterval = setInterval(() => {
@@ -307,6 +293,7 @@
       }, 1000);
       generateQuestion();
       document.getElementById('answer').innerText = '?';
+      document.getElementById('modal').style.display = 'none';
     }
 
     function checkAnswer() {
@@ -325,7 +312,28 @@
     function endGame() {
       clearInterval(timerInterval);
       updateHighScores(score);
-      showModal();
+      saveHighScore("Matemat Usta", score);
+      document.getElementById('modal').style.display = 'block';
+      document.getElementById('finalScore').textContent = `Skorunuz: ${score}`;
+    }
+
+    function saveHighScore(gameName, score) {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
+
+      let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+      if (!highScores[gameName] || score > highScores[gameName].score) {
+        highScores[gameName] = {
+          score: score,
+          date: formattedDate,
+        };
+
+        localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+      }
     }
 
     function updateHighScores(newScore) {
@@ -353,18 +361,6 @@
         row.insertCell(1).textContent = highScores[i].score;
         row.insertCell(2).textContent = highScores[i].date; // Tarih ve saat bilgisi eklenir
       }
-    }
-
-    function showModal() {
-      document.getElementById('modal').style.display = 'block';
-      document.getElementById('finalScore').innerHTML = `Skorunuz: ${score}</span>`;
-      displayHighScores();
-    }
-
-    function startNewGame() {
-      document.getElementById('modal').style.display = 'none';
-      firstAppend = 1;
-      startGame();
     }
 
     function updateDigitalDisplay(elementId, value) {
@@ -401,11 +397,7 @@
 
     function backspaceAnswer() {
       let answer = document.getElementById('answer').innerText;
-
-      // Remove the last character
       answer = answer.slice(0, -1);
-
-      // If the answer is now empty, set it to a question mark
       if (answer === '') {
         document.getElementById('answer').innerText = '?';
         firstAppend = 1;
