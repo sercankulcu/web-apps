@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dorukdayım - Eğlenceli Oyunlar</title>
+    <title data-i18n="title">DorukDayım - Eğlenceli Oyunlar</title>
 
     <meta name="theme-color" content="#f0f0f0">
-    <meta name="description" content="Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!">
+    <meta name="description" data-i18n="description">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="DorukDayım">
+    <meta name="apple-mobile-web-app-title" data-i18n="title">
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
@@ -27,23 +27,21 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png">
 
-    <meta property="og:title" content="DorukDayım - Eğlenceli Oyunlar">
-    <meta property="og:description"
-        content="Baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunlar. Zeka gelişimine katkıda bulunun.">
+    <meta property="og:title" data-i18n="title">
+    <meta property="og:description" data-i18n="description">
     <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-128x128.png" />
     <meta property="og:url" content="https://dorukdayim.netlify.app">
     <meta property="og:type" content="website">
     <meta property="og:image:width" content="128" />
     <meta property="og:image:height" content="128" />
     <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım" />
+    <meta property="og:site_name" data-i18n="title" />
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DorukDayım - Eğlenceli Oyunlar">
-    <meta name="twitter:description"
-        content="Baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunlar. Zeka gelişimine katkıda bulunun.">
+    <meta name="twitter:title" data-i18n="title">
+    <meta name="twitter:description" data-i18n="description">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
-    <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
+    <meta name="twitter:image:alt" content="DorukDayım logosu" />
 
     <meta http-equiv="Content-Language" content="tr">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -246,48 +244,47 @@
 <body>
     <div id="app">
         <header>
-            <button id="profileBtn" style="display: none;">👤 Profil</button>
-            <button id="shareBtn">📩 Davet</button>
-            <button id="installPWA" style="display: none;">🚀 Yükle</button>
-            <button id="signInBtn" style="display: none;">✅ Giriş</button>
-            <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
+            <button id="profileBtn" style="display: none;" data-i18n="profile">👤 Profil</button>
+            <button id="shareBtn" data-i18n="invite"> Davet</button>
+            <button id="installPWA" style="display: none;" data-i18n="install">🚀 Yükle</button>
+            <button id="signInBtn" style="display: none;" data-i18n="signIn">✅ Giriş</button>
+            <button id="signOutBtn" style="display: none;" data-i18n="signOut">❌ Çıkış</button>
             <button id="menuBtn" style="width: auto;">☰</button>
         </header>
         <main>
-            <h1>DorukDayım</h1>
-            <h2>Eğlenceli oyunlar!</h2>
+            <h1 data-i18n="title">DorukDayım</h1>
+            <h2 data-i18n="description">Eğlenceli oyunlar!</h2>
             <div id="messagePopup" class="popup"></div>
         </main>
         <div id="content">
-            <button id="hangmanButton"><span>😵🪜</span> <br>ADAM <br>ASMACA</button>
-            <button id="flagquizButton"><span>🚩</span> <br>BAYRAK <br>TESTİ</button>
-            <button id="fivelettersButton"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
-            <button id="sixlettersButton"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
-            <button id="spellbeeButton"><span>🐝</span> <br>BAL <br>PETEĞİ</button>
-            <button id="onewordButton"><span>🔤</span> <br>BİR <br>KELİME</button>
-            <button id="connectionsButton"><span>🔗</span> <br>BAĞLANTI <br>BUL</button>
-            <button id="strandsButton"><span>🔍</span> <br>KELİME <br>BUL</button>
-            <button id="memoryButton"><span>🎴</span> <br>HAFIZA <br>OYUNU</button>
-            <button id="mathmasterButton"><span>🧮</span> <br>MATEMAT <br>USTA</button>
-            <button id="millionaireButton"><span>💰</span> <br>MILYONER <br>OL</button>
-            <button id="tictactoeButton"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
-
+            <button id="hangmanButton" data-i18n="hangman"><span>🪜</span> <br>ADAM <br>ASMACA</button>
+            <button id="flagquizButton" data-i18n="flagQuiz"><span></span> <br>BAYRAK <br>TESTİ</button>
+            <button id="fivelettersButton" data-i18n="fiveLetters"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
+            <button id="sixlettersButton" data-i18n="sixLetters"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
+            <button id="spellbeeButton" data-i18n="spellBee"><span></span> <br>BAL <br>PETEĞİ</button>
+            <button id="onewordButton" data-i18n="oneWord"><span></span> <br>BİR <br>KELİME</button>
+            <button id="connectionsButton" data-i18n="connections"><span></span> <br>BAĞLANTI <br>BUL</button>
+            <button id="strandsButton" data-i18n="strands"><span></span> <br>KELİME <br>BUL</button>
+            <button id="memoryButton" data-i18n="memoryGame"><span></span> <br>HAFIZA <br>OYUNU</button>
+            <button id="mathmasterButton" data-i18n="mathMaster"><span></span> <br>MATEMAT <br>USTA</button>
+            <button id="millionaireButton" data-i18n="millionaire"><span></span> <br>MILYONER <br>OL</button>
+            <button id="tictactoeButton" data-i18n="ticTacToe"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
         </div>
         <footer>
-            <p>&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
+            <p data-i18n="allRightsReserved">&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
         </footer>
         <div id="overlayProfile" class="overlay">
             <div class="overlay-content">
                 <span class="closebtn" id="closeProfileBtn">&times;</span>
                 <div id="profileDetails" class="menu-section">
-                    <h2>Profilim</h2>
+                    <h2 data-i18n="profile">Profilim</h2>
                     <img id="profileImage" src="" alt="Profil Resmi"
                         style="width: 100px; height: 100px; border-radius: 50%;">
                     <p><strong>İsim:</strong> <span id="profileName"></span></p>
                     <p><strong>E-posta:</strong> <span id="profileEmail"></span></p>
                     <p><strong>Son Giriş:</strong> <span id="lastSignIn"></span></p>
                     <div id="highScores">
-                        <h3>En Yüksek Skorlar</h3>
+                        <h3 data-i18n="highScores">En Yüksek Skorlar</h3>
                         <ul id="highScoresList">
                         </ul>
                     </div>
@@ -638,8 +635,8 @@
             const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
             const messages = {
                 en: {
-                    "title": "DorukDayım - Fun Games",
-                    "description": "Fun and educational games discovered by a father and son!",
+                    "title": "DorukDayım",
+                    "description": "Fun and educational games!",
                     "welcome": "Welcome, {name}!",
                     "signedOut": "Signed out!",
                     "pleaseSignIn": "Please sign in first.",
@@ -655,7 +652,7 @@
                     "career": "Career",
                     "contactUs": "Contact Us",
                     "highScores": "High Scores",
-                    "allRightsReserved": "All rights reserved.",
+                    "allRightsReserved": "&copy; 2025 DorukDayım - All rights reserved.",
                     "hangman": "Hangman",
                     "flagQuiz": "Flag Quiz",
                     "fiveLetters": "Five Letters",
@@ -670,8 +667,8 @@
                     "ticTacToe": "Tic Tac Toe"
                 },
                 tr: {
-                    "title": "DorukDayım - Eğlenceli Oyunlar",
-                    "description": "Baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunlar!",
+                    "title": "DorukDayım",
+                    "description": "Eğlenceli ve öğretici oyunlar!",
                     "welcome": "Hoş geldin, {name}!",
                     "signedOut": "Çıkış yapıldı!",
                     "pleaseSignIn": "Lütfen önce giriş yapın.",
@@ -687,7 +684,7 @@
                     "career": "Kariyer",
                     "contactUs": "İletişim",
                     "highScores": "En Yüksek Skorlar",
-                    "allRightsReserved": "Tüm hakları saklıdır.",
+                    "allRightsReserved": "&copy; 2025 DorukDayım - Tüm hakları saklıdır.",
                     "hangman": "Adam Asmaca",
                     "flagQuiz": "Bayrak Testi",
                     "fiveLetters": "Beş Harf",
@@ -699,7 +696,7 @@
                     "memoryGame": "Hafıza Oyunu",
                     "mathMaster": "Matemat Usta",
                     "millionaire": "Milyoner Ol",
-                    "ticTacToe": "Tik Tak Toe"
+                    "ticTacToe": "❌⭕❌\nÜç \nTaş"
                 }
             };
             return messages[lang][key];
