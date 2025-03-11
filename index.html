@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr, en">
 
 <head>
     <meta charset="UTF-8">
@@ -247,7 +247,7 @@
     <div id="app">
         <header>
             <button id="profileBtn" style="display: none;">👤 Profil</button>
-            <button id="shareBtn">🔗 Davet</button>
+            <button id="shareBtn">📩 Davet</button>
             <button id="installPWA" style="display: none;">🚀 Yükle</button>
             <button id="signInBtn" style="display: none;">✅ Giriş</button>
             <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
@@ -261,15 +261,15 @@
         <div id="content">
             <button id="hangmanButton"><span>😵🪜</span> <br>ADAM <br>ASMACA</button>
             <button id="flagquizButton"><span>🚩</span> <br>BAYRAK <br>TESTİ</button>
-            <button id="besharfButton"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
-            <button id="altiharfButton"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
+            <button id="fivelettersButton"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
+            <button id="sixlettersButton"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
             <button id="spellbeeButton"><span>🐝</span> <br>BAL <br>PETEĞİ</button>
-            <button id="birkelimeButton"><span>🔤</span> <br>BİR <br>KELİME</button>
+            <button id="onewordButton"><span>🔤</span> <br>BİR <br>KELİME</button>
             <button id="connectionsButton"><span>🔗</span> <br>BAĞLANTI <br>BUL</button>
             <button id="strandsButton"><span>🔍</span> <br>KELİME <br>BUL</button>
             <button id="memoryButton"><span>🎴</span> <br>HAFIZA <br>OYUNU</button>
-            <button id="matematustaButton"><span>🧮</span> <br>MATEMAT <br>USTA</button>
-            <button id="milyonerButton"><span>💰</span> <br>MILYONER <br>OL</button>
+            <button id="mathmasterButton"><span>🧮</span> <br>MATEMAT <br>USTA</button>
+            <button id="millionaireButton"><span>💰</span> <br>MILYONER <br>OL</button>
             <button id="tictactoeButton"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
 
         </div>
@@ -387,16 +387,16 @@
         document.getElementById("flagquizButton").addEventListener('click', function () {
             loadPage("flagquiz.html");
         });
-        document.getElementById("besharfButton").addEventListener('click', function () {
+        document.getElementById("fivelettersButton").addEventListener('click', function () {
             loadPage("fiveletters.html");
         });
-        document.getElementById("altiharfButton").addEventListener('click', function () {
+        document.getElementById("sixlettersButton").addEventListener('click', function () {
             loadPage("sixletters.html");
         });
         document.getElementById("spellbeeButton").addEventListener('click', function () {
             loadPage("spellbee.html");
         });
-        document.getElementById("birkelimeButton").addEventListener('click', function () {
+        document.getElementById("onewordButton").addEventListener('click', function () {
             loadPage("oneword.html");
         });
         document.getElementById("connectionsButton").addEventListener('click', function () {
@@ -408,10 +408,10 @@
         document.getElementById("memoryButton").addEventListener('click', function () {
             loadPage("memory.html");
         });
-        document.getElementById("matematustaButton").addEventListener('click', function () {
+        document.getElementById("mathmasterButton").addEventListener('click', function () {
             loadPage("mathmaster.html");
         });
-        document.getElementById("milyonerButton").addEventListener('click', function () {
+        document.getElementById("millionaireButton").addEventListener('click', function () {
             loadPage("millionaire.html");
         });
         document.getElementById("tictactoeButton").addEventListener('click', function () {
@@ -633,6 +633,85 @@
         }
 
         window.showMainContent = showMainContent;
+
+        function getTranslation(key) {
+            const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
+            const messages = {
+                en: {
+                    "title": "DorukDayım - Fun Games",
+                    "description": "Fun and educational games discovered by a father and son!",
+                    "welcome": "Welcome, {name}!",
+                    "signedOut": "Signed out!",
+                    "pleaseSignIn": "Please sign in first.",
+                    "profile": "Profile",
+                    "invite": "Invite",
+                    "install": "Install",
+                    "signIn": "Sign In",
+                    "signOut": "Sign Out",
+                    "aboutUs": "About Us",
+                    "businessPartners": "Business Partners",
+                    "privacyPolicy": "Privacy Policy",
+                    "healthSafety": "Health Safety and Environment Policy",
+                    "career": "Career",
+                    "contactUs": "Contact Us",
+                    "highScores": "High Scores",
+                    "allRightsReserved": "All rights reserved.",
+                    "hangman": "Hangman",
+                    "flagQuiz": "Flag Quiz",
+                    "fiveLetters": "Five Letters",
+                    "sixLetters": "Six Letters",
+                    "spellBee": "Spell Bee",
+                    "oneWord": "One Word",
+                    "connections": "Connections",
+                    "strands": "Strands",
+                    "memoryGame": "Memory Game",
+                    "mathMaster": "Math Master",
+                    "millionaire": "Millionaire",
+                    "ticTacToe": "Tic Tac Toe"
+                },
+                tr: {
+                    "title": "DorukDayım - Eğlenceli Oyunlar",
+                    "description": "Baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunlar!",
+                    "welcome": "Hoş geldin, {name}!",
+                    "signedOut": "Çıkış yapıldı!",
+                    "pleaseSignIn": "Lütfen önce giriş yapın.",
+                    "profile": "Profil",
+                    "invite": "Davet",
+                    "install": "Yükle",
+                    "signIn": "Giriş",
+                    "signOut": "Çıkış",
+                    "aboutUs": "Hakkımızda",
+                    "businessPartners": "İş Ortaklarımız",
+                    "privacyPolicy": "Gizlilik Politikası",
+                    "healthSafety": "İş Sağlığı ve Güvenliği Çevre Politikamız",
+                    "career": "Kariyer",
+                    "contactUs": "İletişim",
+                    "highScores": "En Yüksek Skorlar",
+                    "allRightsReserved": "Tüm hakları saklıdır.",
+                    "hangman": "Adam Asmaca",
+                    "flagQuiz": "Bayrak Testi",
+                    "fiveLetters": "Beş Harf",
+                    "sixLetters": "Altı Harf",
+                    "spellBee": "Bal Peteği",
+                    "oneWord": "Bir Kelime",
+                    "connections": "Bağlantı Bul",
+                    "strands": "Kelime Bul",
+                    "memoryGame": "Hafıza Oyunu",
+                    "mathMaster": "Matemat Usta",
+                    "millionaire": "Milyoner Ol",
+                    "ticTacToe": "Tik Tak Toe"
+                }
+            };
+            return messages[lang][key];
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = getTranslation(key);
+            });
+        });
     </script>
 </body>
 
