@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Beş Harf - Türkçe Kelime Oyunu</title>
+    <title>Altı Harf - Türkçe Kelime Oyunu</title>
 
     <meta name="theme-color" content="#f0f0f0">
     <meta name="description"
-        content="DorukDayım'da 5 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
+        content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
     <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="Beş Harf - Türkçe Kelime Oyunu">
+    <meta property="og:title" content="Altı Harf - Türkçe Kelime Oyunu">
     <meta property="og:description"
-        content="DorukDayım'da 5 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
+        content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
     <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-128x128.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/besharf.html">
+    <meta property="og:url" content="https://dorukdayim.netlify.app/altiharf.html">
     <meta property="og:type" content="game">
     <meta property="og:image:width" content="128" />
     <meta property="og:image:height" content="128" />
@@ -23,18 +23,18 @@
     <meta property="og:site_name" content="DorukDayım" />
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Beş Harf - Türkçe Kelime Oyunu">
+    <meta name="twitter:title" content="Altı Harf - Türkçe Kelime Oyunu">
     <meta name="twitter:description"
-        content="DorukDayım'da 5 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
+        content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
     <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
 
     <meta http-equiv="Content-Language" content="tr">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="keywords"
-        content="5 harf kelime oyunu, türkçe kelime bulmaca, zeka oyunları, dorukdayım, kelime oyunu oyna, 6 harfli kelimeler">
+        content="6 harf kelime oyunu, türkçe kelime bulmaca, zeka oyunları, dorukdayım, kelime oyunu oyna, 6 harfli kelimeler">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/besharf.html">
+    <link rel="canonical" href="https://dorukdayim.netlify.app/altiharf.html">
     <meta name="author" content="Sercan/Dorukdayım">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -180,17 +180,18 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             font-size: 1.2rem;
             color: #333;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
     <div id="initialMessage">
-        <p>Ana sayfaya dönmek için başlığa <strong>(Beş Harf)</strong> tıklayınız.</p>
+        <p>Ana sayfaya dönmek için başlığa <strong>(Altı Harf)</strong> tıklayınız.</p>
         <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
     </div>
     <div class="game-container">
-        <h1 id="title">Beş Harf</h1>
+        <h1 id="title">Altı Harf</h1>
         <div class="grid" id="grid"></div>
         <div class="keyboard" id="keyboard"></div>
     </div>
@@ -200,9 +201,9 @@
     </div>
 
     <script type="module">
-        import { wordsFiveLetters as words, allwordsFiveLetters as allwords } from 'https://sercankulcu.github.io/game/words-five-letters.js';
+        import { wordsSixLetters as words, allwordsSixLetters as allwords } from 'https://sercankulcu.github.io/game/words-six-letters.js';
 
-        const WORD_LENGTH = 5;
+        const WORD_LENGTH = 6;
         const MAX_GUESSES = 6;
 
         let startTime;
@@ -366,7 +367,7 @@
                 let rowScore = 30 - currentRow * 5;
                 score = Math.round(timeScore) + rowScore;
                 showResult(`Tebrikler! Kazandınız! Skorunuz: ${score}`);
-                saveHighScore("Beş Harf", score);
+                saveHighScore("Altı Harf", score);
             } else if (currentRow === MAX_GUESSES) {
                 showResult(`Oyun Bitti! Doğru Kelime: ${targetWord}`);
             }
@@ -378,12 +379,13 @@
         }
 
         function restartGame() {
-            document.getElementById('gameResult').style.display = 'none'; // Sonuç kutusunu gizle
 
             targetWord = words[Math.floor(Math.random() * words.length)];
             currentGuess = [];
             currentRow = 0;
+            hintCount = 0;
 
+            document.getElementById('gameResult').style.display = 'none';
             document.getElementById('grid').innerHTML = '';
             document.getElementById('keyboard').innerHTML = '';
             initGame();
@@ -423,7 +425,7 @@
         document.addEventListener('click', () => {
             document.getElementById('initialMessage').style.display = 'none';
         });
-        
+
         initGame();
     </script>
 </body>

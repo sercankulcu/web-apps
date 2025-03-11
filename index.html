@@ -91,13 +91,8 @@
         }
 
         h1 {
-            font-size: 3rem;
             text-decoration: underline;
             text-decoration-color: darkred;
-        }
-
-        p {
-            font-size: 1.5rem;
         }
 
         #content {
@@ -143,12 +138,6 @@
             font-size: 1.2rem;
             z-index: 1000;
             cursor: pointer;
-        }
-
-        footer {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            font-size: 0.8rem;
-            border-radius: 10px;
         }
 
         .overlay {
@@ -266,7 +255,7 @@
         </header>
         <main>
             <h1>DorukDayım</h1>
-            <p>Eğlenceli oyunlar!</p>
+            <h2>Eğlenceli oyunlar!</h2>
             <div id="messagePopup" class="popup"></div>
         </main>
         <div id="content">
@@ -399,16 +388,16 @@
             loadPage("flagquiz.html");
         });
         document.getElementById("besharfButton").addEventListener('click', function () {
-            loadPage("besharf.html");
+            loadPage("fiveletters.html");
         });
         document.getElementById("altiharfButton").addEventListener('click', function () {
-            loadPage("altiharf.html");
+            loadPage("sixletters.html");
         });
         document.getElementById("spellbeeButton").addEventListener('click', function () {
             loadPage("spellbee.html");
         });
         document.getElementById("birkelimeButton").addEventListener('click', function () {
-            loadPage("birkelime.html");
+            loadPage("oneword.html");
         });
         document.getElementById("connectionsButton").addEventListener('click', function () {
             loadPage("connections.html");
@@ -420,30 +409,14 @@
             loadPage("memory.html");
         });
         document.getElementById("matematustaButton").addEventListener('click', function () {
-            loadPage("matematusta.html");
+            loadPage("mathmaster.html");
         });
         document.getElementById("milyonerButton").addEventListener('click', function () {
-            loadPage("milyoner.html");
+            loadPage("millionaire.html");
         });
         document.getElementById("tictactoeButton").addEventListener('click', function () {
             loadPage("tictactoe.html");
         });
-
-        function loadPage(pageUrl) {
-            document.getElementById("genericIframe").src = pageUrl;
-            document.getElementById("genericContainer").style.display = "block";
-        }
-
-        function showMainContent() {
-            document.getElementById("genericIframe").src = "";
-            document.getElementById("genericContainer").style.display = "none";
-        }
-
-        window.onpopstate = function (event) {
-            showMainContent();
-        };
-
-        window.showMainContent = showMainContent;
 
         const signInBtn = document.getElementById("signInBtn");
         const signOutBtn = document.getElementById("signOutBtn");
@@ -648,6 +621,18 @@
                 shareOptionsDiv.remove();
             }
         }
+
+        function loadPage(pageUrl) {
+            document.getElementById("genericIframe").src = pageUrl;
+            document.getElementById("genericContainer").style.display = "block";
+        }
+
+        function showMainContent() {
+            document.getElementById("genericIframe").src = "";
+            document.getElementById("genericContainer").style.display = "none";
+        }
+
+        window.showMainContent = showMainContent;
     </script>
 </body>
 

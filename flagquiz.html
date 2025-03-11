@@ -57,8 +57,8 @@
             background-repeat: no-repeat;
         }
 
-        p {
-            font-size: 1.5rem;
+        #score {
+            font-size: 3vh;
             font-weight: bold;
         }
 
@@ -109,6 +109,7 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             font-size: 1.2rem;
             color: #333;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -119,7 +120,7 @@
         <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
     </div>
     <h1 id="title">Guess the Country</a></h1>
-    <p>Score: <span id="score">0</span></p>
+    <div id="score">Score: 0</div>
     <div class="flag-container" id="flag"></div>
     <div class="options" id="options"></div>
     <script>
@@ -335,7 +336,7 @@
         const browserLang = navigator.language || navigator.userLanguage;
         if (browserLang.startsWith("tr")) {
             titleElement.textContent = "Ülkeyi Tahmin Et";
-            scoreDisplay.textContent = "Skor";
+            scoreDisplay.textContent = "Skor: 0";
         }
 
         function loadFlagQuiz() {
@@ -375,7 +376,7 @@
                         score--;
                         button.disabled = true;
                     }
-                    scoreDisplay.textContent = score;
+                    scoreDisplay.textContent = browserLang.startsWith("tr") ? "Skor: " + score : "Score: " + score;
                 };
 
                 optionsContainer.appendChild(button);
