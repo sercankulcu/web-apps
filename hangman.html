@@ -114,10 +114,32 @@
       font-size: 3vh;
       font-weight: bold;
     }
+
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+    }
   </style>
 </head>
 
 <body>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Adam Asmaca)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
   <div class="game-container">
     <h1 id="title">Adam Asmaca</h1>
     <div class="flags">
@@ -315,6 +337,10 @@
       if (keyboards[currentLang].join('').includes(letter)) {
         makeGuess(letter);
       }
+    });
+
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
     });
 
     createKeyboard();

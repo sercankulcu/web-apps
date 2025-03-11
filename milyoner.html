@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kim Milyoner Olmak İster?</title>
-    
-    <meta name="description" content="Kim Milyoner Olmak İster? bilgi yarışması ile genel kültürünüzü test edin. Heyecan verici sorularla büyük ödülü kazanın!">
-    <meta name="keywords" content="kim milyoner olmak ister, bilgi yarışması, genel kültür, yarışma, ödül, tr, türkçe, oyun">
+
+    <meta name="description"
+        content="Kim Milyoner Olmak İster? bilgi yarışması ile genel kültürünüzü test edin. Heyecan verici sorularla büyük ödülü kazanın!">
+    <meta name="keywords"
+        content="kim milyoner olmak ister, bilgi yarışması, genel kültür, yarışma, ödül, tr, türkçe, oyun">
     <meta name="author" content="Sercan/Dorukdayım">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dorukdayim.netlify.app/milyoner.html">
@@ -15,7 +17,8 @@
     <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
     <meta property="og:title" content="Kim Milyoner Olmak İster? - Bilgi Yarışması">
-    <meta property="og:description" content="Kim Milyoner Olmak İster? bilgi yarışması ile genel kültürünüzü test edin. Heyecan verici sorularla büyük ödülü kazanın!">
+    <meta property="og:description"
+        content="Kim Milyoner Olmak İster? bilgi yarışması ile genel kültürünüzü test edin. Heyecan verici sorularla büyük ödülü kazanın!">
     <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
     <meta property="og:url" content="https://dorukdayim.netlify.app/milyoner.html">
     <meta property="og:type" content="game">
@@ -26,7 +29,8 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kim Milyoner Olmak İster? - Bilgi Yarışması">
-    <meta name="twitter:description" content="Kim Milyoner Olmak İster? bilgi yarışması ile genel kültürünüzü test edin. Heyecan verici sorularla büyük ödülü kazanın!">
+    <meta name="twitter:description"
+        content="Kim Milyoner Olmak İster? bilgi yarışması ile genel kültürünüzü test edin. Heyecan verici sorularla büyük ödülü kazanın!">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
     <meta name="twitter:image:alt" content="Kim Milyoner Olmak İster? bilgi yarışması resmi" />
 
@@ -148,10 +152,32 @@
             font-size: max(2vh, 20px);
             border-top: 2px solid #fff;
         }
+
+        #initialMessage {
+            position: fixed;
+            width: 50%;
+            max-width: 400px;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border: 2px solid #000;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            color: #333;
+        }
     </style>
 </head>
 
 <body>
+    <div id="initialMessage">
+        <p>Ana sayfaya dönmek için başlığa <strong>(Milyoner)</strong> tıklayınız.</p>
+        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    </div>
     <h1 id="title">Milyoner</h1>
     <div id="prizeDisplay"></div>
 
@@ -1015,7 +1041,10 @@
             localStorage.setItem("isSoundOnMilyoner", isSoundOn);
         });
 
-        // Start the game
+        document.addEventListener('click', () => {
+            document.getElementById('initialMessage').style.display = 'none';
+        });
+        
         initializeGame();
     </script>
 </body>

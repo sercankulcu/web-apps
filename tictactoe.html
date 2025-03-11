@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tic Tac Toe</title>
-    
-    <meta name="description" content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
+
+    <meta name="description"
+        content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
     <meta name="keywords" content="tik tak toe, üç taş, oyun, zeka oyunu, tr, türkçe, online oyun">
     <meta name="author" content="Sercan/Dorukdayım">
     <meta name="robots" content="index, follow">
@@ -15,7 +16,8 @@
     <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
     <meta property="og:title" content="Tik Tak Toe - Üç Taş Oyunu">
-    <meta property="og:description" content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
+    <meta property="og:description"
+        content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
     <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
     <meta property="og:url" content="https://dorukdayim.netlify.app/tictactoe.html">
     <meta property="og:type" content="game">
@@ -26,7 +28,8 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tik Tak Toe - Üç Taş Oyunu">
-    <meta name="twitter:description" content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
+    <meta name="twitter:description"
+        content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
     <meta name="twitter:image:alt" content="Tik Tak Toe Türkçe üç taş oyunu resmi" />
 
@@ -110,20 +113,41 @@
         select:hover {
             background: #0056b3;
         }
+
+        #initialMessage {
+            position: fixed;
+            width: 50%;
+            max-width: 400px;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border: 2px solid #000;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            color: #333;
+        }
     </style>
 </head>
 
 <body>
-    
+    <div id="initialMessage">
+        <p id="initialMessageText1"></p>
+        <p id="initialMessageText2"></p>
+    </div>
     <div class="container">
         <h1 id="title">Tik Tak Too</h1>
-        <div class="status">Player X's Turn</div>
+        <div class="status" id="statusMessage"></div>
         <div class="board"></div>
-        <button class="reset">Reset Game</button>
+        <button class="reset" id="resetButton"></button>
         <select id="mode">
-            <option value="hard">Select Mode:</option>
-            <option value="easy">Easy</option>
-            <option value="hard">Hard</option>
+            <option value="hard" id="selectModeText"></option>
+            <option value="easy" id="easyModeText"></option>
+            <option value="hard" id="hardModeText"></option>
         </select>
     </div>
 
@@ -155,14 +179,14 @@
                 const [a, b, c] = pattern;
                 if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
                     if (isFinalCheck) {
-                        status.textContent = `🎉 Player ${gameBoard[a]} Wins!`;
+                        status.textContent = gameBoard[a] === 'X' ? getMessage('playerXWins') : getMessage('playerOWins');
                         board.removeEventListener('click', handleClick);
                     }
                     return gameBoard[a];
                 }
             }
             if (!gameBoard.includes(null)) {
-                if (isFinalCheck) status.textContent = "🤝 It's a Draw!";
+                if (isFinalCheck) status.textContent = getMessage('draw');
                 return "draw";
             }
             return null;
@@ -191,14 +215,13 @@
                 e.target.textContent = currentPlayer;
                 if (!checkWinner()) {
                     currentPlayer = 'O';
-                    status.textContent = "Computer's Turn";
+                    status.textContent = getMessage('computersTurn');
                     setTimeout(computerMove, 500);
                 }
             }
         }
 
         function computerMove() {
-
             let mode = modeSelect.value;
             let bestMove;
             if (mode === 'easy') {
@@ -213,7 +236,7 @@
                 document.querySelector(`[data-index='${bestMove}']`).textContent = 'O';
                 if (!checkWinner()) {
                     currentPlayer = 'X';
-                    status.textContent = "Player X's Turn";
+                    status.textContent = getMessage('playerXTurn');
                     board.addEventListener('click', handleClick);
                 }
             }
@@ -249,7 +272,7 @@
         function resetGame() {
             gameBoard.fill(null);
             currentPlayer = 'X';
-            status.textContent = "Player X's Turn";
+            status.textContent = getMessage('playerXTurn');
             board.innerHTML = '';
             createBoard();
             board.addEventListener('click', handleClick);
@@ -264,10 +287,55 @@
             }
         }
 
+        document.addEventListener('click', () => {
+            document.getElementById('initialMessage').style.display = 'none';
+        });
+
         createBoard();
         board.addEventListener('click', handleClick);
         resetButton.addEventListener('click', resetGame);
         modeSelect.addEventListener('change', resetGame);
+
+        function getMessage(key) {
+            const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
+            const messages = {
+                en: {
+                    initialMessage1: "Click the title <strong>(Tik Tak Too)</strong> to return to the main page.",
+                    initialMessage2: "Click anywhere to start the game.",
+                    playerXTurn: "Player X's Turn",
+                    computersTurn: "Computer's Turn",
+                    playerXWins: "🎉 Player X Wins!",
+                    playerOWins: "🎉 Player O Wins!",
+                    draw: "🤝 It's a Draw!",
+                    resetGame: "Reset Game",
+                    selectMode: "Select Mode:",
+                    easyMode: "Easy",
+                    hardMode: "Hard"
+                },
+                tr: {
+                    initialMessage1: "Ana sayfaya dönmek için başlığa <strong>(Tik Tak Too)</strong> tıklayınız.",
+                    initialMessage2: "Oyuna başlamak için herhangi bir yere tıklayınız.",
+                    playerXTurn: "Oyuncu X'in Sırası",
+                    computersTurn: "Bilgisayarın Sırası",
+                    playerXWins: "🎉 Oyuncu X Kazandı!",
+                    playerOWins: "🎉 Oyuncu O Kazandı!",
+                    draw: "🤝 Berabere!",
+                    resetGame: "Oyunu Sıfırla",
+                    selectMode: "Mod Seç:",
+                    easyMode: "Kolay",
+                    hardMode: "Zor"
+                }
+            };
+            return messages[lang][key];
+        }
+
+        document.getElementById('initialMessageText1').innerHTML = getMessage('initialMessage1');
+        document.getElementById('initialMessageText2').textContent = getMessage('initialMessage2');
+        document.getElementById('statusMessage').textContent = getMessage('playerXTurn');
+        document.getElementById('resetButton').textContent = getMessage('resetGame');
+        document.getElementById('selectModeText').textContent = getMessage('selectMode');
+        document.getElementById('easyModeText').textContent = getMessage('easyMode');
+        document.getElementById('hardModeText').textContent = getMessage('hardMode');
     </script>
 </body>
 

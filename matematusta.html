@@ -6,45 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MatematUsta - İlkokul Matematik Alıştırması | Eğlenceli ve Öğretici</title>
 
-  Harika, kodunuzu inceledim ve meta etiketlerini "MatematUsta" oyununa uygun şekilde düzelttim. İşte düzeltilmiş kod ve açıklamaları:
+  <meta name="description"
+    content="MatematUsta ile ilkokul düzeyinde matematik alıştırmaları yapın. Temel matematik işlemlerini eğlenceli bir şekilde öğrenin ve pratik yapın.">
+  <meta name="keywords"
+    content="matematik oyunu, matematik alıştırma, ilkokul matematik, matematik pratik, dorukdayım, matematik usta, eğitim oyunu">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/matematusta.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-HTML
+  <meta property="og:title" content="DorukDayım - MatematUsta Oyunu">
+  <meta property="og:description"
+    content="MatematUsta ile ilkokul düzeyinde matematik alıştırmaları yapın. Temel matematik işlemlerini eğlenceli bir şekilde öğrenin ve pratik yapın.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/matematusta.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım" />
 
-<!DOCTYPE html>
-<html>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DorukDayım - MatematUsta Oyunu">
+  <meta name="twitter:description"
+    content="MatematUsta ile ilkokul düzeyinde matematik alıştırmaları yapın. Temel matematik işlemlerini eğlenceli bir şekilde öğrenin ve pratik yapın.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="DorukDayım MatematUsta Oyunu resmi" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MatematUsta - İlkokul Matematik Alıştırması | Eğlenceli ve Öğretici</title>
-
-    <meta name="description" content="MatematUsta ile ilkokul düzeyinde matematik alıştırmaları yapın. Temel matematik işlemlerini eğlenceli bir şekilde öğrenin ve pratik yapın.">
-    <meta name="keywords" content="matematik oyunu, matematik alıştırma, ilkokul matematik, matematik pratik, dorukdayım, matematik usta, eğitim oyunu">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/matematusta.html">
-    <meta name="theme-color" content="#f0f0f0">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
-
-    <meta property="og:title" content="DorukDayım - MatematUsta Oyunu">
-    <meta property="og:description" content="MatematUsta ile ilkokul düzeyinde matematik alıştırmaları yapın. Temel matematik işlemlerini eğlenceli bir şekilde öğrenin ve pratik yapın.">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/matematusta.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım" />
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DorukDayım - MatematUsta Oyunu">
-    <meta name="twitter:description" content="MatematUsta ile ilkokul düzeyinde matematik alıştırmaları yapın. Temel matematik işlemlerini eğlenceli bir şekilde öğrenin ve pratik yapın.">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
-    <meta name="twitter:image:alt" content="DorukDayım MatematUsta Oyunu resmi" />
-
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
@@ -208,10 +200,32 @@ HTML
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
+
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+    }
   </style>
 </head>
 
 <body>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(MatematUsta)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
   <div id="app">
     <h1 id="title">MatematUsta</h1>
 
@@ -446,9 +460,11 @@ HTML
       }
     }
 
-    window.onload = function () {
-      startGame();
-    }
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
+
+    startGame();
   </script>
 </body>
 

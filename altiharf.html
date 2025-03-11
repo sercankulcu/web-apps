@@ -7,7 +7,8 @@
     <title>Altı Harf - Türkçe Kelime Oyunu</title>
 
     <meta name="theme-color" content="#f0f0f0">
-    <meta name="description" content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
+    <meta name="description"
+        content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
     <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
     <meta property="og:title" content="Altı Harf - Türkçe Kelime Oyunu">
@@ -24,7 +25,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Altı Harf - Türkçe Kelime Oyunu">
     <meta name="twitter:description"
-    content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
+        content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
     <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
 
@@ -162,10 +163,32 @@
             cursor: pointer;
             font-size: 1rem;
         }
+
+        #initialMessage {
+            position: fixed;
+            width: 50%;
+            max-width: 400px;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border: 2px solid #000;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            color: #333;
+        }
     </style>
 </head>
 
 <body>
+    <div id="initialMessage">
+        <p>Ana sayfaya dönmek için başlığa <strong>(Altı Harf)</strong> tıklayınız.</p>
+        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    </div>
     <div class="game-container">
         <h1 id="title">Altı Harf</h1>
         <div class="grid" id="grid"></div>
@@ -396,6 +419,10 @@
                 let upperKey = e.key === "i" ? "İ" : e.key === "ı" ? "I" : e.key.toUpperCase();
                 handleInput(upperKey);
             }
+        });
+
+        document.addEventListener('click', () => {
+            document.getElementById('initialMessage').style.display = 'none';
         });
 
         initGame();

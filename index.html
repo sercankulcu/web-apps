@@ -11,9 +11,21 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="DorukDayım">
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
+    <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+    <link rel="shortcut icon" href="icons/favicon.ico">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/touch-icon-60x60.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png">
 
     <meta property="og:title" content="DorukDayım - Eğlenceli Oyunlar">
     <meta property="og:description"
@@ -42,14 +54,12 @@
     <meta name="author" content="Sercan/Dorukdayım">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
             margin: 0px auto;
             padding: 5px;
-            background: linear-gradient(to right, #f0f0f0, #e0e0e0);
-            color: black;
+            background: #F7F7F7;
+            color: #333333;
             justify-content: center;
             text-align: center;
             max-width: 600px;
@@ -61,7 +71,6 @@
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
-            align-items: center;
             padding: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             margin-top: 10px;
@@ -74,6 +83,11 @@
             padding: 5px;
             border-radius: 10px;
             margin-bottom: 10px;
+            position: relative;
+            background-image: url('background.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         h1 {
@@ -83,10 +97,10 @@
         }
 
         p {
-            font-size: 1rem;
+            font-size: 1.5rem;
         }
 
-        content {
+        #content {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             padding: 5px;
             border-radius: 10px;
@@ -129,10 +143,6 @@
             font-size: 1.2rem;
             z-index: 1000;
             cursor: pointer;
-        }
-
-        main {
-            flex: 1;
         }
 
         footer {
@@ -245,128 +255,133 @@
 </head>
 
 <body>
-    <header>
-        <button id="profileBtn" style="display: none;">👤 Profil</button>
-        <button id="shareBtn">🔗 Paylaş</button>
-        <button id="installPWA" style="display: none;">🚀 Yükle</button>
-        <button id="signInBtn" style="display: none;">✅ Giriş</button>
-        <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
-        <button id="menuBtn" style="width: auto;">☰</button>
-    </header>
-    </header>
-    <main>
-        <h1>DorukDayım</h1>
-        <p>Baba ve oğulun birlikte keşfettiği eğlenceli oyunlar!</p>
-        <div id="messagePopup" class="popup"></div>
-    </main>
-    <content>
+    <div id="app">
+        <header>
+            <button id="profileBtn" style="display: none;">👤 Profil</button>
+            <button id="shareBtn">🔗 Davet</button>
+            <button id="installPWA" style="display: none;">🚀 Yükle</button>
+            <button id="signInBtn" style="display: none;">✅ Giriş</button>
+            <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
+            <button id="menuBtn" style="width: auto;">☰</button>
+        </header>
+        <main>
+            <h1>DorukDayım</h1>
+            <p>Eğlenceli oyunlar!</p>
+            <div id="messagePopup" class="popup"></div>
+        </main>
+        <div id="content">
+            <button id="hangmanButton"><span>😵🪜</span> <br>ADAM <br>ASMACA</button>
+            <button id="flagquizButton"><span>🚩</span> <br>BAYRAK <br>TESTİ</button>
+            <button id="besharfButton"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
+            <button id="altiharfButton"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
+            <button id="spellbeeButton"><span>🐝</span> <br>BAL <br>PETEĞİ</button>
+            <button id="birkelimeButton"><span>🔤</span> <br>BİR <br>KELİME</button>
+            <button id="connectionsButton"><span>🔗</span> <br>BAĞLANTI <br>BUL</button>
+            <button id="strandsButton"><span>🔍</span> <br>KELİME <br>BUL</button>
+            <button id="memoryButton"><span>🎴</span> <br>HAFIZA <br>OYUNU</button>
+            <button id="matematustaButton"><span>🧮</span> <br>MATEMAT <br>USTA</button>
+            <button id="milyonerButton"><span>💰</span> <br>MILYONER <br>OL</button>
+            <button id="tictactoeButton"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
 
-        <button id="hangmanButton"><span>😵🪜</span> <br>ADAM <br>ASMACA</button>
-        <button id="flagquizButton"><span>🚩</span> <br>BAYRAK <br>TESTİ</button>
-        <button id="besharfButton"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
-        <button id="altiharfButton"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
-        <button id="spellbeeButton"><span>🐝</span> <br>BAL <br>PETEĞİ</button>
-        <button id="birkelimeButton"><span>🔤</span> <br>BİR <br>KELİME</button>
-        <button id="connectionsButton"><span>🔗</span> <br>BAĞLANTI <br>BUL</button>
-        <button id="strandsButton"><span>🔍</span> <br>KELİME <br>BUL</button>
-        <button id="memoryButton"><span>🎴</span> <br>HAFIZA <br>OYUNU</button>
-        <button id="matematustaButton"><span>🧮</span> <br>MATEMAT <br>USTA</button>
-        <button id="milyonerButton"><span>💰</span> <br>MILYONER <br>OL</button>
-        <button id="tictactoeButton"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
+        </div>
+        <footer>
+            <p>&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
+        </footer>
+        <div id="overlayProfile" class="overlay">
+            <div class="overlay-content">
+                <span class="closebtn" id="closeProfileBtn">&times;</span>
+                <div id="profileDetails" class="menu-section">
+                    <h2>Profilim</h2>
+                    <img id="profileImage" src="" alt="Profil Resmi"
+                        style="width: 100px; height: 100px; border-radius: 50%;">
+                    <p><strong>İsim:</strong> <span id="profileName"></span></p>
+                    <p><strong>E-posta:</strong> <span id="profileEmail"></span></p>
+                    <p><strong>Son Giriş:</strong> <span id="lastSignIn"></span></p>
+                    <div id="highScores">
+                        <h3>En Yüksek Skorlar</h3>
+                        <ul id="highScoresList">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayMenu" class="overlay">
+            <div class="overlay-content">
+                <span class="closebtn" id="closeMenuBtn">&times;</span>
 
-    </content>
-    <footer>
-        <p>&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
-    </footer>
-    <div id="overlayProfile" class="overlay">
-        <div class="overlay-content">
-            <span class="closebtn" id="closeProfileBtn">&times;</span>
-            <div id="profileDetails" class="menu-section">
-                <h2>Profilim</h2>
-                <img id="profileImage" src="" alt="Profil Resmi"
-                    style="width: 100px; height: 100px; border-radius: 50%;">
-                <p><strong>İsim:</strong> <span id="profileName"></span></p>
-                <p><strong>E-posta:</strong> <span id="profileEmail"></span></p>
-                <p><strong>Son Giriş:</strong> <span id="lastSignIn"></span></p>
-                <div id="highScores">
-                    <h3>En Yüksek Skorlar</h3>
-                    <ul id="highScoresList">
-                    </ul>
+                <div class="menu-section" id="aboutUs">
+                    <h2>Hakkımızda</h2>
+                    <p>
+                        DorukDayım, baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunların bir araya geldiği
+                        bir
+                        platformdur. Amacımız, her yaştan kullanıcının keyifli vakit geçirirken aynı zamanda yeni
+                        bilgiler
+                        edinmesini sağlamaktır. Oyunlarımız, zeka gelişimine katkıda bulunmak, kelime dağarcığını
+                        zenginleştirmek ve genel kültür bilgisini artırmak için özenle hazırlanmıştır.<br>
+                        Bu platform, aile bağlarını güçlendirmek ve eğlenceli öğrenme deneyimleri sunmak amacıyla
+                        oluşturulmuştur. Kullanıcılarımızdan gelen geri bildirimlerle sürekli gelişmekte ve yeni oyunlar
+                        eklemekteyiz.
+                    </p>
+                </div>
+
+                <div class="menu-section" id="businessPartners">
+                    <h2>İş Ortaklarımız</h2>
+                    <p>
+                        DorukDayım olarak, teknoloji sağlayıcıları, eğitim kurumları ve içerik üreticileriyle iş birliği
+                        yaparak kullanıcılarımıza en iyi deneyimi sunmayı hedefliyoruz. Şu anda platformumuz, netlify,
+                        google
+                        firebase, supabase ve github altyapısı ile hizmet vermektedir.
+                    </p>
+                </div>
+
+                <div class="menu-section" id="privacyPolicy">
+                    <h2>Gizlilik Politikası</h2>
+                    <p>
+                        DorukDayım olarak, kullanıcılarımızın kişisel verilerinin korunmasına büyük önem veriyoruz.
+                        Hiçbir
+                        kişisel verinizi toplamıyoruz. Platforma giriş Google üzerinden yapılmaktadır. Sadece oynanan
+                        oyun
+                        sayısı ve
+                        kazanılan puanlar istatistik amacı ile toplanmakta ve hizmetlerimizi geliştirmek amacıyla
+                        kullanılmaktadır.
+                        Verileriniz hiçbir şekilde üçüncü taraflarla paylaşılmaz.
+                    </p>
+                </div>
+
+                <div class="menu-section" id="healthSafetyEnvironmentPolicy">
+                    <h2>İş Sağlığı ve Güvenliği Çevre Politikamız</h2>
+                    <p>
+                        Çalışanlarımızın ve kullanıcılarımızın sağlığı bizim için önemlidir. İş sağlığı ve güvenliği
+                        politikamız kapsamında, çalışma ortamlarımızda gerekli tüm önlemleri alıyor ve çevreye duyarlı
+                        bir
+                        yaklaşım sergiliyoruz. Çevre politikamız gereği, dijital platformumuzda kağıt kullanımını
+                        minimuma
+                        indiriyor ve
+                        sürdürülebilirlik projelerine destek veriyoruz.
+                    </p>
+                </div>
+
+                <div class="menu-section" id="career">
+                    <h2>Kariyer</h2>
+                    <p>
+                        DorukDayım ekibine katılmak ister misiniz? Kariyer fırsatlarımız ve açık pozisyonlar
+                        buradan bildirilecektir.
+                    </p>
+                </div>
+
+                <div class="menu-section" id="contactUs">
+                    <h2>İletişim</h2>
+                    <p>
+                        Kullanıcı memnuniyeti bizim için önceliklidir. Platformumuzla ilgili herhangi bir sorunuz veya
+                        öneriniz olduğunda aşağıdaki iletişim kanallarını kullanarak bize ulaşabilirsiniz.<br>
+                        E-posta: sercankulcu@gmail.com<br>
+                        Twitter: @sercandev<br>
+                        Geri bildirimleriniz ve sorularınız için her zaman buradayız.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div id="overlayMenu" class="overlay">
-        <div class="overlay-content">
-            <span class="closebtn" id="closeMenuBtn">&times;</span>
-
-            <div class="menu-section" id="aboutUs">
-                <h2>Hakkımızda</h2>
-                <p>
-                    DorukDayım, baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunların bir araya geldiği bir
-                    platformdur. Amacımız, her yaştan kullanıcının keyifli vakit geçirirken aynı zamanda yeni bilgiler
-                    edinmesini sağlamaktır. Oyunlarımız, zeka gelişimine katkıda bulunmak, kelime dağarcığını
-                    zenginleştirmek ve genel kültür bilgisini artırmak için özenle hazırlanmıştır.<br>
-                    Bu platform, aile bağlarını güçlendirmek ve eğlenceli öğrenme deneyimleri sunmak amacıyla
-                    oluşturulmuştur. Kullanıcılarımızdan gelen geri bildirimlerle sürekli gelişmekte ve yeni oyunlar
-                    eklemekteyiz.
-                </p>
-            </div>
-
-            <div class="menu-section" id="businessPartners">
-                <h2>İş Ortaklarımız</h2>
-                <p>
-                    DorukDayım olarak, teknoloji sağlayıcıları, eğitim kurumları ve içerik üreticileriyle iş birliği
-                    yaparak kullanıcılarımıza en iyi deneyimi sunmayı hedefliyoruz. Şu anda platformumuz, netlify,
-                    google
-                    firebase, supabase ve github altyapısı ile hizmet vermektedir.
-                </p>
-            </div>
-
-            <div class="menu-section" id="privacyPolicy">
-                <h2>Gizlilik Politikası</h2>
-                <p>
-                    DorukDayım olarak, kullanıcılarımızın kişisel verilerinin korunmasına büyük önem veriyoruz. Hiçbir
-                    kişisel verinizi toplamıyoruz. Platforma giriş Google üzerinden yapılmaktadır. Sadece oynanan oyun
-                    sayısı ve
-                    kazanılan puanlar istatistik amacı ile toplanmakta ve hizmetlerimizi geliştirmek amacıyla
-                    kullanılmaktadır.
-                    Verileriniz hiçbir şekilde üçüncü taraflarla paylaşılmaz.
-                </p>
-            </div>
-
-            <div class="menu-section" id="healthSafetyEnvironmentPolicy">
-                <h2>İş Sağlığı ve Güvenliği Çevre Politikamız</h2>
-                <p>
-                    Çalışanlarımızın ve kullanıcılarımızın sağlığı bizim için önemlidir. İş sağlığı ve güvenliği
-                    politikamız kapsamında, çalışma ortamlarımızda gerekli tüm önlemleri alıyor ve çevreye duyarlı bir
-                    yaklaşım sergiliyoruz. Çevre politikamız gereği, dijital platformumuzda kağıt kullanımını minimuma
-                    indiriyor ve
-                    sürdürülebilirlik projelerine destek veriyoruz.
-                </p>
-            </div>
-
-            <div class="menu-section" id="career">
-                <h2>Kariyer</h2>
-                <p>
-                    DorukDayım ekibine katılmak ister misiniz? Kariyer fırsatlarımız ve açık pozisyonlar
-                    buradan bildirilecektir.
-                </p>
-            </div>
-
-            <div class="menu-section" id="contactUs">
-                <h2>İletişim</h2>
-                <p>
-                    Kullanıcı memnuniyeti bizim için önceliklidir. Platformumuzla ilgili herhangi bir sorunuz veya
-                    öneriniz olduğunda aşağıdaki iletişim kanallarını kullanarak bize ulaşabilirsiniz.<br>
-                    E-posta: sercankulcu@gmail.com<br>
-                    Twitter: @sercandev<br>
-                    Geri bildirimleriniz ve sorularınız için her zaman buradayız.
-                </p>
-            </div>
-        </div>
-    </div>
-
     <div id="genericContainer">
         <iframe id="genericIframe" src=""></iframe>
     </div>
@@ -415,14 +430,18 @@
         });
 
         function loadPage(pageUrl) {
-            document.getElementById("genericContainer").style.display = "block";
             document.getElementById("genericIframe").src = pageUrl;
+            document.getElementById("genericContainer").style.display = "block";
         }
 
         function showMainContent() {
-            document.getElementById("genericContainer").style.display = "none";
             document.getElementById("genericIframe").src = "";
+            document.getElementById("genericContainer").style.display = "none";
         }
+
+        window.onpopstate = function (event) {
+            showMainContent();
+        };
 
         window.showMainContent = showMainContent;
 
@@ -488,8 +507,6 @@
                 signOutBtn.addEventListener("click", window.signOut);
             })
             .catch(error => console.error("❌ Config alınırken hata:", error));
-
-
 
         function showPopup(text) {
             messagePopup.innerText = text;

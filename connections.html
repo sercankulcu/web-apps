@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DorukDayım - Bağlantılı Olanları Bul - Türkçe Kelime Eşleştirme Oyunu</title>
-    <meta name="description" content="DorukDayım'da Bağlantılı Olanları Bul oyunu ile Türkçe kelime gruplarını eşleştirerek zekanızı geliştirin. Meyveler, renkler, hayvanlar ve daha fazlasıyla eğlenceli bir bulmaca oyunu oynayın!">
-    <meta name="keywords" content="bağlantılı olanları bul, kelime eşleştirme oyunu, türkçe kelime oyunu, zeka oyunu, bulmaca, dorukdayım, gruplama oyunu, kelime grupları">
+
+    <meta name="description"
+        content="DorukDayım'da Bağlantılı Olanları Bul oyunu ile Türkçe kelime gruplarını eşleştirerek zekanızı geliştirin. Meyveler, renkler, hayvanlar ve daha fazlasıyla eğlenceli bir bulmaca oyunu oynayın!">
+    <meta name="keywords"
+        content="bağlantılı olanları bul, kelime eşleştirme oyunu, türkçe kelime oyunu, zeka oyunu, bulmaca, dorukdayım, gruplama oyunu, kelime grupları">
     <meta name="author" content="Sercan/Dorukdayım">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dorukdayim.netlify.app/conenctions.html">
     <meta name="theme-color" content="#f0f0f0">
     <link rel="icon" href="/icons/favicon.ico" type="image/png">
+
     <meta property="og:title" content="DorukDayım - Bağlantılı Olanları Bul - Türkçe Kelime Eşleştirme Oyunu">
-    <meta property="og:description" content="DorukDayım'da Bağlantılı Olanları Bul oyunu ile Türkçe kelime gruplarını eşleştirerek zekanızı geliştirin. Meyveler, renkler, hayvanlar ve daha fazlasıyla eğlenceli bir bulmaca oyunu oynayın!">
+    <meta property="og:description"
+        content="DorukDayım'da Bağlantılı Olanları Bul oyunu ile Türkçe kelime gruplarını eşleştirerek zekanızı geliştirin. Meyveler, renkler, hayvanlar ve daha fazlasıyla eğlenceli bir bulmaca oyunu oynayın!">
     <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
     <meta property="og:url" content="https://dorukdayim.netlify.app/connections.html">
     <meta property="og:type" content="game">
@@ -21,11 +26,14 @@
     <meta property="og:image:height" content="512" />
     <meta property="og:locale" content="tr_TR" />
     <meta property="og:site_name" content="DorukDayım" />
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DorukDayım - Bağlantılı Olanları Bul - Türkçe Kelime Eşleştirme Oyunu">
-    <meta name="twitter:description" content="DorukDayım'da Bağlantılı Olanları Bul oyunu ile Türkçe kelime gruplarını eşleştirerek zekanızı geliştirin. Meyveler, renkler, hayvanlar ve daha fazlasıyla eğlenceli bir bulmaca oyunu oynayın!">
+    <meta name="twitter:description"
+        content="DorukDayım'da Bağlantılı Olanları Bul oyunu ile Türkçe kelime gruplarını eşleştirerek zekanızı geliştirin. Meyveler, renkler, hayvanlar ve daha fazlasıyla eğlenceli bir bulmaca oyunu oynayın!">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
     <meta name="twitter:image:alt" content="DorukDayım Bağlantılı Olanları Bul oyunu resmi" />
+
     <meta http-equiv="Content-Language" content="tr">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -104,25 +112,31 @@
             font-size: 1.2em;
         }
 
-        @media (max-width: 600px) {
-            .word-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .word {
-                padding: 10px;
-                font-size: 1.2em;
-            }
-
-            h1 {
-                font-size: 1.5em;
-                padding: 20px;
-            }
+        #initialMessage {
+            position: fixed;
+            width: 50%;
+            max-width: 400px;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border: 2px solid #000;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            color: #333;
         }
     </style>
 </head>
 
 <body>
+    <div id="initialMessage">
+        <p>Ana sayfaya dönmek için başlığa <strong>(Bağlantılı Olanları Bul)</strong> tıklayınız.</p>
+        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    </div>
     <h1 id="title">Bağlantılı Olanları Bul</h1>
     <div class="word-grid" id="wordGrid"></div>
     <div id="message"></div>
@@ -267,6 +281,10 @@
         }
 
         document.getElementById('newGameBtn').addEventListener('click', resetGame);
+
+        document.addEventListener('click', () => {
+            document.getElementById('initialMessage').style.display = 'none';
+        });
 
         createWordGrid();
     </script>

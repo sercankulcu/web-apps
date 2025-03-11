@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Bal Peteği Oyunu - Türkçe Kelime Bulmaca Oyunu</title>
-    
-    <meta name="description" content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
-    <meta name="keywords" content="bal peteği, kelime oyunu, türkçe kelime bulmaca, kelime dağarcığı, zeka oyunu, tr, türkçe, oyun">
+
+    <meta name="description"
+        content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
+    <meta name="keywords"
+        content="bal peteği, kelime oyunu, türkçe kelime bulmaca, kelime dağarcığı, zeka oyunu, tr, türkçe, oyun">
     <meta name="author" content="Sercan/Dorukdayım">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dorukdayim.netlify.app/spellbee.html">
@@ -15,7 +17,8 @@
     <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
     <meta property="og:title" content="Bal Peteği Oyunu - Türkçe Kelime Bulmaca">
-    <meta property="og:description" content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
+    <meta property="og:description"
+        content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
     <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
     <meta property="og:url" content="https://dorukdayim.netlify.app/spellbee.html">
     <meta property="og:type" content="game">
@@ -26,7 +29,8 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bal Peteği Oyunu - Türkçe Kelime Bulmaca">
-    <meta name="twitter:description" content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
+    <meta name="twitter:description"
+        content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
     <meta name="twitter:image:alt" content="Bal Peteği Türkçe kelime bulmaca oyunu resmi" />
 
@@ -131,10 +135,32 @@
             font-size: 3vh;
             font-weight: bold;
         }
+
+        #initialMessage {
+            position: fixed;
+            width: 50%;
+            max-width: 400px;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border: 2px solid #000;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            color: #333;
+        }
     </style>
 </head>
 
 <body>
+    <div id="initialMessage">
+        <p>Ana sayfaya dönmek için başlığa <strong>(Bal Peteği)</strong> tıklayınız.</p>
+        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    </div>
     <h1 id="title">Bal Peteği</h1>
     <div id="score">Skor: 0</div>
     <div class="hive"></div>
@@ -236,7 +262,7 @@
                 updateScore();
                 setTimeout(startNewGame, 2000);
             } else {
-                message.textContent = `😔 Maalesef "${currentWord}" geçerli bir kelime değil!`;
+                message.textContent = `😔 Üzgünüm!\n "${currentWord}" geçerli bir kelime değil!`;
             }
             currentWord = '';
 
@@ -299,6 +325,10 @@
         document.getElementById('newGameBtn').addEventListener('click', startNewGame);
         document.getElementById('shuffleBtn').addEventListener('click', shuffleLetters);
         document.getElementById('submitBtn').addEventListener('click', submitWord);
+
+        document.addEventListener('click', () => {
+            document.getElementById('initialMessage').style.display = 'none';
+        });
 
         initialize();
         createHive();
