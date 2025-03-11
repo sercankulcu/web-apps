@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr, en">
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
@@ -249,6 +249,11 @@
             <button id="installPWA" style="display: none;" data-i18n="install">🚀 Yükle</button>
             <button id="signInBtn" style="display: none;" data-i18n="signIn">✅ Giriş</button>
             <button id="signOutBtn" style="display: none;" data-i18n="signOut">❌ Çıkış</button>
+            <button id="profileBtn" style="display: none;">👤 Profil</button>
+            <button id="shareBtn">🔗 Davet</button>
+            <button id="installPWA" style="display: none;">🚀 Yükle</button>
+            <button id="signInBtn" style="display: none;">✅ Giriş</button>
+            <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
             <button id="menuBtn" style="width: auto;">☰</button>
         </header>
         <main>
@@ -269,6 +274,19 @@
             <button id="mathmasterButton" data-i18n="mathMaster"><span></span> <br>MATEMAT <br>USTA</button>
             <button id="millionaireButton" data-i18n="millionaire"><span></span> <br>MILYONER <br>OL</button>
             <button id="tictactoeButton" data-i18n="ticTacToe"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
+            <button id="hangmanButton"><span>😵🪜</span> <br>ADAM <br>ASMACA</button>
+            <button id="flagquizButton"><span>🚩</span> <br>BAYRAK <br>TESTİ</button>
+            <button id="besharfButton"><span>🟩🟨</span> <br>BEŞ <br>HARF</button>
+            <button id="altiharfButton"><span>🟩🟨</span> <br>ALTI <br>HARF</button>
+            <button id="spellbeeButton"><span>🐝</span> <br>BAL <br>PETEĞİ</button>
+            <button id="birkelimeButton"><span>🔤</span> <br>BİR <br>KELİME</button>
+            <button id="connectionsButton"><span>🔗</span> <br>BAĞLANTI <br>BUL</button>
+            <button id="strandsButton"><span>🔍</span> <br>KELİME <br>BUL</button>
+            <button id="memoryButton"><span>🎴</span> <br>HAFIZA <br>OYUNU</button>
+            <button id="matematustaButton"><span>🧮</span> <br>MATEMAT <br>USTA</button>
+            <button id="milyonerButton"><span>💰</span> <br>MILYONER <br>OL</button>
+            <button id="tictactoeButton"><span>❌⭕❌</span> <br>TİK TAK <br>TOO</button>
+
         </div>
         <footer>
             <p data-i18n="allRightsReserved">&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
@@ -384,16 +402,16 @@
         document.getElementById("flagquizButton").addEventListener('click', function () {
             loadPage("flagquiz.html");
         });
-        document.getElementById("fivelettersButton").addEventListener('click', function () {
+        document.getElementById("besharfButton").addEventListener('click', function () {
             loadPage("fiveletters.html");
         });
-        document.getElementById("sixlettersButton").addEventListener('click', function () {
+        document.getElementById("altiharfButton").addEventListener('click', function () {
             loadPage("sixletters.html");
         });
         document.getElementById("spellbeeButton").addEventListener('click', function () {
             loadPage("spellbee.html");
         });
-        document.getElementById("onewordButton").addEventListener('click', function () {
+        document.getElementById("birkelimeButton").addEventListener('click', function () {
             loadPage("oneword.html");
         });
         document.getElementById("connectionsButton").addEventListener('click', function () {
@@ -405,10 +423,10 @@
         document.getElementById("memoryButton").addEventListener('click', function () {
             loadPage("memory.html");
         });
-        document.getElementById("mathmasterButton").addEventListener('click', function () {
+        document.getElementById("matematustaButton").addEventListener('click', function () {
             loadPage("mathmaster.html");
         });
-        document.getElementById("millionaireButton").addEventListener('click', function () {
+        document.getElementById("milyonerButton").addEventListener('click', function () {
             loadPage("millionaire.html");
         });
         document.getElementById("tictactoeButton").addEventListener('click', function () {
