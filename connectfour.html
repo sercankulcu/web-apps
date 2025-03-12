@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Dörtlü Yap Oyunu - DorukDayım</title>
+
+  <meta name="description"
+    content="Dörtlü Yap oyunu ile zekanızı ve strateji yeteneklerinizi test edin. Rakibinizi yenmek için dörtlü kombinasyonlar oluşturun.">
+  <meta name="keywords"
+    content="dörtlü yap, zeka oyunu, strateji oyunu, bağlantı oyunu, dorukdayım, eğitim oyunu, masa oyunu">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/connectfour.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="https://dorukdayim.netlify.app/icons/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Dörtlü Yap Oyunu - DorukDayım">
+  <meta property="og:description"
+    content="Dörtlü Yap oyunu ile zekanızı ve strateji yeteneklerinizi test edin. Rakibinizi yenmek için dörtlü kombinasyonlar oluşturun.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png">
+  <meta property="og:url" content="https://dorukdayim.netlify.app/connectfour.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="DorukDayım">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dörtlü Yap Oyunu - DorukDayım">
+  <meta name="twitter:description"
+    content="Dörtlü Yap oyunu ile zekanızı ve strateji yeteneklerinizi test edin. Rakibinizi yenmek için dörtlü kombinasyonlar oluşturun.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png">
+  <meta name="twitter:image:alt" content="DorukDayım Dörtlü Yap Oyunu resmi">
+
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <style>
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
+
+    .board {
+      display: inline-grid;
+      grid-template-columns: repeat(7, 6vh);
+      grid-gap: 5px;
+      background-color: #0066cc;
+      padding: 1vh;
+      border-radius: 1vh;
+    }
+
+    .cell {
+      width: 6vh;
+      height: 6vh;
+      background-color: white;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .red {
+      background-color: #ff4136;
+    }
+
+    .yellow {
+      background-color: #ffdc00;
+    }
+
+    #message {
+      font-size: 1.5rem;
+      padding: 2vh;
+    }
+
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
+
+    #initialMessage label {
+      font-size: 1.2rem;
+      margin-right: 10px;
+    }
+
+    #difficultySelect {
+      font-size: 1rem;
+      font-family: inherit;
+      border-radius: 5px;
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Dörtlü Yap)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    <label>Seç: </label>
+    <select id="difficultySelect">
+      <option value="medium" selected>Zorluk</option>
+      <option value="easy">Kolay</option>
+      <option value="medium">Orta</option>
+      <option value="hard">Zor</option>
+    </select>
+  </div>
+  <div class="game-container">
+    <h1 id="title">Dörtlü Yap</h1>
+    <div id="message">Sıra sende! Bir sütuna tıkla.</div>
+    <div class="board" id="board"></div>
+  </div>
+  <script>
+    const board = document.getElementById('board');
+    const message = document.getElementById('message');
+    const difficultySelect = document.getElementById('difficultySelect');
+    let gameBoard = Array(6).fill().map(() => Array(7).fill(0));
+    let currentPlayer = 1;
+    let gameOver = false;
+
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    function createBoard() {
+      gameBoard = Array(6).fill().map(() => Array(7).fill(0));
+      currentPlayer = 1;
+      gameOver = false;
+      board.innerHTML = '';
+      for (let row = 5; row >= 0; row--) {
+        for (let col = 0; col < 7; col++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.col = col;
+          board.appendChild(cell);
+        }
+      }
+    }
+
+    function dropPiece(col) {
+      if (gameOver) return;
+      for (let row = 0; row < 6; row++) {
+        if (gameBoard[row][col] === 0) {
+          gameBoard[row][col] = currentPlayer;
+          updateBoard();
+          if (checkWin(row, col)) {
+            gameOver = true;
+            message.textContent = currentPlayer === 1 ? "Kazandın!" : "Bilgisayar kazandı!";
+            setTimeout(() => {
+              document.getElementById('initialMessage').style.display = 'block';
+            }, 2000);
+          } else if (checkDraw()) {
+            gameOver = true;
+            message.textContent = "Berabere!";
+            setTimeout(() => {
+              document.getElementById('initialMessage').style.display = 'block';
+            }, 2000);
+          } else {
+            currentPlayer = 3 - currentPlayer;
+            if (currentPlayer === 2) {
+              setTimeout(computerMove, 500);
+            } else {
+              message.textContent = "Sıra sende!";
+            }
+          }
+          return;
+        }
+      }
+    }
+
+    function updateBoard() {
+      const cells = document.querySelectorAll('.cell');
+      for (let row = 0; row < 6; row++) {
+        for (let col = 0; col < 7; col++) {
+          const index = (5 - row) * 7 + col;
+          cells[index].className = 'cell' + (gameBoard[row][col] === 1 ? ' red' : gameBoard[row][col] === 2 ? ' yellow' : '');
+        }
+      }
+    }
+
+    function checkWin(row, col) {
+      const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
+      for (let [dx, dy] of directions) {
+        let count = 1;
+        for (let i = 1; i <= 3; i++) {
+          const newRow = row + i * dx;
+          const newCol = col + i * dy;
+          if (newRow < 0 || newRow >= 6 || newCol < 0 || newCol >= 7 || gameBoard[newRow][newCol] !== currentPlayer) break;
+          count++;
+        }
+        for (let i = 1; i <= 3; i++) {
+          const newRow = row - i * dx;
+          const newCol = col - i * dy;
+          if (newRow < 0 || newRow >= 6 || newCol < 0 || newCol >= 7 || gameBoard[newRow][newCol] !== currentPlayer) break;
+          count++;
+        }
+        if (count >= 4) return true;
+      }
+      return false;
+    }
+
+    function checkDraw() {
+      return gameBoard.every(row => row.every(cell => cell !== 0));
+    }
+
+    function evaluateBoard(board) {
+      let score = 0;
+      // Horizontal
+      for (let row = 0; row < 6; row++) {
+        for (let col = 0; col < 4; col++) {
+          score += evaluateWindow(board[row].slice(col, col + 4));
+        }
+      }
+      // Vertical
+      for (let col = 0; col < 7; col++) {
+        for (let row = 0; row < 3; row++) {
+          const window = [board[row][col], board[row + 1][col], board[row + 2][col], board[row + 3][col]];
+          score += evaluateWindow(window);
+        }
+      }
+      // Diagonal (positive slope)
+      for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 4; col++) {
+          const window = [board[row][col], board[row + 1][col + 1], board[row + 2][col + 2], board[row + 3][col + 3]];
+          score += evaluateWindow(window);
+        }
+      }
+      // Diagonal (negative slope)
+      for (let row = 3; row < 6; row++) {
+        for (let col = 0; col < 4; col++) {
+          const window = [board[row][col], board[row - 1][col + 1], board[row - 2][col + 2], board[row - 3][col + 3]];
+          score += evaluateWindow(window);
+        }
+      }
+      return score;
+    }
+
+    function evaluateWindow(window) {
+      const computerCount = window.filter(cell => cell === 2).length;
+      const playerCount = window.filter(cell => cell === 1).length;
+      const emptyCount = window.filter(cell => cell === 0).length;
+
+      if (computerCount === 4) return 100;
+      if (playerCount === 4) return -100;
+      if (computerCount === 3 && emptyCount === 1) return 5;
+      if (playerCount === 3 && emptyCount === 1) return -5;
+      if (computerCount === 2 && emptyCount === 2) return 2;
+      if (playerCount === 2 && emptyCount === 2) return -2;
+      return 0;
+    }
+
+    function minimax(board, depth, alpha, beta, isMaximizing) {
+      if (depth === 0) return evaluateBoard(board);
+
+      const validColumns = getValidColumns(board);
+      if (validColumns.length === 0) return 0;
+
+      if (isMaximizing) {
+        let maxEval = -Infinity;
+        for (let col of validColumns) {
+          const row = getNextOpenRow(board, col);
+          board[row][col] = 2;
+          const eval = minimax(board, depth - 1, alpha, beta, false);
+          board[row][col] = 0;
+          maxEval = Math.max(maxEval, eval);
+          alpha = Math.max(alpha, eval);
+          if (beta <= alpha) break;
+        }
+        return maxEval;
+      } else {
+        let minEval = Infinity;
+        for (let col of validColumns) {
+          const row = getNextOpenRow(board, col);
+          board[row][col] = 1;
+          const eval = minimax(board, depth - 1, alpha, beta, true);
+          board[row][col] = 0;
+          minEval = Math.min(minEval, eval);
+          beta = Math.min(beta, eval);
+          if (beta <= alpha) break;
+        }
+        return minEval;
+      }
+    }
+
+    function getValidColumns(board) {
+      return board[5].map((cell, index) => cell === 0 ? index : null).filter(col => col !== null);
+    }
+
+    function getNextOpenRow(board, col) {
+      for (let row = 0; row < 6; row++) {
+        if (board[row][col] === 0) return row;
+      }
+      return -1;
+    }
+
+    function computerMove() {
+      if (gameOver) return;
+      let bestScore = -Infinity;
+      let bestCol = 0;
+      const validColumns = getValidColumns(gameBoard);
+
+      const difficulty = difficultySelect.value;
+      const depth = difficulty === 'easy' ? 2 : difficulty === 'medium' ? 4 : 6;
+
+      for (let col of validColumns) {
+        const row = getNextOpenRow(gameBoard, col);
+        gameBoard[row][col] = 2;
+        let score = minimax(gameBoard, depth, -Infinity, Infinity, false);
+        gameBoard[row][col] = 0;
+        if (score > bestScore) {
+          bestScore = score;
+          bestCol = col;
+        }
+      }
+      dropPiece(bestCol);
+    }
+
+    board.addEventListener('click', (e) => {
+      if (gameOver || currentPlayer !== 1) return;
+
+      let rect = board.getBoundingClientRect();
+      let clickX = e.clientX - rect.left;
+
+      let colWidth = rect.width / 7;
+      let col = Math.floor(clickX / colWidth);
+
+      dropPiece(col);
+    });
+
+    difficultySelect.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    document.getElementById('initialMessage').addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+      createBoard();
+    });
+  </script>
+</body>
+
+</html>
