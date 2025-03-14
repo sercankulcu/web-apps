@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sudoku Oyunu - DorukDayım</title>
+
+  <meta name="description"
+    content="Sudoku oyunu ile zekanızı ve problem çözme yeteneklerinizi test edin. Farklı zorluk seviyeleriyle eğlenceli bir bulmaca deneyimi yaşayın.">
+  <meta name="keywords"
+    content="sudoku, zeka oyunu, bulmaca, strateji oyunu, dorukdayım, eğitim oyunu, matematik oyunu">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://dorukdayim.netlify.app/sudoku.html">
+
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="https://dorukdayim.netlify.app/icons/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Sudoku Oyunu - DorukDayım">
+  <meta property="og:description"
+    content="Sudoku oyunu ile zekanızı ve problem çözme yeteneklerinizi test edin. Farklı zorluk seviyeleriyle eğlenceli bir bulmaca deneyimi yaşayın.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png">
+  <meta property="og:url" content="https://dorukdayim.netlify.app/sudoku.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="DorukDayım">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sudoku Oyunu - DorukDayım">
+  <meta name="twitter:description"
+    content="Sudoku oyunu ile zekanızı ve problem çözme yeteneklerinizi test edin. Farklı zorluk seviyeleriyle eğlenceli bir bulmaca deneyimi yaşayın.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png">
+  <meta name="twitter:image:alt" content="DorukDayım Sudoku Oyunu resmi">
+
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <style>
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 480px;
+    }
+
+    .container {
+      width: 95%;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 1vh;
+      margin-bottom: 2vh;
+    }
+
+    #sudoku-grid {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 2px;
+      margin-bottom: 2vh;
+    }
+
+    .cell {
+      aspect-ratio: 7 / 6;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5vh;
+      cursor: pointer;
+    }
+
+    .cell:nth-child(3n) {
+      border-right: 2px solid #333;
+    }
+
+    .cell:nth-child(9n + 1) {
+      border-left: 2px solid #333;
+    }
+
+    .cell:nth-child(-n + 9) {
+      border-top: 2px solid #333;
+    }
+
+    .cell:nth-child(n+19):nth-child(-n+27),
+    .cell:nth-child(n+46):nth-child(-n+54),
+    .cell:nth-child(n+73):nth-child(-n+81) {
+      border-bottom: 2px solid #333;
+    }
+
+    .fixed {
+      background-color: #f0f0f0;
+      cursor: not-allowed;
+    }
+
+    .selected {
+      background-color: #e6f3ff;
+    }
+
+    .error {
+      color: red;
+    }
+
+    button {
+      border: none;
+      color: white;
+      padding: 1vh 2vh;
+      text-align: center;
+      font-size: 2.2vh;
+      border-radius: 5px;
+    }
+
+    #number-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    #number-pad button {
+      background-color: #008CBA;
+      font-size: 2vh;
+    }
+
+    #difficultySelect {
+      font-size: 1rem;
+      font-family: inherit;
+      border-radius: 5px;
+      border: 1px solid #333;
+    }
+
+    .modal {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
+
+    #initialMessage {
+      position: fixed;
+      width: 60%;
+      max-width: 400px;
+      height: 60%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Sudoku)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    <label>Seç: </label>
+    <select id="difficultySelect">
+      <option value="30" selected>Zorluk</option>
+      <option value="15">Kolay</option>
+      <option value="30">Orta</option>
+      <option value="45">Zor</option>
+    </select>
+  </div>
+  <div class="container">
+    <h1 id="title">Sudoku</h1>
+    <div id="sudoku-grid" role="grid" aria-label="Sudoku puzzle grid"></div>
+    <div id="number-pad">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+    </div>
+  </div>
+  <div id="winModal" class="modal">
+    <h2 id="winMessage"></h2>
+    <p>Ana sayfaya dönmek için başlığa <strong>(Sudoku)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    <label>Seç: </label>
+    <select id="difficultySelect">
+      <option value="30" selected>Zorluk</option>
+      <option value="15">Kolay</option>
+      <option value="30">Orta</option>
+      <option value="45">Zor</option>
+    </select>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+  <script>
+    const grid = document.getElementById('sudoku-grid');
+    const numberPad = document.getElementById('number-pad');
+    const difficultySelect = document.getElementById('difficultySelect');
+
+    let selectedCell = null;
+    let puzzle = [];
+
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    function createGrid() {
+      grid.innerHTML = '';
+      for (let i = 0; i < 9; i++) {
+        for (let j = 0; j < 9; j++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.dataset.row = i;
+          cell.dataset.col = j;
+          cell.addEventListener('click', selectCell);
+          grid.appendChild(cell);
+        }
+      }
+    }
+
+    function selectCell(e) {
+      if (selectedCell) {
+        selectedCell.classList.remove('selected');
+      }
+      selectedCell = e.target;
+      selectedCell.classList.add('selected');
+    }
+
+    function fillNumber(e) {
+      if (selectedCell && !selectedCell.classList.contains('fixed')) {
+        const row = parseInt(selectedCell.dataset.row);
+        const col = parseInt(selectedCell.dataset.col);
+        const number = parseInt(e.target.textContent);
+
+        selectedCell.classList.remove('error');
+        selectedCell.textContent = number;
+        puzzle[row][col] = number;
+
+        if (!isValid(puzzle, row, col, number)) {
+          selectedCell.classList.add('error'); // Hata durumunda kırmızı yap
+        }
+
+        if (isGridFull()) {
+          checkSolution();
+        }
+      }
+    }
+
+    function isGridFull() {
+      const cells = document.querySelectorAll('.cell');
+      return Array.from(cells).every(cell => cell.textContent !== '');
+    }
+
+    function generatePuzzle() {
+      puzzle = Array(9).fill().map(() => Array(9).fill(0));
+
+      for (let i = 0; i < 9; i += 3) {
+        fillBox(i, i);
+      }
+
+      solveSudoku(puzzle);
+
+      let emptyCellsCount = parseInt(difficultySelect.value);
+      console.log(emptyCellsCount, difficultySelect.value);
+      for (let i = 0; i < emptyCellsCount;) {
+        let row = Math.floor(Math.random() * 9);
+        let col = Math.floor(Math.random() * 9);
+        if (puzzle[row][col] != 0) {
+          puzzle[row][col] = 0;
+          i++;
+        }
+      }
+    }
+
+    function fillBox(row, col) {
+      let num;
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          do {
+            num = Math.floor(Math.random() * 9) + 1;
+          } while (!isValid(puzzle, row + i, col + j, num));
+          puzzle[row + i][col + j] = num;
+        }
+      }
+    }
+
+    function isValid(board, row, col, num) {
+      for (let x = 0; x < 9; x++) {
+        if (x != col && board[row][x] == num) {
+          return false;
+        }
+        if (x != row && board[x][col] == num) {
+          return false;
+        }
+      }
+
+      let startRow = row - row % 3,
+        startCol = col - col % 3;
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          if ((row != i + startRow) && (col != j + startCol) && board[i + startRow][j + startCol] == num) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    }
+
+    function solveSudoku(board) {
+      for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+          if (board[row][col] === 0) {
+            for (let num = 1; num <= 9; num++) {
+              if (isValid(board, row, col, num)) {
+                board[row][col] = num;
+                if (solveSudoku(board)) {
+                  return true;
+                } else {
+                  board[row][col] = 0;
+                }
+              }
+            }
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function displayPuzzle() {
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach((cell, index) => {
+        const row = Math.floor(index / 9);
+        const col = index % 9;
+        const value = puzzle[row][col];
+        cell.textContent = value || '';
+        cell.classList.toggle('fixed', value !== 0);
+      });
+    }
+
+    function checkSolution() {
+      const cells = document.querySelectorAll('.cell');
+      let correct = true;
+      cells.forEach((cell, index) => {
+        const row = Math.floor(index / 9);
+        const col = index % 9;
+        const value = parseInt(cell.textContent) || 0;
+        if (!isValid(puzzle, row, col, value)) {
+          cell.classList.add('error');
+          correct = false;
+        } else {
+          cell.classList.remove('error');
+        }
+      });
+      if (correct) {
+        document.getElementById("winMessage").innerText = `Tebrikler!\nKazandınız!\n`;
+        document.getElementById("winModal").style.display = "block";
+      }
+    }
+
+    function newGame() {
+      createGrid();
+      generatePuzzle();
+      displayPuzzle();
+    }
+
+    numberPad.addEventListener('click', fillNumber);
+
+    document.getElementById("winModal").style.display = "none";
+
+    document.getElementById('initialMessage').addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+      newGame();
+    });
+
+    difficultySelect.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    document.getElementById('winModal').addEventListener('click', () => {
+      document.getElementById('winModal').style.display = "none";
+      newGame();
+    });
+  </script>
+</body>
+
+</html>

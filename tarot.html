@@ -1,0 +1,359 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tarot Okuyucu - DorukDayım</title>
+
+  <meta name="description"
+    content="DorukDayım'ın Tarot Okuyucusu ile geleceğinizi keşfedin. Üç kart seçin ve anlamlarını öğrenin. Aşk, iş ve daha fazlası hakkında kehanetler.">
+  <meta name="keywords"
+    content="tarot, tarot okuyucu, fal, kehanet, dorukdayım, kart okuma, aşk falı, iş falı, gelecek falı">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/tarot.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="https://dorukdayim.netlify.app/icons/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Tarot Okuyucu - DorukDayım">
+  <meta property="og:description"
+    content="DorukDayım'ın Tarot Okuyucusu ile geleceğinizi keşfedin. Üç kart seçin ve anlamlarını öğrenin. Aşk, iş ve daha fazlası hakkında kehanetler.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png">
+  <meta property="og:url" content="https://dorukdayim.netlify.app/tarot.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="DorukDayım">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tarot Okuyucu - DorukDayım">
+  <meta name="twitter:description"
+    content="DorukDayım'ın Tarot Okuyucusu ile geleceğinizi keşfedin. Üç kart seçin ve anlamlarını öğrenin. Aşk, iş ve daha fazlası hakkında kehanetler.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png">
+  <meta name="twitter:image:alt" content="DorukDayım Tarot Okuyucu resmi">
+
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
+
+    #card-container {
+      display: flex;
+      flex: nowrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px;
+    }
+
+    .card {
+      width: 27vw;
+      max-width: 180px;
+      height: 48vw;
+      max-height: 320px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      perspective: 600px;
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    .card-front {
+      background-size: cover;
+      background-position: center;
+      color: transparent;
+      transform: rotateY(180deg);
+    }
+
+    .card-back {
+      background-image: url('https://sercankulcu.github.io/game/tarot/tarot-card-back.jpg');
+      background-size: cover;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    #reading {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 10px 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    #language-select {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .language-flag {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .language-flag.active {
+      border-color: #4CAF50;
+    }
+
+    .share-buttons {
+      margin-top: 6vh;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .share-buttons i {
+      font-size: calc(2vh + 20px);
+      vertical-align: middle;
+    }
+
+    #card-meanings {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Tarot Okuyucu)</strong> tıklayınız.</p>
+    <p>Falınıza bakmak için herhangi bir yere tıklayınız.</p>
+    <p>Üç tane kart seçiniz.</p>
+  </div>
+  <div class="container">
+    <h1 id="title">Tarot Okuyucu</h1>
+    <div id="language-select">
+      <img src="https://flagcdn.com/w40/tr.png" alt="Türkçe" class="language-flag active" data-lang="tr">
+      <img src="https://flagcdn.com/w40/gb.png" alt="English" class="language-flag" data-lang="en">
+      <img src="https://flagcdn.com/w40/es.png" alt="Español" class="language-flag" data-lang="es">
+      <img src="https://flagcdn.com/w40/fr.png" alt="Français" class="language-flag" data-lang="fr">
+      <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="language-flag" data-lang="de">
+      <img src="https://flagcdn.com/w40/it.png" alt="Italiano" class="language-flag" data-lang="it">
+    </div>
+
+    <div id="card-container"></div>
+    <div id="reading"></div>
+
+    <div class="share-buttons">
+      <button id="native-share" aria-label="Share fortune natively" title="Share Natively">
+        <i class="fas fa-share-alt"></i>
+      </button>
+      <button id="twitter-share" aria-label="Share fortune on Twitter" title="Share on Twitter">
+        <i class="fab fa-twitter"></i>
+      </button>
+      <button id="whatsapp-share" aria-label="Share fortune on WhatsApp" title="Share on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </button>
+      <button id="facebook-share" aria-label="Share fortune on Facebook" title="Share on Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+
+    import { positions, modes, tarotDeck, cardMeanings, translations } from 'https://sercankulcu.github.io/game/tarot/tarot.js';
+
+    let currentLanguage = 'tr';
+    let drawnCards = [];
+    let drawnCardsClicked = [];
+
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    function drawCards() {
+      const cardContainer = document.getElementById('card-container');
+      const reading = document.getElementById('reading');
+      cardContainer.innerHTML = '';
+      reading.innerHTML = '';
+
+      drawnCards = [];
+      for (let i = 0; i < 3; i++) {
+        const randomIndex = Math.floor(Math.random() * tarotDeck['en'].length);
+        const card = tarotDeck['en'][randomIndex];
+        drawnCards.push(card);
+
+        const cardElement = document.createElement('div');
+        cardElement.className = 'card';
+        cardElement.innerHTML = `
+            <div class="card-front"></div>
+            <div class="card-back"></div>
+        `;
+        cardElement.querySelector('.card-front').style.backgroundImage = `url(https://sercankulcu.github.io/game/tarot/${card.toLowerCase().replace(/ /g, '-')}.jpg)`;
+        cardElement.addEventListener('click', () => flipCard(cardElement, card));
+        cardContainer.appendChild(cardElement);
+      }
+
+      reading.textContent = translations[currentLanguage].clickToReveal;
+    }
+
+    function flipCard(cardElement, card) {
+      if (!cardElement.classList.contains('flipped')) {
+        cardElement.classList.add('flipped');
+        drawnCardsClicked.push(card);
+        updateReading(card);
+      }
+    }
+
+    function updateReading(card) {
+      const reading = document.getElementById('reading');
+      const flippedCards = document.querySelectorAll('.card.flipped');
+
+      if (flippedCards.length === 1) {
+        reading.innerHTML = '';
+      }
+
+      if (flippedCards.length > 0) {
+        reading.innerHTML += `<h3><center>${positions[currentLanguage][flippedCards.length - 1]} </center></h3>`;
+        reading.innerHTML += `<p><strong>${card}:</strong> ${cardMeanings[card][currentLanguage][modes[flippedCards.length - 1]]}</p>`;
+      }
+    }
+
+    function updateReadingLanguage() {
+      const reading = document.getElementById('reading');
+      const flippedCards = document.querySelectorAll('.card.flipped');
+
+      if (flippedCards.length > 0) {
+        reading.innerHTML = '';
+        drawnCardsClicked.forEach((card, index) => {
+          reading.innerHTML += `<h3><center>${positions[currentLanguage][index]} </center></h3>`;
+          reading.innerHTML += `<p><strong>${card}:</strong> ${cardMeanings[card][currentLanguage][modes[index]]}</p>`;
+        });
+      }
+    }
+
+    function shareOnTwitter() {
+      const reading = document.getElementById('reading').textContent;
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(reading)}&url=https://dorukdayim.netlify.app/tarot.html&hashtags=tarot`;
+      window.open(twitterUrl, '_blank');
+    }
+
+    function shareOnWhatsApp() {
+      const reading = document.getElementById('reading').textContent;
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(reading)}%20https://dorukdayim.netlify.app/tarot.html`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    function shareOnFacebook() {
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://dorukdayim.netlify.app/tarot.html`;
+      window.open(facebookUrl, '_blank');
+    }
+
+    function shareNative() {
+      const reading = document.getElementById('reading').textContent;
+      const shareData = {
+        title: 'My Daily Fortune from Tarot Reader',
+        text: reading,
+        url: 'https://dorukdayim.netlify.app/tarot.html'
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData)
+          .then(() => console.log('Fortune shared successfully!'))
+          .catch((err) => {
+            console.error('Error sharing: ', err);
+            alert('Failed to share natively. Try another option!');
+          });
+      } else {
+        alert('Native sharing is not supported on this device/browser. Try another sharing option!');
+      }
+    }
+
+    function updateLanguage(lang) {
+      currentLanguage = lang;
+      document.getElementById('title').textContent = translations[currentLanguage].title;
+
+      document.querySelectorAll('.language-flag').forEach(flag => {
+        flag.classList.remove('active');
+        if (flag.dataset.lang === lang) {
+          flag.classList.add('active');
+        }
+      });
+
+      const reading = document.getElementById('reading');
+      reading.textContent = translations[currentLanguage].clickToReveal;
+
+      updateReadingLanguage();
+    }
+
+    document.querySelectorAll('.language-flag').forEach(flag => {
+      flag.addEventListener('click', () => updateLanguage(flag.dataset.lang));
+    });
+
+    document.getElementById('native-share').addEventListener('click', shareNative);
+    document.getElementById('twitter-share').addEventListener('click', shareOnTwitter);
+    document.getElementById('whatsapp-share').addEventListener('click', shareOnWhatsApp);
+    document.getElementById('facebook-share').addEventListener('click', shareOnFacebook);
+
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
+
+    updateLanguage('tr');
+    drawCards();
+  </script>
+</body>
+
+</html>

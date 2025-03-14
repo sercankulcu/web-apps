@@ -37,6 +37,7 @@
     <meta http-equiv="Content-Language" content="tr">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <style>
         body {
             margin: 0 auto;
@@ -99,8 +100,7 @@
             text-align: center;
         }
 
-        .stats-box,
-        button {
+        .stats-box {
             display: inline-block;
             background: white;
             color: #4CAF50;
@@ -110,36 +110,23 @@
             font-weight: bold;
         }
 
-        button {
-            background: #4CAF50;
-            color: white;
-            font-size: 1.2rem;
-        }
-
         .modal {
-            display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
+            width: 50%;
+            max-width: 400px;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border: 2px solid #000;
             text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
+            z-index: 1001;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
             color: #333;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
+            border-radius: 10px;
         }
 
         #initialMessage {
@@ -178,13 +165,11 @@
         </div>
     </div>
     <div class="game-container" id="game"></div>
-    <div id="winModal" class="modal" onclick="closeModal()">
-        <div class="modal-content">
-            <p id="winMessage"></p>
-            <button onclick="startGame()">Yeni Oyun</button>
-        </div>
+    <div id="winModal" class="modal" onclick="startGame()">
+        <h2 id="winMessage"></h2>
+        <p>Ana sayfaya dönmek için başlığa <strong>(Hafıza Oyunu)</strong> tıklayınız.</p>
+        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
     </div>
-
 
     <script>
         const animalIcons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
@@ -196,7 +181,21 @@
         const natureIcons = ['🌳', '🌵', '🌻', '🍁', '🍀', '🌴', '🌾', '🌺'];
         const spaceIcons = ['🚀', '🛸', '🌍', '🌕', '🌟', '🌌', '🪐', '☄️'];
         const emojiIcons = ['😀', '😂', '😍', '😎', '😜', '😇', '😡', '🤢'];
-        const iconSets = [animalIcons, foodIcons, travelIcons, weatherIcons, sportIcons, musicIcons, natureIcons, spaceIcons, emojiIcons];
+        const gameIcons = ['🎮', '🕹', '🎲', '🃏', '🀄', '🎯', '🎳', '🎰'];
+        const letterIcons = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        const treeIcons = ['🌲', '🌳', '🌴', '🌵', '🌿', '🍀', '🍁', '🍂'];
+        const flowerIcons = ['🌺', '🌻', '🌼', '🌷', '🌹', '🥀', '🌸', '💐'];
+        const fruitIcons = ['🍎', '🍏', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇'];
+        const vegetableIcons = ['🍆', '🥒', '🥦', '🌶', '🌽', '🥕', '🥔', '🍠'];
+        const numberIcons = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣'];
+        const shapeIcons = ['🔵', '🔴', '🟡', '🟢', '🟣', '🟠', '🟤', '⚫'];
+        const symbolIcons = ['❤️', '💛', '💚', '💙', '💜', '🖤', '🤍', '🧡'];
+        const handIcons = ['👍', '👎', '👌', '👊', '✊', '🤞', '🤟', '🤘'];
+        const arrowIcons = ['⬆️', '↗️', '➡️', '↘️', '⬇️', '↙️', '⬅️', '↖️'];
+
+        const iconSets = [animalIcons, foodIcons, travelIcons, weatherIcons, sportIcons, musicIcons,
+            natureIcons, spaceIcons, emojiIcons, gameIcons, letterIcons, treeIcons, flowerIcons, fruitIcons,
+            vegetableIcons, numberIcons, shapeIcons, symbolIcons, handIcons, arrowIcons];
         let flippedCards = [];
         let moves = 0;
         let time = 0;
@@ -287,8 +286,8 @@
         }
 
         function showWinModal() {
-            document.getElementById("winMessage").innerText = `Tebrikler!\nKazandınız!\nHamle: ${moves}\nSüre: ${time}s`;
-            document.getElementById("winModal").style.display = "flex";
+            document.getElementById("winMessage").innerText = `Tebrikler!\nKazandınız!\n\nHamle: ${moves} Süre: ${time}s`;
+            document.getElementById("winModal").style.display = "block";
             saveHighScore("Hafıza Oyunu", 200 - moves * 2 - time);
         }
 

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mistik Falcı - Günlük Fal Oyunu | DorukDayım</title>
+
+  <meta name="description"
+    content="Mistik Falcı ile günlük falınızı keşfedin! Türkçe ve eğlenceli bir fal oyunu ile şansınızı görün ve zekanızı test edin. DorukDayım'dan ücretsiz oynayın!">
+  <meta name="keywords"
+    content="mistik falcı, günlük fal, fal oyunu, türkçe fal, zeka oyunu, dorukdayım, şans oyunu, kristal küre">
+  <meta name="author" content="Sercan Kulcu - DorukDayım">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://dorukdayim.netlify.app/fortuneteller.html">
+
+  <meta name="theme-color" content="#acf">
+  <link rel="icon" href="https://dorukdayim.netlify.app/icons/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="Mistik Falcı - Günlük Fal Oyunu | DorukDayım">
+  <meta property="og:description"
+    content="Mistik Falcı ile günlük falınızı keşfedin! Türkçe ve eğlenceli bir fal oyunu ile şansınızı görün ve zekanızı test edin.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png">
+  <meta property="og:url" content="https://dorukdayim.netlify.app/fortuneteller.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="DorukDayım">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mistik Falcı - Günlük Fal Oyunu | DorukDayım">
+  <meta name="twitter:description"
+    content="Mistik Falcı ile günlük falınızı keşfedin! Türkçe ve eğlenceli bir fal oyunu ile şansınızı görün.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x630.png">
+  <meta name="twitter:image:alt" content="Mistik Falcı kristal küre oyunu görseli">
+
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 480px;
+    }
+
+    .fortune-teller {
+      border-radius: 15px;
+      padding-top: 4vh;
+      padding-bottom: 4vh;
+      text-align: center;
+    }
+
+    #crystal-ball {
+      width: calc(12vh + 60px);
+      height: calc(12vh + 60px);
+      background: radial-gradient(circle at 30% 30%, #acf, #58f);
+      border-radius: 50%;
+      margin: 0 auto 4vh;
+    }
+
+    #crystal-ball img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    #fortune {
+      font-style: italic;
+      color: #666;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 8vh 2vh;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      border: none;
+      font-size: calc(2vw + 8px);
+      margin: 4px 2px;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      transform: scale(1.2);
+    }
+
+    .share-buttons {
+      margin-top: 6vh;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .share-buttons i {
+      font-size: calc(2vh + 20px);
+      vertical-align: middle;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+
+      33% {
+        filter: brightness(1.5);
+      }
+
+      66% {
+        filter: brightness(2);
+      }
+
+      100% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+    }
+
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fortune-teller">
+    <div id="initialMessage">
+      <p>Click the title <strong>(Mystical Fortune Teller)</strong> to return to the main page.</p>
+      <p>Tap the crystal ball to see your daily fortune.</p>
+    </div>
+    <header>
+      <h1 id="title">Mystical Fortune Teller</h1>
+    </header>
+    <div id="crystal-ball">
+      <img src="https://sercankulcu.github.io/game/fortune-teller.webp" alt="Mystical Crystal Ball for Fortune Telling">
+    </div>
+    <p id="fortune" aria-label="Your daily fortune prediction">Tap the crystal ball to reveal your fortune...</p>
+    <div class="share-buttons">
+      <button id="native-share" aria-label="Share fortune natively" title="Share Natively">
+        <i class="fas fa-share-alt"></i>
+      </button>
+      <button id="twitter-share" aria-label="Share fortune on Twitter" title="Share on Twitter">
+        <i class="fab fa-twitter"></i>
+      </button>
+      <button id="whatsapp-share" aria-label="Share fortune on WhatsApp" title="Share on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </button>
+      <button id="facebook-share" aria-label="Share fortune on Facebook" title="Share on Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+
+    const lang = navigator.language || navigator.userLanguage;
+    const isTurkish = lang === "tr";
+
+    const translations = {
+      title: {
+        en: "Mystical Fortune Teller",
+        tr: "Mistik Falcı"
+      },
+      message: {
+        en: "Tap the crystal ball to reveal your daily fortune...",
+        tr: "Kristal küreye dokunarak günlük falınızı görün..."
+      },
+      initialMessage: {
+        en: `
+      <p>Click the title <strong>(Mystical Fortune Teller)</strong> to return to the main page.</p>
+      <p>Tap the crystal ball to see your daily fortune.</p>
+    `,
+        tr: `
+      <p>Ana sayfaya dönmek için başlığa <strong>(Mistik Falcı)</strong> tıklayınız.</p>
+      <p>Günlük falınızı görmek için küreye tıklayınız.</p>
+    `
+      }
+    };
+
+    import { fortunesTR, fortunesEN } from 'https://sercankulcu.github.io/game/fortuneteller.js';
+
+    const fortunes = isTurkish ? fortunesTR : fortunesEN;
+
+    document.getElementById('initialMessage').innerHTML = isTurkish
+      ? translations.initialMessage.tr
+      : translations.initialMessage.en;
+
+    document.getElementById('title').textContent = isTurkish ?
+      translations.title.tr : translations.title.en;
+    document.getElementById('fortune').textContent = isTurkish ?
+      translations.message.tr : translations.message.en;
+
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    function getDailyFortune() {
+      const today = new Date();
+      const day = today.getDate();
+      const month = today.getMonth() + 1; // Months are zero-indexed
+      const year = today.getFullYear();
+      const uniqueNumber = day + month * 100 + year * 10000;
+      const fortuneIndex = uniqueNumber % fortunes.length;
+      return fortunes[fortuneIndex];
+    }
+
+    function getFortune() {
+      const fortune = document.getElementById('fortune');
+      const crystalBall = document.getElementById('crystal-ball');
+
+      crystalBall.style.animation = 'pulse 0.5s';
+      fortune.style.opacity = '0';
+
+      setTimeout(() => {
+        fortune.textContent = getDailyFortune();
+        fortune.style.opacity = '1';
+        crystalBall.style.animation = '';
+      }, 500);
+    }
+
+    function shareOnTwitter() {
+      const fortuneText = document.getElementById('fortune').textContent;
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fortuneText)}&url=https://dorukdayim.netlify.app/fortuneteller.html&hashtags=fortuneteller`;
+      window.open(twitterUrl, '_blank');
+    }
+
+    function shareOnWhatsApp() {
+      const fortuneText = document.getElementById('fortune').textContent;
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(fortuneText)}%20https://dorukdayim.netlify.app/fortuneteller.html`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    function shareOnFacebook() {
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://dorukdayim.netlify.app/fortuneteller.html`;
+      window.open(facebookUrl, '_blank');
+    }
+
+    function shareNative() {
+      const fortuneText = document.getElementById('fortune').textContent;
+      const shareData = {
+        title: 'My Daily Fortune from Mystical Fortune Teller',
+        text: fortuneText,
+        url: 'https://dorukdayim.netlify.app/fortuneteller.html'
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData)
+          .then(() => console.log('Fortune shared successfully!'))
+          .catch((err) => {
+            console.error('Error sharing: ', err);
+            alert('Failed to share natively. Try another option!');
+          });
+      } else {
+        alert('Native sharing is not supported on this device/browser. Try another sharing option!');
+      }
+    }
+
+    document.getElementById('crystal-ball').addEventListener('click', getFortune);
+
+    document.getElementById('native-share').addEventListener('click', shareNative);
+    document.getElementById('twitter-share').addEventListener('click', shareOnTwitter);
+    document.getElementById('whatsapp-share').addEventListener('click', shareOnWhatsApp);
+    document.getElementById('facebook-share').addEventListener('click', shareOnFacebook);
+
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
+
+  </script>
+</body>
+
+</html>

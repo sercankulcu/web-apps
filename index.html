@@ -146,7 +146,6 @@
             position: fixed;
             z-index: 1001;
             top: 0;
-            left: max(0, 50% - 300px);
             overflow: hidden;
             transition: 0.5s;
             display: none;
@@ -273,7 +272,10 @@
             <button id="carraceButton"><span>🏎️💨</span> <br>ARABA <br>YARIŞI</button>
             <button id="connectfourButton"><span>🔴🟡</span> <br>DÖRTLÜ <br>YAP</button>
             <button id="fastreflexButton"><span>⚡⏳</span> <br>HIZLI <br>OL</button>
-
+            <button id="minesweeperButton"><span>💣</span> <br>MAYIN <br>TARLASI</button>
+            <button id="sudokuButton"><span>🔢</span> <br>SUDOKU <br>OYNA</button>
+            <button id="fortunetellerButton"><span>🔮✨</span> <br>GÜNLÜK <br>FALIM</button>
+            <button id="tarotButton"><span>🔮✨</span> <br>TAROT <br>FALIM</button>
 
         </div>
         <footer>
@@ -431,6 +433,18 @@
         });
         document.getElementById("fastreflexButton").addEventListener('click', function () {
             loadPage("fastreflex.html");
+        });
+        document.getElementById("minesweeperButton").addEventListener('click', function () {
+            loadPage("minesweeper.html");
+        });
+        document.getElementById("sudokuButton").addEventListener('click', function () {
+            loadPage("sudoku.html");
+        });
+        document.getElementById("fortunetellerButton").addEventListener('click', function () {
+            loadPage("fortuneteller.html");
+        });
+        document.getElementById("tarotButton").addEventListener('click', function () {
+            loadPage("tarot.html");
         });
 
         const signInBtn = document.getElementById("signInBtn");
