@@ -7,28 +7,38 @@
     <title id="title">DorukDayım - Eğlenceli Oyunlar</title>
 
     <meta name="theme-color" content="#f0f0f0">
-    <meta name="description" id="description">
+    <meta name="description"
+        content="DorukDayım - Baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunlar. Zeka oyunları, kelime oyunları ve daha fazlası Türkçe olarak sizleri bekliyor!">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" id="title">
 
-    <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
-    <link rel="shortcut icon" href="icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/touch-icon-180x180.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/icons/touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/icons/touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/icons/touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/icons/touch-icon-60x60.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512x512.png">
-
-    <meta property="og:title" id="title">
-    <meta property="og:description" id="description">
+    <meta property="og:title" content="DorukDayım - Eğlenceli Oyunlar">
+    <meta property="og:description"
+        content="Baba ve oğulun eğlenceli ve öğretici oyun platformu. Türkçe oyunlarla keyifli vakit geçirin!">
     <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-128x128.png" />
     <meta property="og:url" content="https://dorukdayim.netlify.app">
     <meta property="og:type" content="website">
@@ -38,8 +48,8 @@
     <meta property="og:site_name" id="title" />
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" id="title">
-    <meta name="twitter:description" id="description">
+    <meta name="twitter:title" content="DorukDayım - Eğlenceli Oyunlar">
+    <meta name="twitter:description" content="Eğlenceli ve öğretici Türkçe oyunlar DorukDayım’da!">
     <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
     <meta name="twitter:image:alt" content="DorukDayım logosu" />
 
@@ -386,65 +396,17 @@
 
         let auth, provider;
 
-        document.getElementById("hangmanButton").addEventListener('click', function () {
-            loadPage("hangman.html");
-        });
-        document.getElementById("flagquizButton").addEventListener('click', function () {
-            loadPage("flagquiz.html");
-        });
-        document.getElementById("fivelettersButton").addEventListener('click', function () {
-            loadPage("fiveletters.html");
-        });
-        document.getElementById("sixlettersButton").addEventListener('click', function () {
-            loadPage("sixletters.html");
-        });
-        document.getElementById("spellbeeButton").addEventListener('click', function () {
-            loadPage("spellbee.html");
-        });
-        document.getElementById("onewordButton").addEventListener('click', function () {
-            loadPage("oneword.html");
-        });
-        document.getElementById("connectionsButton").addEventListener('click', function () {
-            loadPage("connections.html");
-        });
-        document.getElementById("strandsButton").addEventListener('click', function () {
-            loadPage("strands.html");
-        });
-        document.getElementById("memoryButton").addEventListener('click', function () {
-            loadPage("memory.html");
-        });
-        document.getElementById("mathmasterButton").addEventListener('click', function () {
-            loadPage("mathmaster.html");
-        });
-        document.getElementById("millionaireButton").addEventListener('click', function () {
-            loadPage("millionaire.html");
-        });
-        document.getElementById("tictactoeButton").addEventListener('click', function () {
-            loadPage("tictactoe.html");
-        });
-        document.getElementById("basketballButton").addEventListener('click', function () {
-            loadPage("basketball.html");
-        });
-        document.getElementById("carraceButton").addEventListener('click', function () {
-            loadPage("carrace.html");
-        });
-        document.getElementById("connectfourButton").addEventListener('click', function () {
-            loadPage("connectfour.html");
-        });
-        document.getElementById("fastreflexButton").addEventListener('click', function () {
-            loadPage("fastreflex.html");
-        });
-        document.getElementById("minesweeperButton").addEventListener('click', function () {
-            loadPage("minesweeper.html");
-        });
-        document.getElementById("sudokuButton").addEventListener('click', function () {
-            loadPage("sudoku.html");
-        });
-        document.getElementById("fortunetellerButton").addEventListener('click', function () {
-            loadPage("fortuneteller.html");
-        });
-        document.getElementById("tarotButton").addEventListener('click', function () {
-            loadPage("tarot.html");
+        const buttonNames = [
+            "hangman", "flagquiz", "fiveletters", "sixletters", "spellbee",
+            "oneword", "connections", "strands", "memory", "mathmaster",
+            "millionaire", "tictactoe", "basketball", "carrace", "connectfour",
+            "fastreflex", "minesweeper", "sudoku", "fortuneteller", "tarot"
+        ];
+
+        buttonNames.forEach(name => {
+            document.getElementById(`${name}Button`).addEventListener('click', () => {
+                loadPage(`${name}.html`);
+            });
         });
 
         const signInBtn = document.getElementById("signInBtn");
@@ -663,84 +625,6 @@
 
         window.showMainContent = showMainContent;
 
-        function getTranslation(key) {
-            const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
-            const messages = {
-                en: {
-                    "title": "DorukDayım",
-                    "description": "Fun and educational games!",
-                    "welcome": "Welcome, {name}!",
-                    "signedOut": "Signed out!",
-                    "pleaseSignIn": "Please sign in first.",
-                    "profile": "Profile",
-                    "invite": "Invite",
-                    "install": "Install",
-                    "signIn": "Sign In",
-                    "signOut": "Sign Out",
-                    "aboutUs": "About Us",
-                    "businessPartners": "Business Partners",
-                    "privacyPolicy": "Privacy Policy",
-                    "healthSafety": "Health Safety and Environment Policy",
-                    "career": "Career",
-                    "contactUs": "Contact Us",
-                    "highScores": "High Scores",
-                    "allRightsReserved": "&copy; 2025 DorukDayım - All rights reserved.",
-                    "hangman": "Hangman",
-                    "flagQuiz": "Flag Quiz",
-                    "fiveLetters": "Five Letters",
-                    "sixLetters": "Six Letters",
-                    "spellBee": "Spell Bee",
-                    "oneWord": "One Word",
-                    "connections": "Connections",
-                    "strands": "Strands",
-                    "memoryGame": "Memory Game",
-                    "mathMaster": "Math Master",
-                    "millionaire": "Millionaire",
-                    "ticTacToe": "Tic Tac Toe"
-                },
-                tr: {
-                    "title": "DorukDayım",
-                    "description": "Eğlenceli ve öğretici oyunlar!",
-                    "welcome": "Hoş geldin, {name}!",
-                    "signedOut": "Çıkış yapıldı!",
-                    "pleaseSignIn": "Lütfen önce giriş yapın.",
-                    "profile": "Profil",
-                    "invite": "Davet",
-                    "install": "Yükle",
-                    "signIn": "Giriş",
-                    "signOut": "Çıkış",
-                    "aboutUs": "Hakkımızda",
-                    "businessPartners": "İş Ortaklarımız",
-                    "privacyPolicy": "Gizlilik Politikası",
-                    "healthSafety": "İş Sağlığı ve Güvenliği Çevre Politikamız",
-                    "career": "Kariyer",
-                    "contactUs": "İletişim",
-                    "highScores": "En Yüksek Skorlar",
-                    "allRightsReserved": "&copy; 2025 DorukDayım - Tüm hakları saklıdır.",
-                    "hangman": "Adam Asmaca",
-                    "flagQuiz": "Bayrak Testi",
-                    "fiveLetters": "Beş Harf",
-                    "sixLetters": "Altı Harf",
-                    "spellBee": "Bal Peteği",
-                    "oneWord": "Bir Kelime",
-                    "connections": "Bağlantı Bul",
-                    "strands": "Kelime Bul",
-                    "memoryGame": "Hafıza Oyunu",
-                    "mathMaster": "Matemat Usta",
-                    "millionaire": "Milyoner Ol",
-                    "ticTacToe": "❌⭕❌\nÜç \nTaş"
-                }
-            };
-            return messages[lang][key];
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                element.textContent = getTranslation(key);
-            });
-        });
     </script>
 </body>
 

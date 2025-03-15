@@ -124,6 +124,12 @@
             color: #333;
             border-radius: 10px;
         }
+
+        @media (max-width: 600px) {
+            .word-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 
@@ -180,7 +186,7 @@
             { text: 'Bursa', group: 9 }, { text: 'Adana', group: 9 }, { text: 'Eskişehir', group: 9 }, { text: 'Trabzon', group: 9 },
             { text: 'Samsun', group: 9 }, { text: 'Konya', group: 9 }, { text: 'Gaziantep', group: 9 }, { text: 'Mersin', group: 9 },
             { text: 'Diyarbakır', group: 9 }, { text: 'Malatya', group: 9 }, { text: 'Van', group: 9 }, { text: 'Şanlıurfa', group: 9 },
-            { text: 'Denizli', group: 9 }, { text: 'Muğla', group: 9 }, { text: 'Aydın', group: 9 }, { text: 'Gümüşhane', group: 9 }, 
+            { text: 'Denizli', group: 9 }, { text: 'Muğla', group: 9 }, { text: 'Aydın', group: 9 }, { text: 'Gümüşhane', group: 9 },
             { text: 'Balıkesir', group: 9 }, { text: 'Çanakkale', group: 9 }, { text: 'Kütahya', group: 9 }, { text: 'Afyon', group: 9 },
             { text: 'Kocaeli', group: 9 }, { text: 'Sakarya', group: 9 }, { text: 'Kastamonu', group: 9 }, { text: 'Karabük', group: 9 },
             { text: 'Zonguldak', group: 9 }, { text: 'Bolu', group: 9 }, { text: 'Düzce', group: 9 }, { text: 'Bartın', group: 9 },
@@ -203,19 +209,19 @@
             { text: 'Doktor', group: 11 }, { text: 'Öğretmen', group: 11 }, { text: 'Mühendis', group: 11 }, { text: 'Polis', group: 11 },
             { text: 'Avukat', group: 11 }, { text: 'Mimar', group: 11 }, { text: 'Aşçı', group: 11 }, { text: 'Hemşire', group: 11 },
             { text: 'Pilot', group: 11 }, { text: 'Astronot', group: 11 }, { text: 'Manken', group: 11 }, { text: 'Müzisyen', group: 11 },
-            { text: 'Yazar', group: 11 }, { text: 'Oyuncu', group: 11 }, { text: 'Ressam', group: 11 }, 
-            { text: 'Sporcu', group: 11 }, { text: 'Şair', group: 11 }, { text: 'Şarkıcı', group: 11 }, { text: 'Yönetmen', group: 11 }, 
+            { text: 'Yazar', group: 11 }, { text: 'Oyuncu', group: 11 }, { text: 'Ressam', group: 11 },
+            { text: 'Sporcu', group: 11 }, { text: 'Şair', group: 11 }, { text: 'Şarkıcı', group: 11 }, { text: 'Yönetmen', group: 11 },
             { text: 'Gazeteci', group: 11 }, { text: 'Kameraman', group: 11 }, { text: 'Fotoğrafçı', group: 11 }, { text: 'Radyocu', group: 11 },
             { text: 'Bilim Adamı', group: 11 }, { text: 'Yazılımcı', group: 11 },
-            { text: 'Girişimci', group: 11 }, { text: 'Yatırımcı', group: 11 }, { text: 'Müteahhit', group: 11 }, 
+            { text: 'Girişimci', group: 11 }, { text: 'Yatırımcı', group: 11 }, { text: 'Müteahhit', group: 11 },
             { text: 'Modacı', group: 11 }, { text: 'Kuaför', group: 11 }, { text: 'Terzi', group: 11 }, { text: 'Ayakkabıcı', group: 11 },
             { text: 'Marangoz', group: 11 }, { text: 'Demirci', group: 11 }, { text: 'Kaynakçı', group: 11 }, { text: 'Boyacı', group: 11 },
             { text: 'Tesisatçı', group: 11 }, { text: 'Elektrikçi', group: 11 },
 
             { text: 'Yüzme', group: 12 }, { text: 'Müzik', group: 12 }, { text: 'Dans', group: 12 }, { text: 'Resim', group: 12 },
             { text: 'Kitap', group: 12 }, { text: 'Spor', group: 12 }, { text: 'Yemek', group: 12 }, { text: 'Gezi', group: 12 },
-            { text: 'Sinema', group: 12 }, { text: 'Tiyatro', group: 12 }, { text: 'Konser', group: 12 }, 
-            { text: 'Kamp', group: 12 }, { text: 'Piknik', group: 12 }, { text: 'Balık Tutma', group: 12 }, 
+            { text: 'Sinema', group: 12 }, { text: 'Tiyatro', group: 12 }, { text: 'Konser', group: 12 },
+            { text: 'Kamp', group: 12 }, { text: 'Piknik', group: 12 }, { text: 'Balık Tutma', group: 12 },
             { text: 'Koşu', group: 12 }, { text: 'Yürüyüş', group: 12 }, { text: 'Kayak', group: 12 },
             { text: 'Dağcılık', group: 12 }, { text: 'Paraşüt', group: 12 }, { text: 'Dalış', group: 12 },
             { text: 'Yelken', group: 12 }, { text: 'Sörf', group: 12 }, { text: 'Rafting', group: 12 },
@@ -229,10 +235,10 @@
             { text: 'Sıcak', group: 14 }, { text: 'Soğuk', group: 14 }, { text: 'Yumuşak', group: 14 }, { text: 'Sert', group: 14 },
             { text: 'Kuru', group: 14 }, { text: 'Islak', group: 14 }, { text: 'Temiz', group: 14 }, { text: 'Kirli', group: 14 },
             { text: 'Güzel', group: 14 }, { text: 'Çirkin', group: 14 }, { text: 'Sağlam', group: 14 }, { text: 'Zayıf', group: 14 },
-            { text: 'Mutlu', group: 14 }, { text: 'Üzgün', group: 14 }, { text: 'Yavaş', group: 14 }, { text: 'Hızlı', group: 14 }, 
+            { text: 'Mutlu', group: 14 }, { text: 'Üzgün', group: 14 }, { text: 'Yavaş', group: 14 }, { text: 'Hızlı', group: 14 },
             { text: 'Zengin', group: 14 }, { text: 'Fakir', group: 14 }, { text: 'Genç', group: 14 }, { text: 'Yaşlı', group: 14 },
             { text: 'Güçlü', group: 14 }, { text: 'Zayıf', group: 14 }, { text: 'Açık', group: 14 }, { text: 'Kapalı', group: 14 },
-            { text: 'Doğru', group: 14 }, { text: 'Yanlış', group: 14 }, 
+            { text: 'Doğru', group: 14 }, { text: 'Yanlış', group: 14 },
 
             { text: 'Kuzey', group: 15 }, { text: 'Güney', group: 15 }, { text: 'Doğu', group: 15 }, { text: 'Batı', group: 15 },
             { text: 'Kuzeydoğu', group: 15 }, { text: 'Kuzeybatı', group: 15 }, { text: 'Güneydoğu', group: 15 }, { text: 'Güneybatı', group: 15 }
