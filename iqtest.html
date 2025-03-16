@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeka Testi | IQ'nuzu Ölçün ve PDF Raporu Alın</title>
+
+  <meta name="description"
+    content="Zeka testine katılın, IQ seviyenizi ölçün ve sonuçları PDF raporu olarak indirin. Eğlenceli ve bilgilendirici bir zeka testi deneyimi.">
+  <meta name="keywords"
+    content="zeka testi, IQ testi, online test, zeka ölçümü, PDF raporu, ücretsiz test, beyin egzersizi">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/iqtest.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="DorukDayım - Zeka Testi">
+  <meta property="og:description"
+    content="Zeka testine katılın, IQ seviyenizi ölçün ve sonuçları PDF raporu olarak indirin. Eğlenceli ve bilgilendirici bir zeka testi deneyimi.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/iqtest.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DorukDayım - Zeka Testi">
+  <meta name="twitter:description"
+    content="Zeka testine katılın, IQ seviyenizi ölçün ve sonuçları PDF raporu olarak indirin. Eğlenceli ve bilgilendirici bir zeka testi deneyimi.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="DorukDayım Zeka Testi resmi" />
+
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
+
+    h2 {
+      margin: 0 auto;
+      background-color: #ddd;
+      width: 90%;
+      height: 16vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      box-sizing: border-box;
+      border-radius: 5px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .option {
+      margin-top: 5px;
+      background-color: #eee;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 24px;
+      box-sizing: border-box;
+      width: 100%;
+      height: 8vh;
+    }
+
+    .option:hover {
+      background-color: #d4d4d4;
+    }
+
+    .option.selected {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .option.wrong {
+      background-color: red;
+      color: white;
+    }
+
+    #result {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    #progress-bar {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin: 4vh 0;
+    }
+
+    #progress {
+      width: 5%;
+      height: 10px;
+      background-color: #4CAF50;
+      border-radius: 10px;
+      transition: width 0.5s;
+    }
+
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Zeka Testi)</strong> tıklayınız.</p>
+    <p>Doğru düşündüğünüz seçeneğe tıklayarak ilerleyiniz.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
+  <div class="container">
+    <h1 id="title">Zeka Testi</h1>
+    <div id="progress-bar">
+      <div id="progress"></div>
+    </div>
+    <h2 id="question-text"></h2>
+    <div class="options" id="options-container"></div>
+    <div id="result"></div>
+  </div>
+
+  <script type="module">
+
+    import { questions } from 'https://sercankulcu.github.io/game/iqtest.js';
+
+    let currentQuestion = 0;
+    let score = 0;
+    const questionText = document.getElementById('question-text');
+    const optionsContainer = document.getElementById('options-container');
+    const resultDiv = document.getElementById('result');
+    const progressBar = document.getElementById('progress');
+
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    function loadQuestion() {
+      const question = questions[currentQuestion];
+      questionText.textContent = `${question.question}`;
+
+      optionsContainer.innerHTML = '';
+      question.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        button.classList.add('option');
+        button.addEventListener('click', () => selectOption(index));
+        optionsContainer.appendChild(button);
+      });
+
+      updateProgressBar();
+    }
+
+    function selectOption(index) {
+      const options = optionsContainer.children;
+      for (let i = 0; i < options.length; i++) {
+        options[i].classList.remove('selected');
+      }
+      const answerIndex = Array.from(optionsContainer.children).indexOf(options[index]);
+      if (answerIndex === questions[currentQuestion].correctAnswer) {
+        options[index].classList.add('selected');
+        score++;
+      } else {
+        options[index].classList.add('wrong');
+      }
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        setTimeout(loadQuestion, 500); // Wait 500ms before loading next question
+      } else {
+        showResult();
+      }
+    }
+
+    function updateProgressBar() {
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    function showResult() {
+      const iqScore = Math.round((score / questions.length) * 100) + 50;
+      questionText.textContent = 'Test Tamamlandı!';
+      optionsContainer.innerHTML = '';
+      resultDiv.textContent = `IQ Skorunuz: ${iqScore}`;
+
+      saveHighScore("Zeka Testi", iqScore);
+
+      const nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.id = 'nameInput';
+      nameInput.placeholder = 'Ad Soyad';
+      nameInput.maxLength = 20; // Maksimum 20 karakter sınırı
+      nameInput.style = 'display: block; margin: 10px auto; padding: 10px; width: 80%; border-radius: 5px; border: 1px solid #ccc; text-align: center;';
+
+      const warningText = document.createElement('p');
+      warningText.textContent = '';
+      warningText.style = 'color: red; font-size: 12px; text-align: center; display: none;';
+
+      const pdfButton = document.createElement('button');
+      pdfButton.textContent = 'Raporunuzu İndirmek için Tıklayın';
+      pdfButton.disabled = true;
+      pdfButton.style = 'display: block; margin: 10px auto; padding: 10px; background-color: #d3d3d3; border: none; border-radius: 5px; cursor: not-allowed;';
+
+      nameInput.addEventListener('input', () => {
+        if (nameInput.value.length > 20) {
+          warningText.textContent = 'Maximum 20 characters allowed!';
+          warningText.style.display = 'block';
+          nameInput.value = nameInput.value.substring(0, 20); // Fazla karakterleri kes
+        } else {
+          warningText.style.display = 'none';
+        }
+
+        if (nameInput.value.trim().length > 0) {
+          pdfButton.disabled = false;
+          pdfButton.style.backgroundColor = '#4CAF50';
+          pdfButton.style.cursor = 'pointer';
+        } else {
+          pdfButton.disabled = true;
+          pdfButton.style.backgroundColor = '#d3d3d3';
+          pdfButton.style.cursor = 'not-allowed';
+        }
+      });
+
+      pdfButton.addEventListener('click', () => generatePDF(iqScore, nameInput.value));
+
+      resultDiv.appendChild(nameInput);
+      resultDiv.appendChild(warningText);
+      resultDiv.appendChild(pdfButton);
+    }
+
+    String.prototype.convertToEnglishUppercase = function () {
+      const turkishChars = {
+        'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+        'Ç': 'C', 'Ğ': 'G', 'İ': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U'
+      };
+      return this
+        .split('')
+        .map(char => turkishChars[char] || char)
+        .join('')
+        .toUpperCase();
+    }
+
+    function generatePDF(iqScore) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('landscape'); // Set the document to landscape
+
+      // Create a new image instance
+      const img = new Image();
+      img.src = 'https://sercankulcu.github.io/game/IQ_Certificate.png';
+
+      img.onload = function () {
+        // Get the natural width and height of the image
+        const imgWidth = img.width;
+        const imgHeight = img.height;
+
+        // Calculate scale to fit image within the page while maintaining aspect ratio
+        const maxWidth = 297; // Landscape width
+        const maxHeight = 210; // Landscape height
+
+        const scaleFactor = Math.min(maxWidth / imgWidth, maxHeight / imgHeight);
+        const scaledWidth = imgWidth * scaleFactor;
+        const scaledHeight = imgHeight * scaleFactor;
+
+        // Add image to PDF with proper scaling
+        doc.addImage(img, 'PNG', 0, 0, scaledWidth, scaledHeight);
+
+        const name = document.getElementById('nameInput').value.trim() || "Anonymous";
+        // Add text over the image (adjusted for the landscape layout)
+        doc.setFontSize(32);
+        doc.text(name.convertToEnglishUppercase(), 110, 100, null, null, 'center');
+        doc.setFontSize(20);
+        doc.text(`${iqScore}`, 140, 122, null, null, 'center');
+
+        const formattedDate = new Date().toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        // Add formatted date to the PDF
+        doc.text(formattedDate, 140, 148, null, null, 'center');
+
+        doc.text(new Date().toLocaleDateString('en-EN', { weekday: 'long' }), 135, 158, null, null, 'center');
+
+        // Save the final PDF
+        doc.save("iq_test_results.pdf");
+      };
+    }
+
+    function saveHighScore(gameName, score) {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
+
+      let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+      if (!highScores[gameName] || score > highScores[gameName].score) {
+        highScores[gameName] = {
+          score: score,
+          date: formattedDate,
+        };
+
+        localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+      }
+    }
+
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
+
+    loadQuestion();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yazı Tura Oyunu | Şansını Dene ve Altın Kazan</title>
+
+  <meta name="description"
+    content="Yazı Tura oyunu ile şansını dene! Yazı veya tura seç, altın kazan ve eğlenceli vakit geçir. Basit ve bağımlılık yapan bir şans oyunu.">
+  <meta name="keywords"
+    content="yazı tura, şans oyunu, online oyun, altın kazan, eğlenceli oyun, ücretsiz oyun, para oyunu">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/flipcoin.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon">
+
+  <meta property="og:title" content="DorukDayım - Yazı Tura Oyunu">
+  <meta property="og:description"
+    content="Yazı Tura oyunu ile şansını dene! Yazı veya tura seç, altın kazan ve eğlenceli vakit geçir. Basit ve bağımlılık yapan bir şans oyunu.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/flipcoin.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DorukDayım - Yazı Tura Oyunu">
+  <meta name="twitter:description"
+    content="Yazı Tura oyunu ile şansını dene! Yazı veya tura seç, altın kazan ve eğlenceli vakit geçir. Basit ve bağımlılık yapan bir şans oyunu.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="DorukDayım Yazı Tura Oyunu resmi" />
+
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <style>
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
+
+    .coin {
+      width: 20vh;
+      height: 20vh;
+      margin: 5vh auto;
+      background-size: cover;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .coin.flip {
+      animation: flip 1s forwards;
+    }
+
+    @keyframes flip {
+      0% {
+        transform: rotateY(0);
+      }
+
+      100% {
+        transform: rotateY(1800deg);
+      }
+    }
+
+    .coin-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .coin-face.heads {
+      background-image: url('https://sercankulcu.github.io/game/coin-head.png');
+      background-size: cover;
+      alt: "Coin head side";
+    }
+
+    .coin-face.tails {
+      background-image: url('https://sercankulcu.github.io/game/coin-tail.png');
+      background-size: cover;
+      transform: rotateY(180deg);
+      alt: "Coin tail side";
+    }
+
+    .button-container {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .shadow-container {
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="number"],
+    button {
+      width: 40vw;
+      max-width: 130px;
+      background-color: #d1b561;
+      color: white;
+      padding: 1vh 0vh;
+      margin: 1vh 0vh;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      border: 1px solid #d1b561;
+      text-align: center;
+    }
+
+    input[type="number"] {
+      background-color: #f0e6d2;
+      color: #8a7228;
+    }
+
+    button:hover {
+      background-color: #8a7228;
+    }
+
+    .selected {
+      background-color: #8a7228;
+      color: white;
+    }
+
+    .result {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 5vh 0vh;
+      color: #4a4a4a;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2vh 0;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 1vw;
+      box-sizing: border-box;
+      padding: 1vw;
+      border-radius: 8px;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+      text-align: center;
+      color: #666;
+      box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Yazı Tura)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
+  <div class="game-container">
+    <h1 id="title">Yazı Tura</h1>
+    <div class="stats" aria-label="Oyun İstatistikleri">
+      <p aria-label="Toplam Oyun Sayısı">➕<span id="totalGames">0</span></p>
+      <p aria-label="Kazanılan Oyunlar">🏆<span id="gamesWon">0</span></p>
+      <p aria-label="Kaybedilen Oyunlar">💔<span id="gamesLost">0</span></p>
+      <p aria-label="Mevcut Altın Miktarı">🪙<span id="currentGold">100</span></p>
+    </div>
+    <div class="coin" id="coin" role="img" aria-label="Madeni Para">
+      <div class="coin-face heads" aria-hidden="true"></div>
+      <div class="coin-face tails" aria-hidden="true"></div>
+    </div>
+    <div id="result" class="result" aria-live="polite"></div>
+    <div>
+      <div class="button-container">
+        <button id="yaziButton" onclick="selectSide('yazi')">Yazı</button>
+        <button id="turaButton" onclick="selectSide('tura')">Tura</button>
+      </div>
+      <div class="shadow-container">
+        <input type="number" id="amount" min="1" placeholder="Miktar">
+        <button onclick="playGame()">🚀 Para At</button>
+      </div>
+      <div class="shadow-container">
+        <button onclick="resetGame()">🔄 Sıfırla</button>
+      </div>
+    </div>
+
+    <script>
+      let selectedSide = '';
+
+      let gameData = {
+        currentGold: 100,
+        totalGames: 0,
+        gamesWon: 0,
+        gamesLost: 0
+      };
+
+      let storedGameData = JSON.parse(localStorage.getItem('dorukdayimflipcoinData'));
+
+      if (storedGameData) {
+        gameData = storedGameData;
+      }
+
+      const titleElement = document.getElementById('title');
+      titleElement.addEventListener('click', function () {
+        if (window.parent !== window) {
+          window.parent.showMainContent();
+        } else {
+          window.location.href = 'index.html';
+        }
+      });
+
+      function updateDisplay() {
+        document.getElementById('currentGold').textContent = gameData.currentGold;
+        document.getElementById('totalGames').textContent = gameData.totalGames;
+        document.getElementById('gamesWon').textContent = gameData.gamesWon;
+        document.getElementById('gamesLost').textContent = gameData.gamesLost;
+      }
+
+      function selectSide(side) {
+        selectedSide = side;
+
+        document.getElementById('yaziButton').classList.remove('selected');
+        document.getElementById('turaButton').classList.remove('selected');
+
+        if (side === 'yazi') {
+          document.getElementById('result').textContent = 'Yazı seçildi.';
+          document.getElementById('yaziButton').classList.add('selected');
+        } else if (side === 'tura') {
+          document.getElementById('result').textContent = 'Tura seçildi.';
+          document.getElementById('turaButton').classList.add('selected');
+        }
+      }
+
+      function playGame() {
+        const amount = parseInt(document.getElementById('amount').value);
+        if (isNaN(amount) || amount <= 0 || amount > gameData.currentGold) {
+          document.getElementById('result').textContent = 'Geçersiz miktar!';
+          document.getElementById('amount').value = 0;
+          return;
+        }
+
+        const coin = document.getElementById('coin');
+        coin.classList.add('flip');
+
+        setTimeout(() => {
+          const result = Math.random() < 0.5 ? 'yazi' : 'tura';
+          coin.classList.remove('flip');
+          coin.style.transform = `rotateY(${result === 'tura' ? 180 : 0}deg)`;
+
+          gameData.totalGames++;
+          if (result === selectedSide) {
+            gameData.currentGold += amount;
+            gameData.gamesWon++;
+            saveHighScore("Yazı Tura", gameData.currentGold);
+            document.getElementById('result').textContent = '🏆 ' + amount + ' altın kazandınız!';
+          } else {
+            gameData.currentGold -= amount;
+            gameData.gamesLost++;
+            document.getElementById('result').textContent = '💔 ' + amount + ' altın kaybettiniz!';
+          }
+
+          localStorage.setItem('dorukdayimflipcoinData', JSON.stringify(gameData));
+          document.querySelector("button[onclick='playGame()']").disabled = false;
+          updateDisplay();
+        }, 1000);
+      }
+
+      function saveHighScore(gameName, score) {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+        const formattedDate = `${day}/${month}/${year}`;
+
+        let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+        if (!highScores[gameName] || score > highScores[gameName].score) {
+          highScores[gameName] = {
+            score: score,
+            date: formattedDate,
+          };
+
+          localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+        }
+      }
+
+      function resetGame() {
+        gameData.currentGold = 100;
+        gameData.totalGames = 0;
+        gameData.gamesWon = 0;
+        gameData.gamesLost = 0;
+        localStorage.setItem('dorukdayimflipcoinData', JSON.stringify(gameData));
+        updateDisplay();
+        document.getElementById('result').textContent = 'Oyun sıfırlandı.';
+        document.getElementById('coin').style.transform = 'rotateY(0deg)';
+      }
+
+      document.addEventListener('click', () => {
+        document.getElementById('initialMessage').style.display = 'none';
+      });
+
+      window.onload = () => {
+        selectSide('yazi');
+      };
+
+      updateDisplay();
+    </script>
+</body>
+
+</html>
