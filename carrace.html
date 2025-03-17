@@ -193,6 +193,39 @@
     </div>
   </div>
 
+  <div style="padding: 2px; text-align: justify; display: none;">
+    <h2>Araba Yarışı Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Araba Yarışı oyunu, reflekslerinizi ve hızınızı test eden heyecan verici bir oyundur. Oyuna başlamak için ekrana
+      tıklayın.
+      Oyunun amacı, engellere çarpmadan en yüksek skora ulaşmaktır.
+      Oyun alanındaki şeritler arasında geçiş yapmak için klavyenizdeki sağ ve sol ok tuşlarını kullanın veya fare ile
+      tıklayarak şerit değiştirebilirsiniz.
+      Oyun ilerledikçe hız artar ve engeller daha sık gelir, bu yüzden dikkatli olun.
+      Ne kadar uzun süre hayatta kalırsanız, o kadar yüksek skor elde edersiniz.
+    </p>
+
+    <h2>Araba Yarışı Oyununun Faydaları</h2>
+    <ul>
+      <li><strong>Refleksleri Geliştirir:</strong> Hızlı karar verme ve tepki verme yeteneğinizi geliştirir.</li>
+      <li><strong>El-Göz Koordinasyonunu Artırır:</strong> Hızlı hareket eden engellerden kaçınmak için el ve göz
+        koordinasyonunuzu kullanmanız gerekir.</li>
+      <li><strong>Konsantrasyonu Artırır:</strong> Oyuna odaklanmak, konsantrasyon yeteneğinizi geliştirir.</li>
+      <li><strong>Hız ve Strateji Geliştirir:</strong> Hızınızı ve stratejinizi doğru ayarlayarak en yüksek skora
+        ulaşabilirsiniz.</li>
+      <li><strong>Eğlenceli Vakit Geçirme:</strong> Oyun, boş zamanlarınızı değerlendirmek için harika bir yoldur.</li>
+      <li><strong>Rekabet:</strong> Yüksek skorlar elde ederek arkadaşlarınızla rekabet edebilirsiniz.</li>
+    </ul>
+
+    <p>
+      Araba Yarışı oyunu, özellikle refleks oyunları, beceri oyunları ve yarış oyunları kategorilerinde popülerdir.
+      Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
+      Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
+      Oyunun sürekli güncellenmesi ve yeni özellikler eklenmesi, kullanıcıların ilgisini canlı tutar.
+      Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
+
+  </div>
 
   <script>
 
@@ -337,7 +370,7 @@
         if (obstacle.speed < 0.95 && score % 10 == 0) {
           let potentialCollisions = obstacles.filter(other =>
             other !== obstacle &&
-            (obstacle.y - other.y) < CAR_HEIGHT * 1.1 && 
+            (obstacle.y - other.y) < CAR_HEIGHT * 1.1 &&
             other.x === obstacle.x && obstacle.y > 0 && other.y > 0
           );
 

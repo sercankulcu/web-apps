@@ -200,6 +200,51 @@
         <button id="restartButton">Yeniden Başlat</button>
     </div>
 
+    <div style="padding: 2px; text-align: justify; display: none;">
+        <h2>Altı Harf Kelime Oyunu Nasıl Oynanır?</h2>
+        <p>
+            Altı Harf, Türkçe kelime dağarcığınızı geliştirmenize yardımcı olan eğlenceli bir kelime bulmaca oyunudur.
+            Oyunda, altı harfli gizli bir kelimeyi tahmin etmeniz gerekiyor.
+            Oyuna başladığınızda, ekranda boş altı kutucuk ve bir klavye görürsünüz. Klavye üzerinden harfleri seçerek
+            tahmininizi girebilirsiniz.
+            Her tahmininizden sonra, kutucukların renkleri size ipuçları verir:
+        </p>
+        <ul>
+            <li><strong>Yeşil:</strong> Harf doğru yerde.</li>
+            <li><strong>Sarı:</strong> Harf kelimede var, ancak yanlış yerde.</li>
+            <li><strong>Gri:</strong> Harf kelimede yok.</li>
+        </ul>
+        <p>
+            Amacınız, altı tahminde doğru kelimeyi bulmaktır. Oyun, zihinsel becerilerinizi geliştirirken aynı zamanda
+            eğlenceli vakit geçirmenizi sağlar.
+            İpuçlarından yararlanarak kelimeyi bulmaya çalışın. İpuçları için "?" butonunu kullanabilirsiniz.
+        </p>
+
+        <h2>Altı Harf Kelime Oyununun Faydaları</h2>
+        <ul>
+            <li><strong>Kelime Bilgisi Gelişimi:</strong> Oyun, Türkçe kelime dağarcığınızı genişletmenize yardımcı
+                olur.</li>
+            <li><strong>Mantıksal Düşünme:</strong> İpuçlarını kullanarak doğru kelimeyi bulmak, mantıksal düşünme
+                becerilerinizi geliştirir.</li>
+            <li><strong>Hızlı Düşünme:</strong> Sınırlı sayıda tahminde doğru kelimeyi bulmak, hızlı düşünme
+                yeteneğinizi geliştirir.</li>
+            <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre
+                olmanız gerekir.</li>
+            <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni kelimeler türetmek, zihinsel çevikliğinizi
+                artırır.</li>
+            <li><strong>Eğlenceli Öğrenme:</strong> Kelime türetme oyunu, öğrenmeyi eğlenceli hale getirir ve
+                motivasyonunuzu artırır.</li>
+        </ul>
+
+        <p>
+            Altı Harf, kelime oyunları ve zeka oyunları kategorilerinde popüler bir oyundur. Oyun, her yaştan kullanıcı
+            için uygundur ve Türkçe kelime bilgisini geliştirmek isteyenler için idealdir.
+            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun
+            sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+        </p>
+
+    </div>
+
     <script type="module">
         import { wordsSixLetters as words, allwordsSixLetters as allwords } from 'https://sercankulcu.github.io/game/words-six-letters.js';
 
@@ -364,7 +409,7 @@
                 endTime = new Date();
                 const timeDiff = (endTime - startTime) / 1000;
                 let timeScore = Math.max(0, 60 - timeDiff);
-                let rowScore = 30 - currentRow * 5;
+                let rowScore = 35 - currentRow * 5;
                 score = Math.round(timeScore) + rowScore;
                 showResult(`Tebrikler! Kazandınız! Skorunuz: ${score}`);
                 saveHighScore("Altı Harf", score);

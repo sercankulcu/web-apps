@@ -200,6 +200,47 @@
         <button id="restartButton">Yeniden Başlat</button>
     </div>
 
+    <div style="padding: 2px; text-align: justify; display: none;">
+        <h2>Beş Harf Oyunu Nasıl Oynanır?</h2>
+        <p>
+            Beş Harf oyunu, 5 harfli Türkçe kelimeleri tahmin etmeye dayalı bir kelime bulmaca oyunudur.
+            Oyuna başlamak için ekrana tıklayın. Karşınıza 6 satırlık bir tablo ve bir klavye çıkacak.
+            Amacınız, 6 tahminde gizli kelimeyi bulmaktır.
+            Klavyeyi kullanarak 5 harfli bir kelime yazın ve "GÖNDER" tuşuna basın.
+            Tahmininizdeki harflerin doğru yerlerde olup olmadığını renklerle anlayabilirsiniz:
+        </p>
+        <ul>
+            <li><strong>Yeşil:</strong> Harf doğru yerde.</li>
+            <li><strong>Sarı:</strong> Harf kelimede var, ancak yanlış yerde.</li>
+            <li><strong>Gri:</strong> Harf kelimede yok.</li>
+        </ul>
+        <p>
+            En az tahminde doğru kelimeyi bularak en yüksek puanı elde etmeye çalışın.
+            İpuçlarından yararlanarak kelimeyi bulma şansınızı artırabilirsiniz.
+        </p>
+
+        <h2>Beş Harf Oyununun Faydaları</h2>
+        <ul>
+            <li><strong>Kelime Bilgisini Geliştirir:</strong> Türkçe kelime dağarcığınızı genişletir ve kelime
+                anlamlarını pekiştirir.</li>
+            <li><strong>Zihinsel Becerileri Geliştirir:</strong> Kelime tahmini, mantıksal düşünme ve problem çözme
+                becerilerinizi geliştirir.</li>
+            <li><strong>Odaklanma ve Konsantrasyonu Artırır:</strong> Oyuna odaklanmak, dikkatinizi toplamanıza yardımcı
+                olur.</li>
+            <li><strong>Strateji Geliştirme:</strong> Kelimeleri doğru tahmin etmek için strateji geliştirmeniz gerekir.
+            </li>
+            <li><strong>Eğlenceli ve Öğretici:</strong> Hem eğlenirken hem de yeni kelimeler öğrenirsiniz.</li>
+        </ul>
+
+        <p>
+            Beş Harf oyunu, özellikle kelime oyunları, zeka oyunları ve bulmaca oyunları kategorilerinde popülerdir.
+            Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
+            Oyunun Türkçe kelimeler içermesi, yerli kullanıcılar için çekicidir.
+            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
+            Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+        </p>
+
+    </div>
     <script type="module">
         import { wordsFiveLetters as words, allwordsFiveLetters as allwords } from 'https://sercankulcu.github.io/game/words-five-letters.js';
 
@@ -364,7 +405,7 @@
                 endTime = new Date();
                 const timeDiff = (endTime - startTime) / 1000;
                 let timeScore = Math.max(0, 60 - timeDiff);
-                let rowScore = 30 - currentRow * 5;
+                let rowScore = 35 - currentRow * 5;
                 score = Math.round(timeScore) + rowScore;
                 showResult(`Tebrikler! Kazandınız! Skorunuz: ${score}`);
                 saveHighScore("Beş Harf", score);
@@ -424,7 +465,7 @@
         document.addEventListener('click', () => {
             document.getElementById('initialMessage').style.display = 'none';
         });
-        
+
         initGame();
     </script>
 </body>

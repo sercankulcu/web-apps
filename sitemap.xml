@@ -1,111 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-    <url>
-        <loc>https://dorukdayim.netlify.app/</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
 
-    <url>
-        <loc>https://dorukdayim.netlify.app/hangman.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/flagquiz.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/fiveletters.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/sixletters.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/spellbee.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/oneword.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/connections.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/strands.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/memory.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/mathmaster.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/millionaire.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/tictactoe.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/basketball.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/carrace.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/connectfour.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/fastreflex.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/minesweeper.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/sudoku.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/fortuneteller.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://dorukdayim.netlify.app/tarot.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<url>
+  <loc>https://dorukdayim.netlify.app/</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/hangman</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/flagquiz</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/fiveletters</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/sixletters</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/spellbee</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/oneword</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/connections</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/strands</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/memory</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/mathmaster</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/millionaire</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/tictactoe</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/basketball</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/carrace</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/connectfour</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/fastreflex</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/minesweeper</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/sudoku</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/fortuneteller</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/tarot</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/flipcoin</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/iqtest</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dorukdayim.netlify.app/personalitytest</loc>
+  <lastmod>2025-03-17T09:36:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
-    </urlset>
+
+</urlset>

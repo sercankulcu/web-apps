@@ -213,7 +213,42 @@
     </select>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <div style="padding: 2px; text-align: justify; display: none;">
+    <h2>Sudoku Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Sudoku, 9x9'luk bir ızgarada oynanan bir mantık bulmacasıdır. Izgara, 3x3'lük dokuz alt bölgeye ayrılmıştır.
+      Oyunun amacı, her satır, her sütun ve her 3x3 alt bölge 1'den 9'a kadar olan rakamları yalnızca bir kez içerecek
+      şekilde ızgarayı doldurmaktır.
+      Oyuna başlarken, bazı hücreler zaten rakamlarla doludur. Bu rakamlar, bulmacayı çözmek için ipuçları sağlar.
+      Boş hücrelere 1'den 9'a kadar olan rakamları yerleştirirken, her satırda, sütunda ve 3x3 alt bölgede her rakamın
+      yalnızca bir kez göründüğünden emin olmalısınız.
+      Oyun, mantıksal düşünme ve problem çözme becerilerinizi geliştirirken aynı zamanda eğlenceli vakit geçirmenizi
+      sağlar.
+    </p>
+
+    <h2>Sudoku Oyununun Faydaları</h2>
+    <ul>
+      <li><strong>Mantıksal Düşünme:</strong> Sudoku, mantıksal çıkarımlar yapmanızı ve problem çözme becerilerinizi
+        geliştirmenizi sağlar.</li>
+      <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre olmanız
+        gerekir.</li>
+      <li><strong>Hafıza Gelişimi:</strong> Sudoku, kısa süreli hafızanızı ve desen tanıma becerilerinizi geliştirir.
+      </li>
+      <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni stratejiler geliştirmek, zihinsel çevikliğinizi
+        artırır.</li>
+      <li><strong>Stres Azaltma:</strong> Sudoku, rahatlatıcı ve zihni dinlendirici bir aktivitedir.</li>
+      <li><strong>Eğlenceli Öğrenme:</strong> Sudoku, matematiksel düşünmeyi eğlenceli hale getirir ve motivasyonunuzu
+        artırır.</li>
+    </ul>
+
+    <p>
+      Sudoku, zeka oyunları ve bulmaca kategorilerinde dünya çapında popüler bir oyundur. Oyun, her yaştan kullanıcı
+      için uygundur ve mantıksal düşünme becerilerini geliştirmek isteyenler için idealdir.
+      Oyunun farklı zorluk seviyeleri, her seviyeden oyuncunun keyif almasını sağlar. Oyunun mobil uyumlu olması,
+      kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun sosyal medya platformlarında
+      paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
+  </div>
 
   <script>
     const grid = document.getElementById('sudoku-grid');
@@ -289,7 +324,6 @@
       solveSudoku(puzzle);
 
       let emptyCellsCount = parseInt(difficultySelect.value);
-      console.log(emptyCellsCount, difficultySelect.value);
       for (let i = 0; i < emptyCellsCount;) {
         let row = Math.floor(Math.random() * 9);
         let col = Math.floor(Math.random() * 9);
