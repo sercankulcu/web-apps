@@ -40,8 +40,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-    body,
-    html {
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
@@ -164,6 +163,18 @@
       color: #333;
       border-radius: 10px;
     }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      z-index: 1000;
+      overflow-y: auto;
+    }
   </style>
 </head>
 
@@ -193,7 +204,12 @@
     </div>
   </div>
 
-  <div style="padding: 2px; text-align: justify; display: none;">
+  <button id="infoButton"
+    style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+
+  <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
+    <button id="closeButton"
+      style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
     <h2>Araba Yarışı Oyunu Nasıl Oynanır?</h2>
     <p>
       Araba Yarışı oyunu, reflekslerinizi ve hızınızı test eden heyecan verici bir oyundur. Oyuna başlamak için ekrana
@@ -236,11 +252,21 @@
     const finalScoreElement = document.getElementById('finalScore');
     const restartButton = document.getElementById('restartButton');
     const highScoresList = document.getElementById('highScoresList');
-    // Update the JavaScript variables
     const needleElement = document.getElementById('needle');
     const speedTextElement = document.getElementById('speedText');
 
-    // Modify the updateSpeed function
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
+
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+
     function updateSpeed() {
 
       gameSpeed = Math.min(gameSpeed + SPEED_INCREASE, MAX_SPEED);
@@ -253,7 +279,6 @@
       speedTextElement.textContent = `${Math.round(gameSpeed)}`;
     }
 
-    // Set canvas dimensions
     function setCanvasDimensions() {
       canvas.height = window.innerHeight;
       canvas.width = window.innerHeight / 2;

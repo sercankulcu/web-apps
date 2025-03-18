@@ -136,6 +136,18 @@
       color: #333;
       border-radius: 10px;
     }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      z-index: 1000;
+      overflow-y: auto;
+    }
   </style>
 </head>
 
@@ -155,7 +167,12 @@
     <div id="result"></div>
   </div>
 
-  <div style="padding: 2px; text-align: justify; display: none;">
+  <button id="infoButton"
+    style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+
+  <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
+    <button id="closeButton"
+      style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
     <h2>Zeka Testi Nasıl Oynanır?</h2>
     <p>
       Zeka testi, IQ seviyenizi ölçmek için tasarlanmış bir dizi sorudan oluşur. Teste başlamak için ekranda beliren
@@ -206,6 +223,18 @@
       } else {
         window.location.href = 'index.html';
       }
+    });
+
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
+
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
     });
 
     function loadQuestion() {
@@ -316,16 +345,13 @@
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF('landscape'); // Set the document to landscape
 
-      // Create a new image instance
       const img = new Image();
       img.src = 'https://sercankulcu.github.io/game/IQ_Certificate.png';
 
       img.onload = function () {
-        // Get the natural width and height of the image
         const imgWidth = img.width;
         const imgHeight = img.height;
 
-        // Calculate scale to fit image within the page while maintaining aspect ratio
         const maxWidth = 297; // Landscape width
         const maxHeight = 210; // Landscape height
 
@@ -333,11 +359,9 @@
         const scaledWidth = imgWidth * scaleFactor;
         const scaledHeight = imgHeight * scaleFactor;
 
-        // Add image to PDF with proper scaling
         doc.addImage(img, 'PNG', 0, 0, scaledWidth, scaledHeight);
 
         const name = document.getElementById('nameInput').value.trim() || "Anonymous";
-        // Add text over the image (adjusted for the landscape layout)
         doc.setFontSize(32);
         doc.text(name.convertToEnglishUppercase(), 110, 100, null, null, 'center');
         doc.setFontSize(20);
@@ -345,12 +369,10 @@
 
         const formattedDate = new Date().toLocaleDateString('en-EN', { year: 'numeric', month: 'long', day: 'numeric' });
 
-        // Add formatted date to the PDF
         doc.text(formattedDate, 140, 148, null, null, 'center');
 
         doc.text(new Date().toLocaleDateString('en-EN', { weekday: 'long' }), 135, 158, null, null, 'center');
 
-        // Save the final PDF
         doc.save("iq_test_results.pdf");
       };
     }

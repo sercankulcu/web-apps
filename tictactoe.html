@@ -136,6 +136,18 @@
             color: white;
             border-radius: 10px;
         }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            z-index: 1000;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -156,10 +168,16 @@
         </select>
     </div>
 
-    <div style="padding: 2px; text-align: justify; display: none;">
+    <button id="infoButton"
+        style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+
+    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
+        <button id="closeButton"
+            style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
         <h2>Tik Tak Toe (Üç Taş) Oyunu Nasıl Oynanır?</h2>
         <p>
-            Tik Tak Toe, diğer adıyla Üç Taş, iki oyuncu arasında 3x3'lük bir ızgara üzerinde oynanan klasik bir zeka
+            Tik Tak Toe, diğer adıyla Üç Taş, iki oyuncu arasında 3x3'lük bir ızgara üzerinde oynanan klasik bir
+            zeka
             oyunudur.
             Oyunun amacı, yatay, dikey veya çapraz olarak üç işareti (X veya O) yan yana getirmektir.
             Oyuncular sırayla boş hücrelere işaretlerini yerleştirirler.
@@ -179,23 +197,27 @@
                 sonuçlanır.</li>
         </ol>
 
-        <h2>Tik Tak Toe Oyununun Faydaları</h2>
+        <h3>Tik Tak Toe Oyununun Faydaları</h2>
         <ul>
             <li><strong>Mantıksal Düşünme:</strong> Oyun, oyuncuların mantıksal düşünme ve strateji geliştirme
                 becerilerini geliştirir.</li>
-            <li><strong>Problem Çözme:</strong> Oyuncular, rakiplerinin hamlelerini tahmin ederek ve kendi hamlelerini
+            <li><strong>Problem Çözme:</strong> Oyuncular, rakiplerinin hamlelerini tahmin ederek ve kendi
+                hamlelerini
                 planlayarak problem çözme yeteneklerini geliştirirler.</li>
             <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyuncuların oyuna odaklanmaları ve konsantre olmaları
                 gerekir, bu da dikkat becerilerini geliştirir.</li>
-            <li><strong>Hızlı Karar Verme:</strong> Oyuncular, sınırlı bir zaman içinde hızlı ve doğru kararlar vermek
+            <li><strong>Hızlı Karar Verme:</strong> Oyuncular, sınırlı bir zaman içinde hızlı ve doğru kararlar
+                vermek
                 zorundadırlar.</li>
-            <li><strong>Eğlence ve Sosyalleşme:</strong> Oyun, arkadaşlarınızla veya ailenizle keyifli vakit geçirmenizi
+            <li><strong>Eğlence ve Sosyalleşme:</strong> Oyun, arkadaşlarınızla veya ailenizle keyifli vakit
+                geçirmenizi
                 sağlar ve sosyalleşmeyi teşvik eder.</li>
             <li><strong>Zihinsel Egzersiz:</strong> Her yaş için uygun bir zihinsel egzersizdir.</li>
         </ul>
 
         <p>
-            Tik Tak Toe, basit kuralları ve hızlı oynanışı ile her yaştan oyuncu için eğlenceli ve öğretici bir oyundur.
+            Tik Tak Toe, basit kuralları ve hızlı oynanışı ile her yaştan oyuncu için eğlenceli ve öğretici bir
+            oyundur.
             Bu klasik oyun, zihinsel becerilerinizi geliştirirken aynı zamanda keyifli vakit geçirmenizi sağlar.
             Online olarak arkadaşlarınızla veya bilgisayara karşı oynayarak bu keyifli deneyimi yaşayabilirsiniz.
         </p>
@@ -223,6 +245,18 @@
             } else {
                 window.location.href = 'index.html';
             }
+        });
+
+        const infoButton = document.getElementById('infoButton');
+        const overlay = document.getElementById('overlay');
+        const closeButton = document.getElementById('closeButton');
+
+        infoButton.addEventListener('click', () => {
+            overlay.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', () => {
+            overlay.style.display = 'none';
         });
 
         function checkWinner(isFinalCheck = true) {
@@ -343,7 +377,7 @@
             }
         }
 
-        document.addEventListener('click', () => {
+        document.getElementById('initialMessage').addEventListener('click', () => {
             document.getElementById('initialMessage').style.display = 'none';
         });
 
