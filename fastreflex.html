@@ -2,338 +2,340 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hızlı Refleks Oyunu - DorukDayım</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Hızlı Refleks Oyunu - DorukDayım</title>
 
-    <meta name="description"
-        content="Hızlı Refleks Oyunu ile reflekslerinizi test edin. Hayvanlara tıklayarak puan kazanın veya kaybedin.">
-    <meta name="keywords"
-        content="hızlı refleks, refleks oyunu, zeka oyunu, hayvan oyunu, dorukdayım, eğitim oyunu, reaksiyon oyunu">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/fastreflex.html">
-    <meta name="theme-color" content="#f0f0f0">
-    <link rel="icon" href="https://dorukdayim.netlify.app/icons/favicon.ico" type="image/png">
+  <meta name="description"
+    content="Hızlı Refleks Oyunu ile reflekslerinizi test edin. Hayvanlara tıklayarak puan kazanın veya kaybedin.">
+  <meta name="keywords"
+    content="hızlı refleks, refleks oyunu, zeka oyunu, hayvan oyunu, dorukdayım, eğitim oyunu, reaksiyon oyunu">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/fastreflex.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="https://dorukdayim.netlify.app/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="DorukDayım - Hızlı Refleks Oyunu">
-    <meta property="og:description"
-        content="Hızlı Refleks Oyunu ile reflekslerinizi test edin. Hayvanlara tıklayarak puan kazanın veya kaybedin.">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/fastreflex.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım" />
+  <meta property="og:title" content="DorukDayım - Hızlı Refleks Oyunu">
+  <meta property="og:description"
+    content="Hızlı Refleks Oyunu ile reflekslerinizi test edin. Hayvanlara tıklayarak puan kazanın veya kaybedin.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/fastreflex.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DorukDayım - Hızlı Refleks Oyunu">
-    <meta name="twitter:description"
-        content="Hızlı Refleks Oyunu ile reflekslerinizi test edin. Hayvanlara tıklayarak puan kazanın veya kaybedin.">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
-    <meta name="twitter:image:alt" content="DorukDayım Hızlı Refleks Oyunu resmi" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DorukDayım - Hızlı Refleks Oyunu">
+  <meta name="twitter:description"
+    content="Hızlı Refleks Oyunu ile reflekslerinizi test edin. Hayvanlara tıklayarak puan kazanın veya kaybedin.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="DorukDayım Hızlı Refleks Oyunu resmi" />
 
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <style>
-        #gameContainer {
-            margin: 0 auto;
-            text-align: center;
-            padding: 1vh;
-            height: 90vh;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            position: relative;
-        }
+  <style>
+    #gameContainer {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      position: relative;
+    }
 
-        .target {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            background-size: cover;
-        }
+    .target {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      background-size: cover;
+    }
 
-        #score {
-            font-size: 24px;
-            margin: 10px;
-            font-weight: bold;
-        }
+    #score {
+      font-size: 24px;
+      margin: 10px;
+      font-weight: bold;
+    }
 
-        #startScreen,
-        #gameOverScreen {
-            position: fixed;
-            width: 60%;
-            max-width: 400px;
-            height: 60%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: #333;
-            border-radius: 10px;
-        }
+    #startScreen,
+    #gameOverScreen {
+      position: fixed;
+      width: 60%;
+      max-width: 400px;
+      height: 60%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
 
-        #gameOverScreen {
-            display: none;
-        }
+    #gameOverScreen {
+      display: none;
+    }
 
-        #modeToggleStart,
-        #modeToggleEnd {
-            margin-top: 20px;
-            padding: 10px 10px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 18px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s;
-            width: 180px;
-            height: 50px;
-            text-align: center;
-        }
+    #modeToggleStart,
+    #modeToggleEnd {
+      margin-top: 20px;
+      padding: 10px 10px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+      width: 180px;
+      height: 50px;
+      text-align: center;
+    }
 
-        #modeToggleStart:hover,
-        #modeToggleEnd:hover {
-            transform: scale(1.05);
-        }
+    #modeToggleStart:hover,
+    #modeToggleEnd:hover {
+      transform: scale(1.05);
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-    </style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #333333;
+      color: #f9f9f9;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 10px;
+      text-align: justify;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div id="gameContainer">
-        <h1 id="title">Hızlı Refleks</h1>
-        <div id="score">⭐: 0 ⚡: -- ms</div>
-    </div>
-    <div id="startScreen">
-        <p>Ekranda beliren hayvanlara en hızlı şekilde tıkla.</p>
-        <p>Tavşan ve kaplumbağalar puan kazandırırken, karga ve kirpiler kaybettirir.</p>
-        <p>Ana sayfaya dönmek için başlığa <strong>(Hızlı Refleks)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
-        <button id="modeToggleStart" onclick="toggleMode()">🌕 Mod: (Kolay)</button>
-    </div>
+  <div id="gameContainer">
+    <h1 id="title">Hızlı Refleks</h1>
+    <div id="score">⭐: 0 ⚡: -- ms</div>
+  </div>
+  <div id="startScreen">
+    <p>Ekranda beliren hayvanlara en hızlı şekilde tıkla.</p>
+    <p>Tavşan ve kaplumbağalar puan kazandırırken, karga ve kirpiler kaybettirir.</p>
+    <p>Ana sayfaya dönmek için başlığa <strong>(Hızlı Refleks)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    <button id="modeToggleStart" onclick="toggleMode()">🌕 Mod: (Kolay)</button>
+  </div>
 
-    <div id="gameOverScreen">
-        <h2>Oyun Bitti!</h2>
-        <h3 id="finalscore">⭐: 0 ⚡: -- ms</h3>
-        <p>Ana sayfaya dönmek için başlığa <strong>(Hızlı Refleks)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
-        <button id="modeToggleEnd" onclick="toggleMode()">🌕 Mod: (Kolay)</button>
-    </div>
+  <div id="gameOverScreen">
+    <h2>Oyun Bitti!</h2>
+    <h3 id="finalscore">⭐: 0 ⚡: -- ms</h3>
+    <p>Ana sayfaya dönmek için başlığa <strong>(Hızlı Refleks)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    <button id="modeToggleEnd" onclick="toggleMode()">🌕 Mod: (Kolay)</button>
+  </div>
 
-    <button id="infoButton"
-        style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+  <button id="infoButton"
+    style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
-        <button id="closeButton"
-            style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
-        <h2>Hızlı Refleks Oyunu Nasıl Oynanır?</h2>
-        <p>
-            Hızlı Refleks Oyunu, reflekslerinizi ve tepki hızınızı test eden eğlenceli bir oyundur.
-            Oyuna başlamak için ekrana tıklayın. Ekranda rastgele beliren hayvanlara en hızlı şekilde tıklamanız
-            gerekiyor.
-            Tavşan ve kaplumbağa gibi hayvanlara tıklayarak puan kazanırsınız, karga ve kirpi gibi hayvanlara tıklayarak
-            puan kaybedersiniz.
-            Oyun süresi boyunca en yüksek puanı elde etmeye çalışın.
-            Oyunun zorluk seviyesini kolay ve zor olarak değiştirebilirsiniz.
-        </p>
+  <div id="overlay">
+    <button id="closeButton"
+      style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+    <h2>Hızlı Refleks Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Hızlı Refleks Oyunu, reflekslerinizi ve tepki hızınızı test eden eğlenceli bir oyundur.
+      Oyuna başlamak için ekrana tıklayın. Ekranda rastgele beliren hayvanlara en hızlı şekilde tıklamanız
+      gerekiyor.
+      Tavşan ve kaplumbağa gibi hayvanlara tıklayarak puan kazanırsınız, karga ve kirpi gibi hayvanlara tıklayarak
+      puan kaybedersiniz.
+      Oyun süresi boyunca en yüksek puanı elde etmeye çalışın.
+      Oyunun zorluk seviyesini kolay ve zor olarak değiştirebilirsiniz.
+    </p>
 
-        <h2>Hızlı Refleks Oyununun Faydaları</h2>
-        <ul>
-            <li><strong>Refleksleri Geliştirir:</strong> Hızlı karar verme ve tepki verme yeteneğinizi geliştirir.</li>
-            <li><strong>El-Göz Koordinasyonunu Artırır:</strong> Hızlı hareket eden hedeflere tıklamak için el ve göz
-                koordinasyonunuzu kullanmanız gerekir.</li>
-            <li><strong>Konsantrasyonu Artırır:</strong> Oyuna odaklanmak, dikkatinizi toplamanıza yardımcı olur.</li>
-            <li><strong>Hız ve Doğruluk:</strong> Hızlı ve doğru tepkiler vererek en yüksek skora ulaşabilirsiniz.</li>
-            <li><strong>Eğlenceli Vakit Geçirme:</strong> Oyun, boş zamanlarınızı değerlendirmek için harika bir yoldur.
-            </li>
-            <li><strong>Rekabet:</strong> Yüksek skorlar elde ederek kendinizle veya arkadaşlarınızla rekabet
-                edebilirsiniz.</li>
-        </ul>
+    <h2>Hızlı Refleks Oyununun Faydaları</h2>
+    <ul>
+      <li><strong>Refleksleri Geliştirir:</strong> Hızlı karar verme ve tepki verme yeteneğinizi geliştirir.</li>
+      <li><strong>El-Göz Koordinasyonunu Artırır:</strong> Hızlı hareket eden hedeflere tıklamak için el ve göz
+        koordinasyonunuzu kullanmanız gerekir.</li>
+      <li><strong>Konsantrasyonu Artırır:</strong> Oyuna odaklanmak, dikkatinizi toplamanıza yardımcı olur.</li>
+      <li><strong>Hız ve Doğruluk:</strong> Hızlı ve doğru tepkiler vererek en yüksek skora ulaşabilirsiniz.</li>
+      <li><strong>Eğlenceli Vakit Geçirme:</strong> Oyun, boş zamanlarınızı değerlendirmek için harika bir yoldur.
+      </li>
+      <li><strong>Rekabet:</strong> Yüksek skorlar elde ederek kendinizle veya arkadaşlarınızla rekabet
+        edebilirsiniz.</li>
+    </ul>
 
-        <p>
-            Hızlı Refleks Oyunu, özellikle refleks oyunları, beceri oyunları ve hayvan oyunları kategorilerinde
-            popülerdir.
-            Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
-            Oyunun zorluk seviyesi ayarı, farklı beceri seviyelerindeki kullanıcılara hitap eder.
-            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
-            Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
-        </p>
+    <p>
+      Hızlı Refleks Oyunu, özellikle refleks oyunları, beceri oyunları ve hayvan oyunları kategorilerinde
+      popülerdir.
+      Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
+      Oyunun zorluk seviyesi ayarı, farklı beceri seviyelerindeki kullanıcılara hitap eder.
+      Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
+      Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
 
-    </div>
+  </div>
 
-    <script>
-        let score = 0;
-        let gameActive = false;
-        let gameDuration = 30000; // 30 saniye
-        let targetClickTime;
-        let fastestReactionTime = 2000;
-        let gameMode = "easy"; // Kolay mod (başlangıçta)
+  <script>
+    let score = 0;
+    let gameActive = false;
+    let gameDuration = 30000; // 30 saniye
+    let targetClickTime;
+    let fastestReactionTime = 2000;
+    let gameMode = "easy"; // Kolay mod (başlangıçta)
 
-        const titleElement = document.getElementById('title');
-        titleElement.addEventListener('click', function () {
-            if (window.parent !== window) {
-                window.parent.showMainContent();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
-        const infoButton = document.getElementById('infoButton');
-        const overlay = document.getElementById('overlay');
-        const closeButton = document.getElementById('closeButton');
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
 
-        infoButton.addEventListener('click', () => {
-            overlay.style.display = 'block';
-        });
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
 
-        closeButton.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
 
-        function startGame() {
-            document.getElementById("startScreen").style.display = "none";
-            document.getElementById("gameOverScreen").style.display = "none";
+    function startGame() {
+      document.getElementById("startScreen").style.display = "none";
+      document.getElementById("gameOverScreen").style.display = "none";
 
-            score = 0;
-            fastestReactionTime = 1000;
-            document.getElementById("score").innerText = "⭐: 0 ⚡: -- ms";
-            gameActive = true;
-            spawnTarget();
-            setTimeout(() => {
-                gameActive = false;
-                document.getElementById("gameOverScreen").style.display = "block";
-                saveHighScore("Hızlı Refleks", score);
-            }, gameDuration);
+      score = 0;
+      fastestReactionTime = 1000;
+      document.getElementById("score").innerText = "⭐: 0 ⚡: -- ms";
+      gameActive = true;
+      spawnTarget();
+      setTimeout(() => {
+        gameActive = false;
+        document.getElementById("gameOverScreen").style.display = "block";
+        saveHighScore("Hızlı Refleks", score);
+      }, gameDuration);
+    }
+
+    function saveHighScore(gameName, score) {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
+
+      let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+      if (!highScores[gameName] || score > highScores[gameName].score) {
+        highScores[gameName] = {
+          score: score,
+          date: formattedDate,
+        };
+
+        localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+      }
+    }
+
+    function toggleMode() {
+
+      event.stopPropagation();
+      gameMode = gameMode === "easy" ? "hard" : "easy"; // Modu değiştir
+
+      let modeButtonStart = document.getElementById("modeToggleStart");
+      let modeButtonEnd = document.getElementById("modeToggleEnd");
+
+      if (gameMode === "easy") {
+        modeButtonStart.textContent = "🌕 Mod: (Kolay)";
+        modeButtonEnd.textContent = "🌕 Mod: (Kolay)";
+      } else {
+        modeButtonStart.textContent = "🔥 Mod: (Zor)";
+        modeButtonEnd.textContent = "🔥 Mod: (Zor)";
+      }
+    }
+
+    function spawnTarget() {
+      if (!gameActive) return;
+
+      let gameContainer = document.getElementById("gameContainer");
+      let target = document.createElement("div");
+      target.classList.add("target");
+
+      let x = Math.random() * (gameContainer.clientWidth - 50);
+      let y = Math.random() * (gameContainer.clientHeight - 150) + 100;
+
+      target.style.left = `${x}px`;
+      target.style.top = `${y}px`;
+
+      let animal;
+      if (gameMode === "easy") {
+        animal = Math.random() > 0.33 ? 'rabbit' : 'crow'; // Kolay mod: tavşan ve karga
+      } else {
+        let rand = Math.random();
+        if (rand < 0.33) animal = 'rabbit'; // Tavşan
+        else if (rand < 0.5) animal = 'crow'; // Karga
+        else if (rand < 0.83) animal = 'turtle'; // Kaplumbağa
+        else animal = 'hedgehog'; // Kirpi
+      }
+
+      target.style.backgroundImage = `url(https://sercankulcu.github.io/game/${animal}.webp)`; // Hayvan resmini belirle
+
+      let targetCreationTime = Date.now();
+
+      target.onclick = function () {
+        let reactionTime = Date.now() - targetCreationTime; // Tıklanma süresi
+
+        if (reactionTime < fastestReactionTime) {
+          fastestReactionTime = reactionTime;
         }
 
-        function saveHighScore(gameName, score) {
-            const today = new Date();
-            const day = String(today.getDate()).padStart(2, '0');
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const year = today.getFullYear();
-            const formattedDate = `${day}/${month}/${year}`;
-
-            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
-
-            if (!highScores[gameName] || score > highScores[gameName].score) {
-                highScores[gameName] = {
-                    score: score,
-                    date: formattedDate,
-                };
-
-                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
-            }
+        if (animal === 'rabbit' || animal === 'turtle') {
+          score += Math.max(10 - Math.floor(reactionTime / 100), 1); // Kazandıran hayvanlar
+        } else {
+          score -= Math.max(5 - Math.floor(reactionTime / 200), 1); // Kaybettiren hayvanlar
         }
 
-        function toggleMode() {
+        document.getElementById("score").innerText = "⭐: " + score + " ⚡: " + fastestReactionTime + " ms";
+        document.getElementById("finalscore").innerText = "⭐: " + score + " ⚡: " + fastestReactionTime + " ms";
+        gameContainer.removeChild(target);
+        spawnTarget(); // Yeni hedef oluştur
+      };
 
-            event.stopPropagation();
-            gameMode = gameMode === "easy" ? "hard" : "easy"; // Modu değiştir
+      gameContainer.appendChild(target);
 
-            let modeButtonStart = document.getElementById("modeToggleStart");
-            let modeButtonEnd = document.getElementById("modeToggleEnd");
-
-            if (gameMode === "easy") {
-                modeButtonStart.textContent = "🌕 Mod: (Kolay)";
-                modeButtonEnd.textContent = "🌕 Mod: (Kolay)";
-            } else {
-                modeButtonStart.textContent = "🔥 Mod: (Zor)";
-                modeButtonEnd.textContent = "🔥 Mod: (Zor)";
-            }
+      setTimeout(() => {
+        if (gameContainer.contains(target)) {
+          gameContainer.removeChild(target);
+          spawnTarget();
         }
+      }, 1000 + Math.random() * 1000);
+    }
 
-        function spawnTarget() {
-            if (!gameActive) return;
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById("startScreen").addEventListener('click', () => {
+        startGame();
+      });
 
-            let gameContainer = document.getElementById("gameContainer");
-            let target = document.createElement("div");
-            target.classList.add("target");
-
-            let x = Math.random() * (gameContainer.clientWidth - 50);
-            let y = Math.random() * (gameContainer.clientHeight - 150) + 100;
-
-            target.style.left = `${x}px`;
-            target.style.top = `${y}px`;
-
-            let animal;
-            if (gameMode === "easy") {
-                animal = Math.random() > 0.33 ? 'rabbit' : 'crow'; // Kolay mod: tavşan ve karga
-            } else {
-                let rand = Math.random();
-                if (rand < 0.33) animal = 'rabbit'; // Tavşan
-                else if (rand < 0.5) animal = 'crow'; // Karga
-                else if (rand < 0.83) animal = 'turtle'; // Kaplumbağa
-                else animal = 'hedgehog'; // Kirpi
-            }
-
-            target.style.backgroundImage = `url(https://sercankulcu.github.io/game/${animal}.webp)`; // Hayvan resmini belirle
-
-            let targetCreationTime = Date.now();
-
-            target.onclick = function () {
-                let reactionTime = Date.now() - targetCreationTime; // Tıklanma süresi
-
-                if (reactionTime < fastestReactionTime) {
-                    fastestReactionTime = reactionTime;
-                }
-
-                if (animal === 'rabbit' || animal === 'turtle') {
-                    score += Math.max(10 - Math.floor(reactionTime / 100), 1); // Kazandıran hayvanlar
-                } else {
-                    score -= Math.max(5 - Math.floor(reactionTime / 200), 1); // Kaybettiren hayvanlar
-                }
-
-                document.getElementById("score").innerText = "⭐: " + score + " ⚡: " + fastestReactionTime + " ms";
-                document.getElementById("finalscore").innerText = "⭐: " + score + " ⚡: " + fastestReactionTime + " ms";
-                gameContainer.removeChild(target);
-                spawnTarget(); // Yeni hedef oluştur
-            };
-
-            gameContainer.appendChild(target);
-
-            setTimeout(() => {
-                if (gameContainer.contains(target)) {
-                    gameContainer.removeChild(target);
-                    spawnTarget();
-                }
-            }, 1000 + Math.random() * 1000);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById("startScreen").addEventListener('click', () => {
-                startGame();
-            });
-
-            document.getElementById("gameOverScreen").addEventListener('click', () => {
-                startGame();
-            });
-        });
-    </script>
+      document.getElementById("gameOverScreen").addEventListener('click', () => {
+        startGame();
+      });
+    });
+  </script>
 </body>
 
 </html>

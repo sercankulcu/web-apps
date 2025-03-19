@@ -257,6 +257,14 @@
             cursor: pointer;
             margin: 5px 0 0 0;
         }
+
+        .menuDropdownOptions {
+            border: 1px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            font-size: 1rem;
+        }
     </style>
 </head>
 
@@ -270,11 +278,8 @@
             <button id="signOutBtn" style="display: none;">❌ Çıkış</button>
             <button id="menuBtn" style="width: auto;">☰</button>
             <div id="menuDropdown">
-                <div id="aboutUsOption"
-                    style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); padding: 10px; font-size: 1rem;">Hakkımızda</div>
-                <div id="gameSummariesOption"
-                    style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); padding: 10px; font-size: 1rem;">Oyun Özetleri
-                </div>
+                <div id="aboutUsOption" class="menuDropdownOptions">Hakkımızda</div>
+                <div id="gameSummariesOption" class="menuDropdownOptions">Oyun Özetleri</div>
             </div>
         </header>
         <main>
@@ -311,7 +316,7 @@
             <p id="allRightsReserved">&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
         </footer>
 
-        <div id="overlayProfile" class="overlay">
+        <div id="overlayProfile" class="overlay" style="width: 100%; padding: 0;">
             <span class="closebtn" id="closeProfileBtn">&times;</span>
             <div id="profileDetails">
                 <h2 id="profile">Profilim</h2>
@@ -332,10 +337,11 @@
             <span class="closebtn" id="closeaboutUsBtn">&times;</span>
 
             <h2>Hakkımızda</h2>
-            <p> DorukDayım, baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunların bir araya geldiği
-                bir platformdur. Amacımız, her yaştan kullanıcının keyifli vakit geçirirken aynı zamanda yeni
-                bilgiler edinmesini sağlamaktır. Oyunlarımız, zeka gelişimine katkıda bulunmak, kelime dağarcığını
-                zenginleştirmek ve genel kültür bilgisini artırmak için özenle hazırlanmıştır.<br>
+            <p> DorukDayım, baba ve oğulun birlikte keşfettiği eğlenceli ve öğretici oyunların bir araya geldiği çeşitli
+                bulmaca ve beceri tabanlı oyunlar sunan bir platformdur. Amacımız, her yaştan kullanıcının keyifli vakit
+                geçirirken aynı zamanda yeni bilgiler edinmesini sağlamaktır. Oyunlarımız, zeka gelişimine katkıda
+                bulunmak, kelime dağarcığını zenginleştirmek ve genel kültür bilgisini artırmak için özenle
+                hazırlanmıştır.<br>
                 Bu platform, aile bağlarını güçlendirmek ve eğlenceli öğrenme deneyimleri sunmak amacıyla
                 oluşturulmuştur. Kullanıcılarımızdan gelen geri bildirimlerle sürekli gelişmekte ve yeni oyunlar
                 eklemekteyiz.
@@ -377,133 +383,133 @@
 
     <div id="overlaygameSummaries" class="overlay">
         <span class="closebtn" id="closegameSummariesBtn">&times;</span>
-        <p><a href="hangman.html" id="hangmanLink">Adam Asmaca</a>
-            Kelime tahmin etme oyunu. Gizli kelimeyi tahmin ederek adamın
+        <h2><a href="hangman.html" id="hangmanLink">Adam Asmaca</a></h2>
+        <p> Kelime tahmin etme oyunu. Gizli kelimeyi tahmin ederek adamın
             asılmasını önleyin. Her yanlış tahminde bir adım daha yaklaşılır. Bu oyun, kelime dağarcığınızı
             genişletmenin yanı sıra mantık yürütme ve problem çözme becerilerinizi de geliştirir. Stratejik
             düşünerek hangi harfleri tahmin edeceğinize karar verin ve ipuçlarını dikkatlice değerlendirin. Hem
             eğlenceli hem de öğretici bu oyun, her yaştan oyuncu için uygundur. Kelime bilginizi test edin ve
             arkadaşlarınızla rekabet ederek eğlenceli vakit geçirin.</p>
-        <p><a href="flagquiz.html" id="flagquizLink">Bayrak Testi</a>
-            Dünya bayraklarını tanıma oyunu. Bayrağı verilen ülkeyi tahmin edin. Genel kültür ve coğrafya
+        <h2><a href="flagquiz.html" id="flagquizLink">Bayrak Testi</a></h2>
+        <p> Dünya bayraklarını tanıma oyunu. Bayrağı verilen ülkeyi tahmin edin. Genel kültür ve coğrafya
             bilginizi test edin. Farklı kültürleri keşfedin. Bu oyun, dünya coğrafyası hakkında bilgi edinmenin
             eğlenceli bir yoludur. Her bayrağın ardında yatan tarihi ve kültürel anlamları öğrenerek dünya görüşünüzü
             genişletin. Görsel hafızanızı ve coğrafya bilginizi geliştirirken farklı ülkelerin sembollerini tanıyın.
             Arkadaşlarınızla yarışarak kimin daha çok bayrak bildiğini test edin. </p>
-        <p><a href="fiveletters.html" id="fivelettersLink">Beş Harf</a>
-            Beş harfli kelime tahmin etme oyunu. Her tahminde harflerin doğru yerleri ve doğru harfler hakkında
+        <h2><a href="fiveletters.html" id="fivelettersLink">Beş Harf</a></h2>
+        <p> Beş harfli kelime tahmin etme oyunu. Her tahminde harflerin doğru yerleri ve doğru harfler hakkında
             ipuçları verilir. Kelime dağarcığınızı ve mantık yürütme becerilerinizi geliştirin. Bu oyun, kelime
             tahmin etme becerilerinizi geliştirirken aynı zamanda stratejik düşünme yeteneğinizi de test eder.
             İpuçlarını dikkatlice analiz ederek doğru kelimeyi bulmaya çalışın. Her doğru tahmin, kelime dağarcığınızı
             zenginleştirirken problem çözme becerilerinizi de geliştirir. Farklı zorluk seviyelerinde oynayarak
             kendinizi geliştirin.</p>
-        <p><a href="sixletters.html" id="sixlettersLink">Altı Harf</a>
-            Altı harfli kelime tahmin etme oyunu. Her tahminde harflerin doğru yerleri ve doğru harfler hakkında
+        <h2><a href="sixletters.html" id="sixlettersLink">Altı Harf</a></h2>
+        <p> Altı harfli kelime tahmin etme oyunu. Her tahminde harflerin doğru yerleri ve doğru harfler hakkında
             ipuçları verilir. Kelime dağarcığınızı ve mantık yürütme becerilerinizi geliştirin. Beş harfli versiyonuna
             benzer şekilde, bu oyun da kelime dağarcığınızı ve mantık yürütme becerilerinizi geliştirir, ancak altı
             harfli kelimelerle daha fazla zorluk sunar. Her doğru tahmin, kelime dağarcığınızı zenginleştirirken problem
             çözme becerilerinizi de geliştirir. Daha karmaşık kelimelerle zihninizi zorlayın ve kelime bilginizi
             artırın.</p>
-        <p><a href="spellbee.html" id="spellbeeLink">Bal Peteği</a>
-            Verilen harflerle kelime üretme oyunu. Bal peteği şeklindeki harflerle mümkün olan en fazla kelimeyi
+        <h2><a href="spellbee.html" id="spellbeeLink">Bal Peteği</a></h2>
+        <p> Verilen harflerle kelime üretme oyunu. Bal peteği şeklindeki harflerle mümkün olan en fazla kelimeyi
             oluşturun. Kelime dağarcığınızı ve kelime türetme becerilerinizi geliştirin. Bu oyun, farklı harf
             kombinasyonları kullanarak kelime oluşturma yeteneğinizi geliştirir. Bal peteği şeklindeki harfleri
             kullanarak hem bilinen kelimeleri bulun hem de yeni kelimeler keşfedin. Kelime dağarcığınızı genişletirken
             yaratıcı düşünme becerilerinizi de kullanın. Zamanla yarışarak en çok kelimeyi bulmaya çalışın.</p>
-        <p><a href="oneword.html" id="onewordLink">Bir Kelime</a>
-            Tek kelimeyle ifade etme oyunu. Verilen tanıma en uygun kelimeyi bulun. Kelime dağarcığınızı genişletin ve
+        <h2><a href="oneword.html" id="onewordLink">Bir Kelime</a></h2>
+        <p> Tek kelimeyle ifade etme oyunu. Verilen tanıma en uygun kelimeyi bulun. Kelime dağarcığınızı genişletin ve
             ifade yeteneğinizi geliştirin. Bu oyun, verilen tanımı en iyi şekilde ifade eden tek kelimeyi bulma
             becerilerinizi geliştirir. Kelime dağarcığınızı genişletirken aynı zamanda hızlı düşünme ve doğru ifade etme
             yeteneğinizi de kullanın. Her doğru cevap, kelime bilginizi artırırken analitik düşünme becerilerinizi de
             geliştirir. Farklı konulardaki tanımları çözerek kelime bilginizi test edin.</p>
-        <p><a href="connections.html" id="connectionsLink">Bağlantı Bul</a>
-            Kelimeler arasındaki bağlantıları bulma oyunu. Verilen kelimeler arasındaki ortak noktayı bulun ve
+        <h2><a href="connections.html" id="connectionsLink">Bağlantı Bul</a></h2>
+        <p> Kelimeler arasındaki bağlantıları bulma oyunu. Verilen kelimeler arasındaki ortak noktayı bulun ve
             gruplandırın. Mantık yürütme ve analitik düşünme becerilerinizi geliştirin. Bu oyun, kelimeler arasındaki
             gizli bağlantıları bulma yeteneğinizi geliştirir. Verilen kelimeleri dikkatlice inceleyerek ortak
             noktalarını bulun ve gruplandırın. Mantık yürütme ve analitik düşünme becerilerinizi kullanarak problem
             çözme yeteneğinizi geliştirin. Farklı kelime gruplarını çözerek zihinsel becerilerinizi geliştirin.</p>
-        <p><a href="strands.html" id="strandsLink">Kelime Bul</a>
-            Kelime bulmaca oyunu. Karışık harflerden anlamlı kelimeler oluşturun. Zeka ve kelime bilginizi kullanın.
+        <h2><a href="strands.html" id="strandsLink">Kelime Bul</a></h2>
+        <p> Kelime bulmaca oyunu. Karışık harflerden anlamlı kelimeler oluşturun. Zeka ve kelime bilginizi kullanın.
             Kelime dağarcığınızı ve odaklanma becerilerinizi geliştirin. Bu oyun, karışık harflerden anlamlı kelimeler
             oluşturma becerilerinizi geliştirir. Verilen harfleri dikkatlice inceleyerek hem bilinen kelimeleri bulun
             hem de yeni kelimeler keşfedin. Kelime dağarcığınızı genişletirken odaklanma ve dikkat becerilerinizi de
             kullanın. Farklı zorluk seviyelerindeki bulmacaları çözerek kelime bilginizi test edin.</p>
-        <p><a href="memory.html" id="memoryLink">Hafıza Oyunu</a>
-            Eşleştirme oyunu. Gizli kartlardaki eşleşen çiftleri bulun. Hafıza ve dikkat yeteneğinizi test edin. Görsel
+        <h2><a href="memory.html" id="memoryLink">Hafıza Oyunu</a></h2>
+        <p> Eşleştirme oyunu. Gizli kartlardaki eşleşen çiftleri bulun. Hafıza ve dikkat yeteneğinizi test edin. Görsel
             hafızanızı güçlendirin. Bu oyun, görsel hafızanızı ve dikkat becerilerinizi geliştirir. Gizli kartlardaki
             eşleşen çiftleri bularak hafızanızı test edin. Her doğru eşleştirme, hafıza ve dikkat becerilerinizi
             güçlendirirken problem çözme yeteneğinizi de geliştirir. Farklı zorluk seviyelerinde oynayarak hafıza
             becerilerinizi geliştirin.</p>
-        <p><a href="mathmaster.html" id="mathmasterLink">Matematik Usta</a>
-            Matematik işlem oyunu. Verilen matematik problemlerini çözün. Hızlı ve doğru cevaplar verin. Matematik
+        <h2><a href="mathmaster.html" id="mathmasterLink">Matematik Usta</a></h2>
+        <p> Matematik işlem oyunu. Verilen matematik problemlerini çözün. Hızlı ve doğru cevaplar verin. Matematik
             becerilerinizi ve hızlı düşünme yeteneğinizi geliştirin. Bu oyun, matematik becerilerinizi ve hızlı düşünme
             yeteneğinizi geliştirir. Verilen matematik problemlerini hızlı ve doğru bir şekilde çözerek matematik
             yeteneklerinizi test edin. Her doğru cevap, matematik bilginizi artırırken hızlı düşünme becerilerinizi de
             geliştirir. Farklı zorluk seviyelerinde oynayarak matematik becerilerinizi geliştirin.</p>
-        <p><a href="millionaire.html" id="millionaireLink">Milyoner Ol</a>
-            Genel kültür bilgi yarışması. Doğru cevaplar vererek milyonları kazanın. Bilgi ve strateji yeteneğinizi
+        <h2><a href="millionaire.html" id="millionaireLink">Milyoner Ol</a></h2>
+        <p> Genel kültür bilgi yarışması. Doğru cevaplar vererek milyonları kazanın. Bilgi ve strateji yeteneğinizi
             kullanın. Genel kültürünüzü artırın ve stratejik düşünme becerilerinizi geliştirin. Bu oyun, genel kültür
             bilginizi ve stratejik düşünme yeteneğinizi geliştirir. Farklı konulardaki soruları doğru cevaplayarak
             milyonları kazanın. Her doğru cevap, genel kültürünüzü artırırken stratejik düşünme ve risk alma
             becerilerinizi de geliştirir. Farklı zorluk seviyelerinde oynayarak genel kültürünüzü test edin.</p>
-        <p><a href="tictactoe.html" id="tictactoeLink">Tik Tak Toe</a>
-            XOX oyunu. Rakibinizi yenmek için yatay, dikey veya çapraz olarak üç sembolü yan yana getirin. Stratejik
+        <h2><a href="tictactoe.html" id="tictactoeLink">Tik Tak Toe</a></h2>
+        <p> XOX oyunu. Rakibinizi yenmek için yatay, dikey veya çapraz olarak üç sembolü yan yana getirin. Stratejik
             düşünme ve hamle planlama becerilerinizi geliştirin. Bu oyun, stratejik düşünme ve hamle planlama
             becerilerinizi geliştirir. Rakibinizi yenmek için doğru hamleleri yaparak üç sembolü yan yana getirin. Her
             doğru hamle, stratejik düşünme becerilerinizi güçlendirirken rakibinizi analiz etme yeteneğinizi de
             geliştirir. Arkadaşlarınızla veya yapay zeka ile oynayarak strateji becerilerinizi test edin.</p>
-        <p><a href="basketball.html" id="basketballLink">Basket Atma</a>
-            Basketbol atış oyunu. Hedefe isabetli atışlar yaparak en yüksek skoru elde edin. Reflekslerinizi kullanın.
+        <h2><a href="basketball.html" id="basketballLink">Basket Atma</a></h2>
+        <p> Basketbol atış oyunu. Hedefe isabetli atışlar yaparak en yüksek skoru elde edin. Reflekslerinizi kullanın.
             Bu oyun, reflekslerinizi ve el-göz koordinasyonunuzu geliştirir. Hedefe isabetli atışlar yaparak en yüksek
             skoru elde etmeye çalışın. Her doğru atış, reflekslerinizi güçlendirirken odaklanma becerilerinizi de
             geliştirir. Farklı zorluk seviyelerinde oynayarak atış becerilerinizi geliştirin.</p>
-        <p><a href="carrace.html" id="carraceLink">Araba Yarışı</a>
-            Araba yarışı oyunu. Rakiplerinizi geride bırakarak yarışı kazanın. Hızlı ve dikkatli sürün. Bu oyun, hızlı
+        <h2><a href="carrace.html" id="carraceLink">Araba Yarışı</a></h2>
+        <p> Araba yarışı oyunu. Rakiplerinizi geride bırakarak yarışı kazanın. Hızlı ve dikkatli sürün. Bu oyun, hızlı
             düşünme ve reflekslerinizi geliştirir. Rakiplerinizi geride bırakarak yarışı kazanmaya çalışın. Her doğru
             hamle, reflekslerinizi güçlendirirken hızlı karar verme yeteneğinizi de geliştirir. Farklı pistlerde
             yarışarak sürüş becerilerinizi test edin.</p>
-        <p><a href="connectfour.html" id="connectfourLink">Dörtlü Yap</a>
-            Dörtlü eşleştirme oyunu. Yatay, dikey veya çapraz olarak dört diski yan yana getirin. Strateji geliştirin.
+        <h2><a href="connectfour.html" id="connectfourLink">Dörtlü Yap</a></h2>
+        <p> Dörtlü eşleştirme oyunu. Yatay, dikey veya çapraz olarak dört diski yan yana getirin. Strateji geliştirin.
             Bu oyun, stratejik düşünme ve hamle planlama becerilerinizi geliştirir. Rakibinizi yenmek için dört diski
             yan yana getirmeye çalışın. Her doğru hamle, stratejik düşünme becerilerinizi güçlendirirken rakibinizi
             analiz etme yeteneğinizi de geliştirir. Arkadaşlarınızla veya yapay zeka ile oynayarak strateji
             becerilerinizi test edin.</p>
-        <p><a href="fastreflex.html" id="fastreflexLink">Hızlı Ol</a>
-            Refleks oyunu. Verilen komutlara hızlı tepki verin. Hızınızı ve dikkat seviyenizi test edin. Bu oyun,
+        <h2><a href="fastreflex.html" id="fastreflexLink">Hızlı Ol</a></h2>
+        <p> Refleks oyunu. Verilen komutlara hızlı tepki verin. Hızınızı ve dikkat seviyenizi test edin. Bu oyun,
             reflekslerinizi ve tepki hızınızı geliştirir. Verilen komutlara en hızlı şekilde tepki vererek en yüksek
             puanı elde etmeye çalışın. Her doğru tepki, reflekslerinizi güçlendirirken odaklanma becerilerinizi de
             geliştirir. Farklı zorluk seviyelerinde oynayarak reflekslerinizi test edin.</p>
-        <p><a href="minesweeper.html" id="minesweeperLink">Mayın Tarlası</a>
-            Mantık ve strateji oyunu. Mayınları işaretleyerek tarlayı temizleyin. Dikkatli ve mantıklı adımlar atın. Bu
+        <h2><a href="minesweeper.html" id="minesweeperLink">Mayın Tarlası</a></h2>
+        <p> Mantık ve strateji oyunu. Mayınları işaretleyerek tarlayı temizleyin. Dikkatli ve mantıklı adımlar atın. Bu
             oyun, mantık yürütme ve problem çözme becerilerinizi geliştirir. Mayınları doğru şekilde işaretleyerek
             tarlayı temizlemeye çalışın. Her doğru hamle, mantık yürütme becerilerinizi güçlendirirken dikkat ve
             odaklanma becerilerinizi de geliştirir. Farklı zorluk seviyelerinde oynayarak mantık becerilerinizi test
             edin.</p>
-        <p><a href="sudoku.html" id="sudokuLink">Sudoku Oyna</a>
-            Sayı bulmaca oyunu. Her satır, sütun ve 3x3 bölgede 1'den 9'a kadar rakamları yerleştirin. Mantık ve dikkat
+        <h2><a href="sudoku.html" id="sudokuLink">Sudoku Oyna</a></h2>
+        <p> Sayı bulmaca oyunu. Her satır, sütun ve 3x3 bölgede 1'den 9'a kadar rakamları yerleştirin. Mantık ve dikkat
             gerektirir. Bu oyun, mantık yürütme ve problem çözme becerilerinizi geliştirir. Her satır, sütun ve 3x3
             bölgede 1'den 9'a kadar rakamları doğru şekilde yerleştirerek bulmacayı çözmeye çalışın. Her doğru hamle,
             mantık yürütme becerilerinizi güçlendirirken dikkat ve odaklanma becerilerinizi de geliştirir. Farklı zorluk
             seviyelerinde oynayarak mantık becerilerinizi test edin.</p>
-        <p><a href="fortuneteller.html" id="fortunetellerLink">Günlük Falım</a>
-            Günlük burç yorumu. Günlük tahminlerinizi öğrenin ve gününüzü planlayın. Bu oyun, günlük burç yorumlarınızı
+        <h2><a href="fortuneteller.html" id="fortunetellerLink">Günlük Falım</a></h2>
+        <p> Günlük burç yorumu. Günlük tahminlerinizi öğrenin ve gününüzü planlayın. Bu oyun, günlük burç yorumlarınızı
             öğrenerek gününüzü planlamanıza yardımcı olur. Burcunuza özel tahminleri okuyarak gününüz hakkında ipuçları
             edinin. Hem eğlenceli hem de bilgilendirici bu oyun, günlük yaşamınıza farklı bir bakış açısı sunar.</p>
-        <p><a href="tarot.html" id="tarotLink">Tarot Falım</a>
-            Tarot kartlarıyla gelecek yorumu. Kartları seçerek geleceğiniz hakkında bilgi edinin. Bu oyun, tarot
+        <h2><a href="tarot.html" id="tarotLink">Tarot Falım</a></h2>
+        <p> Tarot kartlarıyla gelecek yorumu. Kartları seçerek geleceğiniz hakkında bilgi edinin. Bu oyun, tarot
             kartlarıyla geleceğiniz hakkında yorumlar yapmanıza olanak tanır. Kartları seçerek geleceğinizle ilgili
             farklı yorumlar okuyun. Hem eğlenceli hem de merak uyandırıcı bu oyun, geleceğe dair farklı perspektifler
             sunar.</p>
-        <p><a href="flipcoin.html" id="flipcoinLink">Yazı Tura</a>
-            Şans oyunu. Yazı mı tura mı tahmin edin. Şansınızı deneyin. Bu oyun, tamamen şansa dayalı bir oyundur. Yazı
+        <h2><a href="flipcoin.html" id="flipcoinLink">Yazı Tura</a></h2>
+        <p> Şans oyunu. Yazı mı tura mı tahmin edin. Şansınızı deneyin. Bu oyun, tamamen şansa dayalı bir oyundur. Yazı
             mı tura mı tahmin ederek şansınızı deneyin. Hem basit hem de eğlenceli bu oyun, anlık heyecanlar yaşamanızı
             sağlar.</p>
-        <p><a href="iqtest.html" id="iqtestLink">Zeka Testi</a>
-            Zeka seviyenizi ölçme testi. Mantıksal ve görsel soruları yanıtlayarak zeka seviyenizi öğrenin. Bu oyun,
+        <h2><a href="iqtest.html" id="iqtestLink">Zeka Testi</a></h2>
+        <p> Zeka seviyenizi ölçme testi. Mantıksal ve görsel soruları yanıtlayarak zeka seviyenizi öğrenin. Bu oyun,
             zeka seviyenizi ölçmenize yardımcı olur. Mantıksal ve görsel soruları yanıtlayarak zeka seviyenizi öğrenin.
             Hem eğlenceli hem de bilgilendirici bu test, zihinsel becerilerinizi test etmenizi sağlar.</p>
-        <p><a href="personalitytest.html" id="personalitytestLink">Kişilik Testi</a>
-            Kişilik özelliklerinizi belirleme testi. Soruları yanıtlayarak kişilik profilinizi öğrenin. Bu oyun, kişilik
+        <h2><a href="personalitytest.html" id="personalitytestLink">Kişilik Testi</a></h2>
+        <p> Kişilik özelliklerinizi belirleme testi. Soruları yanıtlayarak kişilik profilinizi öğrenin. Bu oyun, kişilik
             özelliklerinizi belirlemenize yardımcı olur. Soruları yanıtlayarak kişilik profilinizi öğrenin. Hem
             eğlenceli hem de bilgilendirici bu test, kendinizi daha iyi tanımanızı sağlar.</p>
     </div>

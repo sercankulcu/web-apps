@@ -2,388 +2,390 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hafıza Oyunu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Hafıza Oyunu</title>
 
-    <meta name="description"
-        content="Hafıza Oyunu ile eşleştirme yeteneklerinizi test edin. Eğlenceli ikonlarla hafızanızı güçlendirin.">
-    <meta name="keywords"
-        content="hafıza oyunu, eşleştirme oyunu, hafıza geliştirme, zeka oyunu, ikon oyunu, dorukdayım, eğitim oyunu">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/memory.html">
-    <meta name="theme-color" content="#f0f0f0">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
+  <meta name="description"
+    content="Hafıza Oyunu ile eşleştirme yeteneklerinizi test edin. Eğlenceli ikonlarla hafızanızı güçlendirin.">
+  <meta name="keywords"
+    content="hafıza oyunu, eşleştirme oyunu, hafıza geliştirme, zeka oyunu, ikon oyunu, dorukdayım, eğitim oyunu">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/memory.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="DorukDayım - Hafıza Oyunu">
-    <meta property="og:description"
-        content="Hafıza Oyunu ile eşleştirme yeteneklerinizi test edin. Eğlenceli ikonlarla hafızanızı güçlendirin.">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/memory.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım" />
+  <meta property="og:title" content="DorukDayım - Hafıza Oyunu">
+  <meta property="og:description"
+    content="Hafıza Oyunu ile eşleştirme yeteneklerinizi test edin. Eğlenceli ikonlarla hafızanızı güçlendirin.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/memory.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DorukDayım - Hafıza Oyunu">
-    <meta name="twitter:description"
-        content="Hafıza Oyunu ile eşleştirme yeteneklerinizi test edin. Eğlenceli ikonlarla hafızanızı güçlendirin.">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
-    <meta name="twitter:image:alt" content="DorukDayım Hafıza Oyunu resmi" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DorukDayım - Hafıza Oyunu">
+  <meta name="twitter:description"
+    content="Hafıza Oyunu ile eşleştirme yeteneklerinizi test edin. Eğlenceli ikonlarla hafızanızı güçlendirin.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="DorukDayım Hafıza Oyunu resmi" />
 
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <style>
-        body {
-            margin: 0 auto;
-            text-align: center;
-            padding: 1vh;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-        }
+  <style>
+    body {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
 
-        .game-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            padding: 5px;
-            justify-content: center;
-        }
+    .game-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      padding: 5px;
+      justify-content: center;
+    }
 
-        .card {
-            width: 100%;
-            aspect-ratio: 1;
-            background: #fff;
-            border-radius: 20px;
-            cursor: pointer;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-        }
+    .card {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
 
-        .card.flipped {
-            transform: rotateY(180deg);
-        }
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
 
-        .card-front,
-        .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3rem;
-        }
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+    }
 
-        .card-front {
-            background: #f0f0f0;
-            color: white;
-            transform: rotateY(180deg);
-        }
+    .card-front {
+      background: #f0f0f0;
+      color: white;
+      transform: rotateY(180deg);
+    }
 
-        .card-back {
-            background: #fff;
-            border: 2px solid #ddd;
-        }
+    .card-back {
+      background: #fff;
+      border: 2px solid #ddd;
+    }
 
-        .stats {
-            margin: 10px 10px;
-            font-size: 1.2rem;
-            text-align: center;
-        }
+    .stats {
+      margin: 10px 10px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
 
-        .stats-box {
-            display: inline-block;
-            background: white;
-            color: #4CAF50;
-            padding: 10px 10px;
-            border: 3px solid #4CAF50;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+    .stats-box {
+      display: inline-block;
+      background: white;
+      color: #4CAF50;
+      padding: 10px 10px;
+      border: 3px solid #4CAF50;
+      border-radius: 5px;
+      font-weight: bold;
+    }
 
-        .modal {
-            position: fixed;
-            width: 50%;
-            max-width: 400px;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: #333;
-            border-radius: 10px;
-        }
+    .modal {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
 
-        #initialMessage {
-            position: fixed;
-            width: 50%;
-            max-width: 400px;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: #333;
-            border-radius: 10px;
-        }
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-    </style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #333333;
+      color: #f9f9f9;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 10px;
+      text-align: justify;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="initialMessage">
-        <p>Ana sayfaya dönmek için başlığa <strong>(Hafıza Oyunu)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Hafıza Oyunu)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
+  <h1 id="title">Hafıza Oyunu</h1>
+  <div class="stats">
+    <div class="stats-box">
+      Hamle: <span id="moves">0</span>
     </div>
-    <h1 id="title">Hafıza Oyunu</h1>
-    <div class="stats">
-        <div class="stats-box">
-            Hamle: <span id="moves">0</span>
-        </div>
-        <div class="stats-box">
-            Süre: <span id="time">0</span>s
-        </div>
+    <div class="stats-box">
+      Süre: <span id="time">0</span>s
     </div>
-    <div class="game-container" id="game"></div>
-    <div id="winModal" class="modal" onclick="startGame()">
-        <h2 id="winMessage"></h2>
-        <p>Ana sayfaya dönmek için başlığa <strong>(Hafıza Oyunu)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
-    </div>
+  </div>
+  <div class="game-container" id="game"></div>
+  <div id="winModal" class="modal" onclick="startGame()">
+    <h2 id="winMessage"></h2>
+    <p>Ana sayfaya dönmek için başlığa <strong>(Hafıza Oyunu)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
 
-    <button id="infoButton"
-        style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+  <button id="infoButton"
+    style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
-        <button id="closeButton"
-            style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
-        <h2>Hafıza Oyunu Nasıl Oynanır?</h2>
-        <p>
-            Hafıza Oyunu, eşleştirme yeteneklerinizi test eden eğlenceli bir oyundur. Oyuna başladığınızda, ekranda
-            kapalı kartlar göreceksiniz.
-            Amacınız, aynı ikonları eşleştirerek tüm kartları açmaktır. Kartlara tıkladığınızda ikonlar kısa bir süre
-            görünür ve sonra tekrar kapanır.
-            İki kartı eşleştirdiğinizde açık kalır, eşleşmezse tekrar kapanır. Oyun, en az hamle ve en kısa sürede tüm
-            eşleşmeleri tamamlamanızı hedefler.
-        </p>
+  <div id="overlay">
+    <button id="closeButton"
+      style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+    <h2>Hafıza Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Hafıza Oyunu, eşleştirme yeteneklerinizi test eden eğlenceli bir oyundur. Oyuna başladığınızda, ekranda
+      kapalı kartlar göreceksiniz.
+      Amacınız, aynı ikonları eşleştirerek tüm kartları açmaktır. Kartlara tıkladığınızda ikonlar kısa bir süre
+      görünür ve sonra tekrar kapanır.
+      İki kartı eşleştirdiğinizde açık kalır, eşleşmezse tekrar kapanır. Oyun, en az hamle ve en kısa sürede tüm
+      eşleşmeleri tamamlamanızı hedefler.
+    </p>
 
-        <h2>Hafıza Oyununun Faydaları</h2>
-        <ul>
-            <li><strong>Hafıza Gelişimi:</strong> Oyun, kısa süreli hafızanızı ve görsel hafızanızı geliştirmenize
-                yardımcı olur.</li>
-            <li><strong>Konsantrasyon Artışı:</strong> Eşleşmeleri bulmak için dikkatli olmanız gerektiğinden,
-                konsantrasyon yeteneğinizi artırır.</li>
-            <li><strong>Problem Çözme Yeteneği:</strong> Kartların yerlerini ve ikonları hatırlayarak strateji
-                geliştirmeniz, problem çözme becerilerinizi geliştirir.</li>
-            <li><strong>Eğlenceli Zihin Egzersizi:</strong> Farklı ikon setleri ile zihninizi aktif tutarak eğlenceli
-                bir zihin egzersizi yapabilirsiniz.</li>
-            <li><strong>Zihinsel Çeviklik:</strong> Hızlı düşünme ve hatırlama gerekliliği, zihinsel çevikliğinizi
-                artırır.</li>
-        </ul>
+    <h2>Hafıza Oyununun Faydaları</h2>
+    <ul>
+      <li><strong>Hafıza Gelişimi:</strong> Oyun, kısa süreli hafızanızı ve görsel hafızanızı geliştirmenize
+        yardımcı olur.</li>
+      <li><strong>Konsantrasyon Artışı:</strong> Eşleşmeleri bulmak için dikkatli olmanız gerektiğinden,
+        konsantrasyon yeteneğinizi artırır.</li>
+      <li><strong>Problem Çözme Yeteneği:</strong> Kartların yerlerini ve ikonları hatırlayarak strateji
+        geliştirmeniz, problem çözme becerilerinizi geliştirir.</li>
+      <li><strong>Eğlenceli Zihin Egzersizi:</strong> Farklı ikon setleri ile zihninizi aktif tutarak eğlenceli
+        bir zihin egzersizi yapabilirsiniz.</li>
+      <li><strong>Zihinsel Çeviklik:</strong> Hızlı düşünme ve hatırlama gerekliliği, zihinsel çevikliğinizi
+        artırır.</li>
+    </ul>
 
-        <p>
-            Hafıza Oyunu, özellikle hafıza geliştirme, zeka oyunları ve eşleştirme oyunları kategorilerinde popülerdir.
-            Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
-            Oyunun farklı ikon setleri sunması, kullanıcıların ilgisini çeker ve tekrar oynama isteği uyandırır.
-            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
-            Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
-        </p>
+    <p>
+      Hafıza Oyunu, özellikle hafıza geliştirme, zeka oyunları ve eşleştirme oyunları kategorilerinde popülerdir.
+      Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
+      Oyunun farklı ikon setleri sunması, kullanıcıların ilgisini çeker ve tekrar oynama isteği uyandırır.
+      Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
+      Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
 
-    </div>
+  </div>
 
-    <script>
-        const animalIcons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
-        const foodIcons = ['🍎', '🍌', '🍇', '🍉', '🍓', '🥕', '🍕', '🍔'];
-        const travelIcons = ['🚗', '🚕', '🚙', '🚌', '🚎', '🏎', '🚓', '🚑'];
-        const weatherIcons = ['☀️', '🌤', '⛅', '🌧', '⛈', '❄️', '🌪', '🌈'];
-        const sportIcons = ['⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏓', '🥊'];
-        const musicIcons = ['🎵', '🎶', '🎸', '🎻', '🥁', '🎺', '🎷', '🎤'];
-        const natureIcons = ['🌳', '🌵', '🌻', '🍁', '🍀', '🌴', '🌾', '🌺'];
-        const spaceIcons = ['🚀', '🛸', '🌍', '🌕', '🌟', '🌌', '🪐', '☄️'];
-        const emojiIcons = ['😀', '😂', '😍', '😎', '😜', '😇', '😡', '🤢'];
-        const gameIcons = ['🎮', '🕹', '🎲', '🃏', '🀄', '🎯', '🎳', '🎰'];
-        const letterIcons = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-        const treeIcons = ['🌲', '🌳', '🌴', '🌵', '🌿', '🍀', '🍁', '🍂'];
-        const flowerIcons = ['🌺', '🌻', '🌼', '🌷', '🌹', '🥀', '🌸', '💐'];
-        const fruitIcons = ['🍎', '🍏', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇'];
-        const vegetableIcons = ['🍆', '🥒', '🥦', '🌶', '🌽', '🥕', '🥔', '🍠'];
-        const numberIcons = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣'];
-        const shapeIcons = ['🔵', '🔴', '🟡', '🟢', '🟣', '🟠', '🟤', '⚫'];
-        const symbolIcons = ['❤️', '💛', '💚', '💙', '💜', '🖤', '🤍', '🧡'];
-        const handIcons = ['👍', '👎', '👌', '👊', '✊', '🤞', '🤟', '🤘'];
-        const arrowIcons = ['⬆️', '↗️', '➡️', '↘️', '⬇️', '↙️', '⬅️', '↖️'];
+  <script>
+    const animalIcons = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
+    const foodIcons = ['🍎', '🍌', '🍇', '🍉', '🍓', '🥕', '🍕', '🍔'];
+    const travelIcons = ['🚗', '🚕', '🚙', '🚌', '🚎', '🏎', '🚓', '🚑'];
+    const weatherIcons = ['☀️', '🌤', '⛅', '🌧', '⛈', '❄️', '🌪', '🌈'];
+    const sportIcons = ['⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏓', '🥊'];
+    const musicIcons = ['🎵', '🎶', '🎸', '🎻', '🥁', '🎺', '🎷', '🎤'];
+    const natureIcons = ['🌳', '🌵', '🌻', '🍁', '🍀', '🌴', '🌾', '🌺'];
+    const spaceIcons = ['🚀', '🛸', '🌍', '🌕', '🌟', '🌌', '🪐', '☄️'];
+    const emojiIcons = ['😀', '😂', '😍', '😎', '😜', '😇', '😡', '🤢'];
+    const gameIcons = ['🎮', '🕹', '🎲', '🃏', '🀄', '🎯', '🎳', '🎰'];
+    const letterIcons = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const treeIcons = ['🌲', '🌳', '🌴', '🌵', '🌿', '🍀', '🍁', '🍂'];
+    const flowerIcons = ['🌺', '🌻', '🌼', '🌷', '🌹', '🥀', '🌸', '💐'];
+    const fruitIcons = ['🍎', '🍏', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇'];
+    const vegetableIcons = ['🍆', '🥒', '🥦', '🌶', '🌽', '🥕', '🥔', '🍠'];
+    const numberIcons = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣'];
+    const shapeIcons = ['🔵', '🔴', '🟡', '🟢', '🟣', '🟠', '🟤', '⚫'];
+    const symbolIcons = ['❤️', '💛', '💚', '💙', '💜', '🖤', '🤍', '🧡'];
+    const handIcons = ['👍', '👎', '👌', '👊', '✊', '🤞', '🤟', '🤘'];
+    const arrowIcons = ['⬆️', '↗️', '➡️', '↘️', '⬇️', '↙️', '⬅️', '↖️'];
 
-        const iconSets = [animalIcons, foodIcons, travelIcons, weatherIcons, sportIcons, musicIcons,
-            natureIcons, spaceIcons, emojiIcons, gameIcons, letterIcons, treeIcons, flowerIcons, fruitIcons,
-            vegetableIcons, numberIcons, shapeIcons, symbolIcons, handIcons, arrowIcons];
-        let flippedCards = [];
-        let moves = 0;
-        let time = 0;
-        let timer;
+    const iconSets = [animalIcons, foodIcons, travelIcons, weatherIcons, sportIcons, musicIcons,
+      natureIcons, spaceIcons, emojiIcons, gameIcons, letterIcons, treeIcons, flowerIcons, fruitIcons,
+      vegetableIcons, numberIcons, shapeIcons, symbolIcons, handIcons, arrowIcons];
+    let flippedCards = [];
+    let moves = 0;
+    let time = 0;
+    let timer;
 
-        const titleElement = document.getElementById('title');
-        titleElement.addEventListener('click', function () {
-            if (window.parent !== window) {
-                window.parent.showMainContent();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
-        const infoButton = document.getElementById('infoButton');
-        const overlay = document.getElementById('overlay');
-        const closeButton = document.getElementById('closeButton');
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
 
-        infoButton.addEventListener('click', () => {
-            overlay.style.display = 'block';
-        });
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
 
-        closeButton.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
 
-        function getRandomIconSet() {
-            return iconSets[Math.floor(Math.random() * iconSets.length)];
-        }
+    function getRandomIconSet() {
+      return iconSets[Math.floor(Math.random() * iconSets.length)];
+    }
 
-        function createGame() {
-            const gameContainer = document.getElementById('game');
-            const selectedIcons = getRandomIconSet(); // Rastgele ikon seti seç
-            const allIcons = [...selectedIcons, ...selectedIcons].sort(() => Math.random() - 0.5);
+    function createGame() {
+      const gameContainer = document.getElementById('game');
+      const selectedIcons = getRandomIconSet(); // Rastgele ikon seti seç
+      const allIcons = [...selectedIcons, ...selectedIcons].sort(() => Math.random() - 0.5);
 
-            gameContainer.innerHTML = '';
+      gameContainer.innerHTML = '';
 
-            allIcons.forEach((icon) => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.dataset.value = icon;
-                card.innerHTML = `
+      allIcons.forEach((icon) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.value = icon;
+        card.innerHTML = `
             <div class="card-front">${icon}</div>
             <div class="card-back"></div>
         `;
-                card.addEventListener('click', () => flipCard(card));
-                gameContainer.appendChild(card);
-            });
+        card.addEventListener('click', () => flipCard(card));
+        gameContainer.appendChild(card);
+      });
+    }
+
+    function flipCard(card) {
+      if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
+        card.classList.add('flipped');
+        flippedCards.push(card);
+
+        if (flippedCards.length === 2) {
+          moves++;
+          document.getElementById('moves').textContent = moves;
+          checkMatch();
         }
+      }
+    }
 
-        function flipCard(card) {
-            if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
-                card.classList.add('flipped');
-                flippedCards.push(card);
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
 
-                if (flippedCards.length === 2) {
-                    moves++;
-                    document.getElementById('moves').textContent = moves;
-                    checkMatch();
-                }
-            }
-        }
+      if (card1.dataset.value === card2.dataset.value) {
+        flippedCards = [];
+        checkWin();
+      } else {
+        setTimeout(() => {
+          card1.classList.remove('flipped');
+          card2.classList.remove('flipped');
+          flippedCards = [];
+        }, 1000);
+      }
+    }
 
-        function checkMatch() {
-            const [card1, card2] = flippedCards;
+    function checkWin() {
+      const allCards = document.querySelectorAll('.card');
+      if ([...allCards].every(card => card.classList.contains('flipped'))) {
+        clearInterval(timer);
+        setTimeout(() => showWinModal(), 500);
+      }
+    }
 
-            if (card1.dataset.value === card2.dataset.value) {
-                flippedCards = [];
-                checkWin();
-            } else {
-                setTimeout(() => {
-                    card1.classList.remove('flipped');
-                    card2.classList.remove('flipped');
-                    flippedCards = [];
-                }, 1000);
-            }
-        }
+    function startGame() {
+      clearInterval(timer);
+      moves = 0;
+      time = 0;
+      flippedCards = [];
+      document.getElementById('moves').textContent = '0';
+      document.getElementById('time').textContent = '0';
+      createGame();
+      closeModal();
+      timer = setInterval(() => {
+        time++;
+        document.getElementById('time').textContent = time;
+      }, 1000);
+    }
 
-        function checkWin() {
-            const allCards = document.querySelectorAll('.card');
-            if ([...allCards].every(card => card.classList.contains('flipped'))) {
-                clearInterval(timer);
-                setTimeout(() => showWinModal(), 500);
-            }
-        }
+    function showWinModal() {
+      document.getElementById("winMessage").innerText = `Tebrikler!\nKazandınız!\n\nHamle: ${moves} Süre: ${time}s`;
+      document.getElementById("winModal").style.display = "block";
+      saveHighScore("Hafıza Oyunu", 200 - moves * 2 - time);
+    }
 
-        function startGame() {
-            clearInterval(timer);
-            moves = 0;
-            time = 0;
-            flippedCards = [];
-            document.getElementById('moves').textContent = '0';
-            document.getElementById('time').textContent = '0';
-            createGame();
-            closeModal();
-            timer = setInterval(() => {
-                time++;
-                document.getElementById('time').textContent = time;
-            }, 1000);
-        }
+    function saveHighScore(gameName, score) {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
 
-        function showWinModal() {
-            document.getElementById("winMessage").innerText = `Tebrikler!\nKazandınız!\n\nHamle: ${moves} Süre: ${time}s`;
-            document.getElementById("winModal").style.display = "block";
-            saveHighScore("Hafıza Oyunu", 200 - moves * 2 - time);
-        }
+      let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
 
-        function saveHighScore(gameName, score) {
-            const today = new Date();
-            const day = String(today.getDate()).padStart(2, '0');
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const year = today.getFullYear();
-            const formattedDate = `${day}/${month}/${year}`;
+      if (!highScores[gameName] || score > highScores[gameName].score) {
+        highScores[gameName] = {
+          score: score,
+          date: formattedDate,
+        };
 
-            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+        localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+      }
+    }
 
-            if (!highScores[gameName] || score > highScores[gameName].score) {
-                highScores[gameName] = {
-                    score: score,
-                    date: formattedDate,
-                };
+    function closeModal() {
+      document.getElementById("winModal").style.display = "none";
+    }
 
-                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
-            }
-        }
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
 
-        function closeModal() {
-            document.getElementById("winModal").style.display = "none";
-        }
-
-        document.addEventListener('click', () => {
-            document.getElementById('initialMessage').style.display = 'none';
-        });
-
-        startGame();
-    </script>
+    startGame();
+  </script>
 </body>
 
 </html>

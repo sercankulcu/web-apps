@@ -2,431 +2,433 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tic Tac Toe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tic Tac Toe</title>
 
-    <meta name="description"
-        content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
-    <meta name="keywords" content="tik tak toe, üç taş, oyun, zeka oyunu, tr, türkçe, online oyun">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/tictactoe.html">
-    <meta name="theme-color" content="#FF5722">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
+  <meta name="description"
+    content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
+  <meta name="keywords" content="tik tak toe, üç taş, oyun, zeka oyunu, tr, türkçe, online oyun">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/tictactoe.html">
+  <meta name="theme-color" content="#FF5722">
+  <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="Tik Tak Toe - Üç Taş Oyunu">
-    <meta property="og:description"
-        content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/tictactoe.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım">
+  <meta property="og:title" content="Tik Tak Toe - Üç Taş Oyunu">
+  <meta property="og:description"
+    content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/tictactoe.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tik Tak Toe - Üç Taş Oyunu">
-    <meta name="twitter:description"
-        content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
-    <meta name="twitter:image:alt" content="Tik Tak Toe Türkçe üç taş oyunu resmi" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tik Tak Toe - Üç Taş Oyunu">
+  <meta name="twitter:description"
+    content="Tik Tak Toe oyunu ile arkadaşlarınızla veya bilgisayara karşı eğlenceli bir oyun oynayın. Klasik üç taş oyunu şimdi web'de!">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="Tik Tak Toe Türkçe üç taş oyunu resmi" />
 
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #1e1e1e;
-            color: white;
-            margin: 0 auto;
-            text-align: center;
-            padding: 1vh;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-        }
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1e1e1e;
+      color: white;
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
 
-        .container {
-            text-align: center;
-        }
+    .container {
+      text-align: center;
+    }
 
-        .board {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
-            gap: 10px;
-            margin: 20px auto;
-        }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 10px;
+      margin: 20px auto;
+    }
 
-        .cell {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2em;
-            background: #333;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+    .cell {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      background: #333;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-        .cell:hover {
-            background: #444;
-        }
+    .cell:hover {
+      background: #444;
+    }
 
-        .status {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
+    .status {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
 
-        .reset {
-            background: #ff5722;
-            color: white;
-            border: none;
-            padding: 10px 10px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
+    .reset {
+      background: #ff5722;
+      color: white;
+      border: none;
+      padding: 10px 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
 
-        .reset:hover {
-            background: #e64a19;
-        }
+    .reset:hover {
+      background: #e64a19;
+    }
 
-        select {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 10px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
-            appearance: none;
-            width: 120px;
-            text-align: center;
-        }
+    select {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+      appearance: none;
+      width: 120px;
+      text-align: center;
+    }
 
-        select:hover {
-            background: #0056b3;
-        }
+    select:hover {
+      background: #0056b3;
+    }
 
-        #initialMessage {
-            position: fixed;
-            width: 50%;
-            max-width: 400px;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #333;
-            padding: 30px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: white;
-            border-radius: 10px;
-        }
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #333;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 10px;
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-    </style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #333333;
+      color: #f9f9f9;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 10px;
+      text-align: justify;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="initialMessage">
-        <p id="initialMessageText1"></p>
-        <p id="initialMessageText2"></p>
-    </div>
-    <div class="container">
-        <h1 id="title">Tik Tak Too</h1>
-        <div class="status" id="statusMessage"></div>
-        <div class="board"></div>
-        <button class="reset" id="resetButton"></button>
-        <select id="mode">
-            <option value="hard" id="selectModeText"></option>
-            <option value="easy" id="easyModeText"></option>
-            <option value="hard" id="hardModeText"></option>
-        </select>
-    </div>
+  <div id="initialMessage">
+    <p id="initialMessageText1"></p>
+    <p id="initialMessageText2"></p>
+  </div>
+  <div class="container">
+    <h1 id="title">Tik Tak Too</h1>
+    <div class="status" id="statusMessage"></div>
+    <div class="board"></div>
+    <button class="reset" id="resetButton"></button>
+    <select id="mode">
+      <option value="hard" id="selectModeText"></option>
+      <option value="easy" id="easyModeText"></option>
+      <option value="hard" id="hardModeText"></option>
+    </select>
+  </div>
 
-    <button id="infoButton"
-        style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+  <button id="infoButton"
+    style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
-        <button id="closeButton"
-            style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
-        <h2>Tik Tak Toe (Üç Taş) Oyunu Nasıl Oynanır?</h2>
-        <p>
-            Tik Tak Toe, diğer adıyla Üç Taş, iki oyuncu arasında 3x3'lük bir ızgara üzerinde oynanan klasik bir
-            zeka
-            oyunudur.
-            Oyunun amacı, yatay, dikey veya çapraz olarak üç işareti (X veya O) yan yana getirmektir.
-            Oyuncular sırayla boş hücrelere işaretlerini yerleştirirler.
-            Oyuna ilk başlayan oyuncu genellikle "X" işaretini kullanır.
-            Eğer ızgaradaki tüm hücreler dolarsa ve hiçbir oyuncu üç işareti yan yana getiremezse, oyun berabere
-            sonuçlanır.
-        </p>
+  <div id="overlay">
+    <button id="closeButton"
+      style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+    <h2>Tik Tak Toe (Üç Taş) Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Tik Tak Toe, diğer adıyla Üç Taş, iki oyuncu arasında 3x3'lük bir ızgara üzerinde oynanan klasik bir
+      zeka
+      oyunudur.
+      Oyunun amacı, yatay, dikey veya çapraz olarak üç işareti (X veya O) yan yana getirmektir.
+      Oyuncular sırayla boş hücrelere işaretlerini yerleştirirler.
+      Oyuna ilk başlayan oyuncu genellikle "X" işaretini kullanır.
+      Eğer ızgaradaki tüm hücreler dolarsa ve hiçbir oyuncu üç işareti yan yana getiremezse, oyun berabere
+      sonuçlanır.
+    </p>
 
-        <h3>Oyunun Temel Kuralları</h3>
-        <ol>
-            <li>Oyuncular sırayla boş hücrelere işaretlerini yerleştirirler.</li>
-            <li>Amaç, yatay, dikey veya çapraz olarak üç işareti yan yana getirmektir.</li>
-            <li>Oyun, bir oyuncu üç işareti yan yana getirdiğinde veya ızgaradaki tüm hücreler dolduğunda sona erer.
-            </li>
-            <li>Oyun, bir oyuncu üç işareti yan yana getirdiğinde kazanan o oyuncu olur.</li>
-            <li>Eğer ızgaradaki tüm hücreler dolarsa ve hiçbir oyuncu üç işareti yan yana getiremezse, oyun berabere
-                sonuçlanır.</li>
-        </ol>
+    <h3>Oyunun Temel Kuralları</h3>
+    <ol>
+      <li>Oyuncular sırayla boş hücrelere işaretlerini yerleştirirler.</li>
+      <li>Amaç, yatay, dikey veya çapraz olarak üç işareti yan yana getirmektir.</li>
+      <li>Oyun, bir oyuncu üç işareti yan yana getirdiğinde veya ızgaradaki tüm hücreler dolduğunda sona erer.
+      </li>
+      <li>Oyun, bir oyuncu üç işareti yan yana getirdiğinde kazanan o oyuncu olur.</li>
+      <li>Eğer ızgaradaki tüm hücreler dolarsa ve hiçbir oyuncu üç işareti yan yana getiremezse, oyun berabere
+        sonuçlanır.</li>
+    </ol>
 
-        <h3>Tik Tak Toe Oyununun Faydaları</h2>
-        <ul>
-            <li><strong>Mantıksal Düşünme:</strong> Oyun, oyuncuların mantıksal düşünme ve strateji geliştirme
-                becerilerini geliştirir.</li>
-            <li><strong>Problem Çözme:</strong> Oyuncular, rakiplerinin hamlelerini tahmin ederek ve kendi
-                hamlelerini
-                planlayarak problem çözme yeteneklerini geliştirirler.</li>
-            <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyuncuların oyuna odaklanmaları ve konsantre olmaları
-                gerekir, bu da dikkat becerilerini geliştirir.</li>
-            <li><strong>Hızlı Karar Verme:</strong> Oyuncular, sınırlı bir zaman içinde hızlı ve doğru kararlar
-                vermek
-                zorundadırlar.</li>
-            <li><strong>Eğlence ve Sosyalleşme:</strong> Oyun, arkadaşlarınızla veya ailenizle keyifli vakit
-                geçirmenizi
-                sağlar ve sosyalleşmeyi teşvik eder.</li>
-            <li><strong>Zihinsel Egzersiz:</strong> Her yaş için uygun bir zihinsel egzersizdir.</li>
-        </ul>
+    <h3>Tik Tak Toe Oyununun Faydaları</h2>
+      <ul>
+        <li><strong>Mantıksal Düşünme:</strong> Oyun, oyuncuların mantıksal düşünme ve strateji geliştirme
+          becerilerini geliştirir.</li>
+        <li><strong>Problem Çözme:</strong> Oyuncular, rakiplerinin hamlelerini tahmin ederek ve kendi
+          hamlelerini
+          planlayarak problem çözme yeteneklerini geliştirirler.</li>
+        <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyuncuların oyuna odaklanmaları ve konsantre olmaları
+          gerekir, bu da dikkat becerilerini geliştirir.</li>
+        <li><strong>Hızlı Karar Verme:</strong> Oyuncular, sınırlı bir zaman içinde hızlı ve doğru kararlar
+          vermek
+          zorundadırlar.</li>
+        <li><strong>Eğlence ve Sosyalleşme:</strong> Oyun, arkadaşlarınızla veya ailenizle keyifli vakit
+          geçirmenizi
+          sağlar ve sosyalleşmeyi teşvik eder.</li>
+        <li><strong>Zihinsel Egzersiz:</strong> Her yaş için uygun bir zihinsel egzersizdir.</li>
+      </ul>
 
-        <p>
-            Tik Tak Toe, basit kuralları ve hızlı oynanışı ile her yaştan oyuncu için eğlenceli ve öğretici bir
-            oyundur.
-            Bu klasik oyun, zihinsel becerilerinizi geliştirirken aynı zamanda keyifli vakit geçirmenizi sağlar.
-            Online olarak arkadaşlarınızla veya bilgisayara karşı oynayarak bu keyifli deneyimi yaşayabilirsiniz.
-        </p>
+      <p>
+        Tik Tak Toe, basit kuralları ve hızlı oynanışı ile her yaştan oyuncu için eğlenceli ve öğretici bir
+        oyundur.
+        Bu klasik oyun, zihinsel becerilerinizi geliştirirken aynı zamanda keyifli vakit geçirmenizi sağlar.
+        Online olarak arkadaşlarınızla veya bilgisayara karşı oynayarak bu keyifli deneyimi yaşayabilirsiniz.
+      </p>
 
-        <p>
-            Oyunun zorluk seviyesini seçerek, bilgisayara karşı farklı zorluklarda oynayabilirsiniz.
-            Kolay mod, yeni başlayanlar için idealdir, zor mod ise daha deneyimli oyuncular için meydan okuyucu bir
-            deneyim sunar.
-        </p>
-    </div>
+      <p>
+        Oyunun zorluk seviyesini seçerek, bilgisayara karşı farklı zorluklarda oynayabilirsiniz.
+        Kolay mod, yeni başlayanlar için idealdir, zor mod ise daha deneyimli oyuncular için meydan okuyucu bir
+        deneyim sunar.
+      </p>
+  </div>
 
-    <script>
-        const board = document.querySelector('.board');
-        const status = document.querySelector('.status');
-        const resetButton = document.querySelector('.reset');
-        const modeSelect = document.getElementById('mode');
+  <script>
+    const board = document.querySelector('.board');
+    const status = document.querySelector('.status');
+    const resetButton = document.querySelector('.reset');
+    const modeSelect = document.getElementById('mode');
 
-        let currentPlayer = 'X';
-        let gameBoard = Array(9).fill(null);
+    let currentPlayer = 'X';
+    let gameBoard = Array(9).fill(null);
 
-        const titleElement = document.getElementById('title');
-        titleElement.addEventListener('click', function () {
-            if (window.parent !== window) {
-                window.parent.showMainContent();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
-        const infoButton = document.getElementById('infoButton');
-        const overlay = document.getElementById('overlay');
-        const closeButton = document.getElementById('closeButton');
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
 
-        infoButton.addEventListener('click', () => {
-            overlay.style.display = 'block';
-        });
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
 
-        closeButton.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
 
-        function checkWinner(isFinalCheck = true) {
-            const winPatterns = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8],
-                [0, 3, 6], [1, 4, 7], [2, 5, 8],
-                [0, 4, 8], [2, 4, 6]
-            ];
-            for (let pattern of winPatterns) {
-                const [a, b, c] = pattern;
-                if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-                    if (isFinalCheck) {
-                        status.textContent = gameBoard[a] === 'X' ? getMessage('playerXWins') : getMessage('playerOWins');
-                        board.removeEventListener('click', handleClick);
-                    }
-                    return gameBoard[a];
-                }
-            }
-            if (!gameBoard.includes(null)) {
-                if (isFinalCheck) status.textContent = getMessage('draw');
-                return "draw";
-            }
-            return null;
+    function checkWinner(isFinalCheck = true) {
+      const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+      for (let pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+          if (isFinalCheck) {
+            status.textContent = gameBoard[a] === 'X' ? getMessage('playerXWins') : getMessage('playerOWins');
+            board.removeEventListener('click', handleClick);
+          }
+          return gameBoard[a];
         }
+      }
+      if (!gameBoard.includes(null)) {
+        if (isFinalCheck) status.textContent = getMessage('draw');
+        return "draw";
+      }
+      return null;
+    }
 
-        function minimaxCheckWinner(board) {
-            const winPatterns = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8],
-                [0, 3, 6], [1, 4, 7], [2, 5, 8],
-                [0, 4, 8], [2, 4, 6]
-            ];
-            for (let pattern of winPatterns) {
-                const [a, b, c] = pattern;
-                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                    return board[a];
-                }
-            }
-            if (!board.includes(null)) return "draw";
-            return null;
+    function minimaxCheckWinner(board) {
+      const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+      for (let pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+          return board[a];
         }
+      }
+      if (!board.includes(null)) return "draw";
+      return null;
+    }
 
-        function handleClick(e) {
-            const index = e.target.dataset.index;
-            if (!gameBoard[index] && currentPlayer === 'X') {
-                gameBoard[index] = currentPlayer;
-                e.target.textContent = currentPlayer;
-                if (!checkWinner()) {
-                    currentPlayer = 'O';
-                    status.textContent = getMessage('computersTurn');
-                    setTimeout(computerMove, 500);
-                }
-            }
+    function handleClick(e) {
+      const index = e.target.dataset.index;
+      if (!gameBoard[index] && currentPlayer === 'X') {
+        gameBoard[index] = currentPlayer;
+        e.target.textContent = currentPlayer;
+        if (!checkWinner()) {
+          currentPlayer = 'O';
+          status.textContent = getMessage('computersTurn');
+          setTimeout(computerMove, 500);
         }
+      }
+    }
 
-        function computerMove() {
-            let mode = modeSelect.value;
-            let bestMove;
-            if (mode === 'easy') {
-                let emptyCells = gameBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
-                bestMove = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-            } else {
-                bestMove = minimax(gameBoard, 'O').index;
-            }
+    function computerMove() {
+      let mode = modeSelect.value;
+      let bestMove;
+      if (mode === 'easy') {
+        let emptyCells = gameBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
+        bestMove = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+      } else {
+        bestMove = minimax(gameBoard, 'O').index;
+      }
 
-            if (bestMove !== undefined) {
-                gameBoard[bestMove] = 'O';
-                document.querySelector(`[data-index='${bestMove}']`).textContent = 'O';
-                if (!checkWinner()) {
-                    currentPlayer = 'X';
-                    status.textContent = getMessage('playerXTurn');
-                    board.addEventListener('click', handleClick);
-                }
-            }
+      if (bestMove !== undefined) {
+        gameBoard[bestMove] = 'O';
+        document.querySelector(`[data-index='${bestMove}']`).textContent = 'O';
+        if (!checkWinner()) {
+          currentPlayer = 'X';
+          status.textContent = getMessage('playerXTurn');
+          board.addEventListener('click', handleClick);
         }
+      }
+    }
 
-        function minimax(newBoard, player) {
-            const availableSpots = newBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
+    function minimax(newBoard, player) {
+      const availableSpots = newBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
 
-            let winner = minimaxCheckWinner(newBoard);
-            if (winner === 'X') return { score: -10 };
-            if (winner === 'O') return { score: 10 };
-            if (winner === 'draw') return { score: 0 };
+      let winner = minimaxCheckWinner(newBoard);
+      if (winner === 'X') return { score: -10 };
+      if (winner === 'O') return { score: 10 };
+      if (winner === 'draw') return { score: 0 };
 
-            let moves = [];
-            for (let i of availableSpots) {
-                let move = { index: i };
-                newBoard[i] = player;
+      let moves = [];
+      for (let i of availableSpots) {
+        let move = { index: i };
+        newBoard[i] = player;
 
-                let result = minimax(newBoard, player === 'O' ? 'X' : 'O');
-                move.score = result.score;
+        let result = minimax(newBoard, player === 'O' ? 'X' : 'O');
+        move.score = result.score;
 
-                newBoard[i] = null;
-                moves.push(move);
-            }
+        newBoard[i] = null;
+        moves.push(move);
+      }
 
-            let bestMove = player === 'O'
-                ? moves.reduce((best, m) => (m.score > best.score ? m : best), { score: -Infinity })
-                : moves.reduce((best, m) => (m.score < best.score ? m : best), { score: Infinity });
+      let bestMove = player === 'O'
+        ? moves.reduce((best, m) => (m.score > best.score ? m : best), { score: -Infinity })
+        : moves.reduce((best, m) => (m.score < best.score ? m : best), { score: Infinity });
 
-            return bestMove;
+      return bestMove;
+    }
+
+    function resetGame() {
+      gameBoard.fill(null);
+      currentPlayer = 'X';
+      status.textContent = getMessage('playerXTurn');
+      board.innerHTML = '';
+      createBoard();
+      board.addEventListener('click', handleClick);
+    }
+
+    function createBoard() {
+      for (let i = 0; i < 9; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.index = i;
+        board.appendChild(cell);
+      }
+    }
+
+    document.getElementById('initialMessage').addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
+
+    createBoard();
+    board.addEventListener('click', handleClick);
+    resetButton.addEventListener('click', resetGame);
+    modeSelect.addEventListener('change', resetGame);
+
+    function getMessage(key) {
+      const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
+      const messages = {
+        en: {
+          initialMessage1: "Click the title <strong>(Tik Tak Too)</strong> to return to the main page.",
+          initialMessage2: "Click anywhere to start the game.",
+          playerXTurn: "Player X's Turn",
+          computersTurn: "Computer's Turn",
+          playerXWins: "🎉 Player X Wins!",
+          playerOWins: "🎉 Player O Wins!",
+          draw: "🤝 It's a Draw!",
+          resetGame: "Reset Game",
+          selectMode: "Select Mode:",
+          easyMode: "Easy",
+          hardMode: "Hard"
+        },
+        tr: {
+          initialMessage1: "Ana sayfaya dönmek için başlığa <strong>(Tik Tak Too)</strong> tıklayınız.",
+          initialMessage2: "Oyuna başlamak için herhangi bir yere tıklayınız.",
+          playerXTurn: "Oyuncu X'in Sırası",
+          computersTurn: "Bilgisayarın Sırası",
+          playerXWins: "🎉 Oyuncu X Kazandı!",
+          playerOWins: "🎉 Oyuncu O Kazandı!",
+          draw: "🤝 Berabere!",
+          resetGame: "Oyunu Sıfırla",
+          selectMode: "Mod Seç:",
+          easyMode: "Kolay",
+          hardMode: "Zor"
         }
+      };
+      return messages[lang][key];
+    }
 
-        function resetGame() {
-            gameBoard.fill(null);
-            currentPlayer = 'X';
-            status.textContent = getMessage('playerXTurn');
-            board.innerHTML = '';
-            createBoard();
-            board.addEventListener('click', handleClick);
-        }
-
-        function createBoard() {
-            for (let i = 0; i < 9; i++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                cell.dataset.index = i;
-                board.appendChild(cell);
-            }
-        }
-
-        document.getElementById('initialMessage').addEventListener('click', () => {
-            document.getElementById('initialMessage').style.display = 'none';
-        });
-
-        createBoard();
-        board.addEventListener('click', handleClick);
-        resetButton.addEventListener('click', resetGame);
-        modeSelect.addEventListener('change', resetGame);
-
-        function getMessage(key) {
-            const lang = navigator.language.startsWith('tr') ? 'tr' : 'en';
-            const messages = {
-                en: {
-                    initialMessage1: "Click the title <strong>(Tik Tak Too)</strong> to return to the main page.",
-                    initialMessage2: "Click anywhere to start the game.",
-                    playerXTurn: "Player X's Turn",
-                    computersTurn: "Computer's Turn",
-                    playerXWins: "🎉 Player X Wins!",
-                    playerOWins: "🎉 Player O Wins!",
-                    draw: "🤝 It's a Draw!",
-                    resetGame: "Reset Game",
-                    selectMode: "Select Mode:",
-                    easyMode: "Easy",
-                    hardMode: "Hard"
-                },
-                tr: {
-                    initialMessage1: "Ana sayfaya dönmek için başlığa <strong>(Tik Tak Too)</strong> tıklayınız.",
-                    initialMessage2: "Oyuna başlamak için herhangi bir yere tıklayınız.",
-                    playerXTurn: "Oyuncu X'in Sırası",
-                    computersTurn: "Bilgisayarın Sırası",
-                    playerXWins: "🎉 Oyuncu X Kazandı!",
-                    playerOWins: "🎉 Oyuncu O Kazandı!",
-                    draw: "🤝 Berabere!",
-                    resetGame: "Oyunu Sıfırla",
-                    selectMode: "Mod Seç:",
-                    easyMode: "Kolay",
-                    hardMode: "Zor"
-                }
-            };
-            return messages[lang][key];
-        }
-
-        document.getElementById('initialMessageText1').innerHTML = getMessage('initialMessage1');
-        document.getElementById('initialMessageText2').textContent = getMessage('initialMessage2');
-        document.getElementById('statusMessage').textContent = getMessage('playerXTurn');
-        document.getElementById('resetButton').textContent = getMessage('resetGame');
-        document.getElementById('selectModeText').textContent = getMessage('selectMode');
-        document.getElementById('easyModeText').textContent = getMessage('easyMode');
-        document.getElementById('hardModeText').textContent = getMessage('hardMode');
-    </script>
+    document.getElementById('initialMessageText1').innerHTML = getMessage('initialMessage1');
+    document.getElementById('initialMessageText2').textContent = getMessage('initialMessage2');
+    document.getElementById('statusMessage').textContent = getMessage('playerXTurn');
+    document.getElementById('resetButton').textContent = getMessage('resetGame');
+    document.getElementById('selectModeText').textContent = getMessage('selectMode');
+    document.getElementById('easyModeText').textContent = getMessage('easyMode');
+    document.getElementById('hardModeText').textContent = getMessage('hardMode');
+  </script>
 </body>
 
 </html>

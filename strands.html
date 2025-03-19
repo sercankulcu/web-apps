@@ -2,442 +2,446 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gizli Kelimeleri Bul - Türkçe Kelime Bulmaca Oyunu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Gizli Kelimeleri Bul - Türkçe Kelime Bulmaca Oyunu</title>
 
-    <meta name="description"
-        content="Gizli Kelimeleri Bul oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve gizli kelimeleri bulun!">
-    <meta name="keywords"
-        content="gizli kelimeler, kelime oyunu, türkçe kelime bulmaca, kelime dağarcığı, zeka oyunu, tr, türkçe, oyun">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/strands.html">
-    <meta name="theme-color" content="#FFD700">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
+  <meta name="description"
+    content="Gizli Kelimeleri Bul oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve gizli kelimeleri bulun!">
+  <meta name="keywords"
+    content="gizli kelimeler, kelime oyunu, türkçe kelime bulmaca, kelime dağarcığı, zeka oyunu, tr, türkçe, oyun">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/strands.html">
+  <meta name="theme-color" content="#FFD700">
+  <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="Gizli Kelimeleri Bul - Türkçe Kelime Bulmaca">
-    <meta property="og:description"
-        content="Gizli Kelimeleri Bul oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve gizli kelimeleri bulun!">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/strands.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım">
+  <meta property="og:title" content="Gizli Kelimeleri Bul - Türkçe Kelime Bulmaca">
+  <meta property="og:description"
+    content="Gizli Kelimeleri Bul oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve gizli kelimeleri bulun!">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/strands.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gizli Kelimeleri Bul - Türkçe Kelime Bulmaca">
-    <meta name="twitter:description"
-        content="Gizli Kelimeleri Bul oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve gizli kelimeleri bulun!">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
-    <meta name="twitter:image:alt" content="Gizli Kelimeleri Bul Türkçe kelime bulmaca oyunu resmi" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gizli Kelimeleri Bul - Türkçe Kelime Bulmaca">
+  <meta name="twitter:description"
+    content="Gizli Kelimeleri Bul oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve gizli kelimeleri bulun!">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="Gizli Kelimeleri Bul Türkçe kelime bulmaca oyunu resmi" />
 
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <style>
-        body {
-            margin: 0 auto;
-            text-align: center;
-            padding: 1vh;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-        }
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    .game-container {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 5px;
-            padding: 5px;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 5px;
+      padding: 5px;
+    }
 
-        .cell {
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #E6E6FA;
-            cursor: pointer;
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 10px;
-            position: relative;
-        }
+    .cell {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #E6E6FA;
+      cursor: pointer;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      position: relative;
+    }
 
-        .cell.selected {
-            background-color: #FF9999;
-        }
+    .cell.selected {
+      background-color: #FF9999;
+    }
 
-        .cell.found {
-            background-color: #A2D2A2;
-        }
+    .cell.found {
+      background-color: #A2D2A2;
+    }
 
-        button {
-            display: inline-block;
-            background: white;
-            color: #4CAF50;
-            padding: 20px 20px;
-            border: 3px solid #4CAF50;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1.5rem;
-            background: #4CAF50;
-            color: white;
-        }
+    button {
+      display: inline-block;
+      background: white;
+      color: #4CAF50;
+      padding: 20px 20px;
+      border: 3px solid #4CAF50;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.5rem;
+      background: #4CAF50;
+      color: white;
+    }
 
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(70, 130, 180, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(70, 130, 180, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-        }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
 
-        #initialMessage {
-            position: fixed;
-            width: 50%;
-            max-width: 400px;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: #333;
-            border-radius: 10px;
-        }
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-    </style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #333333;
+      color: #f9f9f9;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 10px;
+      text-align: justify;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="initialMessage">
-        <p>Ana sayfaya dönmek için başlığa <strong>(Gizli Kelimeleri Bul)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
-    </div>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Gizli Kelimeleri Bul)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
+  <div class="game-container">
     <h1 id="title">Gizli Kelimeleri Bul</h1>
     <div id="grid" class="grid"></div>
     <div id="winModal" class="modal" onclick="closeModal()">
-        <div class="modal-content">
-            <p id="winMessage"></p>
-            <button onclick="restartGame()">Yeni Oyun</button>
-        </div>
+      <div class="modal-content">
+        <p id="winMessage"></p>
+        <button onclick="restartGame()">Yeni Oyun</button>
+      </div>
     </div>
+  </div>
 
-    <button id="infoButton"
-        style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+  <button id="infoButton"
+    style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
-        <button id="closeButton"
-            style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
-        <h2>Gizli Kelimeleri Bul Kelime Oyunu Nasıl Oynanır?</h2>
-        <p>
-            Gizli Kelimeleri Bul, Türkçe kelime dağarcığınızı geliştirmenize yardımcı olan eğlenceli bir kelime bulmaca
-            oyunudur. Oyunda, bir ızgara üzerinde rastgele yerleştirilmiş harflerden anlamlı kelimeler bulmanız
-            gerekiyor.
-            Oyuna başladığınızda, ekranda bir harf ızgarası görürsünüz.
-            Amacınız, bitişik harfleri birleştirerek listede verilen gizli kelimeleri bulmaktır.
-            Harfleri yatay, dikey veya çapraz olarak birleştirebilirsiniz.
-            Bulduğunuz her kelime için puan kazanırsınız.
-            Oyun, zihinsel becerilerinizi geliştirirken aynı zamanda eğlenceli vakit geçirmenizi sağlar.
-        </p>
+  <div id="overlay">
+    <button id="closeButton"
+      style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+    <h2>Gizli Kelimeleri Bul Kelime Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Gizli Kelimeleri Bul, Türkçe kelime dağarcığınızı geliştirmenize yardımcı olan eğlenceli bir kelime bulmaca
+      oyunudur. Oyunda, bir ızgara üzerinde rastgele yerleştirilmiş harflerden anlamlı kelimeler bulmanız
+      gerekiyor.
+      Oyuna başladığınızda, ekranda bir harf ızgarası görürsünüz.
+      Amacınız, bitişik harfleri birleştirerek listede verilen gizli kelimeleri bulmaktır.
+      Harfleri yatay, dikey veya çapraz olarak birleştirebilirsiniz.
+      Bulduğunuz her kelime için puan kazanırsınız.
+      Oyun, zihinsel becerilerinizi geliştirirken aynı zamanda eğlenceli vakit geçirmenizi sağlar.
+    </p>
 
-        <h2>Gizli Kelimeleri Bul Kelime Oyununun Faydaları</h2>
-        <ul>
-            <li><strong>Kelime Bilgisi Gelişimi:</strong> Oyun, Türkçe kelime dağarcığınızı genişletmenize yardımcı
-                olur.</li>
-            <li><strong>Mantıksal Düşünme:</strong> Harfleri birleştirerek kelime oluşturmak, mantıksal düşünme
-                becerilerinizi geliştirir.</li>
-            <li><strong>Hızlı Düşünme:</strong> Sınırlı sürede kelime bulmak, hızlı düşünme yeteneğinizi geliştirir.
-            </li>
-            <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre
-                olmanız gerekir.</li>
-            <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni kelimeler türetmek, zihinsel çevikliğinizi
-                artırır.</li>
-            <li><strong>Eğlenceli Öğrenme:</strong> Kelime bulmaca oyunu, öğrenmeyi eğlenceli hale getirir ve
-                motivasyonunuzu artırır.</li>
-        </ul>
+    <h2>Gizli Kelimeleri Bul Kelime Oyununun Faydaları</h2>
+    <ul>
+      <li><strong>Kelime Bilgisi Gelişimi:</strong> Oyun, Türkçe kelime dağarcığınızı genişletmenize yardımcı
+        olur.</li>
+      <li><strong>Mantıksal Düşünme:</strong> Harfleri birleştirerek kelime oluşturmak, mantıksal düşünme
+        becerilerinizi geliştirir.</li>
+      <li><strong>Hızlı Düşünme:</strong> Sınırlı sürede kelime bulmak, hızlı düşünme yeteneğinizi geliştirir.
+      </li>
+      <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre
+        olmanız gerekir.</li>
+      <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni kelimeler türetmek, zihinsel çevikliğinizi
+        artırır.</li>
+      <li><strong>Eğlenceli Öğrenme:</strong> Kelime bulmaca oyunu, öğrenmeyi eğlenceli hale getirir ve
+        motivasyonunuzu artırır.</li>
+    </ul>
 
-        <p>
-            Gizli Kelimeleri Bul, kelime oyunları ve zeka oyunları kategorilerinde popüler bir oyundur. Oyun, her yaştan
-            kullanıcı için uygundur ve Türkçe kelime bilgisini geliştirmek isteyenler için idealdir.
-            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun
-            sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
-        </p>
+    <p>
+      Gizli Kelimeleri Bul, kelime oyunları ve zeka oyunları kategorilerinde popüler bir oyundur. Oyun, her yaştan
+      kullanıcı için uygundur ve Türkçe kelime bilgisini geliştirmek isteyenler için idealdir.
+      Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun
+      sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
 
-    </div>
+  </div>
 
-    <script>
-        const gameSets = [
-            {
-                words: ['ELMA', 'ARMUT', 'MUZ', 'KİRAZ', 'ÜZÜM', 'İNCİR'],
-                spangram: 'MEYVELER',
-                gridLetters: [
-                    'E', 'L', 'M', 'A', 'X', 'X', 'X', 'X',
-                    'X', 'X', 'X', 'A', 'R', 'M', 'U', 'T',
-                    'Ü', 'X', 'X', 'X', 'X', 'X', 'M', 'X',
-                    'Z', 'X', 'X', 'X', 'X', 'X', 'U', 'X',
-                    'Ü', 'K', 'İ', 'R', 'A', 'Z', 'Z', 'X',
-                    'M', 'X', 'X', 'İ', 'N', 'C', 'İ', 'R'
-                ]
-            },
-            {
-                words: ['ARABA', 'TREN', 'GEMİ', 'UÇAK', 'OTOBÜS', 'BİSİKLET'],
-                spangram: 'ARAÇLAR',
-                gridLetters: [
-                    'A', 'R', 'A', 'B', 'A', 'X', 'X', 'X',
-                    'X', 'X', 'X', 'T', 'R', 'E', 'N', 'X',
-                    'G', 'E', 'M', 'İ', 'X', 'X', 'X', 'X',
-                    'X', 'X', 'X', 'U', 'Ç', 'A', 'K', 'X',
-                    'X', 'X', 'O', 'T', 'O', 'B', 'Ü', 'S',
-                    'B', 'İ', 'S', 'İ', 'K', 'L', 'E', 'T'
-                ]
-            },
-            {
-                words: ['ASLAN', 'KAPLAN', 'TİMSAH', 'FİL', 'ZÜRAFA', 'KURT'],
-                spangram: 'HAYVANLAR',
-                gridLetters: [
-                    'A', 'S', 'L', 'A', 'N', 'X', 'X', 'X',
-                    'K', 'A', 'P', 'L', 'A', 'N', 'X', 'X',
-                    'X', 'X', 'T', 'İ', 'M', 'S', 'A', 'H',
-                    'X', 'X', 'X', 'F', 'İ', 'L', 'X', 'X',
-                    'X', 'Z', 'Ü', 'R', 'A', 'F', 'A', 'X',
-                    'X', 'K', 'U', 'R', 'T', 'X', 'X', 'X'
-                ]
-            },
-            {
-                words: ['KIRMIZI', 'MAVİ', 'YEŞİL', 'SARI', 'TURUNCU', 'MOR'],
-                spangram: 'RENKLER',
-                gridLetters: [
-                    'K', 'I', 'R', 'M', 'I', 'Z', 'I', 'X',
-                    'X', 'M', 'A', 'V', 'İ', 'X', 'X', 'X',
-                    'X', 'Y', 'E', 'Ş', 'İ', 'L', 'X', 'X',
-                    'X', 'X', 'S', 'A', 'R', 'I', 'X', 'X',
-                    'X', 'T', 'U', 'R', 'U', 'N', 'C', 'U',
-                    'M', 'O', 'R', 'X', 'X', 'X', 'X', 'X'
-                ]
-            },
-            {
-                words: ['KALEM', 'DEFTER', 'SİLGİ', 'KİTAP', 'BOYAMA', 'ÇANTA'],
-                spangram: 'OKUL MALZEMELERİ',
-                gridLetters: [
-                    'K', 'A', 'L', 'E', 'M', 'X', 'X', 'X',
-                    'X', 'X', 'D', 'E', 'F', 'T', 'E', 'R',
-                    'X', 'X', 'X', 'S', 'İ', 'L', 'G', 'İ',
-                    'X', 'X', 'X', 'K', 'İ', 'T', 'A', 'P',
-                    'Ç', 'A', 'N', 'T', 'A', 'B', 'O', 'Y',
-                    'A', 'M', 'A', 'X', 'X', 'A', 'M', 'A'
-                ]
-            },
-            {
-                words: ['KAPI', 'PENCERE', 'MASA', 'SANDALYE', 'KOLTUK', 'HALI'],
-                spangram: 'EV EŞYALARI',
-                gridLetters: [
-                    'K', 'A', 'P', 'I', 'X', 'X', 'X', 'X',
-                    'X', 'P', 'E', 'N', 'C', 'E', 'R', 'E',
-                    'S', 'H', 'A', 'L', 'I', 'M', 'A', 'S',
-                    'A', 'X', 'X', 'X', 'X', 'X', 'A', 'A',
-                    'N', 'D', 'A', 'L', 'Y', 'E', 'X', 'X',
-                    'K', 'O', 'L', 'T', 'U', 'K', 'X', 'X'
-                ]
-            },
-            {
-                words: ['KUŞ', 'KÖPEK', 'KEDİ', 'BALIK', 'TAVŞAN', 'AYI'],
-                spangram: 'HAYVANLAR',
-                gridLetters: [
-                    'K', 'U', 'Ş', 'X', 'X', 'X', 'X', 'X',
-                    'X', 'X', 'K', 'Ö', 'P', 'E', 'K', 'X',
-                    'X', 'X', 'X', 'K', 'E', 'D', 'İ', 'X',
-                    'X', 'X', 'X', 'B', 'A', 'L', 'I', 'K',
-                    'X', 'X', 'T', 'A', 'V', 'Ş', 'A', 'N',
-                    'X', 'X', 'A', 'Y', 'I', 'X', 'X', 'X'
-                ]
-            },
-            {
-                words: ['KAR', 'YAĞMUR', 'GÜNEŞ', 'RÜZGAR', 'BULUT', 'DOLU'],
-                spangram: 'HAVALAR',
-                gridLetters: [
-                    'K', 'A', 'R', 'X', 'X', 'X', 'X', 'X',
-                    'B', 'X', 'Y', 'A', 'Ğ', 'M', 'U', 'R',
-                    'U', 'X', 'D', 'X', 'G', 'Ü', 'N', 'E',
-                    'L', 'X', 'O', 'R', 'Ü', 'Z', 'G', 'Ş',
-                    'U', 'X', 'L', 'X', 'B', 'U', 'A', 'U',
-                    'T', 'X', 'U', 'X', 'D', 'O', 'R', 'U'
-                ]
-            }
-        ];
+  <script>
+    const gameSets = [
+      {
+        words: ['ELMA', 'ARMUT', 'MUZ', 'KİRAZ', 'ÜZÜM', 'İNCİR'],
+        spangram: 'MEYVELER',
+        gridLetters: [
+          'E', 'L', 'M', 'A', 'X', 'X', 'X', 'X',
+          'X', 'X', 'X', 'A', 'R', 'M', 'U', 'T',
+          'Ü', 'X', 'X', 'X', 'X', 'X', 'M', 'X',
+          'Z', 'X', 'X', 'X', 'X', 'X', 'U', 'X',
+          'Ü', 'K', 'İ', 'R', 'A', 'Z', 'Z', 'X',
+          'M', 'X', 'X', 'İ', 'N', 'C', 'İ', 'R'
+        ]
+      },
+      {
+        words: ['ARABA', 'TREN', 'GEMİ', 'UÇAK', 'OTOBÜS', 'BİSİKLET'],
+        spangram: 'ARAÇLAR',
+        gridLetters: [
+          'A', 'R', 'A', 'B', 'A', 'X', 'X', 'X',
+          'X', 'X', 'X', 'T', 'R', 'E', 'N', 'X',
+          'G', 'E', 'M', 'İ', 'X', 'X', 'X', 'X',
+          'X', 'X', 'X', 'U', 'Ç', 'A', 'K', 'X',
+          'X', 'X', 'O', 'T', 'O', 'B', 'Ü', 'S',
+          'B', 'İ', 'S', 'İ', 'K', 'L', 'E', 'T'
+        ]
+      },
+      {
+        words: ['ASLAN', 'KAPLAN', 'TİMSAH', 'FİL', 'ZÜRAFA', 'KURT'],
+        spangram: 'HAYVANLAR',
+        gridLetters: [
+          'A', 'S', 'L', 'A', 'N', 'X', 'X', 'X',
+          'K', 'A', 'P', 'L', 'A', 'N', 'X', 'X',
+          'X', 'X', 'T', 'İ', 'M', 'S', 'A', 'H',
+          'X', 'X', 'X', 'F', 'İ', 'L', 'X', 'X',
+          'X', 'Z', 'Ü', 'R', 'A', 'F', 'A', 'X',
+          'X', 'K', 'U', 'R', 'T', 'X', 'X', 'X'
+        ]
+      },
+      {
+        words: ['KIRMIZI', 'MAVİ', 'YEŞİL', 'SARI', 'TURUNCU', 'MOR'],
+        spangram: 'RENKLER',
+        gridLetters: [
+          'K', 'I', 'R', 'M', 'I', 'Z', 'I', 'X',
+          'X', 'M', 'A', 'V', 'İ', 'X', 'X', 'X',
+          'X', 'Y', 'E', 'Ş', 'İ', 'L', 'X', 'X',
+          'X', 'X', 'S', 'A', 'R', 'I', 'X', 'X',
+          'X', 'T', 'U', 'R', 'U', 'N', 'C', 'U',
+          'M', 'O', 'R', 'X', 'X', 'X', 'X', 'X'
+        ]
+      },
+      {
+        words: ['KALEM', 'DEFTER', 'SİLGİ', 'KİTAP', 'BOYAMA', 'ÇANTA'],
+        spangram: 'OKUL MALZEMELERİ',
+        gridLetters: [
+          'K', 'A', 'L', 'E', 'M', 'X', 'X', 'X',
+          'X', 'X', 'D', 'E', 'F', 'T', 'E', 'R',
+          'X', 'X', 'X', 'S', 'İ', 'L', 'G', 'İ',
+          'X', 'X', 'X', 'K', 'İ', 'T', 'A', 'P',
+          'Ç', 'A', 'N', 'T', 'A', 'B', 'O', 'Y',
+          'A', 'M', 'A', 'X', 'X', 'A', 'M', 'A'
+        ]
+      },
+      {
+        words: ['KAPI', 'PENCERE', 'MASA', 'SANDALYE', 'KOLTUK', 'HALI'],
+        spangram: 'EV EŞYALARI',
+        gridLetters: [
+          'K', 'A', 'P', 'I', 'X', 'X', 'X', 'X',
+          'X', 'P', 'E', 'N', 'C', 'E', 'R', 'E',
+          'S', 'H', 'A', 'L', 'I', 'M', 'A', 'S',
+          'A', 'X', 'X', 'X', 'X', 'X', 'A', 'A',
+          'N', 'D', 'A', 'L', 'Y', 'E', 'X', 'X',
+          'K', 'O', 'L', 'T', 'U', 'K', 'X', 'X'
+        ]
+      },
+      {
+        words: ['KUŞ', 'KÖPEK', 'KEDİ', 'BALIK', 'TAVŞAN', 'AYI'],
+        spangram: 'HAYVANLAR',
+        gridLetters: [
+          'K', 'U', 'Ş', 'X', 'X', 'X', 'X', 'X',
+          'X', 'X', 'K', 'Ö', 'P', 'E', 'K', 'X',
+          'X', 'X', 'X', 'K', 'E', 'D', 'İ', 'X',
+          'X', 'X', 'X', 'B', 'A', 'L', 'I', 'K',
+          'X', 'X', 'T', 'A', 'V', 'Ş', 'A', 'N',
+          'X', 'X', 'A', 'Y', 'I', 'X', 'X', 'X'
+        ]
+      },
+      {
+        words: ['KAR', 'YAĞMUR', 'GÜNEŞ', 'RÜZGAR', 'BULUT', 'DOLU'],
+        spangram: 'HAVALAR',
+        gridLetters: [
+          'K', 'A', 'R', 'X', 'X', 'X', 'X', 'X',
+          'B', 'X', 'Y', 'A', 'Ğ', 'M', 'U', 'R',
+          'U', 'X', 'D', 'X', 'G', 'Ü', 'N', 'E',
+          'L', 'X', 'O', 'R', 'Ü', 'Z', 'G', 'Ş',
+          'U', 'X', 'L', 'X', 'B', 'U', 'A', 'U',
+          'T', 'X', 'U', 'X', 'D', 'O', 'R', 'U'
+        ]
+      }
+    ];
 
-        let selectedCells = [];
-        let foundWords = [];
+    let selectedCells = [];
+    let foundWords = [];
 
-        let currentGameSet;
-        let words;
-        let spangram;
-        let gridLetters;
-        let maxWordLength;
+    let currentGameSet;
+    let words;
+    let spangram;
+    let gridLetters;
+    let maxWordLength;
 
-        const titleElement = document.getElementById('title');
-        titleElement.addEventListener('click', function () {
-            if (window.parent !== window) {
-                window.parent.showMainContent();
-            } else {
-                window.location.href = 'index.html';
-            }
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
+
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
+
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+
+    function selectRandomGameSet() {
+      currentGameSet = gameSets[Math.floor(Math.random() * gameSets.length)];
+      words = currentGameSet.words;
+      spangram = currentGameSet.spangram;
+      gridLetters = currentGameSet.gridLetters;
+      maxWordLength = Math.max(...words.map(word => word.length));
+    }
+
+    function createGrid() {
+      closeModal();
+      selectRandomGameSet();
+      const grid = document.getElementById('grid');
+      gridLetters.forEach((letter, index) => {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.textContent = letter;
+        cell.dataset.index = index;
+        cell.addEventListener('click', () => selectCell(cell));
+        grid.appendChild(cell);
+      });
+    }
+
+    function restartGame() {
+      document.getElementById('grid').innerHTML = '';
+      selectedCells = [];
+      foundWords = [];
+      createGrid();
+    }
+
+    function selectCell(cell) {
+      if (cell.classList.contains('found')) return;
+
+      if (selectedCells.includes(cell)) {
+        cell.classList.remove('selected');
+        selectedCells = selectedCells.filter(selectedCell => selectedCell !== cell);
+        return;
+      }
+
+      cell.classList.add('selected');
+      selectedCells.push(cell);
+
+      if (selectedCells.length > 1) {
+        const lastIndex = parseInt(selectedCells[selectedCells.length - 2].dataset.index);
+        const currentIndex = parseInt(cell.dataset.index);
+
+        if (!isAdjacent(lastIndex, currentIndex)) {
+          clearSelection();
+          return;
+        }
+      }
+
+      if (selectedCells.length >= 3) {
+        checkSelection();
+      }
+
+      if (selectedCells.length >= maxWordLength) {
+        clearSelection();
+        return;
+      }
+    }
+
+
+    function isAdjacent(index1, index2) {
+      const x1 = index1 % 8;
+      const y1 = Math.floor(index1 / 8);
+      const x2 = index2 % 8;
+      const y2 = Math.floor(index2 / 8);
+      return Math.abs(x1 - x2) <= 1 && Math.abs(y1 - y2) <= 1;
+    }
+
+    function checkSelection() {
+      const selectedWord = selectedCells.map(cell => cell.textContent).join('');
+      if (words.includes(selectedWord) && !foundWords.includes(selectedWord)) {
+        foundWords.push(selectedWord);
+        selectedCells.forEach(cell => {
+          cell.classList.remove('selected');
+          cell.classList.add('found');
         });
-
-        const infoButton = document.getElementById('infoButton');
-        const overlay = document.getElementById('overlay');
-        const closeButton = document.getElementById('closeButton');
-
-        infoButton.addEventListener('click', () => {
-            overlay.style.display = 'block';
-        });
-
-        closeButton.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
-
-        function selectRandomGameSet() {
-            currentGameSet = gameSets[Math.floor(Math.random() * gameSets.length)];
-            words = currentGameSet.words;
-            spangram = currentGameSet.spangram;
-            gridLetters = currentGameSet.gridLetters;
-            maxWordLength = Math.max(...words.map(word => word.length));
+        selectedCells = [];
+        if (foundWords.length === words.length) {
+          showWinModal();
         }
+      }
+    }
 
-        function createGrid() {
-            closeModal();
-            selectRandomGameSet();
-            const grid = document.getElementById('grid');
-            gridLetters.forEach((letter, index) => {
-                const cell = document.createElement('div');
-                cell.className = 'cell';
-                cell.textContent = letter;
-                cell.dataset.index = index;
-                cell.addEventListener('click', () => selectCell(cell));
-                grid.appendChild(cell);
-            });
-        }
+    function clearSelection() {
+      selectedCells.forEach(cell => cell.classList.remove('selected'));
+      selectedCells = [];
+    }
 
-        function restartGame() {
-            document.getElementById('grid').innerHTML = '';
-            selectedCells = [];
-            foundWords = [];
-            createGrid();
-        }
+    function showWinModal() {
+      document.getElementById("winMessage").textContent = 'Tebrikler! Tüm kelimeleri buldunuz.';
+      document.getElementById("winModal").style.display = "flex";
+    }
 
-        function selectCell(cell) {
-            if (cell.classList.contains('found')) return;
+    function closeModal() {
+      document.getElementById("winModal").style.display = "none";
+    }
 
-            if (selectedCells.includes(cell)) {
-                cell.classList.remove('selected');
-                selectedCells = selectedCells.filter(selectedCell => selectedCell !== cell);
-                return;
-            }
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
 
-            cell.classList.add('selected');
-            selectedCells.push(cell);
-
-            if (selectedCells.length > 1) {
-                const lastIndex = parseInt(selectedCells[selectedCells.length - 2].dataset.index);
-                const currentIndex = parseInt(cell.dataset.index);
-
-                if (!isAdjacent(lastIndex, currentIndex)) {
-                    clearSelection();
-                    return;
-                }
-            }
-
-            if (selectedCells.length >= 3) {
-                checkSelection();
-            }
-
-            if (selectedCells.length >= maxWordLength) {
-                clearSelection();
-                return;
-            }
-        }
-
-
-        function isAdjacent(index1, index2) {
-            const x1 = index1 % 8;
-            const y1 = Math.floor(index1 / 8);
-            const x2 = index2 % 8;
-            const y2 = Math.floor(index2 / 8);
-            return Math.abs(x1 - x2) <= 1 && Math.abs(y1 - y2) <= 1;
-        }
-
-        function checkSelection() {
-            const selectedWord = selectedCells.map(cell => cell.textContent).join('');
-            if (words.includes(selectedWord) && !foundWords.includes(selectedWord)) {
-                foundWords.push(selectedWord);
-                selectedCells.forEach(cell => {
-                    cell.classList.remove('selected');
-                    cell.classList.add('found');
-                });
-                selectedCells = [];
-                if (foundWords.length === words.length) {
-                    showWinModal();
-                }
-            }
-        }
-
-        function clearSelection() {
-            selectedCells.forEach(cell => cell.classList.remove('selected'));
-            selectedCells = [];
-        }
-
-        function showWinModal() {
-            document.getElementById("winMessage").textContent = 'Tebrikler! Tüm kelimeleri buldunuz.';
-            document.getElementById("winModal").style.display = "flex";
-        }
-
-        function closeModal() {
-            document.getElementById("winModal").style.display = "none";
-        }
-
-        document.addEventListener('click', () => {
-            document.getElementById('initialMessage').style.display = 'none';
-        });
-
-        createGrid();
-    </script>
+    createGrid();
+  </script>
 </body>
 
 </html>

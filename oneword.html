@@ -2,435 +2,437 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kelime Oyunu - Türkçe Harf Bulmaca</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kelime Oyunu - Türkçe Harf Bulmaca</title>
 
-    <meta name="theme-color" content="#f0f0f0">
-    <meta name="description"
-        content="DorukDayım'da harflerden kelime türetme oyunu ile zekanızı geliştirin. Verilen harflerle en çok kelimeyi bularak puanları toplayın.">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
+  <meta name="theme-color" content="#f0f0f0">
+  <meta name="description"
+    content="DorukDayım'da harflerden kelime türetme oyunu ile zekanızı geliştirin. Verilen harflerle en çok kelimeyi bularak puanları toplayın.">
+  <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="Kelime Oyunu - Türkçe Harf Bulmaca">
-    <meta property="og:description"
-        content="DorukDayım'da harflerden kelime türetme oyunu ile zekanızı geliştirin. Verilen harflerle en çok kelimeyi bularak puanları toplayın.">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-128x128.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/birkelime.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="128" />
-    <meta property="og:image:height" content="128" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım" />
+  <meta property="og:title" content="Kelime Oyunu - Türkçe Harf Bulmaca">
+  <meta property="og:description"
+    content="DorukDayım'da harflerden kelime türetme oyunu ile zekanızı geliştirin. Verilen harflerle en çok kelimeyi bularak puanları toplayın.">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-128x128.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/birkelime.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="128" />
+  <meta property="og:image:height" content="128" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kelime Oyunu - Türkçe Harf Bulmaca">
-    <meta name="twitter:description"
-        content="DorukDayım'da harflerden kelime türetme oyunu ile zekanızı geliştirin. Verilen harflerle en çok kelimeyi bularak puanları toplayın.">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
-    <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kelime Oyunu - Türkçe Harf Bulmaca">
+  <meta name="twitter:description"
+    content="DorukDayım'da harflerden kelime türetme oyunu ile zekanızı geliştirin. Verilen harflerle en çok kelimeyi bularak puanları toplayın.">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
+  <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
 
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords"
-        content="harflerden kelime türetme, türkçe kelime oyunu, zeka oyunları, dorukdayım, kelime oyunu oyna, harf bulmaca">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/birkelime.html">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <style>
-        .container {
-            margin: 0 auto;
-            text-align: center;
-            padding: 1vh;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-        }
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords"
+    content="harflerden kelime türetme, türkçe kelime oyunu, zeka oyunları, dorukdayım, kelime oyunu oyna, harf bulmaca">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/birkelime.html">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    .game-container {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
 
-        .letters-container {
-            display: flex;
-            gap: 4px;
-            justify-content: center;
-            max-width: 100%;
-            margin: 2vh 0px;
-            padding: 20px 1px;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+    .letters-container {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      max-width: 100%;
+      margin: 2vh 0px;
+      padding: 20px 1px;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        .letter {
-            width: 12vw;
-            max-width: 45px;
-            height: 12vw;
-            max-height: 45px;
-            background-color: #4CAF50;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            border-radius: 5px;
-            transition: background-color 0.2s ease;
-        }
+    .letter {
+      width: 12vw;
+      max-width: 45px;
+      height: 12vw;
+      max-height: 45px;
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      transition: background-color 0.2s ease;
+    }
 
-        input {
-            margin: 2vh;
-            padding: 2vh;
-            font-size: 1.2rem;
-            border: 2px solid #ddd;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            text-align: center;
-        }
+    input {
+      margin: 2vh;
+      padding: 2vh;
+      font-size: 1.2rem;
+      border: 2px solid #ddd;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      text-align: center;
+    }
 
-        button {
-            width: 50%;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            margin: 2vh;
-            padding: 2vh;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
+    button {
+      width: 50%;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      margin: 2vh;
+      padding: 2vh;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
 
-        button:hover {
-            background-color: #1976D2;
-        }
+    button:hover {
+      background-color: #1976D2;
+    }
 
-        .score-timer-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 2rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+    .score-timer-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        #timer {
-            color: #ff5722;
-        }
+    #timer {
+      color: #ff5722;
+    }
 
-        #message {
-            text-align: center;
-            font-size: 1.2rem;
-        }
+    #message {
+      text-align: center;
+      font-size: 1.2rem;
+    }
 
-        #initialMessage {
-            position: fixed;
-            width: 50%;
-            max-width: 400px;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: #333;
-            border-radius: 10px;
-        }
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-    </style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #333333;
+      color: #f9f9f9;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 10px;
+      text-align: justify;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="initialMessage">
-        <p>Ana sayfaya dönmek için başlığa <strong>(Bir Kelime)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Bir Kelime)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
+  <div class="game-container">
+    <h1 id="title">Bir Kelime</h1>
+    <div class="score-timer-row">
+      <span id="score">Puan: 0</span>
+      <span id="timer">Süre: 30</span>
     </div>
-    <div class="container">
-        <h1 id="title">Bir Kelime</h1>
-        <div class="score-timer-row">
-            <span id="score">Puan: 0</span>
-            <span id="timer">Süre: 30</span>
-        </div>
-        <div class="letters-container" id="letters"></div>
-        <input type="text" id="wordInput" placeholder="Kelimenizi yazın" maxlength="7">
-        <button id="checkButton">Kontrol Et</button>
-        <div id="message"></div>
-    </div>
+    <div class="letters-container" id="letters"></div>
+    <input type="text" id="wordInput" placeholder="Kelimenizi yazın" maxlength="7">
+    <button id="checkButton">Kontrol Et</button>
+    <div id="message"></div>
+  </div>
 
-    <button id="infoButton"
-        style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+  <button id="infoButton"
+    style="position: absolute; margin: 0; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
-        <button id="closeButton"
-            style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
-        <h2>Kelime Oyunu Nasıl Oynanır?</h2>
-        <p>
-            Kelime Oyunu, verilen harflerle anlamlı Türkçe kelimeler türetme üzerine kurulu bir zeka oyunudur. Oyuna
-            başladığınızda, ekranda rastgele seçilmiş harfler görürsünüz.
-            Amacınız, bu harfleri kullanarak en çok kelimeyi bulmak ve puanları toplamaktır. Oyunun süresi sınırlıdır,
-            bu nedenle hızlı ve doğru kelimeler bulmanız önemlidir.
-            Kelimeyi bulduktan sonra, kelimeyi giriş alanına yazıp "Kontrol Et" butonuna tıklayarak kelimenin
-            geçerliliğini kontrol edebilirsiniz.
-            Geçerli kelimeler size puan kazandırırken, geçersiz kelimeler puan kaybettirmez. Oyunun sonunda, en yüksek
-            puana ulaşan oyuncu oyunu kazanır.
-        </p>
+  <div id="overlay">
+    <button id="closeButton"
+      style="position: absolute; margin: 0; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+    <h2>Kelime Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Kelime Oyunu, verilen harflerle anlamlı Türkçe kelimeler türetme üzerine kurulu bir zeka oyunudur. Oyuna
+      başladığınızda, ekranda rastgele seçilmiş harfler görürsünüz.
+      Amacınız, bu harfleri kullanarak en çok kelimeyi bulmak ve puanları toplamaktır. Oyunun süresi sınırlıdır,
+      bu nedenle hızlı ve doğru kelimeler bulmanız önemlidir.
+      Kelimeyi bulduktan sonra, kelimeyi giriş alanına yazıp "Kontrol Et" butonuna tıklayarak kelimenin
+      geçerliliğini kontrol edebilirsiniz.
+      Geçerli kelimeler size puan kazandırırken, geçersiz kelimeler puan kaybettirmez. Oyunun sonunda, en yüksek
+      puana ulaşan oyuncu oyunu kazanır.
+    </p>
 
-        <h2>Kelime Oyununun Faydaları</h2>
-        <ul>
-            <li><strong>Kelime Bilgisi Gelişimi:</strong> Oyun, Türkçe kelime dağarcığınızı genişletmenize yardımcı
-                olur.</li>
-            <li><strong>Hızlı Düşünme:</strong> Sınırlı sürede kelime bulmak, hızlı düşünme yeteneğinizi geliştirir.
-            </li>
-            <li><strong>Mantıksal Akıl Yürütme:</strong> Harfleri bir araya getirerek kelime türetmek, mantıksal akıl
-                yürütme becerilerinizi artırır.</li>
-            <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre
-                olmanız gerekir.</li>
-            <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni kelimeler türetmek, zihinsel çevikliğinizi
-                artırır.</li>
-            <li><strong>Eğlenceli Öğrenme:</strong> Kelime türetme oyunu, öğrenmeyi eğlenceli hale getirir ve
-                motivasyonunuzu artırır.</li>
-        </ul>
+    <h2>Kelime Oyununun Faydaları</h2>
+    <ul>
+      <li><strong>Kelime Bilgisi Gelişimi:</strong> Oyun, Türkçe kelime dağarcığınızı genişletmenize yardımcı
+        olur.</li>
+      <li><strong>Hızlı Düşünme:</strong> Sınırlı sürede kelime bulmak, hızlı düşünme yeteneğinizi geliştirir.
+      </li>
+      <li><strong>Mantıksal Akıl Yürütme:</strong> Harfleri bir araya getirerek kelime türetmek, mantıksal akıl
+        yürütme becerilerinizi artırır.</li>
+      <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre
+        olmanız gerekir.</li>
+      <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni kelimeler türetmek, zihinsel çevikliğinizi
+        artırır.</li>
+      <li><strong>Eğlenceli Öğrenme:</strong> Kelime türetme oyunu, öğrenmeyi eğlenceli hale getirir ve
+        motivasyonunuzu artırır.</li>
+    </ul>
 
-        <p>
-            Kelime Oyunu, zeka oyunları ve kelime oyunları kategorilerinde popüler bir oyundur. Oyun, her yaştan
-            kullanıcı için uygundur ve Türkçe kelime bilgisini geliştirmek isteyenler için idealdir.
-            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun
-            sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
-        </p>
+    <p>
+      Kelime Oyunu, zeka oyunları ve kelime oyunları kategorilerinde popüler bir oyundur. Oyun, her yaştan
+      kullanıcı için uygundur ve Türkçe kelime bilgisini geliştirmek isteyenler için idealdir.
+      Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun
+      sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
 
-    </div>
+  </div>
 
-    <script type="module">
-        import { words } from 'https://sercankulcu.github.io/game/birkelimewords.js';
+  <script type="module">
+    import { words } from 'https://sercankulcu.github.io/game/birkelimewords.js';
 
-        let score = 0;
-        let letters = [];
-        let timer;
-        let timeLeft = 30;
-        let isValidTDK = true;
-        let foundWords = [];
+    let score = 0;
+    let letters = [];
+    let timer;
+    let timeLeft = 30;
+    let isValidTDK = true;
+    let foundWords = [];
 
-        const titleElement = document.getElementById('title');
-        titleElement.addEventListener('click', function () {
-            if (window.parent !== window) {
-                window.parent.showMainContent();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
-        const infoButton = document.getElementById('infoButton');
-        const overlay = document.getElementById('overlay');
-        const closeButton = document.getElementById('closeButton');
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
 
-        infoButton.addEventListener('click', () => {
-            overlay.style.display = 'block';
-        });
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
 
-        closeButton.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
 
-        function generateLetters() {
-            // Weighted pools of frequently used letters in Turkish
-            const vowels = [
-                'A', 'A', 'A', 'E', 'E', 'E', 'İ', 'İ', 'İ', // Very common
-                'I', 'I', 'O', 'O', 'U', 'U',             // Moderately common
-                'Ö', 'Ü'                                  // Less common
-            ];
-            const consonants = [
-                'N', 'N', 'N', 'R', 'R', 'R', 'L', 'L', 'L', 'K', 'K', 'K', 'T', 'T', 'T', 'S', 'S', 'S', 'M', 'M', 'M', // Very common
-                'B', 'B', 'D', 'D', 'Y', 'Y', 'P', 'P', 'C', 'C', 'Ç', 'Ç', 'Ş', 'Ş',           // Moderately common
-                'F', 'G', 'H', 'V', 'Z', 'Ğ', 'J'                                       // Less common
-            ];
+    function generateLetters() {
+      // Weighted pools of frequently used letters in Turkish
+      const vowels = [
+        'A', 'A', 'A', 'E', 'E', 'E', 'İ', 'İ', 'İ', // Very common
+        'I', 'I', 'O', 'O', 'U', 'U',             // Moderately common
+        'Ö', 'Ü'                                  // Less common
+      ];
+      const consonants = [
+        'N', 'N', 'N', 'R', 'R', 'R', 'L', 'L', 'L', 'K', 'K', 'K', 'T', 'T', 'T', 'S', 'S', 'S', 'M', 'M', 'M', // Very common
+        'B', 'B', 'D', 'D', 'Y', 'Y', 'P', 'P', 'C', 'C', 'Ç', 'Ç', 'Ş', 'Ş',           // Moderately common
+        'F', 'G', 'H', 'V', 'Z', 'Ğ', 'J'                                       // Less common
+      ];
 
-            // 3 sesli + 4 sessiz harf
-            let newLetters = [
-                ...vowels.sort(() => 0.5 - Math.random()).slice(0, 3),
-                ...consonants.sort(() => 0.5 - Math.random()).slice(0, 4)
-            ].sort(() => 0.5 - Math.random());
+      // 3 sesli + 4 sessiz harf
+      let newLetters = [
+        ...vowels.sort(() => 0.5 - Math.random()).slice(0, 3),
+        ...consonants.sort(() => 0.5 - Math.random()).slice(0, 4)
+      ].sort(() => 0.5 - Math.random());
 
-            return newLetters;
+      return newLetters;
+    }
+
+    function updateLetters() {
+      const container = document.getElementById('letters');
+      container.innerHTML = '';
+      letters.forEach(letter => {
+        const div = document.createElement('div');
+        div.className = 'letter';
+        div.textContent = letter;
+        div.addEventListener('click', () => appendLetter(letter)); // Add click handler
+        container.appendChild(div);
+      });
+      foundWords = [];
+    }
+
+    function appendLetter(letter) {
+      const input = document.getElementById('wordInput');
+      if (input.value.length < input.maxLength) { // Respect maxlength="6"
+        input.value += letter;
+      }
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timeLeft = 30;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = `Süre: ${timeLeft}`;
+
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          letters = generateLetters();
+          updateLetters();
+          startTimer();
         }
+      }, 1000);
+    }
 
-        function updateLetters() {
-            const container = document.getElementById('letters');
-            container.innerHTML = '';
-            letters.forEach(letter => {
-                const div = document.createElement('div');
-                div.className = 'letter';
-                div.textContent = letter;
-                div.addEventListener('click', () => appendLetter(letter)); // Add click handler
-                container.appendChild(div);
-            });
-            foundWords = [];
-        }
+    function checkDictionary(word) {
 
-        function appendLetter(letter) {
-            const input = document.getElementById('wordInput');
-            if (input.value.length < input.maxLength) { // Respect maxlength="6"
-                input.value += letter;
-            }
-        }
+      isValidTDK = false;
+      if (words.includes(word.turkishToLower()) && !foundWords.includes(word)) {
+        isValidTDK = true;
+        foundWords.push(word);
+      }
+    }
 
-        function startTimer() {
-            clearInterval(timer);
-            timeLeft = 30;
-            timer = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer').textContent = `Süre: ${timeLeft}`;
+    function checkTDK(word) {
 
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    letters = generateLetters();
-                    updateLetters();
-                    startTimer();
-                }
-            }, 1000);
-        }
-
-        function checkDictionary(word) {
-
+      isValidTDK = false;
+      fetch("https://sozluk.gov.tr/gts?ara=" + word)
+        .then((response) => response.json())
+        .then((json) => {
+          if (json.length != undefined) {
+            isValidTDK = true;
+          } else {
             isValidTDK = false;
-            if (words.includes(word.turkishToLower()) && !foundWords.includes(word)) {
-                isValidTDK = true;
-                foundWords.push(word);
-            }
+          }
+        })
+        .catch(error => console.error(error.message));
+    }
+
+    String.prototype.turkishToUpper = function () {
+      var string = this;
+      var letters = { "i": "İ", "ş": "Ş", "ğ": "Ğ", "ü": "Ü", "ö": "Ö", "ç": "Ç", "ı": "I" };
+      string = string.replace(/(([iışğüçö]))/g, function (letter) { return letters[letter]; })
+      return string.toUpperCase();
+    }
+
+    String.prototype.turkishToLower = function () {
+      var string = this;
+      var letters = { "İ": "i", "I": "ı", "Ş": "ş", "Ğ": "ğ", "Ü": "ü", "Ö": "ö", "Ç": "ç" };
+      string = string.replace(/(([İIŞĞÜÇÖ]))+/g, function (letter) { return letters[letter]; })
+      return string.toLowerCase();
+    }
+
+    async function checkWord() {
+
+      let isValid = true;
+      const input = document.getElementById('wordInput').value;
+      const backupInput = input.turkishToUpper();
+      const tempLetters = [...letters];
+
+      for (let char of backupInput) {
+        const index = tempLetters.indexOf(char);
+        if (index === -1) {
+          isValid = false;
+          break;
         }
+        tempLetters.splice(index, 1);
+      }
 
-        function checkTDK(word) {
-
-            isValidTDK = false;
-            fetch("https://sozluk.gov.tr/gts?ara=" + word)
-                .then((response) => response.json())
-                .then((json) => {
-                    if (json.length != undefined) {
-                        isValidTDK = true;
-                    } else {
-                        isValidTDK = false;
-                    }
-                })
-                .catch(error => console.error(error.message));
+      if (isValid) {
+        try {
+          isValidTDK = true;
+          await checkDictionary(input);
+          //await checkTDK(input); 
+          //await new Promise(resolve => setTimeout(resolve, 1000)); 
+        } catch (error) {
+          isValidTDK = false;
         }
+      }
 
-        String.prototype.turkishToUpper = function () {
-            var string = this;
-            var letters = { "i": "İ", "ş": "Ş", "ğ": "Ğ", "ü": "Ü", "ö": "Ö", "ç": "Ç", "ı": "I" };
-            string = string.replace(/(([iışğüçö]))/g, function (letter) { return letters[letter]; })
-            return string.toUpperCase();
-        }
+      if (isValidTDK && input.length >= 2) {
+        score += input.length * 10;
+        document.getElementById('score').textContent = `Puan: ${score}`;
+        showMessage(`+${input.length * 10} puan kazandınız!`, 'green');
+      } else {
+        showMessage('Geçersiz kelime!', 'red');
+      }
+      document.getElementById('wordInput').value = '';
+    }
 
-        String.prototype.turkishToLower = function () {
-            var string = this;
-            var letters = { "İ": "i", "I": "ı", "Ş": "ş", "Ğ": "ğ", "Ü": "ü", "Ö": "ö", "Ç": "ç" };
-            string = string.replace(/(([İIŞĞÜÇÖ]))+/g, function (letter) { return letters[letter]; })
-            return string.toLowerCase();
-        }
+    function showMessage(text, color) {
+      const messageDiv = document.getElementById('message');
+      let emojiText = color === 'green' ? `🎉 ${text}` : `❌ ${text}`;
+      messageDiv.textContent = emojiText;
+      messageDiv.style.color = color;
+      setTimeout(() => messageDiv.textContent = '', 2000);
+    }
 
-        async function checkWord() {
+    function newGame() {
+      score = 0;
+      document.getElementById('score').textContent = `Puan: ${score}`;
+      document.getElementById('wordInput').value = '';
+      letters = generateLetters();
+      updateLetters();
+      startTimer();
+    }
 
-            let isValid = true;
-            const input = document.getElementById('wordInput').value;
-            const backupInput = input.turkishToUpper();
-            const tempLetters = [...letters];
+    // Global keydown listener
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.turkishToUpper(); // Convert to uppercase Turkish letters
+      const input = document.getElementById('wordInput');
 
-            for (let char of backupInput) {
-                const index = tempLetters.indexOf(char);
-                if (index === -1) {
-                    isValid = false;
-                    break;
-                }
-                tempLetters.splice(index, 1);
-            }
+      // If key matches one of the displayed letters and input isn't full
+      if (letters.includes(key) && input.value.length < input.maxLength) {
+        input.value += key; // Append the letter
+        event.preventDefault(); // Prevent default behavior (e.g., typing elsewhere)
+      }
 
-            if (isValid) {
-                try {
-                    isValidTDK = true;
-                    await checkDictionary(input);
-                    //await checkTDK(input); 
-                    //await new Promise(resolve => setTimeout(resolve, 1000)); 
-                } catch (error) {
-                    isValidTDK = false;
-                }
-            }
+      // If Enter is pressed, trigger checkButton
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        checkWord();
+      }
 
-            if (isValidTDK && input.length >= 2) {
-                score += input.length * 10;
-                document.getElementById('score').textContent = `Puan: ${score}`;
-                showMessage(`+${input.length * 10} puan kazandınız!`, 'green');
-            } else {
-                showMessage('Geçersiz kelime!', 'red');
-            }
-            document.getElementById('wordInput').value = '';
-        }
+      // Remove last character on Backspace
+      if (event.key === 'Backspace') {
+        input.value = input.value.slice(0, -1); // Remove the last character
+        event.preventDefault();
+      }
+    });
 
-        function showMessage(text, color) {
-            const messageDiv = document.getElementById('message');
-            let emojiText = color === 'green' ? `🎉 ${text}` : `❌ ${text}`;
-            messageDiv.textContent = emojiText;
-            messageDiv.style.color = color;
-            setTimeout(() => messageDiv.textContent = '', 2000);
-        }
+    // Keep existing listeners (this one can stay but is optional now)
+    document.getElementById('wordInput').addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById('checkButton').click();
+      }
+    });
 
-        function newGame() {
-            score = 0;
-            document.getElementById('score').textContent = `Puan: ${score}`;
-            document.getElementById('wordInput').value = '';
-            letters = generateLetters();
-            updateLetters();
-            startTimer();
-        }
+    document.getElementById('checkButton').addEventListener('click', checkWord);
 
-        // Global keydown listener
-        document.addEventListener('keydown', (event) => {
-            const key = event.key.turkishToUpper(); // Convert to uppercase Turkish letters
-            const input = document.getElementById('wordInput');
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
 
-            // If key matches one of the displayed letters and input isn't full
-            if (letters.includes(key) && input.value.length < input.maxLength) {
-                input.value += key; // Append the letter
-                event.preventDefault(); // Prevent default behavior (e.g., typing elsewhere)
-            }
-
-            // If Enter is pressed, trigger checkButton
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                checkWord();
-            }
-
-            // Remove last character on Backspace
-            if (event.key === 'Backspace') {
-                input.value = input.value.slice(0, -1); // Remove the last character
-                event.preventDefault();
-            }
-        });
-
-        // Keep existing listeners (this one can stay but is optional now)
-        document.getElementById('wordInput').addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                document.getElementById('checkButton').click();
-            }
-        });
-
-        document.getElementById('checkButton').addEventListener('click', checkWord);
-
-        document.addEventListener('click', () => {
-            document.getElementById('initialMessage').style.display = 'none';
-        });
-
-        newGame();
-    </script>
+    newGame();
+  </script>
 </body>
 
 </html>

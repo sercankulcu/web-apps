@@ -2,404 +2,408 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bal Peteği Oyunu - Türkçe Kelime Bulmaca Oyunu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bal Peteği Oyunu - Türkçe Kelime Bulmaca Oyunu</title>
 
-    <meta name="description"
-        content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
-    <meta name="keywords"
-        content="bal peteği, kelime oyunu, türkçe kelime bulmaca, kelime dağarcığı, zeka oyunu, tr, türkçe, oyun">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/spellbee.html">
-    <meta name="theme-color" content="#FFD700">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
+  <meta name="description"
+    content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
+  <meta name="keywords"
+    content="bal peteği, kelime oyunu, türkçe kelime bulmaca, kelime dağarcığı, zeka oyunu, tr, türkçe, oyun">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/spellbee.html">
+  <meta name="theme-color" content="#FFD700">
+  <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="Bal Peteği Oyunu - Türkçe Kelime Bulmaca">
-    <meta property="og:description"
-        content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/spellbee.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım">
+  <meta property="og:title" content="Bal Peteği Oyunu - Türkçe Kelime Bulmaca">
+  <meta property="og:description"
+    content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/spellbee.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bal Peteği Oyunu - Türkçe Kelime Bulmaca">
-    <meta name="twitter:description"
-        content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
-    <meta name="twitter:image:alt" content="Bal Peteği Türkçe kelime bulmaca oyunu resmi" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bal Peteği Oyunu - Türkçe Kelime Bulmaca">
+  <meta name="twitter:description"
+    content="Bal Peteği oyunu ile Türkçe kelime dağarcığınızı geliştirin. Verilen harflerle anlamlı kelimeler oluşturun ve puanları toplayın!">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="Bal Peteği Türkçe kelime bulmaca oyunu resmi" />
 
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <style>
-        body {
-            margin: 0 auto;
-            text-align: center;
-            padding: 1vh;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-        }
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    .game-container {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
 
-        .hive {
-            position: relative;
-            width: min(80vw, 64vh);
-            height: min(80vw, 64vh);
-            margin: 0 auto;
-        }
+    .hive {
+      position: relative;
+      width: min(80vw, 64vh);
+      height: min(80vw, 64vh);
+      margin: 0 auto;
+    }
 
-        .letter {
-            width: min(18vw, 14vh);
-            height: min(18vw, 14vh);
-            background-color: #FFD700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3vh;
-            cursor: pointer;
-            position: absolute;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
+    .letter {
+      width: min(18vw, 14vh);
+      height: min(18vw, 14vh);
+      background-color: #FFD700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3vh;
+      cursor: pointer;
+      position: absolute;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
 
-        .center {
-            background-color: #FFA500;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+    .center {
+      background-color: #FFA500;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-        .pos1 {
-            top: 20%;
-            left: 62%;
-            transform: translateX(-50%);
-        }
+    .pos1 {
+      top: 20%;
+      left: 62%;
+      transform: translateX(-50%);
+    }
 
-        .pos2 {
-            top: 20%;
-            left: 26%;
-        }
+    .pos2 {
+      top: 20%;
+      left: 26%;
+    }
 
-        .pos3 {
-            top: 39%;
-            right: 14%;
-        }
+    .pos3 {
+      top: 39%;
+      right: 14%;
+    }
 
-        .pos4 {
-            bottom: 39%;
-            left: 14%;
-        }
+    .pos4 {
+      bottom: 39%;
+      left: 14%;
+    }
 
-        .pos5 {
-            bottom: 20%;
-            right: 27%;
-        }
+    .pos5 {
+      bottom: 20%;
+      right: 27%;
+    }
 
-        .pos6 {
-            bottom: 20%;
-            left: 37%;
-            transform: translateX(-50%);
-        }
+    .pos6 {
+      bottom: 20%;
+      left: 37%;
+      transform: translateX(-50%);
+    }
 
-        #word {
-            font-size: 4vh;
-            margin: 2vh;
-        }
+    #word {
+      font-size: 4vh;
+      margin: 2vh;
+    }
 
-        button {
-            padding: 0.5rem 0.5rem;
-            margin: 5px;
-            font-size: 2.4vh;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #ff7b00, #ffcc00);
-            color: white;
-            font-weight: bold;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
-        }
+    button {
+      padding: 0.5rem 0.5rem;
+      margin: 5px;
+      font-size: 2.4vh;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ff7b00, #ffcc00);
+      color: white;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        button:hover {
-            background: linear-gradient(135deg, #ff9a00, #ffdb4d);
-            transform: scale(1.05);
-        }
+    button:hover {
+      background: linear-gradient(135deg, #ff9a00, #ffdb4d);
+      transform: scale(1.05);
+    }
 
-        #score {
-            font-size: 3vh;
-            font-weight: bold;
-        }
+    #score {
+      font-size: 3vh;
+      font-weight: bold;
+    }
 
-        #initialMessage {
-            position: fixed;
-            width: 50%;
-            max-width: 400px;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: #333;
-            border-radius: 10px;
-        }
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-    </style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #333333;
+      color: #f9f9f9;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 10px;
+      text-align: justify;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="initialMessage">
-        <p>Ana sayfaya dönmek için başlığa <strong>(Bal Peteği)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
-    </div>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Bal Peteği)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
+  <div class="game-container">
     <h1 id="title">Bal Peteği</h1>
     <div id="score">Skor: 0</div>
     <div class="hive"></div>
     <div id="word"></div>
     <div class="button-container">
-        <button id="shuffleBtn">Karıştır</button>
-        <button id="submitBtn">Gönder</button>
-        <button id="newGameBtn">Yeni</button>
+      <button id="shuffleBtn">Karıştır</button>
+      <button id="submitBtn">Gönder</button>
+      <button id="newGameBtn">Yeni</button>
     </div>
+  </div>
 
-    <button id="infoButton"
-        style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+  <button id="infoButton"
+    style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
-        <button id="closeButton"
-            style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
-        <h2>Bal Peteği Kelime Oyunu Nasıl Oynanır?</h2>
-        <p>
-            Bal Peteği, Türkçe kelime dağarcığınızı geliştirmenize yardımcı olan eğlenceli bir kelime bulmaca oyunudur.
-            Oyunda, bal peteği şeklinde düzenlenmiş harflerden anlamlı kelimeler oluşturmanız gerekiyor.
-            Oyunun merkezinde bir harf bulunur ve bu harf, oluşturacağınız her kelimede mutlaka yer almalıdır.
-            Diğer harfleri kullanarak, en az dört harfli kelimeler türetmeye çalışın.
-            Oluşturduğunuz her kelime için puan kazanırsınız. Kelime ne kadar uzun olursa, o kadar çok puan alırsınız.
-            Amacınız, verilen harflerle mümkün olan en çok kelimeyi bulmak ve en yüksek skora ulaşmaktır.
-        </p>
+  <div id="overlay">
+    <button id="closeButton"
+      style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+    <h2>Bal Peteği Kelime Oyunu Nasıl Oynanır?</h2>
+    <p>
+      Bal Peteği, Türkçe kelime dağarcığınızı geliştirmenize yardımcı olan eğlenceli bir kelime bulmaca oyunudur.
+      Oyunda, bal peteği şeklinde düzenlenmiş harflerden anlamlı kelimeler oluşturmanız gerekiyor.
+      Oyunun merkezinde bir harf bulunur ve bu harf, oluşturacağınız her kelimede mutlaka yer almalıdır.
+      Diğer harfleri kullanarak, en az dört harfli kelimeler türetmeye çalışın.
+      Oluşturduğunuz her kelime için puan kazanırsınız. Kelime ne kadar uzun olursa, o kadar çok puan alırsınız.
+      Amacınız, verilen harflerle mümkün olan en çok kelimeyi bulmak ve en yüksek skora ulaşmaktır.
+    </p>
 
-        <h2>Bal Peteği Kelime Oyununun Faydaları</h2>
-        <ul>
-            <li><strong>Kelime Bilgisi Gelişimi:</strong> Oyun, Türkçe kelime dağarcığınızı genişletmenize yardımcı
-                olur.</li>
-            <li><strong>Mantıksal Düşünme:</strong> Harfleri birleştirerek kelime oluşturmak, mantıksal düşünme
-                becerilerinizi geliştirir.</li>
-            <li><strong>Hızlı Düşünme:</strong> Sınırlı sürede kelime bulmak, hızlı düşünme yeteneğinizi geliştirir.
-            </li>
-            <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre
-                olmanız gerekir.</li>
-            <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni kelimeler türetmek, zihinsel çevikliğinizi
-                artırır.</li>
-            <li><strong>Eğlenceli Öğrenme:</strong> Kelime türetme oyunu, öğrenmeyi eğlenceli hale getirir ve
-                motivasyonunuzu artırır.</li>
-        </ul>
+    <h2>Bal Peteği Kelime Oyununun Faydaları</h2>
+    <ul>
+      <li><strong>Kelime Bilgisi Gelişimi:</strong> Oyun, Türkçe kelime dağarcığınızı genişletmenize yardımcı
+        olur.</li>
+      <li><strong>Mantıksal Düşünme:</strong> Harfleri birleştirerek kelime oluşturmak, mantıksal düşünme
+        becerilerinizi geliştirir.</li>
+      <li><strong>Hızlı Düşünme:</strong> Sınırlı sürede kelime bulmak, hızlı düşünme yeteneğinizi geliştirir.
+      </li>
+      <li><strong>Odaklanma ve Konsantrasyon:</strong> Oyunda başarılı olmak için odaklanmanız ve konsantre
+        olmanız gerekir.</li>
+      <li><strong>Zihinsel Çeviklik:</strong> Sürekli olarak yeni kelimeler türetmek, zihinsel çevikliğinizi
+        artırır.</li>
+      <li><strong>Eğlenceli Öğrenme:</strong> Kelime türetme oyunu, öğrenmeyi eğlenceli hale getirir ve
+        motivasyonunuzu artırır.</li>
+    </ul>
 
-        <p>
-            Bal Peteği, kelime oyunları ve zeka oyunları kategorilerinde popüler bir oyundur. Oyun, her yaştan kullanıcı
-            için uygundur ve Türkçe kelime bilgisini geliştirmek isteyenler için idealdir.
-            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun
-            sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
-        </p>
+    <p>
+      Bal Peteği, kelime oyunları ve zeka oyunları kategorilerinde popüler bir oyundur. Oyun, her yaştan kullanıcı
+      için uygundur ve Türkçe kelime bilgisini geliştirmek isteyenler için idealdir.
+      Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar. Oyunun
+      sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
 
-    </div>
+  </div>
 
-    <script type="module">
-        import { wordsSevenLetters as words, allwordsSevenLetters } from 'https://sercankulcu.github.io/game/words-seven-letters.js';
-        import { allwordsSixLetters } from 'https://sercankulcu.github.io/game/words-six-letters.js';
-        import { allwordsFiveLetters } from 'https://sercankulcu.github.io/game/words-five-letters.js';
-        import { allwordsFourLetters } from 'https://sercankulcu.github.io/game/words-four-letters.js';
+  <script type="module">
+    import { wordsSevenLetters as words, allwordsSevenLetters } from 'https://sercankulcu.github.io/game/words-seven-letters.js';
+    import { allwordsSixLetters } from 'https://sercankulcu.github.io/game/words-six-letters.js';
+    import { allwordsFiveLetters } from 'https://sercankulcu.github.io/game/words-five-letters.js';
+    import { allwordsFourLetters } from 'https://sercankulcu.github.io/game/words-four-letters.js';
 
-        const allwords = allwordsFourLetters.concat(allwordsFiveLetters, allwordsSixLetters, allwordsSevenLetters);
-        let selectedWord = '';
-        let letters = '';
-        let centerLetter = '';
-        let currentWord = '';
-        let score = 0;
+    const allwords = allwordsFourLetters.concat(allwordsFiveLetters, allwordsSixLetters, allwordsSevenLetters);
+    let selectedWord = '';
+    let letters = '';
+    let centerLetter = '';
+    let currentWord = '';
+    let score = 0;
 
-        const titleElement = document.getElementById('title');
-        titleElement.addEventListener('click', function () {
-            if (window.parent !== window) {
-                window.parent.showMainContent();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
-        const infoButton = document.getElementById('infoButton');
-        const overlay = document.getElementById('overlay');
-        const closeButton = document.getElementById('closeButton');
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
 
-        infoButton.addEventListener('click', () => {
-            overlay.style.display = 'block';
-        });
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
 
-        closeButton.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
 
-        const scoreElement = document.getElementById('score');
+    const scoreElement = document.getElementById('score');
 
-        function initialize() {
-            selectedWord = words[Math.floor(Math.random() * words.length)]; // Rastgele kelime seç
-            letters = selectedWord.split(""); // Harfleri diziye çevir (tekrarları kaldırmadan)
-            letters = shuffleArray(letters); // Harfleri rastgele sırala
-            centerLetter = letters[Math.floor(Math.random() * letters.length)]; // Rastgele merkez harfi seç
+    function initialize() {
+      selectedWord = words[Math.floor(Math.random() * words.length)]; // Rastgele kelime seç
+      letters = selectedWord.split(""); // Harfleri diziye çevir (tekrarları kaldırmadan)
+      letters = shuffleArray(letters); // Harfleri rastgele sırala
+      centerLetter = letters[Math.floor(Math.random() * letters.length)]; // Rastgele merkez harfi seç
+    }
+
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function createHive() {
+
+      const hive = document.querySelector('.hive');
+      hive.innerHTML = '';
+
+      const positions = ['pos1', 'pos2', 'pos3', 'pos4', 'pos5', 'pos6'];
+      let posIndex = 0;
+
+      let centerLetterAssigned = false;
+
+      letters.forEach(letter => {
+        const div = document.createElement('div');
+        div.className = 'letter';
+        if (letter === centerLetter && !centerLetterAssigned) {
+          centerLetterAssigned = true;
+          div.classList.add('center');
+        } else {
+          div.classList.add(positions[posIndex]);
+          posIndex++;
         }
+        div.textContent = letter;
+        div.onclick = function () {
+          addLetter(letter, div);
+        };
+        hive.appendChild(div);
+      });
+    }
 
-        function shuffleArray(array) {
-            return array.sort(() => Math.random() - 0.5);
-        }
+    function addLetter(letter, element) {
 
-        function createHive() {
+      currentWord += letter;
+      document.getElementById('word').textContent = currentWord;
 
-            const hive = document.querySelector('.hive');
-            hive.innerHTML = '';
-
-            const positions = ['pos1', 'pos2', 'pos3', 'pos4', 'pos5', 'pos6'];
-            let posIndex = 0;
-
-            let centerLetterAssigned = false;
-
-            letters.forEach(letter => {
-                const div = document.createElement('div');
-                div.className = 'letter';
-                if (letter === centerLetter && !centerLetterAssigned) {
-                    centerLetterAssigned = true;
-                    div.classList.add('center');
-                } else {
-                    div.classList.add(positions[posIndex]);
-                    posIndex++;
-                }
-                div.textContent = letter;
-                div.onclick = function () {
-                    addLetter(letter, div);
-                };
-                hive.appendChild(div);
-            });
-        }
-
-        function addLetter(letter, element) {
-
-            currentWord += letter;
-            document.getElementById('word').textContent = currentWord;
-
-            // Harfi pasif hale getir
-            element.style.pointerEvents = "none";
-            element.style.opacity = "0.5";
-        }
+      // Harfi pasif hale getir
+      element.style.pointerEvents = "none";
+      element.style.opacity = "0.5";
+    }
 
 
-        function submitWord() {
-            const message = document.getElementById('word');
-            if (currentWord.length < 4) {
-                message.textContent = '🚫 Kelime en az 4 harfli olmalıdır.';
-            } else if (!currentWord.includes(centerLetter)) {
-                message.textContent = '⚠️ Kelime merkez harfi içermelidir.';
-            } else if (currentWord === selectedWord) {
-                message.textContent = `🎉 Kazandınız!\n "${currentWord}" doğru kelime!`;
-                score += currentWord.length;
-                updateScore();
-                setTimeout(startNewGame, 2000);
-            } else if (allwords.includes(currentWord)) {
-                message.textContent = `👏 Tebrikler!\n "${currentWord}" geçerli bir kelime.`;
-                score += currentWord.length;
-                updateScore();
-                setTimeout(startNewGame, 2000);
-            } else {
-                message.textContent = `😔 Üzgünüm!\n "${currentWord}" geçerli bir kelime değil!`;
-            }
-            currentWord = '';
-
-            document.querySelectorAll('.letter').forEach(letter => {
-                letter.style.pointerEvents = "auto";
-                letter.style.opacity = "1";
-            });
-        }
-
-        function updateScore() {
-            scoreElement.textContent = `Skor: ${score}`;
-            saveHighScore("Bal Peteği", score);
-        }
-
-        function saveHighScore(gameName, score) {
-            const today = new Date();
-            const day = String(today.getDate()).padStart(2, '0');
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const year = today.getFullYear();
-            const formattedDate = `${day}/${month}/${year}`;
-
-            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
-
-            if (!highScores[gameName] || score > highScores[gameName].score) {
-                highScores[gameName] = {
-                    score: score,
-                    date: formattedDate,
-                };
-
-                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
-            }
-        }
-
-        function shuffleLetters() {
-            letters.sort(() => Math.random() - 0.5);
-            createHive();
-
-            // Kelimeyi sıfırla
-            currentWord = '';
-            document.getElementById('word').textContent = '.';
-
-            // Tüm harfleri tekrar aktif hale getir
-            document.querySelectorAll('.letter').forEach(letter => {
-                letter.style.pointerEvents = "auto";
-                letter.style.opacity = "1";
-            });
-        }
-
-        function startNewGame() {
-            initialize(); // Reset game state
-            createHive(); // Recreate the hive with new letters
-            currentWord = ''; // Clear current word
-            document.getElementById('word').textContent = '.'; // Reset display
-            document.querySelectorAll('.letter').forEach(letter => {
-                letter.style.pointerEvents = "auto";
-                letter.style.opacity = "1";
-            });
-        }
-
-        document.getElementById('newGameBtn').addEventListener('click', startNewGame);
-        document.getElementById('shuffleBtn').addEventListener('click', shuffleLetters);
-        document.getElementById('submitBtn').addEventListener('click', submitWord);
-
-        document.addEventListener('click', () => {
-            document.getElementById('initialMessage').style.display = 'none';
-        });
-
-        initialize();
-        createHive();
+    function submitWord() {
+      const message = document.getElementById('word');
+      if (currentWord.length < 4) {
+        message.textContent = '🚫 Kelime en az 4 harfli olmalıdır.';
+      } else if (!currentWord.includes(centerLetter)) {
+        message.textContent = '⚠️ Kelime merkez harfi içermelidir.';
+      } else if (currentWord === selectedWord) {
+        message.textContent = `🎉 Kazandınız!\n "${currentWord}" doğru kelime!`;
+        score += currentWord.length;
         updateScore();
-    </script>
+        setTimeout(startNewGame, 2000);
+      } else if (allwords.includes(currentWord)) {
+        message.textContent = `👏 Tebrikler!\n "${currentWord}" geçerli bir kelime.`;
+        score += currentWord.length;
+        updateScore();
+        setTimeout(startNewGame, 2000);
+      } else {
+        message.textContent = `😔 Üzgünüm!\n "${currentWord}" geçerli bir kelime değil!`;
+      }
+      currentWord = '';
+
+      document.querySelectorAll('.letter').forEach(letter => {
+        letter.style.pointerEvents = "auto";
+        letter.style.opacity = "1";
+      });
+    }
+
+    function updateScore() {
+      scoreElement.textContent = `Skor: ${score}`;
+      saveHighScore("Bal Peteği", score);
+    }
+
+    function saveHighScore(gameName, score) {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
+
+      let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+
+      if (!highScores[gameName] || score > highScores[gameName].score) {
+        highScores[gameName] = {
+          score: score,
+          date: formattedDate,
+        };
+
+        localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+      }
+    }
+
+    function shuffleLetters() {
+      letters.sort(() => Math.random() - 0.5);
+      createHive();
+
+      // Kelimeyi sıfırla
+      currentWord = '';
+      document.getElementById('word').textContent = '.';
+
+      // Tüm harfleri tekrar aktif hale getir
+      document.querySelectorAll('.letter').forEach(letter => {
+        letter.style.pointerEvents = "auto";
+        letter.style.opacity = "1";
+      });
+    }
+
+    function startNewGame() {
+      initialize(); // Reset game state
+      createHive(); // Recreate the hive with new letters
+      currentWord = ''; // Clear current word
+      document.getElementById('word').textContent = '.'; // Reset display
+      document.querySelectorAll('.letter').forEach(letter => {
+        letter.style.pointerEvents = "auto";
+        letter.style.opacity = "1";
+      });
+    }
+
+    document.getElementById('newGameBtn').addEventListener('click', startNewGame);
+    document.getElementById('shuffleBtn').addEventListener('click', shuffleLetters);
+    document.getElementById('submitBtn').addEventListener('click', submitWord);
+
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
+
+    initialize();
+    createHive();
+    updateScore();
+  </script>
 </body>
 
 </html>

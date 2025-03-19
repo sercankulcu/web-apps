@@ -2,285 +2,288 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Flag Quiz Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Flag Quiz Game</title>
 
-    <meta name="description"
-        content="Bayrak Bilgi Yarışması ile dünya bayraklarını öğrenin ve coğrafya bilginizi test edin. Farklı ülkelerin bayraklarını tanıyarak eğlenceli bir bilgi yarışması deneyimi yaşayın!">
-    <meta name="keywords"
-        content="bayrak bilgi yarışması, bayrak oyunu, coğrafya oyunu, ülke bayrakları, bilgi yarışması, dorukdayım, bayrak testi">
-    <meta name="author" content="Sercan/Dorukdayım">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://dorukdayim.netlify.app/flagquiz.html">
-    <meta name="theme-color" content="#f0f0f0">
-    <link rel="icon" href="/icons/favicon.ico" type="image/png">
+  <meta name="description"
+    content="Bayrak Bilgi Yarışması ile dünya bayraklarını öğrenin ve coğrafya bilginizi test edin. Farklı ülkelerin bayraklarını tanıyarak eğlenceli bir bilgi yarışması deneyimi yaşayın!">
+  <meta name="keywords"
+    content="bayrak bilgi yarışması, bayrak oyunu, coğrafya oyunu, ülke bayrakları, bilgi yarışması, dorukdayım, bayrak testi">
+  <meta name="author" content="Sercan/Dorukdayım">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dorukdayim.netlify.app/flagquiz.html">
+  <meta name="theme-color" content="#f0f0f0">
+  <link rel="icon" href="/icons/favicon.ico" type="image/png">
 
-    <meta property="og:title" content="DorukDayım - Bayrak Bilgi Yarışması">
-    <meta property="og:description"
-        content="Bayrak Bilgi Yarışması ile dünya bayraklarını öğrenin ve coğrafya bilginizi test edin. Farklı ülkelerin bayraklarını tanıyarak eğlenceli bir bilgi yarışması deneyimi yaşayın!">
-    <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://dorukdayim.netlify.app/flagquiz.html">
-    <meta property="og:type" content="game">
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:locale" content="tr_TR" />
-    <meta property="og:site_name" content="DorukDayım" />
+  <meta property="og:title" content="DorukDayım - Bayrak Bilgi Yarışması">
+  <meta property="og:description"
+    content="Bayrak Bilgi Yarışması ile dünya bayraklarını öğrenin ve coğrafya bilginizi test edin. Farklı ülkelerin bayraklarını tanıyarak eğlenceli bir bilgi yarışması deneyimi yaşayın!">
+  <meta property="og:image" content="https://dorukdayim.netlify.app/icons/icon-512x512.png" />
+  <meta property="og:url" content="https://dorukdayim.netlify.app/flagquiz.html">
+  <meta property="og:type" content="game">
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="DorukDayım" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DorukDayım - Bayrak Bilgi Yarışması">
-    <meta name="twitter:description"
-        content="Bayrak Bilgi Yarışması ile dünya bayraklarını öğrenin ve coğrafya bilginizi test edin. Farklı ülkelerin bayraklarını tanıyarak eğlenceli bir bilgi yarışması deneyimi yaşayın!">
-    <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
-    <meta name="twitter:image:alt" content="DorukDayım Bayrak Bilgi Yarışması resmi" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DorukDayım - Bayrak Bilgi Yarışması">
+  <meta name="twitter:description"
+    content="Bayrak Bilgi Yarışması ile dünya bayraklarını öğrenin ve coğrafya bilginizi test edin. Farklı ülkelerin bayraklarını tanıyarak eğlenceli bir bilgi yarışması deneyimi yaşayın!">
+  <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
+  <meta name="twitter:image:alt" content="DorukDayım Bayrak Bilgi Yarışması resmi" />
 
-    <meta http-equiv="Content-Language" content="tr">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <style>
-        body {
-            margin: 0 auto;
-            text-align: center;
-            padding: 1vh;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-        }
+  <meta http-equiv="Content-Language" content="tr">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    .game-container {
+      margin: 0 auto;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+    }
 
-        .flag-container {
-            margin: 20px auto;
-            width: 250px;
-            height: auto;
-            border: 2px solid #333;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    .flag-container {
+      margin: 20px auto;
+      width: 250px;
+      height: auto;
+      border: 2px solid #333;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-        #score {
-            font-size: 3vh;
-            font-weight: bold;
-        }
+    #score {
+      font-size: 3vh;
+      font-weight: bold;
+    }
 
-        button {
-            width: 180px;
-            font-size: 18px;
-            border-radius: 10px;
-            background-color: white;
-        }
+    button {
+      width: 180px;
+      font-size: 18px;
+      border-radius: 10px;
+      background-color: white;
+    }
 
-        .options button {
-            display: block;
-            width: 200px;
-            margin: 10px auto;
-            padding: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            background: #008CBA;
-            color: white;
-            border-radius: 5px;
-        }
+    .options button {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background: #008CBA;
+      color: white;
+      border-radius: 5px;
+    }
 
-        .options button:hover {
-            background: #005f73;
-        }
+    .options button:hover {
+      background: #005f73;
+    }
 
-        .options button:disabled {
-            background: #ccc;
-            color: #666;
-            cursor: not-allowed;
-        }
+    .options button:disabled {
+      background: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
 
-        #initialMessage {
-            position: fixed;
-            width: 50%;
-            max-width: 400px;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border: 2px solid #000;
-            text-align: center;
-            z-index: 1001;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            font-size: 1.2rem;
-            color: #333;
-            border-radius: 10px;
-        }
+    #initialMessage {
+      position: fixed;
+      width: 50%;
+      max-width: 400px;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border: 2px solid #000;
+      text-align: center;
+      z-index: 1001;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2rem;
+      color: #333;
+      border-radius: 10px;
+    }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            z-index: 1000;
-            overflow-y: auto;
-        }
-    </style>
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: #333333;
+      color: #f9f9f9;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 10px;
+      text-align: justify;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
-    <div id="initialMessage">
-        <p>Ana sayfaya dönmek için başlığa <strong>(Ülkeyi Tahmin Et)</strong> tıklayınız.</p>
-        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
-    </div>
+  <div id="initialMessage">
+    <p>Ana sayfaya dönmek için başlığa <strong>(Ülkeyi Tahmin Et)</strong> tıklayınız.</p>
+    <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+  </div>
+  <div class="game-container">
     <h1 id="title">Guess the Country</a></h1>
     <div id="score">Score: 0</div>
     <div class="flag-container" id="flag"></div>
     <div class="options" id="options"></div>
+  </div>
+  <button id="infoButton"
+    style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-    <button id="infoButton"
-        style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+  <div id="overlay">
+    <button id="closeButton"
+      style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+    <h2>Bayrak Bilgi Yarışması Nasıl Oynanır?</h2>
+    <p>
+      Bayrak Bilgi Yarışması, dünya ülkelerinin bayraklarını tanıma ve coğrafya bilginizi test etme üzerine kurulu
+      eğlenceli bir oyundur.
+      Oyuna başlamak için ekrana tıklayın. Karşınıza bir ülke bayrağı ve dört seçenek çıkacak.
+      Amacınız, bayrağın hangi ülkeye ait olduğunu doğru şekilde tahmin etmektir.
+      Doğru seçeneği seçerek puan kazanın ve dünya bayrakları hakkındaki bilginizi geliştirin.
+      Oyun, farklı zorluk seviyelerinde oynanabilir ve her seviyede farklı ülkelerin bayrakları karşınıza çıkar.
+    </p>
 
-    <div id="overlay" style="padding: 2px; text-align: justify; display: none;">
-        <button id="closeButton"
-            style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
-        <h2>Bayrak Bilgi Yarışması Nasıl Oynanır?</h2>
-        <p>
-            Bayrak Bilgi Yarışması, dünya ülkelerinin bayraklarını tanıma ve coğrafya bilginizi test etme üzerine kurulu
-            eğlenceli bir oyundur.
-            Oyuna başlamak için ekrana tıklayın. Karşınıza bir ülke bayrağı ve dört seçenek çıkacak.
-            Amacınız, bayrağın hangi ülkeye ait olduğunu doğru şekilde tahmin etmektir.
-            Doğru seçeneği seçerek puan kazanın ve dünya bayrakları hakkındaki bilginizi geliştirin.
-            Oyun, farklı zorluk seviyelerinde oynanabilir ve her seviyede farklı ülkelerin bayrakları karşınıza çıkar.
-        </p>
+    <h2>Bayrak Bilgi Yarışmasının Faydaları</h2>
+    <ul>
+      <li><strong>Coğrafya Bilgisini Geliştirir:</strong> Dünya ülkeleri ve bayrakları hakkında bilgi edinmenizi
+        sağlar.</li>
+      <li><strong>Görsel Hafızayı Güçlendirir:</strong> Bayrakları tanıyarak görsel hafızanızı geliştirirsiniz.
+      </li>
+      <li><strong>Eğlenceli Öğrenme:</strong> Coğrafya öğrenmeyi eğlenceli bir hale getirir.</li>
+      <li><strong>Hızlı Düşünme Becerisini Artırır:</strong> Bayrakları hızlıca tanıyarak hızlı düşünme becerinizi
+        geliştirirsiniz.</li>
+      <li><strong>Kültürel Farkındalık:</strong> Farklı ülkelerin bayraklarını tanıyarak kültürel farkındalığınızı
+        artırırsınız.</li>
+    </ul>
 
-        <h2>Bayrak Bilgi Yarışmasının Faydaları</h2>
-        <ul>
-            <li><strong>Coğrafya Bilgisini Geliştirir:</strong> Dünya ülkeleri ve bayrakları hakkında bilgi edinmenizi
-                sağlar.</li>
-            <li><strong>Görsel Hafızayı Güçlendirir:</strong> Bayrakları tanıyarak görsel hafızanızı geliştirirsiniz.
-            </li>
-            <li><strong>Eğlenceli Öğrenme:</strong> Coğrafya öğrenmeyi eğlenceli bir hale getirir.</li>
-            <li><strong>Hızlı Düşünme Becerisini Artırır:</strong> Bayrakları hızlıca tanıyarak hızlı düşünme becerinizi
-                geliştirirsiniz.</li>
-            <li><strong>Kültürel Farkındalık:</strong> Farklı ülkelerin bayraklarını tanıyarak kültürel farkındalığınızı
-                artırırsınız.</li>
-        </ul>
+    <p>
+      Bayrak Bilgi Yarışması, özellikle coğrafya oyunları, zeka oyunları ve bilgi yarışmaları kategorilerinde
+      popülerdir.
+      Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
+      Oyunun farklı zorluk seviyeleri içermesi, her seviyeden kullanıcının oyunu oynayabilmesini sağlar.
+      Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
+      Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
+    </p>
 
-        <p>
-            Bayrak Bilgi Yarışması, özellikle coğrafya oyunları, zeka oyunları ve bilgi yarışmaları kategorilerinde
-            popülerdir.
-            Oyun, her yaştan kullanıcı için uygundur ve basit arayüzü sayesinde kolayca oynanabilir.
-            Oyunun farklı zorluk seviyeleri içermesi, her seviyeden kullanıcının oyunu oynayabilmesini sağlar.
-            Oyunun mobil uyumlu olması, kullanıcıların istedikleri zaman ve yerde oyunu oynayabilmelerini sağlar.
-            Oyunun sosyal medya platformlarında paylaşılması, daha geniş bir kitleye ulaşmasına yardımcı olur.
-        </p>
+  </div>
 
-    </div>
+  <script type="module">
 
-    <script type="module">
+    import { countries } from 'https://sercankulcu.github.io/game/flagquiz.js';
 
-        import { countries } from 'https://sercankulcu.github.io/game/flagquiz.js';
+    let score = 0;
+    let scoreDisplay = document.getElementById("score");
+    const titleElement = document.getElementById('title');
+    titleElement.addEventListener('click', function () {
+      if (window.parent !== window) {
+        window.parent.showMainContent();
+      } else {
+        window.location.href = 'index.html';
+      }
+    });
 
-        let score = 0;
-        let scoreDisplay = document.getElementById("score");
-        const titleElement = document.getElementById('title');
-        titleElement.addEventListener('click', function () {
-            if (window.parent !== window) {
-                window.parent.showMainContent();
-            } else {
-                window.location.href = 'index.html';
-            }
-        });
+    const infoButton = document.getElementById('infoButton');
+    const overlay = document.getElementById('overlay');
+    const closeButton = document.getElementById('closeButton');
 
-        const infoButton = document.getElementById('infoButton');
-        const overlay = document.getElementById('overlay');
-        const closeButton = document.getElementById('closeButton');
+    infoButton.addEventListener('click', () => {
+      overlay.style.display = 'block';
+    });
 
-        infoButton.addEventListener('click', () => {
-            overlay.style.display = 'block';
-        });
+    closeButton.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
 
-        closeButton.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
 
-        function shuffle(array) {
-            return array.sort(() => Math.random() - 0.5);
-        }
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang.startsWith("tr")) {
+      titleElement.textContent = "Ülkeyi Tahmin Et";
+      scoreDisplay.textContent = "Skor: 0";
+    }
 
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang.startsWith("tr")) {
-            titleElement.textContent = "Ülkeyi Tahmin Et";
-            scoreDisplay.textContent = "Skor: 0";
-        }
+    function loadFlagQuiz() {
 
-        function loadFlagQuiz() {
+      let correctCountry = countries[Math.floor(Math.random() * countries.length)];
+      //document.getElementById("flag").style.backgroundImage = `url(${correctCountry.flag})`;
 
-            let correctCountry = countries[Math.floor(Math.random() * countries.length)];
-            //document.getElementById("flag").style.backgroundImage = `url(${correctCountry.flag})`;
+      let flagContainer = document.getElementById("flag");
 
-            let flagContainer = document.getElementById("flag");
+      const img = new Image();
+      img.src = correctCountry.flag;
+      img.onload = function () {
+        const aspectRatio = img.width / img.height;
+        flagContainer.style.aspectRatio = aspectRatio;
+        flagContainer.style.backgroundImage = `url(${correctCountry.flag})`;
+      };
 
-            const img = new Image();
-            img.src = correctCountry.flag;
-            img.onload = function () {
-                const aspectRatio = img.width / img.height;
-                flagContainer.style.aspectRatio = aspectRatio;
-                flagContainer.style.backgroundImage = `url(${correctCountry.flag})`;
-            };
+      let incorrectCountries = shuffle(countries.filter(c => c.name !== correctCountry.name)).slice(0, 3);
+      let options = shuffle([correctCountry, ...incorrectCountries]);
 
-            let incorrectCountries = shuffle(countries.filter(c => c.name !== correctCountry.name)).slice(0, 3);
-            let options = shuffle([correctCountry, ...incorrectCountries]);
+      let optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
 
-            let optionsContainer = document.getElementById("options");
-            optionsContainer.innerHTML = "";
+      options.forEach(country => {
+        let button = document.createElement("button");
+        button.textContent = browserLang.startsWith("tr") ? country.name : country.enName;
 
-            options.forEach(country => {
-                let button = document.createElement("button");
-                button.textContent = browserLang.startsWith("tr") ? country.name : country.enName;
+        button.onclick = () => {
 
-                button.onclick = () => {
+          if (country.name === correctCountry.name) {
+            score++;
+            saveHighScore("Bayrak Testi", score);
+            setTimeout(() => {
+              loadFlagQuiz();
+            }, 200);
+          } else {
+            score--;
+            button.disabled = true;
+          }
+          scoreDisplay.textContent = browserLang.startsWith("tr") ? "Skor: " + score : "Score: " + score;
+        };
 
-                    if (country.name === correctCountry.name) {
-                        score++;
-                        saveHighScore("Bayrak Testi", score);
-                        setTimeout(() => {
-                            loadFlagQuiz();
-                        }, 200);
-                    } else {
-                        score--;
-                        button.disabled = true;
-                    }
-                    scoreDisplay.textContent = browserLang.startsWith("tr") ? "Skor: " + score : "Score: " + score;
-                };
+        optionsContainer.appendChild(button);
+      });
+    }
 
-                optionsContainer.appendChild(button);
-            });
-        }
+    function saveHighScore(gameName, score) {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${day}/${month}/${year}`;
 
-        function saveHighScore(gameName, score) {
-            const today = new Date();
-            const day = String(today.getDate()).padStart(2, '0');
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const year = today.getFullYear();
-            const formattedDate = `${day}/${month}/${year}`;
+      let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
 
-            let highScores = JSON.parse(localStorage.getItem('dorukdayimhighScores')) || {};
+      if (!highScores[gameName] || score > highScores[gameName].score) {
+        highScores[gameName] = {
+          score: score,
+          date: formattedDate,
+        };
 
-            if (!highScores[gameName] || score > highScores[gameName].score) {
-                highScores[gameName] = {
-                    score: score,
-                    date: formattedDate,
-                };
+        localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
+      }
+    }
 
-                localStorage.setItem('dorukdayimhighScores', JSON.stringify(highScores));
-            }
-        }
+    document.addEventListener('click', () => {
+      document.getElementById('initialMessage').style.display = 'none';
+    });
 
-        document.addEventListener('click', () => {
-            document.getElementById('initialMessage').style.display = 'none';
-        });
-
-        loadFlagQuiz();
-    </script>
+    loadFlagQuiz();
+  </script>
 </body>
 
 </html>
