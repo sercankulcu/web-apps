@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 
 <head>
   <meta charset="UTF-8">
@@ -34,9 +34,6 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
   <meta name="twitter:image:alt" content="DorukDayım MatematUsta Oyunu resmi" />
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
@@ -493,12 +490,6 @@
         `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    function formatTime(seconds) {
-      const minutes = Math.floor(seconds / 60);
-      const remainingSeconds = seconds % 60;
-      return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-    }
-
     function appendNumber(number) {
       let currentAnswer = document.getElementById('answer').innerText;
 
@@ -525,7 +516,7 @@
       }
     }
 
-    document.addEventListener('click', () => {
+    document.getElementById('initialMessage').addEventListener('click', () => {
       document.getElementById('initialMessage').style.display = 'none';
     });
 

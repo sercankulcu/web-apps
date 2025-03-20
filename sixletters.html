@@ -10,6 +10,7 @@
   <meta name="description"
     content="DorukDayım'da 6 harfli Türkçe kelime oyunu ile zekanızı geliştirin. Eğlenceli ve öğretici kelime bulmaca oyunu oynayın.">
   <link rel="icon" href="/icons/favicon.ico" type="image/png">
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
 
   <meta property="og:title" content="Altı Harf - Türkçe Kelime Oyunu">
   <meta property="og:description"
@@ -29,14 +30,11 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
   <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="keywords"
     content="6 harf kelime oyunu, türkçe kelime bulmaca, zeka oyunları, dorukdayım, kelime oyunu oyna, 6 harfli kelimeler">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://dorukdayim.netlify.app/altiharf.html">
   <meta name="author" content="Sercan/Dorukdayım">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <style>
     .game-container {
@@ -196,6 +194,32 @@
       text-align: justify;
       display: none;
     }
+
+    .shake {
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      50% {
+        transform: translateX(5px);
+      }
+
+      75% {
+        transform: translateX(-5px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
 
@@ -214,11 +238,11 @@
     <button id="restartButton">Yeniden Başlat</button>
   </div>
 
-  <button id="infoButton"
+  <button id="infoButton" aria-label="Game instructions" role="button"
     style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
   <div id="overlay">
-    <button id="closeButton"
+    <button id="closeButton" aria-label="Game instructions close" role="button"
       style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
     <h2>Altı Harf Kelime Oyunu Nasıl Oynanır?</h2>
     <p>
@@ -372,13 +396,10 @@
       } else if (letter === 'GÖNDER') {
         if (currentGuess.length === WORD_LENGTH) {
           if (!allwords.includes(currentGuess.join(''))) {
-            currentGuess = [];
             const row = document.getElementsByClassName('row')[currentRow];
-            Array.from(row.children).forEach((tile) => {
-              if (tile.classList.contains('correct')) {
-                tile.classList.remove('correct');
-              }
-            });
+            row.classList.add('shake');
+            setTimeout(() => row.classList.remove('shake'), 500);
+            currentGuess = [];
             updateGrid();
           } else {
             checkGuess();

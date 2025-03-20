@@ -34,9 +34,6 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
   <meta name="twitter:image:alt" content="Bal Peteği Türkçe kelime bulmaca oyunu resmi" />
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <style>
     .game-container {
       margin: 0 auto;
@@ -181,7 +178,7 @@
     <div id="score">Skor: 0</div>
     <div class="hive"></div>
     <div id="word"></div>
-    <div class="button-container">
+    <div>
       <button id="shuffleBtn">Karıştır</button>
       <button id="submitBtn">Gönder</button>
       <button id="newGameBtn">Yeni</button>
@@ -273,7 +270,11 @@
     }
 
     function shuffleArray(array) {
-      return array.sort(() => Math.random() - 0.5);
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
 
     function createHive() {

@@ -404,7 +404,6 @@
     function initializeTest() {
       const currentLang = isTurkish ? 'tr' : 'en';
       const currentTraits = traits[currentLang];
-      let colorIndex = 0;
 
       document.querySelectorAll('.word-box').forEach((container, index) => {
         const pair = container.dataset.traitPair;
@@ -413,7 +412,6 @@
 
         container.innerHTML = words.map(word => {
           const color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
-          colorIndex++;
           return `<div class="word-item" onclick="toggleWord(this)" 
                                     data-trait="${getTraitForWord(currentTraits, pair, word)}"
                                     style="background: ${color};">

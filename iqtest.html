@@ -34,13 +34,9 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
   <meta name="twitter:image:alt" content="DorukDayım Zeka Testi resmi" />
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    body {
+    .game-container {
       margin: 0 auto;
       text-align: center;
       padding: 1vh;
@@ -159,7 +155,7 @@
     <p>Doğru düşündüğünüz seçeneğe tıklayarak ilerleyiniz.</p>
     <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
   </div>
-  <div class="container">
+  <div class="game-container" role="main">
     <h1 id="title">Zeka Testi</h1>
     <div id="progress-bar">
       <div id="progress"></div>
@@ -172,7 +168,7 @@
   <button id="infoButton"
     style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
-  <div id="overlay">
+    <div id="overlay" role="dialog" aria-modal="true">
     <button id="closeButton"
       style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
     <h2>Zeka Testi Nasıl Oynanır?</h2>
@@ -324,7 +320,7 @@
         }
       });
 
-      pdfButton.addEventListener('click', () => generatePDF(iqScore, nameInput.value));
+      pdfButton.addEventListener('click', () => generatePDF(iqScore, nameInput.value.trim() || "Anonymous"));
 
       resultDiv.appendChild(nameInput);
       resultDiv.appendChild(warningText);
@@ -343,7 +339,7 @@
         .toUpperCase();
     }
 
-    function generatePDF(iqScore) {
+    function generatePDF(iqScore, name) {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF('landscape'); // Set the document to landscape
 
@@ -363,7 +359,6 @@
 
         doc.addImage(img, 'PNG', 0, 0, scaledWidth, scaledHeight);
 
-        const name = document.getElementById('nameInput').value.trim() || "Anonymous";
         doc.setFontSize(32);
         doc.text(name.convertToEnglishUppercase(), 110, 100, null, null, 'center');
         doc.setFontSize(20);

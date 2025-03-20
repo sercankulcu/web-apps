@@ -65,6 +65,7 @@
       aspect-ratio: 1;
       border-radius: 10px;
       position: relative;
+      transition: background-color 0.3s ease;
     }
 
     .cell.selected {
@@ -153,8 +154,8 @@
     <p>Ana sayfaya dönmek için başlığa <strong>(Gizli Kelimeleri Bul)</strong> tıklayınız.</p>
     <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
   </div>
-  <div class="game-container">
-    <h1 id="title">Gizli Kelimeleri Bul</h1>
+  <div class="game-container" role="main">
+    <h1 id="title" role="banner">Gizli Kelimeleri Bul</h1>
     <div id="grid" class="grid"></div>
     <div id="winModal" class="modal" onclick="closeModal()">
       <div class="modal-content">

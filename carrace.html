@@ -34,9 +34,6 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png">
   <meta name="twitter:image:alt" content="DorukDayım Araba Yarışı Oyunu ekran görüntüsü">
 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
@@ -199,7 +196,7 @@
   <div id="gameOver">
     <h2>Game Over!</h2>
     <div id="finalScore"></div>
-    <button id="restartButton">Restart</button>
+    <button id="restartButton" tabindex="0" aria-label="Restart the game">Restart</button>
     <div id="highScores">
       <h3>High Scores</h3>
       <ul id="highScoresList"></ul>
@@ -290,21 +287,20 @@
     window.addEventListener('resize', setCanvasDimensions);
 
     let ROAD_WIDTH, ROAD_HEIGHT, LANE_WIDTH, CAR_WIDTH, CAR_HEIGHT;
+    const LANE_COUNT = 3;
+    const INITIAL_SPEED = 90;
+    const SPEED_INCREASE = 0.03;
+    const MAX_SPEED = 390;
 
     function updateDimensions() {
       ROAD_WIDTH = canvas.width;
       ROAD_HEIGHT = canvas.height;
-      LANE_COUNT = 3;
       LANE_WIDTH = ROAD_WIDTH / LANE_COUNT;
       CAR_WIDTH = ROAD_WIDTH * 0.14;
       CAR_HEIGHT = ROAD_HEIGHT * 0.12;
     }
 
     updateDimensions();
-
-    const INITIAL_SPEED = 90;
-    const SPEED_INCREASE = 0.03;
-    const MAX_SPEED = 390;
 
     let car = {
       x: 0,
@@ -368,7 +364,6 @@
       return { image: img, speed: data.speed };
     });
 
-    let lastObstacleTime = 0;
     const MIN_OBSTACLE_INTERVAL = 1000;  // En az 500ms arayla engel oluştur
     const MAX_OBSTACLE_INTERVAL = 3000; // En fazla 1500ms arayla engel oluştur
 

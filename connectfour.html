@@ -34,12 +34,8 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png">
   <meta name="twitter:image:alt" content="DorukDayım Dörtlü Yap Oyunu resmi">
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <style>
-    body {
+    .game-container {
       margin: 0 auto;
       text-align: center;
       padding: 1vh;
@@ -143,11 +139,11 @@
     <div class="board" id="board"></div>
   </div>
 
-  <button id="infoButton"
+  <button id="infoButton" aria-label="Bilgi göster"
     style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
 
   <div id="overlay">
-    <button id="closeButton"
+    <button id="closeButton" aria-label="Bilgi kutusunu kapat"
       style="position: absolute; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
     <h2>Dörtlü Yap Oyunu Nasıl Oynanır?</h2>
     <p>
@@ -185,10 +181,15 @@
   </div>
 
   <script>
+
+    const ROWS = 6;
+    const COLS = 7;
+    const WIN_LENGTH = 4;
+
     const board = document.getElementById('board');
     const message = document.getElementById('message');
     const difficultySelect = document.getElementById('difficultySelect');
-    let gameBoard = Array(6).fill().map(() => Array(7).fill(0));
+    let gameBoard = Array(ROWS).fill().map(() => Array(COLS).fill(0));
     let currentPlayer = 1;
     let gameOver = false;
 
@@ -214,12 +215,12 @@
     });
 
     function createBoard() {
-      gameBoard = Array(6).fill().map(() => Array(7).fill(0));
+      gameBoard = Array(ROWS).fill().map(() => Array(COLS).fill(0));
       currentPlayer = 1;
       gameOver = false;
       board.innerHTML = '';
       for (let row = 5; row >= 0; row--) {
-        for (let col = 0; col < 7; col++) {
+        for (let col = 0; col < COLS; col++) {
           const cell = document.createElement('div');
           cell.className = 'cell';
           cell.dataset.col = col;
@@ -230,7 +231,7 @@
 
     function dropPiece(col) {
       if (gameOver) return;
-      for (let row = 0; row < 6; row++) {
+      for (let row = 0; row < ROWS; row++) {
         if (gameBoard[row][col] === 0) {
           gameBoard[row][col] = currentPlayer;
           updateBoard();
@@ -261,9 +262,9 @@
 
     function updateBoard() {
       const cells = document.querySelectorAll('.cell');
-      for (let row = 0; row < 6; row++) {
-        for (let col = 0; col < 7; col++) {
-          const index = (5 - row) * 7 + col;
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+          const index = (5 - row) * COLS + col;
           cells[index].className = 'cell' + (gameBoard[row][col] === 1 ? ' red' : gameBoard[row][col] === 2 ? ' yellow' : '');
         }
       }
@@ -276,16 +277,16 @@
         for (let i = 1; i <= 3; i++) {
           const newRow = row + i * dx;
           const newCol = col + i * dy;
-          if (newRow < 0 || newRow >= 6 || newCol < 0 || newCol >= 7 || gameBoard[newRow][newCol] !== currentPlayer) break;
+          if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS || gameBoard[newRow][newCol] !== currentPlayer) break;
           count++;
         }
         for (let i = 1; i <= 3; i++) {
           const newRow = row - i * dx;
           const newCol = col - i * dy;
-          if (newRow < 0 || newRow >= 6 || newCol < 0 || newCol >= 7 || gameBoard[newRow][newCol] !== currentPlayer) break;
+          if (newRow < 0 || newRow >= ROWS || newCol < 0 || newCol >= COLS || gameBoard[newRow][newCol] !== currentPlayer) break;
           count++;
         }
-        if (count >= 4) return true;
+        if (count >= WIN_LENGTH) return true;
       }
       return false;
     }
@@ -297,13 +298,13 @@
     function evaluateBoard(board) {
       let score = 0;
       // Horizontal
-      for (let row = 0; row < 6; row++) {
-        for (let col = 0; col < 4; col++) {
-          score += evaluateWindow(board[row].slice(col, col + 4));
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < WIN_LENGTH; col++) {
+          score += evaluateWindow(board[row].slice(col, col + WIN_LENGTH));
         }
       }
       // Vertical
-      for (let col = 0; col < 7; col++) {
+      for (let col = 0; col < COLS; col++) {
         for (let row = 0; row < 3; row++) {
           const window = [board[row][col], board[row + 1][col], board[row + 2][col], board[row + 3][col]];
           score += evaluateWindow(window);
@@ -311,14 +312,14 @@
       }
       // Diagonal (positive slope)
       for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 4; col++) {
+        for (let col = 0; col < WIN_LENGTH; col++) {
           const window = [board[row][col], board[row + 1][col + 1], board[row + 2][col + 2], board[row + 3][col + 3]];
           score += evaluateWindow(window);
         }
       }
       // Diagonal (negative slope)
-      for (let row = 3; row < 6; row++) {
-        for (let col = 0; col < 4; col++) {
+      for (let row = 3; row < ROWS; row++) {
+        for (let col = 0; col < WIN_LENGTH; col++) {
           const window = [board[row][col], board[row - 1][col + 1], board[row - 2][col + 2], board[row - 3][col + 3]];
           score += evaluateWindow(window);
         }
@@ -331,8 +332,8 @@
       const playerCount = window.filter(cell => cell === 1).length;
       const emptyCount = window.filter(cell => cell === 0).length;
 
-      if (computerCount === 4) return 100;
-      if (playerCount === 4) return -100;
+      if (computerCount === WIN_LENGTH) return 100;
+      if (playerCount === WIN_LENGTH) return -100;
       if (computerCount === 3 && emptyCount === 1) return 5;
       if (playerCount === 3 && emptyCount === 1) return -5;
       if (computerCount === 2 && emptyCount === 2) return 2;
@@ -378,7 +379,7 @@
     }
 
     function getNextOpenRow(board, col) {
-      for (let row = 0; row < 6; row++) {
+      for (let row = 0; row < ROWS; row++) {
         if (board[row][col] === 0) return row;
       }
       return -1;
@@ -391,7 +392,7 @@
       const validColumns = getValidColumns(gameBoard);
 
       const difficulty = difficultySelect.value;
-      const depth = difficulty === 'easy' ? 2 : difficulty === 'medium' ? 4 : 6;
+      const depth = difficulty === 'easy' ? 2 : difficulty === 'medium' ? 4 : 5;
 
       for (let col of validColumns) {
         const row = getNextOpenRow(gameBoard, col);
@@ -412,7 +413,7 @@
       let rect = board.getBoundingClientRect();
       let clickX = e.clientX - rect.left;
 
-      let colWidth = rect.width / 7;
+      let colWidth = rect.width / COLS;
       let col = Math.floor(clickX / colWidth);
 
       dropPiece(col);

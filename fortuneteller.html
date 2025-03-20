@@ -36,10 +36,6 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x630.png">
   <meta name="twitter:image:alt" content="Mistik Falcı kristal küre oyunu görseli">
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -176,7 +172,7 @@
       <p>Click the title <strong>(Mystical Fortune Teller)</strong> to return to the main page.</p>
       <p>Tap the crystal ball to see your daily fortune.</p>
     </div>
-    <header>
+    <header role="banner">
       <h1 id="title">Mystical Fortune Teller</h1>
     </header>
     <div id="crystal-ball">
@@ -299,13 +295,33 @@
       overlay.style.display = 'none';
     });
 
+    function simpleHash(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = (hash << 5) - hash + char; // Bitwise operation for mixing
+        hash = hash & hash; // Ensure it stays within 32-bit integer bounds
+      }
+      return Math.abs(hash); // Return a positive number
+    }
+
+    function getUserId() {
+      let userId = localStorage.getItem('dorukdayimfortuneUserId');
+      if (!userId) {
+        userId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+        localStorage.setItem('dorukdayimfortuneUserId', userId);
+      }
+      return userId;
+    }
+
     function getDailyFortune() {
       const today = new Date();
       const day = today.getDate();
       const month = today.getMonth() + 1; // Months are zero-indexed
       const year = today.getFullYear();
-      const uniqueNumber = day + month * 100 + year * 10000;
-      const fortuneIndex = uniqueNumber % fortunes.length;
+      const userId = getUserId();
+      const seed = `${year}${month}${day}${userId}`;
+      const fortuneIndex = simpleHash(seed) % fortunes.length;
       return fortunes[fortuneIndex];
     }
 
@@ -319,7 +335,7 @@
       setTimeout(() => {
         fortune.textContent = getDailyFortune();
         fortune.style.opacity = '1';
-        crystalBall.style.animation = '';
+        crystalBall.style.animation = 'none';
       }, 500);
     }
 

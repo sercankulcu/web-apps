@@ -115,6 +115,12 @@
       border-radius: 5px;
     }
 
+    button:hover,
+    button:focus {
+      opacity: 0.9;
+      outline: 2px solid #005f87;
+    }
+
     #number-pad {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -126,33 +132,15 @@
       font-size: 2vh;
     }
 
-    #difficultySelect {
+    .difficultySelectButton {
       font-size: 1rem;
       font-family: inherit;
       border-radius: 5px;
       border: 1px solid #333;
     }
 
+    #initialMessage,
     .modal {
-      position: fixed;
-      width: 50%;
-      max-width: 400px;
-      height: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 30px;
-      border: 2px solid #000;
-      text-align: center;
-      z-index: 1001;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-      font-size: 1.2rem;
-      color: #333;
-      border-radius: 10px;
-    }
-
-    #initialMessage {
       position: fixed;
       width: 60%;
       max-width: 400px;
@@ -192,7 +180,7 @@
     <p>Ana sayfaya dönmek için başlığa <strong>(Sudoku)</strong> tıklayınız.</p>
     <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
     <label>Seç: </label>
-    <select id="difficultySelect">
+    <select id="difficultySelectFirst" class="difficultySelectButton">
       <option value="30" selected>Zorluk</option>
       <option value="15">Kolay</option>
       <option value="30">Orta</option>
@@ -219,7 +207,7 @@
     <p>Ana sayfaya dönmek için başlığa <strong>(Sudoku)</strong> tıklayınız.</p>
     <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
     <label>Seç: </label>
-    <select id="difficultySelect">
+    <select id="difficultySelectLast" class="difficultySelectButton">
       <option value="30" selected>Zorluk</option>
       <option value="15">Kolay</option>
       <option value="30">Orta</option>
@@ -272,10 +260,12 @@
   <script>
     const grid = document.getElementById('sudoku-grid');
     const numberPad = document.getElementById('number-pad');
-    const difficultySelect = document.getElementById('difficultySelect');
+    const difficultySelectFirst = document.getElementById('difficultySelectFirst');
+    const difficultySelectLast = document.getElementById('difficultySelectLast');
 
     let selectedCell = null;
     let puzzle = [];
+    let emptyCellsCount = 30;
 
     const titleElement = document.getElementById('title');
     titleElement.addEventListener('click', function () {
@@ -354,7 +344,6 @@
 
       solveSudoku(puzzle);
 
-      let emptyCellsCount = parseInt(difficultySelect.value);
       for (let i = 0; i < emptyCellsCount;) {
         let row = Math.floor(Math.random() * 9);
         let col = Math.floor(Math.random() * 9);
@@ -467,8 +456,14 @@
       newGame();
     });
 
-    difficultySelect.addEventListener('click', (e) => {
+    difficultySelectFirst.addEventListener('click', (e) => {
       e.stopPropagation();
+      emptyCellsCount = parseInt(difficultySelectFirst.value);
+    });
+
+    difficultySelectLast.addEventListener('click', (e) => {
+      e.stopPropagation();
+      emptyCellsCount = parseInt(difficultySelectLast.value);
     });
 
     document.getElementById('winModal').addEventListener('click', () => {

@@ -29,14 +29,11 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-240x126.png" />
   <meta name="twitter:image:alt" content="A picture of a coffee man icon" />
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="keywords"
     content="5 harf kelime oyunu, türkçe kelime bulmaca, zeka oyunları, dorukdayım, kelime oyunu oyna, 6 harfli kelimeler">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://dorukdayim.netlify.app/besharf.html">
   <meta name="author" content="Sercan/Dorukdayım">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <style>
     .game-container {
@@ -196,6 +193,32 @@
       text-align: justify;
       display: none;
     }
+
+    .shake {
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      50% {
+        transform: translateX(5px);
+      }
+
+      75% {
+        transform: translateX(-5px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
   </style>
 </head>
 
@@ -267,7 +290,6 @@
     const MAX_GUESSES = 6;
 
     let startTime;
-    let endTime;
     let score = 0;
 
     let targetWord = words[Math.floor(Math.random() * words.length)];
@@ -367,14 +389,12 @@
         }
       } else if (letter === 'GÖNDER') {
         if (currentGuess.length === WORD_LENGTH) {
+
           if (!allwords.includes(currentGuess.join(''))) {
-            currentGuess = [];
             const row = document.getElementsByClassName('row')[currentRow];
-            Array.from(row.children).forEach((tile) => {
-              if (tile.classList.contains('correct')) {
-                tile.classList.remove('correct');
-              }
-            });
+            row.classList.add('shake');
+            setTimeout(() => row.classList.remove('shake'), 500);
+            currentGuess = [];
             updateGrid();
           } else {
             checkGuess();
@@ -433,16 +453,19 @@
       currentRow++;
 
       if (guess === targetWord) {
-        endTime = new Date();
-        const timeDiff = (endTime - startTime) / 1000;
-        let timeScore = Math.max(0, 60 - timeDiff);
-        let rowScore = 35 - currentRow * 5;
-        score = Math.round(timeScore) + rowScore;
+        const timeDiff = (new Date() - startTime) / 1000;
+        score = calculateScore(timeDiff, currentRow);
         showResult(`Tebrikler! Kazandınız! Skorunuz: ${score}`);
         saveHighScore("Beş Harf", score);
       } else if (currentRow === MAX_GUESSES) {
         showResult(`Oyun Bitti! Doğru Kelime: ${targetWord}`);
       }
+    }
+
+    function calculateScore(timeDiff, rowCount) {
+      const timeScore = Math.max(0, 60 - timeDiff);
+      const rowScore = 35 - rowCount * 5;
+      return Math.round(timeScore) + rowScore;
     }
 
     function showResult(message) {

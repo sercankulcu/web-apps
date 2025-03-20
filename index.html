@@ -34,7 +34,6 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
 
     <meta property="og:title" content="DorukDayım - Eğlenceli Oyunlar">
     <meta property="og:description"
@@ -68,7 +67,6 @@
             padding: 5px;
             background: #F7F7F7;
             color: #333333;
-            justify-content: center;
             text-align: center;
             max-width: 600px;
             display: flex;
@@ -121,10 +119,9 @@
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: opacity 0.5s;
             margin: 5px;
-            width: 25vw;
-            max-width: 128px;
+            width: min(25vw, 128px);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -160,7 +157,7 @@
             z-index: 1001;
             top: 0;
             overflow: hidden;
-            transition: 0.5s;
+            transition: opacity 0.5s;
             display: none;
             text-align: justify;
             padding: 10px;
@@ -234,16 +231,6 @@
             border: none;
         }
 
-        #menuSelect {
-            position: absolute;
-            top: 50px;
-            right: calc(50% - 295px);
-            padding: 5px;
-            font-size: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
         #menuDropdown {
             display: none;
             position: absolute;
@@ -312,9 +299,7 @@
             <button id="iqtestButton"><span>🧠</span> <br>ZEKA <br>TESTİ</button>
             <button id="personalitytestButton"><span>🌟</span> <br>KİŞİLİK <br>TESTİ</button>
         </div>
-        <footer>
-            <p id="allRightsReserved">&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
-        </footer>
+        <p id="allRightsReserved">&copy; 2025 DorukDayım - Tüm hakları saklıdır.</p>
 
         <div id="overlayProfile" class="overlay" style="width: 100%; padding: 0;">
             <span class="closebtn" id="closeProfileBtn">&times;</span>
@@ -561,7 +546,10 @@
         const closegameSummariesBtn = document.getElementById("closegameSummariesBtn");
 
         fetch('/.netlify/functions/getFirebaseConfig')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('Config fetch failed');
+                return response.json();
+            })
             .then(firebaseConfig => {
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
@@ -602,7 +590,10 @@
                 signInBtn.addEventListener("click", window.signInWithGoogle);
                 signOutBtn.addEventListener("click", window.signOut);
             })
-            .catch(error => console.error("❌ Config alınırken hata:", error));
+            .catch(error => {
+                console.error("❌ Config alınırken hata:", error);
+                showPopup("Bağlantı hatası, lütfen daha sonra tekrar deneyin.");
+            });
 
         function showPopup(text) {
             messagePopup.innerText = text;
@@ -744,6 +735,7 @@
                     <p>Paylaş:</p>
                     <button onclick="shareTo('whatsapp', '${shareMessage}')">WhatsApp</button>
                     <button onclick="shareTo('twitter', '${shareMessage}')">Twitter</button>
+                    <button onclick="shareTo('facebook', '${shareMessage}')">Facebook</button>
                     <button onclick="closeShareOptions()">Kapat</button>
                 </div>
             `;

@@ -34,10 +34,6 @@
   <meta name="twitter:image" content="https://dorukdayim.netlify.app/icons/icon-1200x675.png" />
   <meta name="twitter:image:alt" content="DorukDayım Hızlı Refleks Oyunu resmi" />
 
-  <meta http-equiv="Content-Language" content="tr">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <style>
     #gameContainer {
       margin: 0 auto;
@@ -192,7 +188,6 @@
     let score = 0;
     let gameActive = false;
     let gameDuration = 30000; // 30 saniye
-    let targetClickTime;
     let fastestReactionTime = 2000;
     let gameMode = "easy"; // Kolay mod (başlangıçta)
 
@@ -326,15 +321,14 @@
       }, 1000 + Math.random() * 1000);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById("startScreen").addEventListener('click', () => {
-        startGame();
-      });
-
-      document.getElementById("gameOverScreen").addEventListener('click', () => {
-        startGame();
-      });
+    document.getElementById("startScreen").addEventListener('click', () => {
+      startGame();
     });
+
+    document.getElementById("gameOverScreen").addEventListener('click', () => {
+      startGame();
+    });
+
   </script>
 </body>
 
