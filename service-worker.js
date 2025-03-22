@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dorukdayim-cache-v4';
+const CACHE_NAME = 'dorukdayim-cache-v14';
 const urlsToCache = [
 ];
 
