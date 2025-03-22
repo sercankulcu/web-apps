@@ -226,8 +226,10 @@ const gameSets = [
     document.getElementById("winModal").style.display = "none";
   }
 
-  document.addEventListener('click', () => {
+  document.getElementById('initialMessage').addEventListener('click', () => {
     document.getElementById('initialMessage').style.display = 'none';
   });
+
+  document.getElementById('winModal').addEventListener('click', restartGame);
 
   createGrid();

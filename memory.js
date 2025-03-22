@@ -153,6 +153,8 @@ function closeModal() {
   document.getElementById("winModal").style.display = "none";
 }
 
+document.getElementById('winModal').addEventListener('click', startGame);
+
 document.addEventListener('click', () => {
   document.getElementById('initialMessage').style.display = 'none';
 });

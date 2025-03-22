@@ -178,7 +178,7 @@ closegameSummariesBtn.addEventListener("click", () => {
 });
 
 function showProfile(user) {
-    profileImage.src = user.photoURL || "default-profile-image.png"; // Varsayılan resim ekleyebilirsiniz
+    profileImage.src = user.photoURL || "default-profile-image.svg"; // Varsayılan resim ekleyebilirsiniz
     profileName.textContent = user.displayName;
     profileEmail.textContent = user.email;
     lastSignIn.textContent = new Date(user.metadata.lastSignInTime).toLocaleString();

@@ -134,10 +134,10 @@ function spawnTarget() {
   }, 1000 + Math.random() * 1000);
 }
 
-document.getElementById("startScreen").addEventListener('click', () => {
-  startGame();
-});
+document.getElementById("startScreen").addEventListener('click', startGame);
 
-document.getElementById("gameOverScreen").addEventListener('click', () => {
-  startGame();
-});
+document.getElementById("gameOverScreen").addEventListener('click', startGame);
+
+document.getElementById('modeToggleStart').addEventListener('click', toggleMode);
+
+document.getElementById('modeToggleEnd').addEventListener('click', toggleMode);

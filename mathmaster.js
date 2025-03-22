@@ -190,6 +190,8 @@ document.querySelectorAll("button[data-number]").forEach(button => {
 document.getElementById("backspace-button").addEventListener("click", backspaceAnswer);
 document.getElementById("submit-button").addEventListener("click", checkAnswer);
 
+document.getElementById("modal").addEventListener("click", startGame);
+
 document.getElementById('initialMessage').addEventListener('click', () => {
     document.getElementById('initialMessage').style.display = 'none';
 });
