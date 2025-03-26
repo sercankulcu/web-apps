@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-dynamic-cache-v1';
+const CACHE_NAME = 'my-dynamic-cache-v1.1.123';
 
 self.addEventListener('fetch', event => {
   if (event.request.method === 'GET') {
