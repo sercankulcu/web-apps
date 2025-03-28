@@ -80,12 +80,9 @@ function addLetter(letter, element) {
 
   currentWord += letter;
   document.getElementById('word').textContent = currentWord;
-
-  // Harfi pasif hale getir
   element.style.pointerEvents = "none";
   element.style.opacity = "0.5";
 }
-
 
 function submitWord() {
   const message = document.getElementById('word');
@@ -142,11 +139,9 @@ function shuffleLetters() {
   letters.sort(() => Math.random() - 0.5);
   createHive();
 
-  // Kelimeyi sıfırla
   currentWord = '';
   document.getElementById('word').textContent = '.';
 
-  // Tüm harfleri tekrar aktif hale getir
   document.querySelectorAll('.letter').forEach(letter => {
     letter.style.pointerEvents = "auto";
     letter.style.opacity = "1";

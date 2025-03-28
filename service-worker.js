@@ -6,7 +6,7 @@ self.addEventListener('fetch', event => {
       caches.match(event.request)
         .then(cachedResponse => {
           if (cachedResponse) {
-            return cachedResponse;
+            //return cachedResponse;
           }
 
           return fetch(event.request)

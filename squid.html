@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kırmızı Işık, Yeşil Işık</title>
+
+    <meta name="description" content="Kırmızı Işık, Yeşil Işık oyunu. Yeşil ışıkta hareket et, kırmızı ışıkta dur!">
+    <meta name="keywords" content="kırmızı ışık, yeşil ışık, squid game, tr, türkçe, oyun">
+    <meta name="author" content="Sercan/Dorukdayım">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dorukdayim.netlify.app/squid.html">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="icon" href="favicon.ico" type="image/png">
+
+    <meta property="og:title" content="Kırmızı Işık, Yeşil Işık Oyunu">
+    <meta property="og:description"
+        content="Kırmızı Işık, Yeşil Işık oyunu. Yeşil ışıkta hareket et, kırmızı ışıkta dur!">
+    <meta property="og:image" content="https://sercankulcu.github.io/game/squid/front.png" />
+    <meta property="og:url" content="https://dorukdayim.netlify.app/redlightgreenlight.html">
+    <meta property="og:type" content="game">
+    <meta property="og:image:width" content="80" />
+    <meta property="og:image:height" content="120" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:site_name" content="DorukDayım">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kırmızı Işık, Yeşil Işık Oyunu">
+    <meta name="twitter:description"
+        content="Kırmızı Işık, Yeşil Işık oyunu. Yeşil ışıkta hareket et, kırmızı ışıkta dur!">
+    <meta name="twitter:image" content="https://sercankulcu.github.io/game/squid/front.png" />
+    <meta name="twitter:image:alt" content="Kırmızı Işık, Yeşil Işık oyunu görseli" />
+
+    <style>
+        .container {
+            margin: 0 auto;
+            text-align: center;
+            padding: 1vh;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        #gameArea {
+            width: 100%;
+            height: 80vh;
+            background-color: #dca06d;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player {
+            width: 50px;
+            height: 80px;
+            border-radius: 50%;
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .player-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
+
+        #doll {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 120px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 2;
+            transition: background-image 0.5s;
+        }
+
+        #doll.green {
+            background-image: url('https://sercankulcu.github.io/game/squid/back.png');
+        }
+
+        #doll.red {
+            background-image: url('https://sercankulcu.github.io/game/squid/front.png');
+        }
+
+        .game-over .player {
+            animation: none;
+        }
+
+        @keyframes movePlayer {
+            from {
+                left: 10px;
+            }
+
+            to {
+                left: calc(100% - 40px);
+            }
+        }
+
+        #tree {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            z-index: 1;
+            background-size: contain;
+            background-image: url('https://sercankulcu.github.io/game/squid/tree.png');
+        }
+
+        #finishLine {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: red;
+            z-index: 0;
+        }
+
+        .guardian {
+            position: absolute;
+            top: 30px;
+            width: 80px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        #guardianLeft {
+            left: calc(50% - 120px)
+        }
+
+        #guardianRight {
+            left: calc(50% + 90px);
+        }
+
+        #initialMessage,
+        .modal {
+            position: fixed;
+            width: 60%;
+            max-width: 400px;
+            height: 60%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border: 2px solid #000;
+            text-align: center;
+            z-index: 1001;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            color: #333;
+            border-radius: 10px;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #333333;
+            color: #f9f9f9;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 10px;
+            text-align: justify;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="initialMessage">
+        <p>Ana sayfaya dönmek için başlığa <strong>(Kırmızı Işık Yeşil Işık)</strong> tıklayınız.</p>
+        <p>Oyuna başlamak için herhangi bir yere tıklayınız.</p>
+    </div>
+    <div class="container">
+        <h1 id="title">Kırmızı Işık Yeşil Işık</h1>
+        <div id="gameArea">
+            <div id="tree" class="tree"></div>
+            <div id="doll" class="red"></div>
+            <div id="finishLine"></div>
+            <div class="guardian" id="guardianLeft"
+                style="background-image: url('https://sercankulcu.github.io/game/squid/guardian.png');"></div>
+            <div class="guardian" id="guardianRight"
+                style="background-image: url('https://sercankulcu.github.io/game/squid/guardian.png');"></div>
+        </div>
+    </div>
+    <div id="winModal" class="modal">
+        <h2 id="winMessage"></h2>
+        <p>Ana sayfaya dönmek için başlığa <strong>(Kırmızı Işık Yeşil Işık)</strong> tıklayınız.</p>
+        <p>Oyuna yeniden başlamak için herhangi bir yere tıklayınız.</p>
+    </div>
+
+    <button id="infoButton"
+        style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">?</button>
+
+    <div id="overlay">
+        <button id="closeButton"
+            style="position: absolute; padding: 0; top: 10px; right: 10px; font-size: 1.5em; background: #ff5722; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;">X</button>
+        <h2>Kırmızı Işık, Yeşil Işık Nasıl Oynanır?</h2>
+        <p>
+            Kırmızı Işık, Yeşil Işık, basit ama heyecan verici bir oyundur. Amaç, "Yeşil Işık" yandığında hareket ederek
+            bitiş çizgisine ulaşmaktır.
+        </p>
+
+        <h3>Oyunun Kuralları:</h3>
+        <ul>
+            <li><strong>Yeşil Işık:</strong> Bebek arkasını döndüğünde "Yeşil Işık" yanar. Bu durumda oyuncular hareket
+                edebilir.</li>
+            <li><strong>Kırmızı Işık:</strong> Bebek önünü döndüğünde "Kırmızı Işık" yanar. Bu durumda tüm oyuncular
+                oldukları yerde durmalıdır.</li>
+            <li><strong>Hareket Etmek Yasak:</strong> "Kırmızı Işık" yanarken hareket eden oyuncular oyunu kaybeder.
+            </li>
+            <li><strong>Klavye Kontrolü:</strong> Kontrol ettiğiniz oyuncuyu hareket ettirmek için <strong>Yukarı
+                    Ok</strong> tuşunu kullanabilirsiniz.</li>
+            <li><strong>Otomatik Hareket:</strong> Diğer oyuncular "Yeşil Işık" yandığında rastgele aralıklarla otomatik
+                olarak hareket ederler.</li>
+        </ul>
+
+        <h3>Nasıl Kazanılır?</h3>
+        <p>
+            Bitiş çizgisine ilk ulaşan oyuncu oyunu kazanır.
+        </p>
+
+        <h3>Başlangıç:</h3>
+        <p>
+            Oyuna başlamak için "Başlat" butonuna tıklayın.
+        </p>
+
+        <p>
+            İyi eğlenceler!
+        </p>
+    </div>
+
+    <audio id="redLightSound" src="https://sercankulcu.github.io/game/squid/audio.mp3" preload="auto"></audio>
+
+    <script type="module" src="squid.js"></script>
+
+</body>
+
+</html>

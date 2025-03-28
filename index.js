@@ -7,7 +7,8 @@ const buttonNames = [
     "hangman", "flagquiz", "fiveletters", "sixletters", "spellbee",
     "oneword", "connections", "strands", "memory", "mathmaster",
     "millionaire", "tictactoe", "basketball", "carrace", "connectfour",
-    "fastreflex", "minesweeper", "sudoku", "fortuneteller", "tarot", "flipcoin", "iqtest", "personalitytest"
+    "fastreflex", "minesweeper", "sudoku", "fortuneteller", "tarot", 
+    "flipcoin", "iqtest", "personalitytest", "squid"
 ];
 
 buttonNames.forEach(name => {
