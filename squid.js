@@ -11,7 +11,7 @@ let gameSpeed = 4500;
 let playerSpeed = 1;
 let numberOfPlayers = 5;
 
-const controllablePlayerIndex = 0;
+const controllablePlayerIndex = 2;
 
 let players = [];
 
@@ -60,12 +60,12 @@ function createPlayers() {
     });
     players = [];
 
-    const playerImages = ['https://sercankulcu.github.io/game/squid/001.png',
+    const playerImages = ['https://sercankulcu.github.io/game/squid/120.png',
         'https://sercankulcu.github.io/game/squid/067.png',
-        'https://sercankulcu.github.io/game/squid/120.png',
+        'https://sercankulcu.github.io/game/squid/001.png',
         'https://sercankulcu.github.io/game/squid/230.png',
         'https://sercankulcu.github.io/game/squid/456.png'];
-    let randomLeft = 30 - Math.random() * 60;
+
     for (let i = 0; i < numberOfPlayers; i++) {
         const player = document.createElement('div');
         player.classList.add('player');
@@ -76,7 +76,7 @@ function createPlayers() {
         playerNumberDiv.textContent = i + 1;
         player.appendChild(playerNumberDiv);
         gameArea.appendChild(player);
-        randomLeft = i * ((gameArea.offsetWidth - 30) / numberOfPlayers);
+        const randomLeft = i * ((gameArea.offsetWidth - 30) / numberOfPlayers) + Math.random() * 30;
         const randomBottom = Math.random() * 30;
         players.push({
             element: player,
